@@ -1,0 +1,32 @@
+{
+  "name": "cms",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001/",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.6.0",
+    "dotenv": "^8.2.0",
+    "http-proxy-middleware": "^1.0.6",
+    "node-fetch": "^2.6.1",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.5.2",
+    "react-dom": "^16.13.1",
+    "react-fetch": "0.0.9",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "3.4.3",
+    "reactstrap": "^8.9.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

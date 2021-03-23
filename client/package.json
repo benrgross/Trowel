@@ -7,8 +7,6 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.6.0",
     "dotenv": "^8.2.0",
-    "http-proxy-middleware": "^1.0.6",
-    "node-fetch": "^2.6.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.13.1",

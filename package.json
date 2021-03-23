@@ -1,5 +1,5 @@
 {
-  "name": "redux-mini-project",
+  "name": "trowell",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -23,8 +23,6 @@
     "axios": "^0.18.1",
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
-    "fetch": "^1.1.0",
-    "http-proxy-middleware": "^1.0.6",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "node-fetch": "^2.6.1"

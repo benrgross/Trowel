@@ -20,33 +20,10 @@ export default {
 
   searchPlantCommon: function (query) {
     console.log(query);
-    return axios.post(`/api/search/`, query);
+    return axios.post(`/api/search/searchCommon`, query);
   },
 
-  // searchPlantCommon: function async() {
-  //   return axios.get(
-  //     proxy("/api", {
-  //       target:
-  //         "https://trefle.io/api/v1/plants?token=$Gmg9IXKKoTDYSmtgxEG6-frzryOYamZfLPIncdW-LsU",
-  //       logLevel: "debug",
-  //       changeOrigin: true,
-  //     })
-  //   );
-  // },
-
-  // searchPlantCommon: function async() {
-  //   return axios.get(
-  //     "https://trefle.io/api/v1/plants?token=$Gmg9IXKKoTDYSmtgxEG6-frzryOYamZfLPIncdW-LsU",
-  //     {
-  //       method: "GET",
-  //       mode: "no-cors",
-  //       //   headers: [
-  //       //     ["Content-Type", "application/csp-report"],
-  //       //     ["Content-Type", "application/expect-ct-report+json"],
-  //       //     ["Content-Type", "application/xss-auditor-report"],
-  //       //     ["Content-Type", "application/ocsp-request"],
-  //       //   ],
-  //     }
-  //   );
-  // },
+  getAllPlants: function () {
+    return axios.get(`/api/search/`);
+  },
 };

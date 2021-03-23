@@ -1,58 +1,50 @@
 const Axios = require("axios");
 
 const router = require("express").Router();
-// const trefleController = require("../../controllers/trefleController");
-// const fetch = require("node-fetch");
+
 require("dotenv").config();
 
-// router.get("/", async (req, res) => {
-//   const response = await fetch(
-//     "https://trefle.io/api/v1/plants?token=$Gmg9IXKKoTDYSmtgxEG6-frzryOYamZfLPIncdW-LsU"
-//   );
-//   const json = await response.json();
-//   console.log(res);
-//   console.log(json);
-// });
-// config = {
-//   token: process.env,
-// };
-// router.get(
-//   `https://trefle.io/api/v1/plants?token=${config.token}&filter[common_name]=${query}`,
-//   async (req, res) => {
-//     const json = await res.json();
-//     console.log(json);
-//     console.log(res);
-//   }
-// );
-
-// router.get("/api/searchCommon", async (req, res) => {
-//   console.log(req.body.query);
-//   var options = {
-//     method: "GET",
-//     url: `https://trefle.io/api/v1/plants?token=$Gmg9IXKKoTDYSmtgxEG6-frzryOYamZfLPIncdW-LsU&filter[common_name]=${req.body.query}`,
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   };
-
-//   console.log(res);
-//   const result = await res.json(result);
-// });
 const token = process.env.TOKEN_TREFLE;
 
-router.post("/", async (req, res) => {
-  console.log(req);
+///get all plants from Trefle
 
-  // requesting data from 3rd party service
+router.get("/", async (req, res) => {
+  console.log(req.body.query);
+
   try {
-    // const object = {
-    //   hello: "hello",
-    // };
     const { data } = await Axios.get(
-      `https://trefle.io/api/v1/plants?token=${process.env.TOKEN_TREFLE}&filter[common_name]=${req.body}`
+      `https://trefle.io/api/v1/distributions/{zone_id}/plants?token=${token}`
     );
 
-    console.log(data);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// get one plant by common name from query
+router.post("/searchSpecies", async (req, res) => {
+  console.log(req.body.query);
+
+  try {
+    const { data } = await Axios.get(
+      `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}&page=2`
+    );
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/searchSpecies/page", async (req, res) => {
+  console.log(req.body.page, req.body.query);
+
+  try {
+    const { data } = await Axios.get(
+      `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}&page=${req.body.page}`
+    );
+
     res.json(data);
   } catch (error) {
     console.log(error);

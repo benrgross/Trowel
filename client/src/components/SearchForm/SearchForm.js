@@ -13,9 +13,14 @@ function SearchForm() {
     dispatch({
       type: LOADING,
     });
-    const query = queryRef.current.value;
-    const { data } = await API.searchPlantCommon(query);
+    const query = {
+      query: queryRef.current.value,
+    };
+    const { data } = await API.searchPlantSpecies(query);
     console.log(data);
+
+    // const { data } = await API.getAllPlants();
+    // console.log("getAll", data);
   };
 
   return (

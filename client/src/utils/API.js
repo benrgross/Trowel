@@ -18,9 +18,14 @@ export default {
     return axios.post("/api/plants", plantData);
   },
 
-  searchPlantCommon: function (query) {
+  searchPlantSpecies: function (query) {
     console.log(query);
     return axios.post(`/api/search/searchCommon`, query);
+  },
+
+  searchPlantSpecies: function (query) {
+    console.log(query);
+    return axios.post(`/api/search/searchSpecies/page`, query);
   },
 
   getAllPlants: function () {

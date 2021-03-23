@@ -20,10 +20,10 @@ export default {
 
   searchPlantSpecies: function (query) {
     console.log(query);
-    return axios.post(`/api/search/searchCommon`, query);
+    return axios.post(`/api/search/searchSpecies`, query);
   },
 
-  searchPlantSpecies: function (query) {
+  searchPlantSpeciesPage: function (query) {
     console.log(query);
     return axios.post(`/api/search/searchSpecies/page`, query);
   },

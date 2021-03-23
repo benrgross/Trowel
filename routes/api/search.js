@@ -28,7 +28,7 @@ router.post("/searchSpecies", async (req, res) => {
 
   try {
     const { data } = await Axios.get(
-      `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}&page=2`
+      `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}`
     );
 
     res.json(data);

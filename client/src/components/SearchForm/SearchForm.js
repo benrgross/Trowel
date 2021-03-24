@@ -17,10 +17,19 @@ function SearchForm() {
       query: queryRef.current.value,
     };
     const { data } = await API.searchPlantSpecies(query);
-    console.log(data);
-
-    // const { data } = await API.getAllPlants();
-    // console.log("getAll", data);
+    console.log("data", data);
+    const plants = data.data.map((plant) => {
+      return {
+        commonName: plant.common_name,
+        scientificName: plant.scientific_name,
+        img: plant.image_url,
+        links: plant.links,
+      };
+    });
+    dispatch({
+      type: RESULTS,
+      results: plants,
+    });
   };
 
   return (

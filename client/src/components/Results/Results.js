@@ -5,7 +5,13 @@ function Results() {
   const [state, dispatch] = useStoreContext();
 
   const getPlant = (plant) => {
-    console.log(plant);
+    // console.log(plant);
+    // Use a dispatch to send this object and set the values to viewPlant state value
+    console.log({
+      commonName: plant.commonName,
+      scientificName: plant.scientificName,
+      img: plant.img,
+    })
   };
 
   return (

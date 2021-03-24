@@ -35,7 +35,6 @@ const Home = () => {
                     <input
                         name="name"
                         ref={nameRef}
-                        // value={nameRef}
                         placeholder="Name"
                         className="form-control"
                     />
@@ -45,6 +44,7 @@ const Home = () => {
                     <input
                         name="location"
                         ref={locationRef}
+                        placeholder="Location"
                         className="form-control"
                     />
                     </div>
@@ -53,6 +53,7 @@ const Home = () => {
                     <input
                         name="contact"
                         ref={contactRef}
+                        placeholder="Phone Number/Email"
                         className="form-control"
                     />
                     </div>

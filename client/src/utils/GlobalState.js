@@ -45,7 +45,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     plant: {},
     results: [{}],
     loading: false,
-    // TODO: add state for single plant view
     viewPlant: {
       plant,
       image,

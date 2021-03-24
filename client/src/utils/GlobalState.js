@@ -45,6 +45,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     plant: {},
     results: [{}],
     loading: false,
+    // TODO: add state for single plant view
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

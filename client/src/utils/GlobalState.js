@@ -45,11 +45,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     plant: {},
     results: [{}],
     loading: false,
-    viewPlant: {
-      plant,
-      image,
-      description
-    }
+    viewPlant: {}
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

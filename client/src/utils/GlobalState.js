@@ -1,5 +1,5 @@
 import React, { useReducer, createContext, useContext } from "react";
-import { LOADING, REMOVE_PLANT, RESULTS, SET_SAVED_PLANT } from "./actions";
+import { LOADING, REMOVE_PLANT, RESULTS, SET_SAVED_PLANT, SPOTLIGHT } from "./actions";
 
 // Don't forget to import all of your actions!
 const StoreContext = createContext();
@@ -33,6 +33,15 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case SPOTLIGHT:
+      return {
+        ...state,
+        viewPlant: {
+          commonName: "",
+          scientificName: "",
+          img: ""
+        },
       };
     default:
       return state;

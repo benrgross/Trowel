@@ -25,8 +25,18 @@ function Navbar() {
       <div className="navbar-collapse collapse nav-group " id="navbar-toggle">
         <ul className="navbar-nav nav-group ml-auto ">
           <li className="nav-item">
+            <Link to="/home" className="nav-link nav-text">
+              Accounts
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/" className="nav-link nav-text">
               Search
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/plant" className="nav-link nav-text">
+              Spotlight
             </Link>
           </li>
           <li className="nav-item">

@@ -3,7 +3,7 @@
   "name": "Trowel",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "trowel.png",
       "sizes": "64x64",
       "type": "image/png"
     }

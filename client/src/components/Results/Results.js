@@ -15,8 +15,16 @@ function Results() {
     const { data } = await API.getPlant(item);
     console.log(data);
 
-    // console.log(plant);
     // Use a dispatch to send this object and set the values to viewPlant state value
+    dispatch({
+      type: "SPOTLIGHT",
+      spotlight: {
+        commonName: plant.commonName,
+        scientificName: plant.scientificName,
+        img: plant.img
+      }
+    })
+
     console.log({
       commonName: plant.commonName,
       scientificName: plant.scientificName,

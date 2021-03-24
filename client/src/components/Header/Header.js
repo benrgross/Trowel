@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="row header">
       <div className="col-md-12 d-flex justify-content-center">
-        <h1> TROWELL </h1>
+        <h1> TROWEL </h1>
       </div>
     </div>
   );

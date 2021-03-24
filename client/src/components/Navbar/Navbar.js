@@ -8,8 +8,8 @@ function Navbar() {
       style={{ backgroundColor: "rgb(206 153 4 / 65%)" }}
       className="navbar navbar-expand-md  navbar-dark pr-lg-1 pl-sm-5 justify-content-between"
     >
-      <Link className="navbar-brand nav-text" to="/">
-        Trowell
+      <Link className="navbar-brand nav-text" to="/home">
+        Trowel
       </Link>
 
       <button

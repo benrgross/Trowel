@@ -34,15 +34,15 @@ const reducer = (state, action) => {
         ...state,
         loading: true,
       };
-    case SPOTLIGHT:
-      return {
-        ...state,
-        viewPlant: {
-          commonName: "",
-          scientificName: "",
-          img: ""
-        },
-      };
+    // case SPOTLIGHT:
+    //   return {
+    //     ...state,
+    //     viewPlant: {
+    //       commonName: action.spotlight.commonName,
+    //       scientificName: action.spotlight.scientificName,
+    //       img: action.spotlight.img
+    //     },
+    //   };
     default:
       return state;
   }

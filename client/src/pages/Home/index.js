@@ -9,6 +9,7 @@ const Home = () => {
 
     const saveAccount = (event) => {
         event.preventDefault()
+        
         axios.post("/api/accounts", {
             name: nameRef,
             location: locationRef,

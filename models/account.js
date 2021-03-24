@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
+  created: {
+    type: Date,
+    default: Date.now
+  },
   accountName: { 
     type: String, 
     required: true 

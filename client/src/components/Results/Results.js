@@ -1,17 +1,27 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-
+import API from "../../utils/API";
 function Results() {
   const [state, dispatch] = useStoreContext();
 
-  const getPlant = (plant) => {
+  const getPlant = async (plant) => {
+    console.log(plant);
+    const item = {
+      url: plant.links.plant,
+
+      //   urlSpecies: plant.links,
+    };
+    console.log(item.url);
+    const { data } = await API.getPlant(item);
+    console.log(data);
+
     // console.log(plant);
     // Use a dispatch to send this object and set the values to viewPlant state value
     console.log({
       commonName: plant.commonName,
       scientificName: plant.scientificName,
       img: plant.img,
-    })
+    });
   };
 
   return (

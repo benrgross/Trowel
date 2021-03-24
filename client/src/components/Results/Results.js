@@ -14,6 +14,14 @@ function Results() {
     console.log(item.url);
     const { data } = await API.getPlant(item);
     console.log(data);
+
+    // console.log(plant);
+    // Use a dispatch to send this object and set the values to viewPlant state value
+    console.log({
+      commonName: plant.commonName,
+      scientificName: plant.scientificName,
+      img: plant.img,
+    });
   };
 
   return (

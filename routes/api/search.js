@@ -51,4 +51,18 @@ router.post("/searchSpecies/page", async (req, res) => {
   }
 });
 
+router.post("/plant", async (req, res) => {
+  console.log(req.body.url);
+
+  try {
+    const { data } = await Axios.get(
+      `https://trefle.io${req.body.url}?token=${token}`
+    );
+    console.log(data);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

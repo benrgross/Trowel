@@ -31,4 +31,8 @@ export default {
   getAllPlants: function () {
     return axios.get(`/api/search/`);
   },
+
+  getPlant: function (item) {
+    return axios.post(`/api/search/plant`, item);
+  },
 };

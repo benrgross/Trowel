@@ -2,22 +2,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
-  accountName: { type: String, required: true },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  accountName: { 
+    type: String, 
+    required: true 
+  },
   clientContact: {
-    type: String,
-    clientName: { type: String },
-    phone: { type: Number },
-    address: { type: String },
-    email: { type: String },
-    required: true,
+    clientName: String,
+    phone: Number,
+    email: String,
+    // clientAddress: String,
   },
   location: {
-    type: String,
-    address: { type: String },
-    distName: { type: String },
-    required: true,
+    address: String,
+    distZone: String,
   },
-  plants: { type: Number, required: true },
+  plantCount: {
+    type: Number,
+    default: 0
+  },
+  plants: []
 });
 
 const Account = mongoose.model('Account', accountSchema);

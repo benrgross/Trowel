@@ -12,7 +12,7 @@ const accountSchema = new Schema({
   },
   clientContact: {
     clientName: String,
-    phone: Number,
+    phone: String,
     email: String,
     // clientAddress: String,
   },

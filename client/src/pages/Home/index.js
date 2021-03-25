@@ -3,27 +3,39 @@ import React, { useRef } from 'react'
 import axios from "axios"
 
 const Home = () => {
-    const nameRef = useRef();
-    const locationRef = useRef();
-    const contactRef = useRef();
+    const accountNameRef = useRef();
+    const clientNameRef = useRef();
+    const phoneRef = useRef();
+    const emailRef = useRef();
+    const addressRef = useRef();
+    const zoneRef = useRef();
 
     const saveAccount = (event) => {
         event.preventDefault()
         
         // axios.post("/api/accounts", {
-        //     accountName: nameRef,
-        //     location: {
-        //         address: locationRef},
+        //     accountName: accountNameRef.current.value,
         //     clientContact: {
-        //         email: contactRef}
+        //         clientName: clientNameRef.current.value,
+        //         phone: phoneRef.current.value,
+        //         email: emailRef.current.value
+        //     },
+        //     location: {
+        //         address: addressRef.current.value,
+        //         distZone: zoneRef.current.value,
+        //     }
         // })
 
         console.log({
-            accountName: nameRef,
-            location: {
-                address: locationRef},
+            accountName: accountNameRef.current.value,
             clientContact: {
-                email: contactRef}
+                clientName: clientNameRef.current.value,
+                phone: phoneRef.current.value,
+                email: emailRef.current.value
+            },
+            location: {
+                address: addressRef.current.value
+            }
         })
     }
 
@@ -37,27 +49,54 @@ const Home = () => {
                     <div className="form-group ">
                     <label>Account Name</label>
                     <input
-                        name="name"
-                        ref={nameRef}
+                        name="account-name"
+                        ref={accountNameRef}
                         placeholder="Name"
+                        className="form-control"
+                    />
+                    </div>
+                    <div className="form-group ">
+                    <label>Client Name</label>
+                    <input
+                        name="client-name"
+                        ref={clientNameRef}
+                        placeholder="Full Name"
+                        className="form-control"
+                    />
+                    </div>
+                    <div className="form-group ">
+                    <label>Phone Number</label>
+                    <input
+                        name="client-phone"
+                        ref={phoneRef}
+                        placeholder="(555) 555-5555"
+                        className="form-control"
+                    />
+                    </div>
+                    <div className="form-group ">
+                    <label>Email</label>
+                    <input
+                        name="email"
+                        ref={emailRef}
+                        placeholder="example@example.com"
                         className="form-control"
                     />
                     </div>
                     <div className="form-group ">
                     <label>Account Location</label>
                     <input
-                        name="location"
-                        ref={locationRef}
-                        placeholder="Location"
+                        name="account-location"
+                        ref={addressRef}
+                        placeholder="312 N. Plants St."
                         className="form-control"
                     />
                     </div>
                     <div className="form-group ">
-                    <label>Contact Info</label>
+                    <label>District Zone</label>
                     <input
-                        name="contact"
-                        ref={contactRef}
-                        placeholder="Phone Number/Email"
+                        name="district-zone"
+                        ref={zoneRef}
+                        placeholder="Zone 8"
                         className="form-control"
                     />
                     </div>

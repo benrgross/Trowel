@@ -1,8 +1,11 @@
 import "./home.css"
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import API from "../../utils/API"
 
 const Home = () => {
+    const [savedAccounts, setSavedAccounts] = useState([]);
+    const [savedPlants, setSavedPlants] = useState([]);
+
     const accountNameRef = useRef();
     const clientNameRef = useRef();
     const phoneRef = useRef();
@@ -11,7 +14,27 @@ const Home = () => {
     const zoneRef = useRef();
     const notesRef = useRef();
 
-    const { data } = API.getAccounts();
+    // get request of books from db
+    useEffect(() => {
+        getSavedAccounts();
+        getSavedPlants();
+    }, [])
+
+    const getSavedAccounts = async () => {
+        const { data } = await API.getAccounts();
+
+        // set data to state
+        setSavedAccounts(data)
+        console.log("Account Data: ", data)
+    }
+
+    const getSavedPlants = async () => {
+        const { data } = await API.getPlants();
+
+        // set data to state
+        setSavedPlants(data)
+        console.log("Plant Data: ", data)
+    }
 
     const saveAccount = (event) => {
         event.preventDefault()

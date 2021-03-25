@@ -24,7 +24,8 @@ const accountSchema = new Schema({
     type: Number,
     default: 0
   },
-  plants: []
+  plants: [],
+  notes: String
 });
 
 const Account = mongoose.model('Account', accountSchema);

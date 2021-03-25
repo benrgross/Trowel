@@ -55,6 +55,7 @@ function Navbar() {
             <a
               className="nav-link nav-text"
               style={{ marginRight: "50px" }}
+              href="/"
               onClick={logout}
             >
               Log Out

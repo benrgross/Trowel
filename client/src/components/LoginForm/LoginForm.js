@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-
 import { LOGIN } from "../../utils/actions";
 import API from "../../utils/API";
+import { Link } from "react-router-dom";
+import "./login.css";
 
 function LoginForm() {
   const [state, dispatch] = useStoreContext();
@@ -36,25 +37,36 @@ function LoginForm() {
     });
   };
   return (
-    <div className="container-fluid form-group">
-      <form className="form-group" onSubmit={submitLogin}>
-        <input
-          className="form-control"
-          ref={emailRef}
-          type="text"
-          name="email"
-          placeholder="email"
-        />
-        <input
-          className="form-control"
-          ref={passwordRef}
-          type="password"
-          name="password"
-          placeholder="password"
-        />
-        <button className="btn btn-success" type="submit">
-          submit{" "}
+    <div className="container-fluid form-group d-flex justify-content-center">
+      <form className="logIn" onClick={submitLogin}>
+        <h2 className="text-center">Log In</h2>
+        <div className="form-group">
+          <label>Email address</label>
+          <input
+            className="form-control"
+            ref={emailRef}
+            type="text"
+            name="email"
+            placeholder="email"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+        </div>
+        <div className="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            className="form-control"
+            ref={passwordRef}
+            type="password"
+            name="password"
+            placeholder="password"
+            placeholder="Password"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
         </button>
+        <Link to="/signup">SignUp</Link>
       </form>
     </div>
   );

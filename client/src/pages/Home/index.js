@@ -11,6 +11,8 @@ const Home = () => {
     const zoneRef = useRef();
     const notesRef = useRef();
 
+    const { data } = await API.getAccounts();
+
     const saveAccount = (event) => {
         event.preventDefault()
         
@@ -27,19 +29,6 @@ const Home = () => {
             },
             notes: notesRef.current.value
         }
-
-        console.log({
-            accountName: accountNameRef.current.value,
-            clientContact: {
-                clientName: clientNameRef.current.value,
-                phone: phoneRef.current.value,
-                email: emailRef.current.value
-            },
-            location: {
-                address: addressRef.current.value
-            },
-            notes: notesRef.current.value
-        })
 
         API.saveAccount(account)
     }

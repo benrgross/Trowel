@@ -16,7 +16,7 @@ function SearchForm() {
     const query = {
       query: queryRef.current.value,
     };
-    const { data } = await API.searchPlantSpecies(query);
+    const { data } = await API.searchPlants(query);
     console.log("data", data);
     const plants = data.data.map((plant) => {
       return {

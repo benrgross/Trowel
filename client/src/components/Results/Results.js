@@ -7,9 +7,7 @@ function Results() {
   const getPlant = async (plant) => {
     console.log(plant);
     const item = {
-      url: plant.links.plant,
-
-      //   urlSpecies: plant.links,
+      url: plant.links.self,
     };
     console.log(item.url);
     const { data } = await API.getPlant(item);

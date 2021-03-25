@@ -7,9 +7,7 @@ import Search from "./pages/Search";
 import Home from "./pages/Home";
 import Plant from "./pages/Plant";
 
-//use global context
-
-function App() {
+function Registered() {
   return (
     <Router>
       <div>
@@ -27,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default Registered;

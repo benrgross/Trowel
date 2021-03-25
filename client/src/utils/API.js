@@ -23,6 +23,11 @@ export default {
     return axios.post(`/api/search/searchSpecies`, query);
   },
 
+  searchPlants: function (query) {
+    console.log(query);
+    return axios.post(`/api/search/searchPlants`, query);
+  },
+
   searchPlantSpeciesPage: function (query) {
     console.log(query);
     return axios.post(`/api/search/searchSpecies/page`, query);

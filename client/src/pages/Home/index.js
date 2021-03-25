@@ -36,7 +36,8 @@ const Home = () => {
             },
             location: {
                 address: addressRef.current.value
-            }
+            },
+            notes: notesRef.current.value
         })
 
         // API.saveAccount(account)

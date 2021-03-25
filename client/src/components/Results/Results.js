@@ -42,8 +42,8 @@ function Results() {
       minPh: data.minPh,
       minPrecipitation: data.minPrecipitation.mm,
       minTemp: {
-        minDeg_f: data.minTemp.deg_f,
-        minDeg_c: data.minTemp.deg_c
+        deg_f: data.minTemp.deg_f,
+        deg_c: data.minTemp.deg_c
       },
       native: data.native,
       scientificName: data.scientific_name,

@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="row header">
       <div className="col-md-12 d-flex justify-content-center">
-        <h1> TROWEL </h1>
+        <img src='images/Trowel-logo.png' alt='trowel' />
       </div>
     </div>
   );

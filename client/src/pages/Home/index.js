@@ -11,7 +11,7 @@ const Home = () => {
     const zoneRef = useRef();
     const notesRef = useRef();
 
-    const { data } = await API.getAccounts();
+    const { data } = API.getAccounts();
 
     const saveAccount = (event) => {
         event.preventDefault()

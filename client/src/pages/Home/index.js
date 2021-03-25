@@ -10,16 +10,20 @@ const Home = () => {
     const saveAccount = (event) => {
         event.preventDefault()
         
-        axios.post("/api/accounts", {
-            name: nameRef,
-            location: locationRef,
-            contact: contactRef
-        })
+        // axios.post("/api/accounts", {
+        //     accountName: nameRef,
+        //     location: {
+        //         address: locationRef},
+        //     clientContact: {
+        //         email: contactRef}
+        // })
 
         console.log({
-            name: nameRef,
-            location: locationRef,
-            contact: contactRef
+            accountName: nameRef,
+            location: {
+                address: locationRef},
+            clientContact: {
+                email: contactRef}
         })
     }
 

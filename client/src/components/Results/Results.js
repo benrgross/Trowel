@@ -14,6 +14,15 @@ function Results() {
     console.log(data);
 
     // Use a dispatch to send this object and set the values to viewPlant state value
+    dispatch({
+      type: "SPOTLIGHT",
+      spotlight: {
+        commonName: plant.commonName,
+        scientificName: plant.scientificName,
+        img: plant.img
+      }
+    })
+
     console.log({
       commonName: plant.commonName,
       scientificName: plant.scientificName,

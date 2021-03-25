@@ -11,6 +11,8 @@ const Home = () => {
     const zoneRef = useRef();
     const notesRef = useRef();
 
+    const { data } = API.getAccounts();
+
     const saveAccount = (event) => {
         event.preventDefault()
         
@@ -24,22 +26,11 @@ const Home = () => {
             location: {
                 address: addressRef.current.value,
                 distZone: zoneRef.current.value,
-            }
+            },
+            notes: notesRef.current.value
         }
 
-        console.log({
-            accountName: accountNameRef.current.value,
-            clientContact: {
-                clientName: clientNameRef.current.value,
-                phone: phoneRef.current.value,
-                email: emailRef.current.value
-            },
-            location: {
-                address: addressRef.current.value
-            }
-        })
-
-        // API.saveAccount(account)
+        API.saveAccount(account)
     }
 
     return (
@@ -106,9 +97,9 @@ const Home = () => {
                     <div className="form-group ">
                     <label>Account Notes</label>
                     <textarea
-                        name="Notes"
+                        name="notes"
                         ref={notesRef}
-                        placeholder="Zone 8"
+                        placeholder="Notes"
                         className="form-control"
                     />
                     </div>

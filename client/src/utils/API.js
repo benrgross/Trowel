@@ -6,9 +6,9 @@ export default {
     return axios.get("/api/plants");
   },
   // Gets the plant with the given id
-  getPlant: function (id) {
-    return axios.get("/api/plants/" + id);
-  },
+  // getPlant: function (id) {
+  //   return axios.get("/api/plants/" + id);
+  // },
   // Deletes the plant with the given id
   deletePlant: function (id) {
     return axios.delete("/api/plants/" + id);
@@ -18,9 +18,14 @@ export default {
     return axios.post("/api/plants", plantData);
   },
   
-  // Saves a plant to the database
+  // Saves a account to the database
   saveAccount: function (accountData) {
     return axios.post("/api/accounts", accountData);
+  },
+
+  // Get accounts from database
+  getAccounts: function (accountData) {
+    return axios.get("/api/accounts", accountData);
   },
 
   searchPlantSpecies: function (query) {

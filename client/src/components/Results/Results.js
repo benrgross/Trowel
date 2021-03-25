@@ -13,9 +13,9 @@ function Results() {
     
     const { data } = await API.getPlant(item);
     
-    console.log(item.url);
-    console.log(plant);
-    console.log(data);
+    // console.log(item.url);
+    // console.log(plant);
+    console.log("API Data: ", data);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
@@ -24,28 +24,36 @@ function Results() {
       edible: data.edible,
       family: data.family,
       familyCommonName: data.familyCommonName,
-      color: data.flowerColor.color,
-      conspicuous: data.flowerColor.conspicuous,
+      flowerColor: {
+        color: data.flowerColor.color,
+        conspicuous: data.flowerColor.conspicuous
+      },
       genus: data.genus,
       growthHabit: data.growthHabit,
-      heightAvgCm: data.heightAvg.cm + "cm",
+      heightAvgCm: data.heightAvg.cm,
       img: plant.img,
       light: data.light,
       maxPh: data.maxPh,
-      maxPrecipitation: data.maxPrecipitation.mm + "mm",
-      maxDeg_f: data.maxTemp.deg_f,
-      maxDeg_c: data.maxTemp.deg_c,
+      maxPrecipitation: data.maxPrecipitation.mm,
+      maxTemp: {
+        deg_f: data.maxTemp.deg_f,
+        deg_c: data.maxTemp.deg_c
+      },
       minPh: data.minPh,
-      minPrecipitation: data.minPrecipitation.mm + "mm",
-      minDeg_f: data.minTemp.deg_f,
-      minDeg_c: data.minTemp.deg_c,
+      minPrecipitation: data.minPrecipitation.mm,
+      minTemp: {
+        deg_f: data.minTemp.deg_f,
+        deg_c: data.minTemp.deg_c
+      },
       native: data.native,
       scientificName: data.scientific_name,
       soilNutriments: data.soilNutriments,
-      soilTexture: data.soilTexture
+      soilTexture: data.soilTexture,
+      notes: ""
     };
 
-    // API.savePlant(plantObject)
+    // console.log("Plant Object: ", plantObject);
+    const { data: selectedPlant } = await API.savePlant(plantObject);
 
     // Use a dispatch to send this object and set the values to viewPlant state value
     dispatch({

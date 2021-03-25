@@ -7,7 +7,6 @@ require("dotenv").config();
 const token = process.env.TOKEN_TREFLE;
 
 ///get all plants from Trefle
-
 router.get("/", async (req, res) => {
   console.log(req.body.query);
 
@@ -37,12 +36,13 @@ router.post("/searchSpecies", async (req, res) => {
   }
 });
 
-router.post("/searchSpecies/page", async (req, res) => {
+// query species rout
+router.post("/searchPlants", async (req, res) => {
   console.log(req.body.page, req.body.query);
 
   try {
     const { data } = await Axios.get(
-      `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}&page=${req.body.page}`
+      `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}`
     );
 
     res.json(data);
@@ -51,6 +51,7 @@ router.post("/searchSpecies/page", async (req, res) => {
   }
 });
 
+// get single plant info with url from searchSpecies
 router.post("/plant", async (req, res) => {
   console.log(req.body.url);
 
@@ -58,8 +59,36 @@ router.post("/plant", async (req, res) => {
     const { data } = await Axios.get(
       `https://trefle.io${req.body.url}?token=${token}`
     );
-    console.log(data);
-    res.json(data);
+
+    const { growth } = data.data;
+    const { specifications } = data.data;
+
+    const plantData = {
+      commonName: data.data.common_name,
+      scientific_name: data.data.scientific_name,
+      family: data.data.family,
+      familyCommonName: data.data.family_common_name,
+      genus: data.data.genus,
+      native: data.data.distribution["native"],
+      edible: data.data.edible,
+      family: data.data.family,
+      flowerColor: data.data.flower,
+      light: growth.light,
+      atmosHumidity: growth.atmospheric_humidity,
+      bloomMonths: growth.bloom_months,
+      minPrecipitation: growth.minimum_precipitation,
+      maxPrecipitation: growth.minimum_precipitation,
+      minTemp: growth.minimum_temperature,
+      maxTemp: growth.maximum_temperature,
+      maxPh: growth.ph_maximum,
+      minPh: growth.ph_minimum,
+      soilNutriments: growth.soil_nutriments,
+      soilTexture: growth.soil_texture,
+      heightAvg: specifications.average_height,
+      growthHabit: specifications.growth_habit,
+    };
+    console.log(plantData);
+    res.json(plantData);
   } catch (error) {
     console.log(error);
   }

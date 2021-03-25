@@ -1,5 +1,13 @@
 import React, { useReducer, createContext, useContext } from "react";
-import { LOADING, REMOVE_PLANT, RESULTS, SET_SAVED_PLANT, SPOTLIGHT } from "./actions";
+import {
+  LOADING,
+  LOGIN,
+  LOGOUT,
+  REMOVE_PLANT,
+  RESULTS,
+  SET_SAVED_PLANT,
+  SPOTLIGHT,
+} from "./actions";
 
 // Don't forget to import all of your actions!
 const StoreContext = createContext();
@@ -40,8 +48,20 @@ const reducer = (state, action) => {
         viewPlant: {
           commonName: action.spotlight.commonName,
           scientificName: action.spotlight.scientificName,
-          img: action.spotlight.img
+          img: action.spotlight.img,
         },
+      };
+    case LOGIN:
+      console.log(action.token);
+      return {
+        ...state,
+        email: action.email,
+        userToken: action.token,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        userToken: "",
       };
     default:
       return state;
@@ -54,11 +74,15 @@ const StoreProvider = ({ value = [], ...props }) => {
     plant: {},
     results: [{}],
     loading: false,
+    userToken: "",
+    email: "",
+    user: {},
     viewPlant: {
       commonName: "Plant Example",
       scientificName: "Science Plant",
-      img: "https://images.pexels.com/photos/3209811/pexels-photo-3209811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-    }
+      img:
+        "https://images.pexels.com/photos/3209811/pexels-photo-3209811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    },
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

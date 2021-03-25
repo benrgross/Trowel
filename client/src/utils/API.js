@@ -40,4 +40,12 @@ export default {
   getPlant: function (item) {
     return axios.post(`/api/search/plant`, item);
   },
+
+  login: function (cred) {
+    return axios.post("/api/auth/login", cred);
+  },
+
+  signUp: function (cred) {
+    return axios.post("/api/auth/register", cred);
+  },
 };

@@ -4,3 +4,5 @@ export const REMOVE_PLANT = "REMOVE_PLANT";
 export const SET_SAVED_PLANT = "SET_SAVED_PLANT";
 export const LOADING = "LOADING";
 export const SPOTLIGHT = "SPOTLIGHT";
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";

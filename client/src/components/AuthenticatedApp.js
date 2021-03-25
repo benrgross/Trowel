@@ -6,7 +6,6 @@ import Navbar from "./Navbar/Navbar";
 import Search from "../pages/Search";
 import Home from "../pages/Home";
 import Plant from "../pages/Plant";
-import { LOGOUT } from "../utils/actions";
 
 function AuthenticatedApp() {
   return (

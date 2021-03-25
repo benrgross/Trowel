@@ -23,9 +23,7 @@ function SignUpForm() {
     const { data } = await API.signUp(cred);
     console.log(data);
 
-    if (data.email) {
-      history.push("/");
-    }
+    history.push("/");
 
     const {
       data: { email, token },
@@ -48,13 +46,13 @@ function SignUpForm() {
 
   return (
     <div className="container-fluid form-group d-flex justify-content-center">
-      <form className="signup" onSubmit={signUp}>
+      <form className="signup">
         <h2 className="text-center">Sign Up</h2>
         <div className="form-group">
           <label>Email address</label>
           <input
             className="form-control"
-            ref={regPasswordRef}
+            ref={regEmailRef}
             type="text"
             name="email"
             placeholder="email"
@@ -63,17 +61,17 @@ function SignUpForm() {
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label>Password</label>
           <input
             className="form-control"
-            ref={regEmailRef}
+            ref={regPasswordRef}
             type="password"
             name="password"
             placeholder="password"
             placeholder="Password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" onClick={signUp}>
           Submit
         </button>
         <Link to="/">Log In</Link>

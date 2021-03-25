@@ -38,7 +38,7 @@ function LoginForm() {
   };
   return (
     <div className="container-fluid form-group d-flex justify-content-center">
-      <form className="logIn" onClick={submitLogin}>
+      <form className="logIn">
         <h2 className="text-center">Log In</h2>
         <div className="form-group">
           <label>Email address</label>
@@ -53,7 +53,7 @@ function LoginForm() {
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
+          <label>Password</label>
           <input
             className="form-control"
             ref={passwordRef}
@@ -63,7 +63,7 @@ function LoginForm() {
             placeholder="Password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" onClick={submitLogin}>
           Submit
         </button>
         <Link to="/signup">SignUp</Link>

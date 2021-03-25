@@ -1,6 +1,6 @@
 import "./home.css"
 import React, { useRef } from 'react'
-import axios from "axios"
+import API from "../../utils/API"
 
 const Home = () => {
     const accountNameRef = useRef();
@@ -13,18 +13,18 @@ const Home = () => {
     const saveAccount = (event) => {
         event.preventDefault()
         
-        // axios.post("/api/accounts", {
-        //     accountName: accountNameRef.current.value,
-        //     clientContact: {
-        //         clientName: clientNameRef.current.value,
-        //         phone: phoneRef.current.value,
-        //         email: emailRef.current.value
-        //     },
-        //     location: {
-        //         address: addressRef.current.value,
-        //         distZone: zoneRef.current.value,
-        //     }
-        // })
+        const account = {
+            accountName: accountNameRef.current.value,
+            clientContact: {
+                clientName: clientNameRef.current.value,
+                phone: phoneRef.current.value,
+                email: emailRef.current.value
+            },
+            location: {
+                address: addressRef.current.value,
+                distZone: zoneRef.current.value,
+            }
+        }
 
         console.log({
             accountName: accountNameRef.current.value,
@@ -37,6 +37,8 @@ const Home = () => {
                 address: addressRef.current.value
             }
         })
+
+        // API.saveAccount(account)
     }
 
     return (

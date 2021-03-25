@@ -16,7 +16,7 @@ const Home = () => {
     // get request of books from db
     useEffect(() => {
         getSavedAccounts();
-        // console.log("Saved Accounts State: ", savedAccounts)
+        console.log("Saved Accounts State: ", savedAccounts)
     }, [])
 
     const getSavedAccounts = async () => {

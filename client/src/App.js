@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Registered from "./Registered";
-// import Unregistered from "./unRegistered";
 import Header from "./components/Header/Header";
 import { StoreProvider } from "./utils/GlobalState";
 import Navbar from "./components/Navbar/Navbar";
@@ -22,9 +20,6 @@ function App() {
             <Route exact path="/" component={Search} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/plant" component={Plant} />
-            {/* <Route exact path="/saved" component={Saved} />
-            <Route exact path="/books/:id" component={Book} />
-            <Route component={NoMatch} /> */}
           </StoreProvider>
         </Switch>
       </div>

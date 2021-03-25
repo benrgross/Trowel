@@ -9,6 +9,7 @@ const Home = () => {
     const emailRef = useRef();
     const addressRef = useRef();
     const zoneRef = useRef();
+    const notesRef = useRef();
 
     const saveAccount = (event) => {
         event.preventDefault()
@@ -98,6 +99,15 @@ const Home = () => {
                     <input
                         name="district-zone"
                         ref={zoneRef}
+                        placeholder="Zone 8"
+                        className="form-control"
+                    />
+                    </div>
+                    <div className="form-group ">
+                    <label>Account Notes</label>
+                    <textarea
+                        name="Notes"
+                        ref={notesRef}
                         placeholder="Zone 8"
                         className="form-control"
                     />

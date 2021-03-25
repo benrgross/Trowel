@@ -1,21 +1,26 @@
 import axios from "axios";
 import proxy from "http-proxy-middleware";
 export default {
-  // Gets all posts
+  // Gets all plants
   getPlant: function () {
     return axios.get("/api/plants");
   },
-  // Gets the post with the given id
+  // Gets the plant with the given id
   getPlant: function (id) {
     return axios.get("/api/plants/" + id);
   },
-  // Deletes the post with the given id
+  // Deletes the plant with the given id
   deletePlant: function (id) {
     return axios.delete("/api/plants/" + id);
   },
-  // Saves a post to the database
+  // Saves a plant to the database
   savePlant: function (plantData) {
     return axios.post("/api/plants", plantData);
+  },
+  
+  // Saves a plant to the database
+  saveAccount: function (accountData) {
+    return axios.post("/api/accounts", accountData);
   },
 
   searchPlantSpecies: function (query) {

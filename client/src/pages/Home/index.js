@@ -1,8 +1,11 @@
 import "./home.css"
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import API from "../../utils/API"
 
 const Home = () => {
+    const [savedAccounts, setSavedAccounts] = useState([]);
+    const [savedPlants, setSavedPlants] = useState([]);
+
     const accountNameRef = useRef();
     const clientNameRef = useRef();
     const phoneRef = useRef();
@@ -10,6 +13,28 @@ const Home = () => {
     const addressRef = useRef();
     const zoneRef = useRef();
     const notesRef = useRef();
+
+    // get request of books from db
+    useEffect(() => {
+        getSavedAccounts();
+        getSavedPlants();
+    }, [])
+
+    const getSavedAccounts = async () => {
+        const { data } = await API.getAccounts();
+
+        // set data to state
+        setSavedAccounts(data)
+        console.log("Account Data: ", data)
+    }
+
+    const getSavedPlants = async () => {
+        const { data } = await API.getPlants();
+
+        // set data to state
+        setSavedPlants(data)
+        console.log("Plant Data: ", data)
+    }
 
     const saveAccount = (event) => {
         event.preventDefault()
@@ -24,22 +49,11 @@ const Home = () => {
             location: {
                 address: addressRef.current.value,
                 distZone: zoneRef.current.value,
-            }
+            },
+            notes: notesRef.current.value
         }
 
-        console.log({
-            accountName: accountNameRef.current.value,
-            clientContact: {
-                clientName: clientNameRef.current.value,
-                phone: phoneRef.current.value,
-                email: emailRef.current.value
-            },
-            location: {
-                address: addressRef.current.value
-            }
-        })
-
-        // API.saveAccount(account)
+        API.saveAccount(account)
     }
 
     return (
@@ -106,9 +120,9 @@ const Home = () => {
                     <div className="form-group ">
                     <label>Account Notes</label>
                     <textarea
-                        name="Notes"
+                        name="notes"
                         ref={notesRef}
-                        placeholder="Zone 8"
+                        placeholder="Notes"
                         className="form-control"
                     />
                     </div>

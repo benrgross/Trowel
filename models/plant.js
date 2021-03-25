@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const plantSchema = new Schema({
-  commonName: { type: String, required: true },
-  scientific_name: { type: String, required: true },
+  commonName: { type: String, required: false },
+  scientific_name: { type: String, required: false },
   flowerColor: {
     color: [String],
     conspicuous: Boolean
@@ -35,6 +35,7 @@ const plantSchema = new Schema({
   soilTexture: Number,
   heightAvg: Number,
   edible: Boolean,
+  img: String
 });
 
 const Plant = mongoose.model('Plant', plantSchema);

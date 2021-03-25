@@ -1,5 +1,5 @@
 import axios from "axios";
-import proxy from "http-proxy-middleware";
+
 
 export default {
   // Gets all plants
@@ -8,8 +8,8 @@ export default {
   },
 
   // Gets the plant with the given id
-  getPlant: function (id) {
-    return axios.get("/api/plants/" + id);
+  getPlant: function (account) {
+    return axios.post("/api/plants/", account);
   },
 
   // Deletes the plant with the given id
@@ -21,8 +21,10 @@ export default {
   savePlant: function (plantData) {
     return axios.post("/api/plants", plantData);
   },
+
   
   // Saves a account to the database
+  
   saveAccount: function (accountData) {
     return axios.post("/api/accounts", accountData);
   },
@@ -53,5 +55,13 @@ export default {
 
   getPlant: function (item) {
     return axios.post(`/api/search/plant`, item);
+  },
+
+  login: function (cred) {
+    return axios.post("/api/auth/login", cred);
+  },
+
+  signUp: function (cred) {
+    return axios.post("/api/auth/register", cred);
   },
 };

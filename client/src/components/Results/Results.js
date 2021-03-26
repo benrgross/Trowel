@@ -6,6 +6,8 @@ import API from "../../utils/API";
 function Results() {
   const [state, dispatch] = useStoreContext();
 
+  console.log("Account Name: ", state.accountName)
+
   let history = useHistory();
 
   const getPlant = async (plant) => {

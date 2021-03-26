@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Search from "./pages/Search";
 import Home from "./pages/Home";
 import Plant from "./pages/Plant";
+import Account from "./pages/Account"
 
 //use global context
 
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/" component={Search} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/plant" component={Plant} />
+            <Route exact path="/account" component={Account} />
           </StoreProvider>
         </Switch>
       </div>

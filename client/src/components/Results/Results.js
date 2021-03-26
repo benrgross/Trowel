@@ -74,14 +74,12 @@ function Results() {
           <p>{plant.commonName}</p>
           <p>{plant.scientificName} </p>
           <div className="container">
-            <a href="/plant">
-              <img
-                onClick={() => getPlant(plant)}
-                className="img-thumbnail"
-                style={{ height: "200px", cursor: "pointer" }}
-                src={plant.img}
-              />
-            </a>
+            <img
+              onClick={() => getPlant(plant)}
+              className="img-thumbnail"
+              style={{ height: "200px", cursor: "pointer" }}
+              src={plant.img}
+            />
           </div>
         </div>
       ))}

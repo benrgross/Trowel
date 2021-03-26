@@ -45,20 +45,21 @@ const Home = () => {
     event.preventDefault();
 
     const account = {
-      accountName: accountNameRef.current.value,
+      accountName: accountNameRef.current.value.toLowerCase().trim(),
       clientContact: {
-        clientName: clientNameRef.current.value,
-        phone: phoneRef.current.value,
-        email: emailRef.current.value,
+        clientName: clientNameRef.current.value.toLowerCase().trim(),
+        phone: phoneRef.current.value.toLowerCase().trim(),
+        email: emailRef.current.value.toLowerCase().trim(),
       },
       location: {
-        address: addressRef.current.value,
-        distZone: zoneRef.current.value,
+        address: addressRef.current.value.toLowerCase().trim(),
+        distZone: zoneRef.current.value.toLowerCase().trim(),
       },
-      notes: notesRef.current.value,
+      notes: notesRef.current.value.toLowerCase().trim(),
     };
 
     API.saveAccount(account);
+    console.log("newAccount: ", account);
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";

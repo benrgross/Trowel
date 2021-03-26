@@ -6,6 +6,7 @@ import {
   REMOVE_PLANT,
   RESULTS,
   SET_SAVED_PLANT,
+  SET_SAVED_ACCOUNT,
   SPOTLIGHT,
 } from "./actions";
 
@@ -25,15 +26,22 @@ const reducer = (state, action) => {
       console.log("action", action.saved);
       return {
         ...state,
-        books: action.saved,
+        plants: action.saved,
         loading: false,
       };
+    case SET_SAVED_ACCOUNT: 
+      console.log("SAVE_ACCOUNT: ", action.saved);
+      return {
+        ...state,
+        accounts: action.saved,
+        loading: false
+      }
 
     case REMOVE_PLANT:
       return {
         ...state,
-        books: state.books.filter((book) => {
-          return book._id !== action._id;
+        plants: state.plants.filter((plant) => {
+          return plant._id !== plant._id;
         }),
         lading: false,
       };

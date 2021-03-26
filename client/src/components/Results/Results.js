@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom"
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 
 function Results() {
   const [state, dispatch] = useStoreContext();
+
+  let history = useHistory();
 
   const getPlant = async (plant) => {
     const item = {
@@ -53,6 +56,9 @@ function Results() {
       type: "SPOTLIGHT",
       spotlight: plantObject,
     });
+
+    history.push("/plant")
+
   };
 
   return (

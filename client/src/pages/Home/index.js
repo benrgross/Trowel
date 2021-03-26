@@ -1,8 +1,13 @@
 import "./home.css";
 import React, { useRef, useState, useEffect } from "react";
 import API from "../../utils/API";
+import { useStoreContext } from "../../utils/GlobalState";
+import { ADD_ACCOUNT } from "../../utils/actions";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  const [state, dispatch] = useStoreContext();
+
   const [savedAccounts, setSavedAccounts] = useState([]);
   const [savedPlants, setSavedPlants] = useState([]);
 
@@ -54,6 +59,19 @@ const Home = () => {
     };
 
     API.saveAccount(account);
+
+    dispatch({
+      type: ADD_ACCOUNT,
+      account: account,
+    });
+
+    accountNameRef.current.value = "";
+    clientNameRef.current.value = "";
+    phoneRef.current.value = "";
+    emailRef.current.value = "";
+    addressRef.current.value = "";
+    zoneRef.current.value = "";
+    notesRef.current.value = "";
   };
 
   return (
@@ -135,6 +153,41 @@ const Home = () => {
           </button>
         </form>
       </div>
+      {state.accounts.length ? (
+        <div>
+          {state.accounts.map((account) => {
+            return (
+              <div className="container">
+                <div className="card">
+                  <div className="card-body">
+                    <span>
+                      <h5 className="account-title">
+                        Account: {account.accountName}
+                      </h5>
+                      <Link to="/">
+                        <button className="btn btn-success">
+                          {" "}
+                          + Add plants
+                        </button>
+                      </Link>
+                    </span>
+                    <h6>Client: {account.clientContact.clientName}</h6>
+                    <ul>
+                      <li>{account.clientContact.phone}</li>
+                      <li>{account.clientContact.email}</li>
+                    </ul>
+                    <p>location: {account.location.address}</p>
+                    <p>distribution zone: {account.location.distZone}</p>
+                    <p>notes: {account.notes}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <h6>No saved accounts yet...</h6>
+      )}
     </div>
   );
 };

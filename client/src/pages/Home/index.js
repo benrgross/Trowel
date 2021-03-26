@@ -23,7 +23,7 @@ const Home = () => {
   // get request of books from db
   useEffect(() => {
     getSavedAccounts();
-  }, []);
+  }, [savedAccounts]);
 
   const getSavedAccounts = async () => {
     const { data } = await API.getAccounts();

@@ -1,7 +1,6 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
-import axios from "axios";
 
 function Results() {
   const [state, dispatch] = useStoreContext();
@@ -12,10 +11,6 @@ function Results() {
     };
 
     const { data } = await API.getPlant(item);
-
-    // console.log(item.url);
-    // console.log(plant);
-    console.log("API Data: ", data);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
@@ -56,11 +51,7 @@ function Results() {
 
     dispatch({
       type: "SPOTLIGHT",
-      spotlight: {
-        commonName: plant.commonName,
-        scientificName: plant.scientificName,
-        img: plant.img,
-      },
+      spotlight: plantObject
     });
   };
 

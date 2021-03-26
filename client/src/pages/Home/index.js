@@ -7,8 +7,9 @@ import { FaTimes } from "react-icons/fa";
 
 const Home = () => {
   const [state, dispatch] = useStoreContext();
-
   const [savedAccounts, setSavedAccounts] = useState([]);
+
+  let history = useHistory();
 
   const accountNameRef = useRef();
   const clientNameRef = useRef();
@@ -59,6 +60,12 @@ const Home = () => {
     zoneRef.current.value = "";
     notesRef.current.value = "";
   };
+
+  const viewAccount = () => {
+    dispatch()
+
+    history.push("/account")
+  }
 
   return (
     <div>
@@ -145,8 +152,7 @@ const Home = () => {
             return (
               <div className="container">
                 <div className="card">
-                  {/* <Link to="/account"> */}
-                  <div className="card-body">
+                  <div className="card-body" onClick={() => viewAccount(account)}>
                     <span>
                       <h5 className="account-title">
                         Account: {account.accountName}
@@ -161,7 +167,6 @@ const Home = () => {
                     <p>distribution zone: {account.location.distZone}</p>
                     <p>notes: {account.notes}</p>
                   </div>
-                  {/* </Link> */}
                   <span>
                     <button className="btn btn-danger">
                       <FaTimes /> Delete Account{" "}

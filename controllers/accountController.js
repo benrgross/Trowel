@@ -31,16 +31,16 @@ module.exports = {
       const newPlant = await db.Plant.create(req.body.plant);
       console.log(newPlant);
       const { _id } = newPlant;
+      const plantId = _id;
 
       console.log(_id);
       const plantToAccount = await db.Account.findOneAndUpdate(
         { accountName: "Fink " },
         {
           $push: {
-            plants: { plant: _id },
+            plants: { plant: plantId },
           },
         },
-
         { new: true }
       );
       console.log("plant to account", plantToAccount);
@@ -49,6 +49,15 @@ module.exports = {
       console.log(err);
       res.json(err);
     }
+  },
+
+  populatePlants: function (req, res) {
+    db.Account.findOne(req.body)
+      .populate({
+        path: "plants.plant",
+        model: "Plant",
+      })
+      .then((dbPlants) => res.json(dbPlants));
   },
 
   update: function (req, res) {

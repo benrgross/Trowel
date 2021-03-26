@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export default {
   // Gets all plants
   getPlants: function () {
@@ -22,9 +21,8 @@ export default {
     return axios.post("/api/plants", plantData);
   },
 
-  
   // Saves a account to the database
-  
+
   saveAccount: function (accountData) {
     return axios.post("/api/accounts", accountData);
   },
@@ -63,5 +61,8 @@ export default {
 
   signUp: function (cred) {
     return axios.post("/api/auth/register", cred);
+  },
+  addPlantToAccount: function (savePlant) {
+    return axios.put("/api/accounts/addPlantToAccount", savePlant);
   },
 };

@@ -1,10 +1,11 @@
 import "./plant.css"
 import React from 'react'
 import { useStoreContext } from "../../utils/GlobalState";
+import API from "../../utils/API"
 
 const Plant = () => {
     const [state, dispatch] = useStoreContext();
-    console.log("State: ", state)
+    console.log("State: ", state.viewPlant)
 
     const { viewPlant: { 
         commonName, 
@@ -28,12 +29,20 @@ const Plant = () => {
         soilTexture
         } } = state;
 
+    const savePlantSelection = async () => {
+        const { data: selectedPlant } = await API.savePlant(state.viewPlant);
+
+        console.log("Plant Saved!")
+    }
+
     return (
         <div>
             <h1>View A Plant Here!</h1>
             <h2>Plant Card:</h2>
 
+            {/* TODO: Add Ternary statement for null values */}
             <div className="container spotlight-card">
+                <button onClick={savePlantSelection}>Add Plant</button>
                 <p>Name: {commonName}</p>
                 <p>Scientific Name: {scientificName}</p>
                 <p>Humidity: {atmosHumidity}</p>
@@ -48,7 +57,7 @@ const Plant = () => {
                 <p>Minimum pH Level: {minPh}</p>
                 <p>Max Precipitation: {maxPrecipitation}</p>
                 <p>Minimum Precipitation: {minPrecipitation}</p>
-                <p>Native: {native}</p>
+                {native ? <p>Native: {native.join(", ")}</p> : undefined}
                 <p>Soil Nutriments: {soilNutriments}</p>
                 <p>Soil Texture: {soilTexture}</p>
                 <p>Notes: {notes}</p>

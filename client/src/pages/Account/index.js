@@ -1,16 +1,22 @@
 import React from 'react'
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-
+import { SAVE_TO_ACCOUNT } from "../../utils/actions";
 
 const Account = () => {
-    const [state] = useStoreContext();
+    const [state, dispatch] = useStoreContext();
     const {accountName, address, client, clientEmail, clientPhone, distZone, notes} = state.account;
     console.log("Account State:", state.account)
 
     let history = useHistory();
 
     const addPlant = () => {
+        // dispatch state of current account that the plant will be saved to
+        dispatch({
+            type: SAVE_TO_ACCOUNT,
+            accountName: accountName
+        })
+
         history.push("/")
     }
 
@@ -34,7 +40,7 @@ const Account = () => {
                 <p>notes: {notes}</p>
                 </div>
                 <span>
-                <button className="btn btn-danger" onClick={() => addPlant()}>
+                <button className="btn btn-danger" onClick={addPlant}>
                   Add Plant
                 </button>
                 </span>

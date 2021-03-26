@@ -24,15 +24,22 @@ const accountSchema = new Schema({
     type: Number,
     default: 0,
   },
-  plants: [],
-  notes: String,
+  plants: [
+    {
+      plant: {
+        type: Schema.Types.ObjectId,
+        ref: "Plant",
+      },
+      notes: [
+        {
+          note: String,
+          date: { type: Date, default: Date.now },
+        },
+      ],
+    },
+  ],
 });
 
 const Account = mongoose.model("Account", accountSchema);
 
 module.exports = Account;
-
-// {
-//   type: Schema.Types.ObjectId,
-//   ref: "Plant"
-// }

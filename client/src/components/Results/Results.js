@@ -11,10 +11,6 @@ function Results() {
     };
     
     const { data } = await API.getPlant(item);
-    
-    // console.log(item.url);
-    // console.log(plant);
-    console.log("API Data: ", data);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
@@ -51,10 +47,8 @@ function Results() {
       notes: ""
     };
 
-    // console.log("Plant Object: ", plantObject);
-    // const { data: selectedPlant } = await API.savePlant(plantObject);
+    console.log("Plant Object: ", plantObject);
 
-    // Use a dispatch to send this object and set the values to viewPlant state value
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject

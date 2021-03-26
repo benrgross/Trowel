@@ -2,6 +2,8 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import axios from "axios";
+import { FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 
 function Results() {
   const [state, dispatch] = useStoreContext();

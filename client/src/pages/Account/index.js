@@ -1,12 +1,18 @@
 import React from 'react'
 import { useStoreContext } from "../../utils/GlobalState";
-import { FaTimes } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
+
 
 const Account = () => {
     const [state] = useStoreContext();
+    const {accountName, address, client, clientEmail, clientPhone, distZone, notes} = state.account;
     console.log("Account State:", state.account)
 
-    const {accountName, address, client, clientEmail, clientPhone, distZone, notes} = state.account;
+    let history = useHistory();
+
+    const addPlant = () => {
+        history.push("/")
+    }
 
     return (
         <div className="container">
@@ -27,6 +33,11 @@ const Account = () => {
                 <p>distribution zone: {distZone}</p>
                 <p>notes: {notes}</p>
                 </div>
+                <span>
+                <button className="btn btn-danger" onClick={() => addPlant()}>
+                  Add Plant
+                </button>
+                </span>
             </div>
         </div>
     )

@@ -23,7 +23,7 @@ const Account = () => {
     return (
         <div className="container">
             <h1>Account Page</h1>
-            <div className="card">
+            <div className="card" key="account">
                 <div className="card-body">
                 <span>
                     <h5 className="account-title">
@@ -47,9 +47,9 @@ const Account = () => {
             </div>
             <h2>Plants In Account: </h2>
             {plants ? plants.map(({ plant: {
-                atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
+                _id, atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
             }, notes }) => 
-                <div className="container spotlight-card">
+                <div className="container spotlight-card" key={_id}>
                     <button>Delete Plant</button>
                     <p>Name: {commonName}</p>
                     <p>Humidity: {atmosHumidity}</p>

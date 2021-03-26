@@ -73,7 +73,7 @@ export default {
   findAccountById: function (id) {
     return axios.get(`/api/accounts/` + id);
   },
-  getPlantsByAccont: function (query) {
-    return axios.post("/api/accounts/getPlants");
+  getPlantsByAccount: function (query) {
+    return axios.post("/api/accounts/getPlants", query);
   },
 };

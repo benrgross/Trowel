@@ -4,8 +4,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 
 const Plant = () => {
-  const [state, dispatch] = useStoreContext();
-  // console.log("State: ", state.viewPlant);
+  const [state] = useStoreContext();
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -39,7 +38,6 @@ const Plant = () => {
   } = state;
 
   const savePlantSelection = async () => {
-    // const { data: selectedPlant } = await API.savePlant(state.viewPlant);
     const { data: savedPlant } = await API.addPlantToAccount(savePlantObj);
 
     console.log("Plant Saved!");
@@ -73,7 +71,6 @@ const Plant = () => {
         <p>Notes: {notes}</p>
         <div className="container">
           <img
-            onClick={() => console.log("Clicked!")}
             className="img-thumbnail"
             style={{ height: "200px", cursor: "pointer" }}
             src={img}

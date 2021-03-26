@@ -9,6 +9,7 @@ import {
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
   SPOTLIGHT,
+  SAVE_TO_ACCOUNT
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -32,10 +33,9 @@ const reducer = (state, action) => {
         loading: false,
       };
     case SET_SAVED_ACCOUNT:
-      console.log("SAVE_ACCOUNT: ", action.saved);
       return {
         ...state,
-        accounts: action.saved,
+        account: action.account,
         loading: false,
       };
     case REMOVE_PLANT:
@@ -58,6 +58,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case SAVE_TO_ACCOUNT:
+      return {
+        ...state,
+        accountName: action.accountName
       };
     case SPOTLIGHT:
       return {
@@ -125,6 +130,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
+    account: {},
+    accountName: "",
     viewPlant: {
       commonName: "Plant Example",
       scientificName: "Science Plant",

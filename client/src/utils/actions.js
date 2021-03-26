@@ -9,3 +9,4 @@ export const LOADING = "LOADING";
 export const SPOTLIGHT = "SPOTLIGHT";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const SAVE_TO_ACCOUNT = "SAVE_TO_ACCOUNT";

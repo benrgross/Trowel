@@ -65,6 +65,9 @@ export default {
     return axios.post("/api/auth/register", cred);
   },
   addPlantToAccount: function (savePlant) {
-    return axios.put("/api/accounts/addPlantToAccount", savePlant);
+    return axios.post("/api/accounts/addPlantToAccount", savePlant);
+  },
+  findAccout: function (query) {
+    return axios.post("/api/accounts/findAccount", query);
   },
 };

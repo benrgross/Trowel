@@ -13,6 +13,12 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findByOne: function (req, res) {
+    db.Account.findById(req.body)
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
   create: function (req, res) {
     db.Account.create(req.body)
       .then((dbModel) => res.json(dbModel))
@@ -20,23 +26,31 @@ module.exports = {
   },
 
   addPlantAccount: async function (req, res) {
+    console.log("req", req.body.plant, req.body.accountName);
     try {
       const newPlant = await db.Plant.create(req.body.plant);
-      res.json(newPlant);
+      console.log(newPlant);
       const { _id } = newPlant;
 
+      console.log(_id);
       const plantToAccount = await db.Account.findOneAndUpdate(
-        { name: req.body.accountName },
+        { accountName: "Fink " },
         {
-          $push: { plants: _id },
+          $push: {
+            plants: { plant: _id },
+          },
         },
+
         { new: true }
       );
-      res.json([plantToAccount]);
+      console.log("plant to account", plantToAccount);
+      res.json(plantToAccount);
     } catch (err) {
-      res.status(422).json(err);
+      console.log(err);
+      res.json(err);
     }
   },
+
   update: function (req, res) {
     db.Account.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))

@@ -26,8 +26,16 @@ const accountSchema = new Schema({
   },
   plants: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Plant",
+      plant: {
+        type: Schema.Types.ObjectId,
+        ref: "Plant",
+      },
+      notes: [
+        {
+          note: String,
+          date: { type: Date, default: Date.now },
+        },
+      ],
     },
   ],
 });

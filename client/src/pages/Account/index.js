@@ -5,7 +5,7 @@ import { SAVE_TO_ACCOUNT } from "../../utils/actions";
 
 const Account = () => {
     const [state, dispatch] = useStoreContext();
-    const {accountName, address, client, clientEmail, clientPhone, distZone, notes} = state.account;
+    const { accountName, address, client, clientEmail, clientPhone, distZone, notes, plants } = state.account;
     console.log("Account State:", state.account)
 
     let history = useHistory();
@@ -45,6 +45,38 @@ const Account = () => {
                 </button>
                 </span>
             </div>
+            <h2>Plants In Account: </h2>
+            {plants ? plants.map(({ plant: {
+                atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
+            }, notes }) => 
+                <div className="container spotlight-card">
+                    <button>Delete Plant</button>
+                    <p>Name: {commonName}</p>
+                    <p>Humidity: {atmosHumidity}</p>
+                    <p>Bloom Months: {bloomMonths}</p>
+                    <p>Edible: {edible}</p>
+                    <p>Family: {family}</p>
+                    <p>Family Common Name: {familyCommonName}</p>
+                    <p>Genus: {genus}</p>
+                    <p>Growth Habit: {growthHabit}</p>
+                    <p>Light Level: {light}</p>
+                    <p>Max pH Level: {maxPh}</p>
+                    <p>Minimum pH Level: {minPh}</p>
+                    <p>Max Precipitation: {maxPrecipitation}</p>
+                    <p>Minimum Precipitation: {minPrecipitation}</p>
+                    {native ? <p>Native: {native.join(", ")}</p> : undefined}
+                    <p>Soil Nutriments: {soilNutriments}</p>
+                    <p>Soil Texture: {soilTexture}</p>
+                    <p>Notes: {notes}</p>
+                    <div className="container">
+                    <img
+                        className="img-thumbnail"
+                        style={{ height: "200px", cursor: "pointer" }}
+                        src={img}
+                    />
+                    </div>
+                </div>
+            ) : "No Plants Added"}
         </div>
     )
 }

@@ -73,7 +73,6 @@ const Plant = () => {
         <p>Notes: {notes}</p>
         <div className="container">
           <img
-            onClick={() => console.log("Clicked!")}
             className="img-thumbnail"
             style={{ height: "200px", cursor: "pointer" }}
             src={img}

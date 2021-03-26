@@ -23,7 +23,8 @@ const Home = () => {
   // get request of books from db
   useEffect(() => {
     getSavedAccounts();
-  }, [savedAccounts]);
+    getPlantsAccounts();
+  }, []);
 
   const getSavedAccounts = async () => {
     const { data } = await API.getAccounts();
@@ -31,6 +32,14 @@ const Home = () => {
     // set data to state
     setSavedAccounts(data);
     console.log("Account Data: ", data);
+  };
+
+  const getPlantsAccounts = async () => {
+    const { data } = await API.getPlantsByAccount({
+      accountName: "ben"
+    });
+
+    console.log("Plants Accounts Data: ", data);
   };
 
   const saveAccount = (event) => {
@@ -62,15 +71,20 @@ const Home = () => {
     notesRef.current.value = "";
   };
 
-  const viewAccount = ({ accountName, clientContact, location, notes }) => {
+  const viewAccount = async (account) => {
+    const { data } = await API.getPlantsByAccount({
+      accountName: account
+    });
+
     const accountObj = {
-        accountName,
-        client: clientContact.clientName,
-        clientPhone: clientContact.phone,
-        clientEmail: clientContact.email,
-        address: location.address,
-        distZone: location.distZone,
-        notes
+        accountName: data.accountName,
+        client: data.clientContact.clientName,
+        clientPhone: data.clientContact.phone,
+        clientEmail: data.clientContact.email,
+        address: data.location.address,
+        distZone: data.location.distZone,
+        notes: data.notes,
+        plants: data.plants
     }
 
     dispatch({
@@ -166,7 +180,7 @@ const Home = () => {
             return (
               <div className="container">
                 <div className="card">
-                  <div className="card-body" onClick={() => viewAccount(account)}>
+                  <div className="card-body" onClick={() => viewAccount(account.accountName)}>
                     <span>
                       <h5 className="account-title">
                         Account: {account.accountName}

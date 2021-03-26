@@ -13,7 +13,7 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  findByOne: function (req, res) {
+  findAccount: function (req, res) {
     db.Account.findById(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

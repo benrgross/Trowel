@@ -118,6 +118,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     plants: [{}],
     plant: {},
     results: [{}],
+    account: {},
     accounts: [],
     loading: false,
     userToken: "",

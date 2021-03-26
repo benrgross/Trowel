@@ -33,7 +33,7 @@ function SearchForm() {
   };
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-center">
       <form className="shadow">
         <div className="form-group ">
           <label>Search For Plant</label>

@@ -1,32 +1,48 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./components/Header/Header";
-import { StoreProvider } from "./utils/GlobalState";
-import Navbar from "./components/Navbar/Navbar";
-import Search from "./pages/Search";
-import Home from "./pages/Home";
-import Plant from "./pages/Plant";
-import Account from "./pages/Account"
+import React, { useEffect } from "react";
+import { useStoreContext } from "./utils/GlobalState";
+import { LOGIN } from "./utils/actions";
+import AuthenticatedApp from "./components/AuthenticatedApp";
+import UnAuthenticated from "./components/UnAuthenticated";
 
 //use global context
 
 function App() {
+  const [state, dispatch] = useStoreContext();
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  const checkLogin = () => {
+    if (localStorage.getItem("userInfo")) {
+      const { email, token } = JSON.parse(localStorage.getItem("userInfo"));
+      dispatch({
+        type: LOGIN,
+        email,
+        token,
+      });
+    }
+  };
+
   return (
-    <Router>
-      <div>
-        <Navbar />
-        <Header />
-        <Switch>
-          <StoreProvider>
-            <Route exact path="/" component={Search} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/plant" component={Plant} />
-            <Route exact path="/account" component={Account} />
-          </StoreProvider>
-        </Switch>
-      </div>
-    </Router>
+    <div className="App">
+      {state.userToken ? <AuthenticatedApp /> : <UnAuthenticated />}
+    </div>
   );
 }
 
 export default App;
+
+// {
+//   /* <Router>
+// <div>
+//   <Navbar />
+//   <Header />
+//   <Switch>
+//     <Route exact path="/" component={Search} />
+//     <Route exact path="/home" component={Home} />
+//     <Route exact path="/plant" component={Plant} />
+//   </Switch>
+// </div>
+// </Router> */
+// }

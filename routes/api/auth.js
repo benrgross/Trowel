@@ -24,6 +24,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/register", async (req, res) => {
+  console.log(req.body);
   try {
     const user = await db.User.create(req.body);
     res.json(user);

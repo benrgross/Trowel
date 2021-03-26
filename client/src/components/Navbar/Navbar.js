@@ -1,8 +1,15 @@
 import React from "react";
+import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import { Nav } from "reactstrap";
+import { LOGOUT } from "../../utils/actions";
 
 function Navbar() {
+  const [state, dispatch] = useStoreContext();
+  const logout = () => {
+    localStorage.removeItem("userInfo");
+    dispatch({ type: LOGOUT });
+  };
   return (
     <Nav
       style={{ backgroundColor: "rgb(206 153 4 / 65%)" }}
@@ -45,13 +52,19 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              to="/Saved"
-              className="nav-link nav-text"
-              style={{ marginRight: "50px" }}
-            >
+            <Link to="/Saved" className="nav-link nav-text">
               Saved Plants
             </Link>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link nav-text"
+              style={{ marginRight: "50px" }}
+              href="/"
+              onClick={logout}
+            >
+              Log Out
+            </a>
           </li>
         </ul>
       </div>

@@ -23,7 +23,6 @@ const Home = () => {
   // get request of books from db
   useEffect(() => {
     getSavedAccounts();
-    getPlantsAccounts();
   }, []);
 
   const getSavedAccounts = async () => {
@@ -32,14 +31,6 @@ const Home = () => {
     // set data to state
     setSavedAccounts(data);
     console.log("Account Data: ", data);
-  };
-
-  const getPlantsAccounts = async () => {
-    const { data } = await API.getPlantsByAccount({
-      accountName: "ben"
-    });
-
-    console.log("Plants Accounts Data: ", data);
   };
 
   const saveAccount = (event) => {

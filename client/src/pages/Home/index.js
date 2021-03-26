@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
+import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Home = () => {
   const [state, dispatch] = useStoreContext();
@@ -62,7 +63,10 @@ const Home = () => {
   };
 
   const viewAccount = () => {
-    dispatch()
+    dispatch({
+        type: SET_SAVED_ACCOUNT,
+        account: {}
+    })
 
     history.push("/account")
   }

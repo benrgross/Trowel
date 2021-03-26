@@ -15,9 +15,6 @@ function Results() {
 
     const { data } = await API.getPlant(item);
 
-    //plant
-    //accountName
-
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
       bloomMonths: data.bloomMonths,

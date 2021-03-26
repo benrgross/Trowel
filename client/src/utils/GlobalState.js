@@ -32,10 +32,9 @@ const reducer = (state, action) => {
         loading: false,
       };
     case SET_SAVED_ACCOUNT:
-      console.log("SAVE_ACCOUNT: ", action.saved);
       return {
         ...state,
-        accounts: action.saved,
+        account: action.acount,
         loading: false,
       };
 
@@ -118,6 +117,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
+    account: {},
     viewPlant: {
       commonName: "Plant Example",
       scientificName: "Science Plant",

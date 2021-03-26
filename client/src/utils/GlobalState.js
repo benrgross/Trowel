@@ -47,9 +47,38 @@ const reducer = (state, action) => {
       return {
         ...state,
         viewPlant: {
+          atmosHumidity: action.spotlight.atmosHumidity,
+          bloomMonths: action.spotlight.bloomMonths,
           commonName: action.spotlight.commonName,
-          scientificName: action.spotlight.scientificName,
+          edible: action.spotlight.edible,
+          family: action.spotlight.family,
+          familyCommonName: action.spotlight.familyCommonName,
+          flowerColor: {
+            color: action.spotlight.flowerColor.color,
+            conspicuous: action.spotlight.flowerColor.conspicuous
+          },
+          genus: action.spotlight.genus,
+          growthHabit: action.spotlight.growthHabit,
+          heightAvgCm: action.spotlight.heightAvgCm,
           img: action.spotlight.img,
+          light: action.spotlight.light,
+          maxPh: action.spotlight.maxPh,
+          maxPrecipitation: action.spotlight.maxPrecipitation,
+          maxTemp: {
+            deg_f: action.spotlight.maxTemp.deg_f,
+            deg_c: action.spotlight.maxTemp.deg_c
+          },
+          minPh: action.spotlight.minPh,
+          minPrecipitation: action.spotlight.minPrecipitation,
+          minTemp: {
+            deg_f: action.spotlight.minTemp.deg_f,
+            deg_c: action.spotlight.minTemp.deg_c
+          },
+          native: action.spotlight.native,
+          scientificName: action.spotlight.scientificName,
+          soilNutriments: action.spotlight.soilNutriments,
+          soilTexture: action.spotlight.soilTexture,
+          notes: ""
         },
       };
     case LOGIN:

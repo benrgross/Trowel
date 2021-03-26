@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import { SET_SAVED_ACCOUNT } from "../../utils/actions";
+import { REMOVE_ACCOUNT, SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Home = () => {
   const [_, dispatch] = useStoreContext();
@@ -64,22 +64,35 @@ const Home = () => {
 
   const viewAccount = ({ accountName, clientContact, location, notes }) => {
     const accountObj = {
-        accountName,
-        client: clientContact.clientName,
-        clientPhone: clientContact.phone,
-        clientEmail: clientContact.email,
-        address: location.address,
-        distZone: location.distZone,
-        notes
-    }
+      accountName,
+      client: clientContact.clientName,
+      clientPhone: clientContact.phone,
+      clientEmail: clientContact.email,
+      address: location.address,
+      distZone: location.distZone,
+      notes,
+    };
 
     dispatch({
-        type: SET_SAVED_ACCOUNT,
-        account: accountObj
-    })
+      type: SET_SAVED_ACCOUNT,
+      account: accountObj,
+    });
 
-    history.push("/account")
-  }
+    history.push("/account");
+  };
+
+  const removeAccount = async (id) => {
+    try {
+      await API.deleteAccount(id);
+      console.log("Deleted Account ID: ", id);
+      dispatch({
+        type: REMOVE_ACCOUNT,
+        _id: id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -166,7 +179,10 @@ const Home = () => {
             return (
               <div className="container">
                 <div className="card">
-                  <div className="card-body" onClick={() => viewAccount(account)}>
+                  <div
+                    className="card-body"
+                    onClick={() => viewAccount(account)}
+                  >
                     <span>
                       <h5 className="account-title">
                         Account: {account.accountName}
@@ -182,7 +198,10 @@ const Home = () => {
                     <p>notes: {account.notes}</p>
                   </div>
                   <span>
-                    <button className="btn btn-danger">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => removeAccount(account._id)}
+                    >
                       <FaTimes /> Delete Account{" "}
                     </button>
                   </span>

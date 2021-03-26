@@ -9,7 +9,7 @@ import {
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
   SPOTLIGHT,
-  SAVE_TO_ACCOUNT
+  SAVE_TO_ACCOUNT,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -62,7 +62,7 @@ const reducer = (state, action) => {
     case SAVE_TO_ACCOUNT:
       return {
         ...state,
-        accountName: action.accountName
+        accountName: action.accountName,
       };
     case SPOTLIGHT:
       return {
@@ -131,6 +131,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     email: "",
     user: {},
     account: {},
+    accounts: [],
     accountName: "",
     viewPlant: {
       commonName: "Plant Example",

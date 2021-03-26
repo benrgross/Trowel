@@ -2,8 +2,8 @@ import "./home.css";
 import React, { useRef, useState, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_ACCOUNT } from "../../utils/actions";
 import { Link } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
 const Home = () => {
   const [state, dispatch] = useStoreContext();
@@ -155,27 +155,28 @@ const Home = () => {
             return (
               <div className="container">
                 <div className="card">
-                  <div className="card-body">
-                    <span>
-                      <h5 className="account-title">
-                        Account: {account.accountName}
-                      </h5>
-                      <Link to="/">
-                        <button className="btn btn-success">
-                          {" "}
-                          + Add plants
-                        </button>
-                      </Link>
-                    </span>
-                    <h6>Client: {account.clientContact.clientName}</h6>
-                    <ul>
-                      <li>{account.clientContact.phone}</li>
-                      <li>{account.clientContact.email}</li>
-                    </ul>
-                    <p>location: {account.location.address}</p>
-                    <p>distribution zone: {account.location.distZone}</p>
-                    <p>notes: {account.notes}</p>
-                  </div>
+                  <Link to="/account">
+                    <div className="card-body">
+                      <span>
+                        <h5 className="account-title">
+                          Account: {account.accountName}
+                        </h5>
+                      </span>
+                      <h6>Client: {account.clientContact.clientName}</h6>
+                      <ul>
+                        <li>{account.clientContact.phone}</li>
+                        <li>{account.clientContact.email}</li>
+                      </ul>
+                      <p>location: {account.location.address}</p>
+                      <p>distribution zone: {account.location.distZone}</p>
+                      <p>notes: {account.notes}</p>
+                    </div>
+                  </Link>
+                  <span>
+                    <button className="btn btn-danger">
+                      <FaTimes /> Delete Account{" "}
+                    </button>
+                  </span>
                 </div>
               </div>
             );

@@ -7,7 +7,6 @@ import {
   RESULTS,
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
-  ADD_ACCOUNT,
   SPOTLIGHT,
 } from "./actions";
 

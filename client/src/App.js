@@ -3,7 +3,6 @@ import { useStoreContext } from "./utils/GlobalState";
 import { LOGIN } from "./utils/actions";
 import AuthenticatedApp from "./components/AuthenticatedApp";
 import UnAuthenticated from "./components/UnAuthenticated";
-import Header from "./components/Header/Header";
 
 //use global context
 

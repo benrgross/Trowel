@@ -54,7 +54,9 @@ export default {
   getPlant: function (item) {
     return axios.post(`/api/search/plant`, item);
   },
-
+  searchPage: function (query) {
+    return axios.post(`api/search/searchPage`, query);
+  },
   login: function (cred) {
     return axios.post("/api/auth/login", cred);
   },

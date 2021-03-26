@@ -40,7 +40,6 @@ const Home = () => {
     setSavedPlants(data);
     console.log("Plant Data: ", data);
   };
-<<<<<<< HEAD
 
   const saveAccount = (event) => {
     event.preventDefault();
@@ -61,32 +60,6 @@ const Home = () => {
 
     API.saveAccount(account);
     console.log("newAccount: ", account);
-=======
-
-  const saveAccount = (event) => {
-    event.preventDefault();
-
-    const account = {
-      accountName: accountNameRef.current.value,
-      clientContact: {
-        clientName: clientNameRef.current.value,
-        phone: phoneRef.current.value,
-        email: emailRef.current.value,
-      },
-      location: {
-        address: addressRef.current.value,
-        distZone: zoneRef.current.value,
-      },
-      notes: notesRef.current.value,
-    };
-
-    API.saveAccount(account);
-
-    dispatch({
-      type: ADD_ACCOUNT,
-      account: account,
-    });
->>>>>>> 3e51ac239fcf64072f51a94c12b63a5b945a3792
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -176,15 +149,9 @@ const Home = () => {
           </button>
         </form>
       </div>
-<<<<<<< HEAD
       {savedAccounts.length ? (
         <div>
           {savedAccounts.map((account) => {
-=======
-      {state.accounts.length ? (
-        <div>
-          {state.accounts.map((account) => {
->>>>>>> 3e51ac239fcf64072f51a94c12b63a5b945a3792
             return (
               <div className="container">
                 <div className="card">

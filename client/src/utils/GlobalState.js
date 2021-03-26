@@ -7,6 +7,7 @@ import {
   RESULTS,
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
+  ADD_ACCOUNT,
   SPOTLIGHT,
 } from "./actions";
 
@@ -20,6 +21,13 @@ const reducer = (state, action) => {
       return {
         ...state,
         results: action.results,
+        loading: false,
+      };
+
+    case ADD_ACCOUNT: 
+      return {
+        ...state,
+        accounts: [action.account, ...state.accounts],
         loading: false,
       };
     case SET_SAVED_PLANT:
@@ -81,6 +89,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     plants: [{}],
     plant: {},
     results: [{}],
+    accounts: [],
     loading: false,
     userToken: "",
     email: "",

@@ -9,7 +9,6 @@ const Home = () => {
   const [state, dispatch] = useStoreContext();
 
   const [savedAccounts, setSavedAccounts] = useState([]);
-  const [savedPlants, setSavedPlants] = useState([]);
 
   const accountNameRef = useRef();
   const clientNameRef = useRef();
@@ -22,7 +21,6 @@ const Home = () => {
   // get request of books from db
   useEffect(() => {
     getSavedAccounts();
-    getSavedPlants();
   }, []);
 
   const getSavedAccounts = async () => {
@@ -31,14 +29,6 @@ const Home = () => {
     // set data to state
     setSavedAccounts(data);
     console.log("Account Data: ", data);
-  };
-
-  const getSavedPlants = async () => {
-    const { data } = await API.getPlants();
-
-    // set data to state
-    setSavedPlants(data);
-    console.log("Plant Data: ", data);
   };
 
   const saveAccount = (event) => {

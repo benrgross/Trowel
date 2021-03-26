@@ -33,6 +33,7 @@ const Plant = () => {
 
   const savePlantSelection = async () => {
     const { data: selectedPlant } = await API.savePlant(state.viewPlant);
+    // const { data: selectedPlant } = await API.savePlantToAccount();
 
     console.log("Plant Saved!");
   };

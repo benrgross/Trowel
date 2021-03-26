@@ -18,48 +18,43 @@ function Results() {
     console.log("API Data: ", data);
 
     const plantObject = {
-      plant: {
-        atmosHumidity: data.atmosHumidity,
-        bloomMonths: data.bloomMonths,
-        commonName: data.commonName,
-        edible: data.edible,
-        family: data.family,
-        familyCommonName: data.familyCommonName,
-        flowerColor: {
-          color: data.flowerColor.color,
-          conspicuous: data.flowerColor.conspicuous,
-        },
-        genus: data.genus,
-        growthHabit: data.growthHabit,
-        heightAvgCm: data.heightAvg.cm,
-        img: plant.img,
-        light: data.light,
-        maxPh: data.maxPh,
-        maxPrecipitation: data.maxPrecipitation.mm,
-        maxTemp: {
-          deg_f: data.maxTemp.deg_f,
-          deg_c: data.maxTemp.deg_c,
-        },
-        minPh: data.minPh,
-        minPrecipitation: data.minPrecipitation.mm,
-        minTemp: {
-          deg_f: data.minTemp.deg_f,
-          deg_c: data.minTemp.deg_c,
-        },
-        native: data.native,
-        scientificName: data.scientific_name,
-        soilNutriments: data.soilNutriments,
-        soilTexture: data.soilTexture,
-        notes: "",
+      atmosHumidity: data.atmosHumidity,
+      bloomMonths: data.bloomMonths,
+      commonName: data.commonName,
+      edible: data.edible,
+      family: data.family,
+      familyCommonName: data.familyCommonName,
+      flowerColor: {
+        color: data.flowerColor.color,
+        conspicuous: data.flowerColor.conspicuous,
       },
-      account: {
-        accountName: "Fink",
+      genus: data.genus,
+      growthHabit: data.growthHabit,
+      heightAvgCm: data.heightAvg.cm,
+      img: plant.img,
+      light: data.light,
+      maxPh: data.maxPh,
+      maxPrecipitation: data.maxPrecipitation.mm,
+      maxTemp: {
+        deg_f: data.maxTemp.deg_f,
+        deg_c: data.maxTemp.deg_c,
       },
+      minPh: data.minPh,
+      minPrecipitation: data.minPrecipitation.mm,
+      minTemp: {
+        deg_f: data.minTemp.deg_f,
+        deg_c: data.minTemp.deg_c,
+      },
+      native: data.native,
+      scientificName: data.scientific_name,
+      soilNutriments: data.soilNutriments,
+      soilTexture: data.soilTexture,
+      notes: "",
     };
 
     // console.log("Plant Object: ", plantObject);
-    const { data: selectedPlant } = await API.addPlantToAccount(plantObject);
-    console.log("saveplant", data);
+    const { data: selectedPlant } = await API.savePlant(plantObject);
+
     // Use a dispatch to send this object and set the values to viewPlant state value
     dispatch({
       type: "SPOTLIGHT",

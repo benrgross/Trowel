@@ -51,6 +51,46 @@ router.post("/searchPlants", async (req, res) => {
   }
 });
 
+router.post("/searchPlants", async (req, res) => {
+  console.log(req.body.page, req.body.query);
+
+  try {
+    const { data } = await Axios.get(
+      `https://trefle.io/api/v1/plants/search?token=${token}`
+    );
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/searchPlants", async (req, res) => {
+  console.log(req.body.page, req.body.query);
+
+  try {
+    const { data } = await Axios.get(
+      `https://trefle.io/api/v1/plants/search?token=${token}`
+    );
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/searchPage", async (req, res) => {
+  try {
+    const { data } = await Axios.get(
+      `https://trefle.io/api/v1/plants/search?token=${token}&page=${req.body.page}&q=${req.body.query}`
+    );
+
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // get single plant info with url from searchSpecies
 router.post("/plant", async (req, res) => {
   console.log(req.body.url);

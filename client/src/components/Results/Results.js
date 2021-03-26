@@ -51,7 +51,7 @@ function Results() {
 
     dispatch({
       type: "SPOTLIGHT",
-      spotlight: plantObject
+      spotlight: plantObject,
     });
   };
 

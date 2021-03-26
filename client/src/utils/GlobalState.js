@@ -21,6 +21,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         results: action.results,
+        pageLinks: action.pageLinks,
         loading: false,
       };
 
@@ -120,6 +121,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     results: [{}],
     account: {},
     accounts: [],
+    pageLinks: [],
+    page: 1,
     loading: false,
     userToken: "",
     email: "",

@@ -11,6 +11,8 @@
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.13.1",
     "react-fetch": "0.0.9",
+    "react-hanger": "^2.3.2",
+    "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "reactstrap": "^8.9.0"

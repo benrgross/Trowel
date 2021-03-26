@@ -18,6 +18,7 @@ function SearchForm() {
     };
     const { data } = await API.searchPlants(query);
     console.log("data", data);
+    const pageLinks = data.links;
     const plants = data.data.map((plant) => {
       return {
         commonName: plant.common_name,
@@ -29,11 +30,12 @@ function SearchForm() {
     dispatch({
       type: RESULTS,
       results: plants,
+      pageLinks: pageLinks,
     });
   };
 
   return (
-    <div className="container d-flex justify-content-center">
+    <div className="container">
       <form className="shadow">
         <div className="form-group ">
           <label>Search For Plant</label>

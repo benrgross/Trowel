@@ -19,6 +19,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         results: action.results,
+        pageLinks: action.pageLinks,
         loading: false,
       };
     case SET_SAVED_PLANT:
@@ -102,6 +103,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     plants: [{}],
     plant: {},
     results: [{}],
+    pageLinks: [],
+    page: 1,
     loading: false,
     userToken: "",
     email: "",

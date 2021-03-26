@@ -49,7 +49,6 @@ function LoginForm() {
             name="email"
             placeholder="email"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
           />
         </div>
         <div className="form-group">
@@ -60,7 +59,6 @@ function LoginForm() {
             type="password"
             name="password"
             placeholder="password"
-            placeholder="Password"
           />
         </div>
         <button type="submit" className="btn btn-primary" onClick={submitLogin}>

@@ -7,7 +7,7 @@ import { FaTimes } from "react-icons/fa";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Home = () => {
-  const [state, dispatch] = useStoreContext();
+  const [_, dispatch] = useStoreContext();
   const [savedAccounts, setSavedAccounts] = useState([]);
 
   let history = useHistory();
@@ -62,10 +62,22 @@ const Home = () => {
     notesRef.current.value = "";
   };
 
-  const viewAccount = () => {
+  const viewAccount = ({ accountName, clientContact, location, notes }) => {
+    const accountObj = {
+        accountName,
+        client: clientContact.clientName,
+        clientPhone: clientContact.phone,
+        clientEmail: clientContact.email,
+        address: location.address,
+        distZone: location.distZone,
+        notes
+    }
+
+    // console.log("Account Obj: ", accountObj)
+
     dispatch({
         type: SET_SAVED_ACCOUNT,
-        account: {}
+        account: accountObj
     })
 
     history.push("/account")

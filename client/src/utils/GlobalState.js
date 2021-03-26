@@ -34,7 +34,7 @@ const reducer = (state, action) => {
     case SET_SAVED_ACCOUNT:
       return {
         ...state,
-        account: action.acount,
+        account: action.account,
         loading: false,
       };
 

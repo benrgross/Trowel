@@ -73,8 +73,6 @@ const Home = () => {
         notes
     }
 
-    // console.log("Account Obj: ", accountObj)
-
     dispatch({
         type: SET_SAVED_ACCOUNT,
         account: accountObj

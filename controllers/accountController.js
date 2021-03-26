@@ -18,16 +18,24 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  addPlantAccount: function (req, res) {
-    db.Account.findOneAndUpdate(
-      { name: req.body.accountName },
-      {
-        $push: { plants: req.body.plant },
-      },
-      { new: true }
-    )
-      .then((dbAccount) => res.json(dbAccount))
-      .catch((err) => res.status(422).json(err));
+
+  addPlantAccount: async function (req, res) {
+    try {
+      const newPlant = await db.Plant.create(req.body.plant);
+      res.json(newPlant);
+      const { _id } = newPlant;
+
+      const plantToAccount = await db.Account.findOneAndUpdate(
+        { name: req.body.accountName },
+        {
+          $push: { plants: _id },
+        },
+        { new: true }
+      );
+      res.json([plantToAccount]);
+    } catch (err) {
+      res.status(422).json(err);
+    }
   },
   update: function (req, res) {
     db.Account.findOneAndUpdate({ _id: req.params.id }, req.body)

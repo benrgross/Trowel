@@ -6,6 +6,8 @@ import API from "../../utils/API";
 function Results() {
   const [state, dispatch] = useStoreContext();
 
+  console.log("Account Name: ", state.accountName)
+
   let history = useHistory();
 
   const getPlant = async (plant) => {
@@ -14,9 +16,6 @@ function Results() {
     };
 
     const { data } = await API.getPlant(item);
-
-    //plant
-    //accountName
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,

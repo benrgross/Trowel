@@ -34,7 +34,7 @@ module.exports = {
 
       console.log(_id);
       const plantToAccount = await db.Account.findOneAndUpdate(
-        { accountName: "Fink " },
+        { accountName: req.body.accountName },
         {
           $push: {
             plants: { plant: _id },

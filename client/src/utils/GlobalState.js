@@ -6,6 +6,8 @@ import {
   REMOVE_PLANT,
   RESULTS,
   SET_SAVED_PLANT,
+  SET_SAVED_ACCOUNT,
+  ADD_ACCOUNT,
   SPOTLIGHT,
 } from "./actions";
 
@@ -22,19 +24,33 @@ const reducer = (state, action) => {
         pageLinks: action.pageLinks,
         loading: false,
       };
+
+    case ADD_ACCOUNT: 
+      return {
+        ...state,
+        accounts: [action.account, ...state.accounts],
+        loading: false,
+      };
     case SET_SAVED_PLANT:
       console.log("action", action.saved);
       return {
         ...state,
-        books: action.saved,
+        plants: action.saved,
         loading: false,
       };
+    case SET_SAVED_ACCOUNT: 
+      console.log("SAVE_ACCOUNT: ", action.saved);
+      return {
+        ...state,
+        accounts: action.saved,
+        loading: false
+      }
 
     case REMOVE_PLANT:
       return {
         ...state,
-        books: state.books.filter((book) => {
-          return book._id !== action._id;
+        plants: state.plants.filter((plant) => {
+          return plant._id !== plant._id;
         }),
         lading: false,
       };
@@ -103,6 +119,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     plants: [{}],
     plant: {},
     results: [{}],
+    account: {},
+    accounts: [],
     pageLinks: [],
     page: 1,
     loading: false,

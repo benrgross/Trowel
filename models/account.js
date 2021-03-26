@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const accountSchema = new Schema({
   created: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  accountName: { 
-    type: String, 
-    required: true 
+  accountName: {
+    type: String,
+    required: true,
   },
   clientContact: {
     clientName: String,
@@ -22,12 +22,17 @@ const accountSchema = new Schema({
   },
   plantCount: {
     type: Number,
-    default: 0
+    default: 0,
   },
   plants: [],
-  notes: String
+  notes: String,
 });
 
-const Account = mongoose.model('Account', accountSchema);
+const Account = mongoose.model("Account", accountSchema);
 
 module.exports = Account;
+
+// {
+//   type: Schema.Types.ObjectId,
+//   ref: "Plant"
+// }

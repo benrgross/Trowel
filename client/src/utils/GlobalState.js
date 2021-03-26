@@ -8,6 +8,7 @@ import {
   RESULTS,
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
+  ADD_ACCOUNT,
   SPOTLIGHT,
   SAVE_TO_ACCOUNT,
 } from "./actions";
@@ -25,6 +26,14 @@ const reducer = (state, action) => {
         pageLinks: action.pageLinks,
         loading: false,
       };
+
+    case ADD_ACCOUNT:
+      return {
+        ...state,
+        accounts: [action.account, ...state.accounts],
+        loading: false,
+      };
+
     case SET_SAVED_PLANT:
       console.log("action", action.saved);
       return {
@@ -131,7 +140,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     email: "",
     user: {},
     account: {},
-    accounts: [],
+    // accounts: [],
     accountName: "",
     viewPlant: {
       commonName: "Plant Example",

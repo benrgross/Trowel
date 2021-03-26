@@ -33,7 +33,7 @@ const Home = () => {
     console.log("Account Data: ", data);
   };
 
-  const saveAccount = (event) => {
+  const saveAccount = async (event) => {
     event.preventDefault();
 
     const account = {
@@ -50,7 +50,8 @@ const Home = () => {
       notes: notesRef.current.value.toLowerCase().trim(),
     };
 
-    API.saveAccount(account);
+    await API.saveAccount(account);
+    setSavedAccounts(account, ...savedAccounts);
     console.log("newAccount: ", account);
 
     accountNameRef.current.value = "";
@@ -81,18 +82,19 @@ const Home = () => {
     history.push("/account");
   };
 
-  const removeAccount = async (id) => {
-    try {
-      await API.deleteAccount(id);
-      console.log("Deleted Account ID: ", id);
-      dispatch({
-        type: REMOVE_ACCOUNT,
-        _id: id,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const removeAccount = async (id) => {
+  //   try {
+  //     await API.deleteAccount(id);
+  //     console.log("Deleted Account ID: ", id);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+
+  //   dispatch({
+  //     type: REMOVE_ACCOUNT,
+  //     _id: id,
+  //   });
+  // };
 
   return (
     <div>
@@ -178,7 +180,7 @@ const Home = () => {
           {savedAccounts.map((account) => {
             return (
               <div className="container">
-                <div className="card">
+                <div className="card" key={account._id}>
                   <div
                     className="card-body"
                     onClick={() => viewAccount(account)}
@@ -200,7 +202,7 @@ const Home = () => {
                   <span>
                     <button
                       className="btn btn-danger"
-                      onClick={() => removeAccount(account._id)}
+                      // onClick={() => removeAccount(account._id)}
                     >
                       <FaTimes /> Delete Account{" "}
                     </button>

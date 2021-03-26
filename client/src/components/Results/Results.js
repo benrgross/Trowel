@@ -1,7 +1,6 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
-import axios from "axios"
 
 function Results() {
   const [state, dispatch] = useStoreContext();
@@ -53,16 +52,12 @@ function Results() {
     };
 
     // console.log("Plant Object: ", plantObject);
-    const { data: selectedPlant } = await API.savePlant(plantObject);
+    // const { data: selectedPlant } = await API.savePlant(plantObject);
 
     // Use a dispatch to send this object and set the values to viewPlant state value
     dispatch({
       type: "SPOTLIGHT",
-      spotlight: {
-        commonName: plant.commonName,
-        scientificName: plant.scientificName,
-        img: plant.img
-      }
+      spotlight: plantObject
     })
 
   };

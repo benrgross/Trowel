@@ -5,12 +5,14 @@ import { useStoreContext } from "../../utils/GlobalState";
 const Plant = () => {
     const [state, dispatch] = useStoreContext();
 
+    console.log("State: ",state)
+
     return (
         <div>
             <h1>View A Plant Here!</h1>
             <h2>Plant Card:</h2>
 
-            <div className="container spotlight-card">
+            {/* <div className="container spotlight-card">
                 <p>{state.viewPlant.commonName}</p>
                 <p>{state.viewPlant.scientificName} </p>
                 <div className="container">
@@ -21,7 +23,7 @@ const Plant = () => {
                     src={state.viewPlant.img}
                     />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -37,6 +37,11 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
+            <Link to="/account" className="nav-link nav-text">
+              Select Account
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/" className="nav-link nav-text">
               Search
             </Link>

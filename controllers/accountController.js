@@ -18,6 +18,17 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  addPlantAccount: function (req, res) {
+    db.Account.findOneAndUpdate(
+      { name: req.body.accountName },
+      {
+        $push: { plants: req.body.plant },
+      },
+      { new: true }
+    )
+      .then((dbAccount) => res.json(dbAccount))
+      .catch((err) => res.status(422).json(err));
+  },
   update: function (req, res) {
     db.Account.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))

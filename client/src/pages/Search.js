@@ -7,9 +7,13 @@ import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
 import API from "../utils/API";
 
-function Search() {
+function Search(type) {
   const [state, dispatch] = useStoreContext();
 
+  // switch (type ) {
+  //   case
+
+  // }
   const last = async () => {
     const splitURL = state.pageLinks.prev.split("=");
     const pageStr = splitURL[1];

@@ -38,8 +38,6 @@ router.post("/searchSpecies", async (req, res) => {
 
 // query species rout
 router.post("/searchPlants", async (req, res) => {
-  console.log(req.body.page, req.body.query);
-
   try {
     const { data } = await Axios.get(
       `https://trefle.io/api/v1/plants/search?token=${token}&q=${req.body.query}`
@@ -66,8 +64,6 @@ router.post("/searchPlants", async (req, res) => {
 });
 
 router.post("/searchPlants", async (req, res) => {
-  console.log(req.body.page, req.body.query);
-
   try {
     const { data } = await Axios.get(
       `https://trefle.io/api/v1/plants/search?token=${token}`
@@ -93,8 +89,6 @@ router.post("/searchPage", async (req, res) => {
 
 // get single plant info with url from searchSpecies
 router.post("/plant", async (req, res) => {
-  console.log(req.body.url);
-
   try {
     const { data } = await Axios.get(
       `https://trefle.io${req.body.url}?token=${token}`
@@ -127,7 +121,7 @@ router.post("/plant", async (req, res) => {
       heightAvg: specifications.average_height,
       growthHabit: specifications.growth_habit,
     };
-    console.log(plantData);
+
     res.json(plantData);
   } catch (error) {
     console.log(error);

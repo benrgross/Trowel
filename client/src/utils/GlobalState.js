@@ -25,12 +25,6 @@ const reducer = (state, action) => {
         loading: false,
       };
 
-    case ADD_ACCOUNT: 
-      return {
-        ...state,
-        accounts: [action.account, ...state.accounts],
-        loading: false,
-      };
     case SET_SAVED_PLANT:
       console.log("action", action.saved);
       return {
@@ -38,13 +32,13 @@ const reducer = (state, action) => {
         plants: action.saved,
         loading: false,
       };
-    case SET_SAVED_ACCOUNT: 
+    case SET_SAVED_ACCOUNT:
       console.log("SAVE_ACCOUNT: ", action.saved);
       return {
         ...state,
         accounts: action.saved,
-        loading: false
-      }
+        loading: false,
+      };
 
     case REMOVE_PLANT:
       return {
@@ -71,7 +65,7 @@ const reducer = (state, action) => {
           familyCommonName: action.spotlight.familyCommonName,
           flowerColor: {
             color: action.spotlight.flowerColor.color,
-            conspicuous: action.spotlight.flowerColor.conspicuous
+            conspicuous: action.spotlight.flowerColor.conspicuous,
           },
           genus: action.spotlight.genus,
           growthHabit: action.spotlight.growthHabit,
@@ -82,19 +76,19 @@ const reducer = (state, action) => {
           maxPrecipitation: action.spotlight.maxPrecipitation,
           maxTemp: {
             deg_f: action.spotlight.maxTemp.deg_f,
-            deg_c: action.spotlight.maxTemp.deg_c
+            deg_c: action.spotlight.maxTemp.deg_c,
           },
           minPh: action.spotlight.minPh,
           minPrecipitation: action.spotlight.minPrecipitation,
           minTemp: {
             deg_f: action.spotlight.minTemp.deg_f,
-            deg_c: action.spotlight.minTemp.deg_c
+            deg_c: action.spotlight.minTemp.deg_c,
           },
           native: action.spotlight.native,
           scientificName: action.spotlight.scientificName,
           soilNutriments: action.spotlight.soilNutriments,
           soilTexture: action.spotlight.soilTexture,
-          notes: ""
+          notes: "",
         },
       };
     case LOGIN:
@@ -119,8 +113,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     plants: [{}],
     plant: {},
     results: [{}],
-    account: {},
-    accounts: [],
     pageLinks: [],
     page: 1,
     loading: false,

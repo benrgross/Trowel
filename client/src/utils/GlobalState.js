@@ -4,6 +4,7 @@ import {
   LOGIN,
   LOGOUT,
   REMOVE_PLANT,
+  REMOVE_ACCOUNT,
   RESULTS,
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
@@ -23,7 +24,6 @@ const reducer = (state, action) => {
         pageLinks: action.pageLinks,
         loading: false,
       };
-
     case SET_SAVED_PLANT:
       console.log("action", action.saved);
       return {
@@ -38,14 +38,21 @@ const reducer = (state, action) => {
         accounts: action.saved,
         loading: false,
       };
-
     case REMOVE_PLANT:
       return {
         ...state,
         plants: state.plants.filter((plant) => {
           return plant._id !== plant._id;
         }),
-        lading: false,
+        loading: false,
+      };
+    case REMOVE_ACCOUNT:
+      return {
+        ...state,
+        accounts: state.accounts.filter((account) => {
+          return account._id !== account._id;
+        }),
+        loading: false,
       };
     case LOADING:
       return {

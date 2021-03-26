@@ -4,6 +4,7 @@ export const REMOVE_PLANT = "REMOVE_PLANT";
 export const SET_SAVED_PLANT = "SET_SAVED_PLANT";
 export const SET_SAVED_ACCOUNT = "SET_SAVED_ACCOUNT";
 export const ADD_ACCOUNT = "ADD_ACCOUNT";
+export const REMOVE_ACCOUNT = "REMOVE_ACCOUNT";
 export const LOADING = "LOADING";
 export const SPOTLIGHT = "SPOTLIGHT";
 export const LOGIN = "LOGIN";

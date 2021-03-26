@@ -2,14 +2,15 @@ import "./home.css";
 import React, { useRef, useState, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_ACCOUNT } from "../../utils/actions";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
+import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Home = () => {
-  const [state, dispatch] = useStoreContext();
-
+  const [_, dispatch] = useStoreContext();
   const [savedAccounts, setSavedAccounts] = useState([]);
-  const [savedPlants, setSavedPlants] = useState([]);
+
+  let history = useHistory();
 
   const accountNameRef = useRef();
   const clientNameRef = useRef();
@@ -22,7 +23,6 @@ const Home = () => {
   // get request of books from db
   useEffect(() => {
     getSavedAccounts();
-    getSavedPlants();
   }, []);
 
   const getSavedAccounts = async () => {
@@ -33,37 +33,25 @@ const Home = () => {
     console.log("Account Data: ", data);
   };
 
-  const getSavedPlants = async () => {
-    const { data } = await API.getPlants();
-
-    // set data to state
-    setSavedPlants(data);
-    console.log("Plant Data: ", data);
-  };
-
   const saveAccount = (event) => {
     event.preventDefault();
 
     const account = {
-      accountName: accountNameRef.current.value,
+      accountName: accountNameRef.current.value.toLowerCase().trim(),
       clientContact: {
-        clientName: clientNameRef.current.value,
-        phone: phoneRef.current.value,
-        email: emailRef.current.value,
+        clientName: clientNameRef.current.value.toLowerCase().trim(),
+        phone: phoneRef.current.value.toLowerCase().trim(),
+        email: emailRef.current.value.toLowerCase().trim(),
       },
       location: {
-        address: addressRef.current.value,
-        distZone: zoneRef.current.value,
+        address: addressRef.current.value.toLowerCase().trim(),
+        distZone: zoneRef.current.value.toLowerCase().trim(),
       },
-      notes: notesRef.current.value,
+      notes: notesRef.current.value.toLowerCase().trim(),
     };
 
     API.saveAccount(account);
-
-    dispatch({
-      type: ADD_ACCOUNT,
-      account: account,
-    });
+    console.log("newAccount: ", account);
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -73,6 +61,25 @@ const Home = () => {
     zoneRef.current.value = "";
     notesRef.current.value = "";
   };
+
+  const viewAccount = ({ accountName, clientContact, location, notes }) => {
+    const accountObj = {
+        accountName,
+        client: clientContact.clientName,
+        clientPhone: clientContact.phone,
+        clientEmail: clientContact.email,
+        address: location.address,
+        distZone: location.distZone,
+        notes
+    }
+
+    dispatch({
+        type: SET_SAVED_ACCOUNT,
+        account: accountObj
+    })
+
+    history.push("/account")
+  }
 
   return (
     <div>
@@ -153,23 +160,17 @@ const Home = () => {
           </button>
         </form>
       </div>
-      {state.accounts.length ? (
+      {savedAccounts.length ? (
         <div>
-          {state.accounts.map((account) => {
+          {savedAccounts.map((account) => {
             return (
               <div className="container">
                 <div className="card">
-                  <div className="card-body">
+                  <div className="card-body" onClick={() => viewAccount(account)}>
                     <span>
                       <h5 className="account-title">
                         Account: {account.accountName}
                       </h5>
-                      <Link to="/">
-                        <button className="btn btn-success">
-                          {" "}
-                          + Add plants
-                        </button>
-                      </Link>
                     </span>
                     <h6>Client: {account.clientContact.clientName}</h6>
                     <ul>
@@ -180,6 +181,11 @@ const Home = () => {
                     <p>distribution zone: {account.location.distZone}</p>
                     <p>notes: {account.notes}</p>
                   </div>
+                  <span>
+                    <button className="btn btn-danger">
+                      <FaTimes /> Delete Account{" "}
+                    </button>
+                  </span>
                 </div>
               </div>
             );

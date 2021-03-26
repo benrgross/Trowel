@@ -5,7 +5,14 @@ import API from "../../utils/API";
 
 const Plant = () => {
   const [state, dispatch] = useStoreContext();
-  console.log("State: ", state.viewPlant);
+  // console.log("State: ", state.viewPlant);
+
+  const savePlantObj = {
+    plant: state.viewPlant,
+    accountName: state.accountName
+  }
+
+  console.log("Plant To Save: ", savePlantObj)
 
   const {
     viewPlant: {
@@ -32,7 +39,8 @@ const Plant = () => {
   } = state;
 
   const savePlantSelection = async () => {
-    const { data: selectedPlant } = await API.savePlant(state.viewPlant);
+    // const { data: selectedPlant } = await API.savePlant(state.viewPlant);
+    const { data: savedPlant } = await API.addPlantToAccount(savePlantObj);
 
     console.log("Plant Saved!");
   };

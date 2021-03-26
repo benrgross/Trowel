@@ -70,4 +70,7 @@ export default {
   findAccout: function (query) {
     return axios.post("/api/accounts/findAccount", query);
   },
+  findAccountById: function (id) {
+    return axios.get(`/api/accounts/` + id);
+  },
 };

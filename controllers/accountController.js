@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: function (req, res) {
     db.Account.find({})
-      .sort({ date: -1 })
+      .sort({ created: -1 })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -13,22 +13,44 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  findAccount: function (req, res) {
+    db.Account.findById(req.body)
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
   create: function (req, res) {
     db.Account.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  addPlantAccount: function (req, res) {
-    db.Account.findOneAndUpdate(
-      { name: req.body.accountName },
-      {
-        $push: { plants: req.body.plant },
-      },
-      { new: true }
-    )
-      .then((dbAccount) => res.json(dbAccount))
-      .catch((err) => res.status(422).json(err));
+
+  addPlantAccount: async function (req, res) {
+    console.log("req", req.body.plant, req.body.accountName);
+    try {
+      const newPlant = await db.Plant.create(req.body.plant);
+      console.log(newPlant);
+      const { _id } = newPlant;
+
+      console.log(_id);
+      const plantToAccount = await db.Account.findOneAndUpdate(
+        { accountName: "Fink " },
+        {
+          $push: {
+            plants: { plant: _id },
+          },
+        },
+
+        { new: true }
+      );
+      console.log("plant to account", plantToAccount);
+      res.json(plantToAccount);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
   },
+
   update: function (req, res) {
     db.Account.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))

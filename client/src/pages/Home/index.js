@@ -60,11 +60,6 @@ const Home = () => {
 
     API.saveAccount(account);
 
-    dispatch({
-      type: ADD_ACCOUNT,
-      account: account,
-    });
-
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
     phoneRef.current.value = "";
@@ -153,9 +148,9 @@ const Home = () => {
           </button>
         </form>
       </div>
-      {state.accounts.length ? (
+      {savedAccounts.length ? (
         <div>
-          {state.accounts.map((account) => {
+          {savedAccounts.map((account) => {
             return (
               <div className="container">
                 <div className="card">

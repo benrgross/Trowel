@@ -90,12 +90,12 @@ module.exports = {
     }
   },
 
-  addPlantNote: async function (req, res) {
+  postPlantNote: async function (req, res) {
     try {
       const addNote = await db.Account.updateOne(
         { _id: req.params.id, "plants._id": req.body.id },
         {
-          $push: { "plants.$.notes": req.body.note },
+          $set: { "plants.$.notes": req.body.note },
         },
         { new: true }
       );
@@ -107,16 +107,35 @@ module.exports = {
     }
   },
 
+  getPlantNote: async function (req, res) {
+    try {
+      const getNote = await db.Account.findOne({
+        _id: req.params.id,
+        "plants.notes._id": req.body.id,
+      });
+      console.log(getNote);
+      res.json(getNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
   // updatePlantNote: async function (req, res) {
   //   try {
-  //     const addNote = await db.Account.update(
-  //       { _id: req.params.id, "plants._id": req.body.id },
+  //     const updateNote = await db.Account.updateOne(
   //       {
-  //         $set: { "plants.notes.$.note": req.body.note },
+  //         _id: req.params.id,
+  //         "plants.notes_id": req.body.plantsId,
+  //         "plants.notes._id": req.body.id,
+  //       },
+  //       {
+  //         $set: { "plants.notes.note": "note" },
   //       },
   //       { new: true }
   //     );
-  //     res.json(addNote);
+  //     console.log(updateNote);
+  //     res.json(updateNote);
   //   } catch (err) {
   //     console.log(err);
   //     res.json(err);

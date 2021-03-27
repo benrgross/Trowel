@@ -55,6 +55,7 @@ const reducer = (state, action) => {
         account: action.account,
         loading: false,
       };
+
     case REMOVE_PLANT:
       return {
         ...state,

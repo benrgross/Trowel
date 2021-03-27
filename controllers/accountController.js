@@ -90,11 +90,37 @@ module.exports = {
     }
   },
 
+  addPlantNote: async function (req, res) {
+    try {
+      const addNote = await db.Account.updateOne(
+        { _id: req.params.id, "plants._id": req.body.id },
+        {
+          $push: { "plants.$.notes": req.body.note },
+        },
+        { new: true }
+      );
+      console.log(addNote);
+      res.json(addNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
   // updatePlantNote: async function (req, res) {
-  //   db.Account.findOneAndUpdate({accountName: req.params.id},
-  //     {
-  //       $set {""}
-  //     })
+  //   try {
+  //     const addNote = await db.Account.update(
+  //       { _id: req.params.id, "plants._id": req.body.id },
+  //       {
+  //         $set: { "plants.notes.$.note": req.body.note },
+  //       },
+  //       { new: true }
+  //     );
+  //     res.json(addNote);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.json(err);
+  //   }
   // },
 
   populatePlants: function (req, res) {

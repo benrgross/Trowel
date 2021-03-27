@@ -75,12 +75,10 @@ const Home = () => {
           address: addressRef.current.value.toLowerCase().trim(),
           distZone: zoneRef.current.value.toLowerCase().trim(),
         },
-
       },
       userEmail: email,
     };
     dispatch({ type: LOADING });
-
 
     const saveAccount = await API.saveAccount(postAccount);
     console.log("saveAccount", saveAccount);
@@ -90,8 +88,8 @@ const Home = () => {
     dispatch({
       type: ADD_ACCOUNT,
       account: data.accounts[0],
-    })
-    
+    });
+
     console.log("Account array: ", state.accounts);
 
     console.log("newAccount: ", account);
@@ -238,6 +236,7 @@ const Home = () => {
                   </ul>
                   <p>location: {account.location.address}</p>
                   <p>distribution zone: {account.location.distZone}</p>
+                  {/* <p># of Plants: {state.account.plants.length}</p> */}
                   <p>notes: {account.notes.note}</p>
                 </div>
                 <span>

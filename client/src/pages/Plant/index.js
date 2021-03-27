@@ -69,6 +69,18 @@ const Plant = () => {
     history.push("/account");
   };
 
+//   const addNote = (objectID) => {
+//     const note = {
+//         id: objectID,
+//         note: {
+//             note: noteRef.current.value
+//         }
+//     }
+//     console.log("Posted Note Obj: ", note)
+
+//     API.postPlantNote(accountID, note);
+// }
+
   return (
     <div>
       <h1>View A Plant Here!</h1>

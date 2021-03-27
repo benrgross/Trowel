@@ -12,6 +12,7 @@ import {
   LOAD_ACCOUNTS,
   SPOTLIGHT,
   SAVE_TO_ACCOUNT,
+  SWITCH_SPOTLIGHT
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -77,12 +78,6 @@ const reducer = (state, action) => {
         loading: true,
       };
     case SAVE_TO_ACCOUNT:
-      return {
-        ...state,
-        accountName: action.accountName,
-      };
-    
-      case SAVE_TO_ACCOUNT:
       return {
         ...state,
         accountName: action.accountName,

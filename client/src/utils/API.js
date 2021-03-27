@@ -54,9 +54,11 @@ export default {
   getPlant: function (item) {
     return axios.post(`/api/search/plant`, item);
   },
+
   searchPage: function (query) {
     return axios.post(`api/search/searchPage`, query);
   },
+
   login: function (cred) {
     return axios.post("/api/auth/login", cred);
   },
@@ -64,15 +66,23 @@ export default {
   signUp: function (cred) {
     return axios.post("/api/auth/register", cred);
   },
+
   addPlantToAccount: function (savePlant) {
     return axios.post("/api/accounts/addPlantToAccount", savePlant);
   },
+
   findAccout: function (query) {
     return axios.post("/api/accounts/findAccount", query);
   },
+
   findAccountById: function (id) {
     return axios.get(`/api/accounts/` + id);
   },
+
+  deleteAccount: function (id) {
+    return axios.delete("/api/accounts/" + id);
+  },
+
   getPlantsByAccount: function (query) {
     return axios.post("/api/accounts/getPlants", query);
   },

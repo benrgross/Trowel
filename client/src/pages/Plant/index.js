@@ -2,9 +2,13 @@ import "./plant.css";
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
+import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Plant = () => {
-  const [state] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
+
+  let history = useHistory();
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -38,9 +42,31 @@ const Plant = () => {
   } = state;
 
   const savePlantSelection = async () => {
-    const { data: savedPlant } = await API.addPlantToAccount(savePlantObj);
-
+    const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
     console.log("Plant Saved!");
+
+    const { data } = await API.getPlantsByAccount({
+      accountName: state.accountName,
+    });
+
+    const accountObj = {
+      accountID: data._id,
+      accountName: data.accountName,
+      client: data.clientContact.clientName,
+      clientPhone: data.clientContact.phone,
+      clientEmail: data.clientContact.email,
+      address: data.location.address,
+      distZone: data.location.distZone,
+      notes: data.notes,
+      plants: data.plants,
+    };
+
+    dispatch({
+      type: SET_SAVED_ACCOUNT,
+      account: accountObj,
+    });
+
+    history.push("/account");
   };
 
   return (
@@ -48,7 +74,6 @@ const Plant = () => {
       <h1>View A Plant Here!</h1>
       <h2>Plant Card:</h2>
 
-      {/* TODO: Add Ternary statement for null values */}
       <div className="container spotlight-card">
         <button onClick={savePlantSelection}>Add Plant</button>
         <p>Name: {commonName}</p>

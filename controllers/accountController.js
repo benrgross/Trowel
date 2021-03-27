@@ -100,10 +100,19 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  update: function (req, res) {
-    db.Account.findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
+  update: async function (req, res) {
+    try{
+      const updatedAccount = await db.Account.findOneAndUpdate(
+        { _id: req.params.id }, 
+        {
+          $pull: {
+            plants: { plant: req.body.plantID },
+          },
+        })
+    } catch (err) {
+      console.log(err);
+      res.json(err)
+    }
   },
   remove: function (req, res) {
     db.Account.findById({ _id: req.params.id })

@@ -14,7 +14,6 @@ import {
 
 const Home = () => {
   const [state, dispatch] = useStoreContext();
-  // const [savedAccounts, setSavedAccounts] = useState([]);
 
   let history = useHistory();
 
@@ -75,10 +74,12 @@ const Home = () => {
           address: addressRef.current.value.toLowerCase().trim(),
           distZone: zoneRef.current.value.toLowerCase().trim(),
         },
+
       },
       userEmail: email,
     };
     dispatch({ type: LOADING });
+
 
     const saveAccount = await API.saveAccount(postAccount);
     console.log("saveAccount", saveAccount);
@@ -88,10 +89,10 @@ const Home = () => {
     dispatch({
       type: ADD_ACCOUNT,
       account: data.accounts[0],
-    });
+
+    
     console.log("Account array: ", state.accounts);
 
-    // setSavedAccounts(account, ...savedAccounts);
     console.log("newAccount: ", account);
 
     accountNameRef.current.value = "";

@@ -57,6 +57,11 @@ const reducer = (state, action) => {
         ...state,
         accountName: action.accountName
       };
+    case "LOAD_ACCOUNTS":
+      return {
+        ...state,
+        accounts: action.accounts
+      };
     case SPOTLIGHT:
       return {
         ...state,
@@ -124,6 +129,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     email: "",
     user: {},
     account: {},
+    accounts: [],
     accountName: "",
     viewPlant: {
       commonName: "Plant Example",

@@ -7,8 +7,8 @@ import { FaTimes } from "react-icons/fa";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Home = () => {
-  const [_, dispatch] = useStoreContext();
-  const [savedAccounts, setSavedAccounts] = useState([]);
+  const [state, dispatch] = useStoreContext();
+  // const [savedAccounts, setSavedAccounts] = useState([]);
 
   let history = useHistory();
 
@@ -29,8 +29,13 @@ const Home = () => {
     const { data } = await API.getAccounts();
 
     // set data to state
-    setSavedAccounts(data);
-    console.log("Account Data: ", data);
+    // setSavedAccounts(data);
+    dispatch({
+      type: "LOAD_ACCOUNTS",
+      accounts: data
+    })
+    // console.log("Account Data: ", data);
+    console.log("Accounts State: ", state.accounts)
   };
 
   const saveAccount = (event) => {
@@ -166,9 +171,9 @@ const Home = () => {
           </button>
         </form>
       </div>
-      {savedAccounts.length ? (
+      {state.accounts.length ? (
         <div>
-          {savedAccounts.map((account) => {
+          {state.accounts.map((account) => {
             return (
               <div className="container">
                 <div className="card">

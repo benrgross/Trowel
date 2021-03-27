@@ -127,7 +127,7 @@ const Account = () => {
               ) : undefined}
               <p>Soil Nutriments: {plant.soilNutriments}</p>
               <p>Soil Texture: {plant.soilTexture}</p>
-              <p>Notes: {notes}</p>
+              {/* <p>Notes: {notes}</p> */}
               <div className="container"></div>
             </div>
           ))

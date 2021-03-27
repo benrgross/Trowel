@@ -74,11 +74,23 @@ const Plant = () => {
         {soilTexture ? <p>Soil Texture: {soilTexture}</p> : ""}
         <p>Notes: {notes}</p>
         <div className="container">
-          <img
-            className="img-thumbnail"
-            style={{ height: "200px", cursor: "pointer" }}
-            src={img}
-          />
+          {img ? (
+            <img
+              className="img-thumbnail"
+              style={{ height: "200px", cursor: "pointer" }}
+              src={img}
+              alt={commonName}
+            />
+          ) : (
+            <img
+              className="img-thumbnail"
+              style={{ height: "200px", cursor: "pointer" }}
+              alt={commonName}
+              src={
+                "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+              }
+            />
+          )}
         </div>
       </div>
     </div>

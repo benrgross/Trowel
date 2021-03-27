@@ -2,6 +2,7 @@ import React from 'react'
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { SAVE_TO_ACCOUNT } from "../../utils/actions";
+import API from "../../utils/API"
 
 const Account = () => {
     const [state, dispatch] = useStoreContext();
@@ -18,6 +19,10 @@ const Account = () => {
         })
 
         history.push("/")
+    }
+
+    const deletePlant = (id) => {
+        API.deletePlant(id)
     }
 
     return (
@@ -47,10 +52,10 @@ const Account = () => {
             </div>
             <h2>Plants In Account: </h2>
             {plants ? plants.map(({ plant: {
-                _id, atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
-            }, notes }) => 
+                atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
+            }, _id, notes }) => 
                 <div className="container spotlight-card" key={_id}>
-                    <button>Delete Plant</button>
+                    <button onClick={() => deletePlant(_id)}>Delete Plant</button>
                     <p>Name: {commonName}</p>
                     <p>Humidity: {atmosHumidity}</p>
                     <p>Bloom Months: {bloomMonths}</p>

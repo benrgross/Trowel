@@ -13,6 +13,7 @@ router.route("/getPlants").post(accountController.populatePlants);
 
 router.route("/deletePlant/:id").post(accountController.deletePlant)
 
+router.route("/findNewAccount").get(accountController.findOne);
 router
   .route("/:id")
   .get(accountController.findById)

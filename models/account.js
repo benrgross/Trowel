@@ -26,11 +26,11 @@ const accountSchema = new Schema({
   },
   notes: [
     {
+      note: { type: String, retquired: false },
       date: {
         type: Date,
         default: Date.now,
       },
-      note: { type: String, retquired: false },
     },
   ],
 

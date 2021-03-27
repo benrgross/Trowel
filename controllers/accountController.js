@@ -19,10 +19,26 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  create: function (req, res) {
-    db.Account.create(req.body)
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
+  create: async function (req, res) {
+    console.log("req", req.body);
+    try {
+      const account = await db.Account.create(req.body.account);
+      const { _id } = account;
+      const accountId = _id;
+
+      const newAccount = await db.User.findOneAndUpdate(
+        { email: req.body.userEmail },
+        {
+          $push: { accounts: accountId },
+        },
+        { new: true }
+      );
+      console.log(newAccount);
+      res.json(newAccount);
+    } catch (err) {
+      console.log(err);
+      res.status(422).json(err);
+    }
   },
 
   addPlantAccount: async function (req, res) {
@@ -57,7 +73,8 @@ module.exports = {
         path: "plants.plant",
         model: "Plant",
       })
-      .then((dbPlants) => res.json(dbPlants));
+      .then((dbPlants) => res.json(dbPlants))
+      .catch((err) => res.status(422).json(err));
   },
 
   update: function (req, res) {

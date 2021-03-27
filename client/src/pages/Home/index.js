@@ -33,25 +33,31 @@ const Home = () => {
     console.log("Account Data: ", data);
   };
 
-  const saveAccount = (event) => {
+  const saveAccount = async (event) => {
     event.preventDefault();
 
+    const { email } = JSON.parse(localStorage.getItem("userInfo"));
+    console.log(email);
     const account = {
-      accountName: accountNameRef.current.value.toLowerCase().trim(),
-      clientContact: {
-        clientName: clientNameRef.current.value.toLowerCase().trim(),
-        phone: phoneRef.current.value.toLowerCase().trim(),
-        email: emailRef.current.value.toLowerCase().trim(),
+      account: {
+        accountName: accountNameRef.current.value.toLowerCase().trim(),
+        clientContact: {
+          clientName: clientNameRef.current.value.toLowerCase().trim(),
+          phone: phoneRef.current.value.toLowerCase().trim(),
+          email: emailRef.current.value.toLowerCase().trim(),
+        },
+        location: {
+          address: addressRef.current.value.toLowerCase().trim(),
+          distZone: zoneRef.current.value.toLowerCase().trim(),
+        },
+        notes: notesRef.current.value.toLowerCase().trim(),
       },
-      location: {
-        address: addressRef.current.value.toLowerCase().trim(),
-        distZone: zoneRef.current.value.toLowerCase().trim(),
-      },
-      notes: notesRef.current.value.toLowerCase().trim(),
+      userEmail: email,
     };
 
-    API.saveAccount(account);
+    const newAccount = await API.saveAccount(account);
     console.log("newAccount: ", account);
+    console.log(newAccount);
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -64,22 +70,22 @@ const Home = () => {
 
   const viewAccount = ({ accountName, clientContact, location, notes }) => {
     const accountObj = {
-        accountName,
-        client: clientContact.clientName,
-        clientPhone: clientContact.phone,
-        clientEmail: clientContact.email,
-        address: location.address,
-        distZone: location.distZone,
-        notes
-    }
+      accountName,
+      client: clientContact.clientName,
+      clientPhone: clientContact.phone,
+      clientEmail: clientContact.email,
+      address: location.address,
+      distZone: location.distZone,
+      notes,
+    };
 
     dispatch({
-        type: SET_SAVED_ACCOUNT,
-        account: accountObj
-    })
+      type: SET_SAVED_ACCOUNT,
+      account: accountObj,
+    });
 
-    history.push("/account")
-  }
+    history.push("/account");
+  };
 
   return (
     <div>
@@ -166,7 +172,10 @@ const Home = () => {
             return (
               <div className="container">
                 <div className="card">
-                  <div className="card-body" onClick={() => viewAccount(account)}>
+                  <div
+                    className="card-body"
+                    onClick={() => viewAccount(account)}
+                  >
                     <span>
                       <h5 className="account-title">
                         Account: {account.accountName}

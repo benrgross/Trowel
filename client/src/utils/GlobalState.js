@@ -81,6 +81,19 @@ const reducer = (state, action) => {
         ...state,
         accountName: action.accountName,
       };
+    
+      case SAVE_TO_ACCOUNT:
+      return {
+        ...state,
+        accountName: action.accountName,
+      };
+      
+      case SWITCH_SPOTLIGHT:
+      return {
+        ...state,
+        switch: action.switch,
+      };
+
     case SPOTLIGHT:
       return {
         ...state,
@@ -147,6 +160,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
+    switch: false,
     account: {},
     accounts: [],
     accountName: "",

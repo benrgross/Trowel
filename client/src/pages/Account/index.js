@@ -3,13 +3,13 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { SAVE_TO_ACCOUNT } from "../../utils/actions";
 import API from "../../utils/API"
+import { get } from 'mongoose';
 
 const Account = () => {
     const [state, dispatch] = useStoreContext();
     const { accountID, accountName, address, client, clientEmail, clientPhone, distZone, notes, plants } = state.account;
     console.log("Account State:", state.account)
 
-    const noteRef = useRef
     let history = useHistory();
 
     const removePlant = async (id) => {
@@ -30,15 +30,52 @@ const Account = () => {
         history.push("/")
     }
 
-    const addNote = (objectID) => {
-        const note = {
-            id: objectID,
-            note: {
-                note: noteRef.current.value
-            }
-        }
-        
-    }
+    const getPlant = async (plant) => {
+      const plantObject = {
+        atmosHumidity: plant.atmosHumidity,
+        bloomMonths: plant.bloomMonths,
+        commonName: plant.commonName,
+        edible: plant.edible,
+        family: plant.family,
+        familyCommonName: plant.familyCommonName,
+        flowerColor: {
+          color: plant.flowerColor.color,
+          conspicuous: plant.flowerColor.conspicuous,
+        },
+        genus: plant.genus,
+        growthHabit: plant.growthHabit,
+        heightAvgCm: plant.heightAvg,
+        img: plant.img,
+        light: plant.light,
+        maxPh: plant.maxPh,
+        maxPrecipitation: plant.maxPrecipitation,
+        maxTemp: {
+          deg_f: plant.maxTemp.deg_f,
+          deg_c: plant.maxTemp.deg_c,
+        },
+        minPh: plant.minPh,
+        minPrecipitation: plant.minPrecipitation,
+        minTemp: {
+          deg_f: plant.minTemp.deg_f,
+          deg_c: plant.minTemp.deg_c,
+        },
+        native: plant.native,
+        scientificName: plant.scientific_name,
+        soilNutriments: plant.soilNutriments,
+        soilTexture: plant.soilTexture,
+        notes: "",
+      };
+  
+      console.log("Plant Object: ", plantObject)
+
+
+      dispatch({
+        type: "SPOTLIGHT",
+        spotlight: plantObject,
+      });
+  
+      history.push("/plant");
+    };
 
     return (
         <div className="container">
@@ -66,43 +103,32 @@ const Account = () => {
                 </span>
             </div>
             <h2>Plants In Account: </h2>
-            {plants ? plants.map(({ plant: {
-                atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
-            }, _id, notes }) => 
+            {plants ? plants.map(( { plant, _id, notes }) => 
                 <div className="container spotlight-card" key={_id}>
                     <img
                         className="img-thumbnail"
                         style={{ height: "200px", cursor: "pointer" }}
-                        src={img}
+                        src={plant.img}
+                        onClick={() => getPlant(plant)}
                     />
                     <button onClick={() => removePlant(_id)}>Delete Plant</button>
-                    <p>Name: {commonName}</p>
-                    <p>Humidity: {atmosHumidity}</p>
-                    <p>Bloom Months: {bloomMonths}</p>
-                    <p>Edible: {edible}</p>
-                    <p>Family: {family}</p>
-                    <p>Family Common Name: {familyCommonName}</p>
-                    <p>Genus: {genus}</p>
-                    <p>Growth Habit: {growthHabit}</p>
-                    <p>Light Level: {light}</p>
-                    <p>Max pH Level: {maxPh}</p>
-                    <p>Minimum pH Level: {minPh}</p>
-                    <p>Max Precipitation: {maxPrecipitation}</p>
-                    <p>Minimum Precipitation: {minPrecipitation}</p>
-                    {native ? <p>Native: {native.join(", ")}</p> : undefined}
-                    <p>Soil Nutriments: {soilNutriments}</p>
-                    <p>Soil Texture: {soilTexture}</p>
+                    <p>Name: {plant.commonName}</p>
+                    <p>Humidity: {plant.atmosHumidity}</p>
+                    <p>Bloom Months: {plant.bloomMonths}</p>
+                    <p>Edible: {plant.edible}</p>
+                    <p>Family: {plant.family}</p>
+                    <p>Family Common Name: {plant.familyCommonName}</p>
+                    <p>Genus: {plant.genus}</p>
+                    <p>Growth Habit: {plant.growthHabit}</p>
+                    <p>Light Level: {plant.light}</p>
+                    <p>Max pH Level: {plant.maxPh}</p>
+                    <p>Minimum pH Level: {plant.minPh}</p>
+                    <p>Max Precipitation: {plant.maxPrecipitation}</p>
+                    <p>Minimum Precipitation: {plant.minPrecipitation}</p>
+                    {plant.native ? <p>Native: {plant.native.join(", ")}</p> : undefined}
+                    <p>Soil Nutriments: {plant.soilNutriments}</p>
+                    <p>Soil Texture: {plant.soilTexture}</p>
                     <p>Notes: {notes}</p>
-                    <div className="form-group ">
-                    <label>Add Note</label>
-                    <input
-                    name="plant-note"
-                    ref={noteRef}
-                    placeholder="Water once a week."
-                    className="form-control"
-                    />
-                    </div>
-                    <button onClick={() => addNote()}>Submit</button>
                     <div className="container">
                     </div>
                 </div>

@@ -74,11 +74,8 @@ const Home = () => {
       account: data.accounts[0],
     });
 
-<<<<<<< HEAD
     console.log("Account array: ", state.accounts);
 
-=======
->>>>>>> 05064b62690dea071b5f7faf03e1c1948042791e
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
     phoneRef.current.value = "";

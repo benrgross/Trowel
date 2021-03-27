@@ -62,7 +62,6 @@ export default {
   login: function (cred) {
     return axios.post("/api/auth/login", cred);
   },
-
   signUp: function (cred) {
     return axios.post("/api/auth/register", cred);
   },

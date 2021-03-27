@@ -8,10 +8,10 @@ const Plant = () => {
 
   const savePlantObj = {
     plant: state.viewPlant,
-    accountName: state.accountName
-  }
+    accountName: state.accountName,
+  };
 
-  console.log("Plant To Save: ", savePlantObj)
+  console.log("Plant To Save: ", savePlantObj);
 
   const {
     viewPlant: {
@@ -53,28 +53,44 @@ const Plant = () => {
         <button onClick={savePlantSelection}>Add Plant</button>
         <p>Name: {commonName}</p>
         <p>Scientific Name: {scientificName}</p>
-        <p>Humidity: {atmosHumidity}</p>
-        <p>Edible: {edible}</p>
-        <p>Family: {family}</p>
-        <p>Family Common Name: {familyCommonName}</p>
-        <p>Genus: {genus}</p>
-        <p>Growth Habit: {growthHabit}</p>
-        <p>Average Height: {heightAvgCm}</p>
-        <p>Light Level: {light}</p>
-        <p>Max pH Level: {maxPh}</p>
-        <p>Minimum pH Level: {minPh}</p>
-        <p>Max Precipitation: {maxPrecipitation}</p>
-        <p>Minimum Precipitation: {minPrecipitation}</p>
-        {native ? <p>Native: {native.join(", ")}</p> : undefined}
-        <p>Soil Nutriments: {soilNutriments}</p>
-        <p>Soil Texture: {soilTexture}</p>
+        {atmosHumidity ? <p>Humidity: {atmosHumidity}</p> : ""}
+        {edible ? <p>Edible: {edible}</p> : ""}
+        {family ? <p>Family: {family}</p> : ""}
+        {familyCommonName ? <p>Family Common Name: {familyCommonName}</p> : ""}
+        {genus ? <p>Genus: {genus}</p> : ""}
+        {growthHabit ? <p>Growth Habit: {growthHabit}</p> : ""}
+        {heightAvgCm ? <p>Average Height: {heightAvgCm}</p> : ""}
+        {light ? <p>Light Level: {light}</p> : ""}
+        {maxPh ? <p>Max pH Level: {maxPh}</p> : ""}
+        {minPh ? <p>Minimum pH Level: {minPh}</p> : ""}
+        {maxPrecipitation ? <p>Max Precipitation: {maxPrecipitation}</p> : ""}
+        {minPrecipitation ? (
+          <p>Minimum Precipitation: {minPrecipitation}</p>
+        ) : (
+          ""
+        )}
+        {native ? <p>Native: {native.join(", ")}</p> : ""}
+        {soilNutriments ? <p>Soil Nutriments: {soilNutriments}</p> : ""}
+        {soilTexture ? <p>Soil Texture: {soilTexture}</p> : ""}
         <p>Notes: {notes}</p>
         <div className="container">
-          <img
-            className="img-thumbnail"
-            style={{ height: "200px", cursor: "pointer" }}
-            src={img}
-          />
+          {img ? (
+            <img
+              className="img-thumbnail"
+              style={{ height: "200px", cursor: "pointer" }}
+              src={img}
+              alt={commonName}
+            />
+          ) : (
+            <img
+              className="img-thumbnail"
+              style={{ height: "200px", cursor: "pointer" }}
+              alt={commonName}
+              src={
+                "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+              }
+            />
+          )}
         </div>
       </div>
     </div>

@@ -24,6 +24,16 @@ const accountSchema = new Schema({
     type: Number,
     default: 0,
   },
+  notes: [
+    {
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+      note: { type: String, retquired: false },
+    },
+  ],
+
   plants: [
     {
       plant: {

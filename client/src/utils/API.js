@@ -97,6 +97,6 @@ export default {
   },
 
   postPlantNote: function (id, note) {
-    return axios.get(`/api/accounts/addPlantNote/${id}`, note);
+    return axios.post(`/api/accounts/addPlantNote/${id}`, note);
   },
 };

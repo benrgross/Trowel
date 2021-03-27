@@ -113,7 +113,7 @@ module.exports = {
         _id: req.params.id,
         "plants.notes._id": req.body.id,
       });
-      // getNote.plants.notes.filter(note)
+
       console.log(getNote);
       res.json(getNote);
     } catch (err) {

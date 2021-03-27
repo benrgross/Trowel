@@ -32,12 +32,14 @@ const Home = () => {
   }, []);
 
   const getSavedAccounts = async () => {
-    const { data } = await API.getAccounts();
+    const { email } = JSON.parse(localStorage.getItem("userInfo"));
+    const { data } = await API.getAccounts(email);
+    console.log("getAccounts", data);
 
     // set data to state
     dispatch({
       type: LOAD_ACCOUNTS,
-      accounts: data,
+      accounts: data.accounts,
     });
     console.log("Account Data: ", data);
   };

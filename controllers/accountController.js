@@ -3,9 +3,12 @@ const db = require("../models");
 // Defining methods for the postsController
 module.exports = {
   findAll: function (req, res) {
-    db.Account.find({})
-      .sort({ created: -1 })
-      .then((dbModel) => res.json(dbModel))
+    db.User.findOne(req.body)
+      .populate({
+        path: "accounts",
+        model: "Account",
+      })
+      .then((dbPlants) => res.json(dbPlants))
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {

@@ -80,11 +80,6 @@ const reducer = (state, action) => {
         ...state,
         accountName: action.accountName,
       };
-    case "LOAD_ACCOUNTS":
-      return {
-        ...state,
-        accounts: action.accounts
-      };
     case SPOTLIGHT:
       return {
         ...state,

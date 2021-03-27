@@ -10,12 +10,10 @@ const Account = () => {
     console.log("Account State:", state.account)
 
     const updatedState = (index) => {
-        const accountObj = state.account.plants.splice(index,1);
-        console.log("Changed State:", {
-            ...state.account,
-            plants: accountObj})
+        const plantId = state.account.plants.splice(index, 1);
+        console.log("Changed State: ", plantId)
         
-        API.updateAccount(accountID, accountObj)
+        // API.updateAccount(accountID, accountObj)
     }
 
     let history = useHistory();

@@ -62,34 +62,39 @@ function Results() {
 
   return (
     <div>
-      {state.results.map((plant) => (
-        <div className="container">
-          <p>{plant.commonName}</p>
-          <p>{plant.scientificName} </p>
-          <div className="container">
-            {plant.img ? (
-              <img
-                onClick={() => getPlant(plant)}
-                alt={plant.commonName}
-                className="img-thumbnail"
-                style={{ height: "200px", cursor: "pointer" }}
-                src={plant.img}
-              />
-            ) : (
-              <img
-                onClick={() => getPlant(plant)}
-                className="img-thumbnail"
-                alt={plant.commonName}
-                style={{ height: "200px", cursor: "pointer" }}
-                src={
-                  "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
-                }
-              />
-            )}
-          </div>
+      {state.results.length <= 1 ? (
+        <h6>Search plants</h6>
+      ) : (
+        <div>
+          {state.results.map((plant) => (
+            <div className="container">
+              <p>{plant.commonName}</p>
+              <p>{plant.scientificName} </p>
+              <div className="container">
+                {plant.img ? (
+                  <img
+                    onClick={() => getPlant(plant)}
+                    alt={plant.commonName}
+                    className="img-thumbnail"
+                    style={{ height: "200px", cursor: "pointer" }}
+                    src={plant.img}
+                  />
+                ) : (
+                  <img
+                    onClick={() => getPlant(plant)}
+                    className="img-thumbnail"
+                    alt={plant.commonName}
+                    style={{ height: "200px", cursor: "pointer" }}
+                    src={
+                      "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+                    }
+                  />
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-      ,
+      )}
     </div>
   );
 }

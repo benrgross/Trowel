@@ -2,15 +2,35 @@ const db = require("../models");
 
 // Defining methods for the postsController
 module.exports = {
-  findAll: function (req, res) {
-    db.User.findOne(req.body)
-      .populate({
+  findAll: async function (req, res) {
+    try {
+      const account = await db.User.findOne(req.body).populate({
         path: "accounts",
         model: "Account",
-      })
-      .then((dbPlants) => res.json(dbPlants))
-      .catch((err) => res.status(422).json(err));
+        options: { sort: { created: -1 } },
+      });
+      console.log("accounts", account);
+      res.json(account);
+    } catch (err) {
+      res.status(422).json(err);
+    }
   },
+
+  findOne: async function (req, res) {
+    try {
+      const account = await db.User.findOne(req.body).populate({
+        path: "accounts",
+        model: "Account",
+        options: { sort: { created: -1 } },
+        limit: 1,
+      });
+      console.log("accounts", account);
+      res.json(account);
+    } catch (err) {
+      res.status(422).json(err);
+    }
+  },
+
   findById: function (req, res) {
     db.Account.findById(req.params.id)
       .then((dbModel) => res.json(dbModel))
@@ -36,7 +56,7 @@ module.exports = {
         },
         { new: true }
       );
-      console.log(newAccount);
+      console.log("new", newAccount);
       res.json(newAccount);
     } catch (err) {
       console.log(err);
@@ -80,15 +100,21 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  update: async function (req, res) {
+  deletePlant: async function (req, res) {
+    console.log("Body: ", req.body.id)
+    console.log("Params ID: ", req.params.id)
     try{
-      const updatedAccount = await db.Account.findOneAndUpdate(
+      const updatedAccount = await db.Account.updateOne(
         { _id: req.params.id }, 
         {
           $pull: {
-            plants: { plant: req.body.plantID },
+            plants: { _id: req.body.id },
           },
-        })
+        },
+        { new: true }
+        )
+        console.log("Updated Account", updatedAccount)
+        res.json(updatedAccount);
     } catch (err) {
       console.log(err);
       res.json(err)

@@ -70,8 +70,8 @@ export default {
     return axios.post("/api/accounts/addPlantToAccount", savePlant);
   },
 
-  updateAccount: function (accountID, account) {
-    return axios.post(`/api/accounts/${accountID}`, account);
+  updateAccount: function (accountID, plantID) {
+    return axios.post(`/api/accounts/deletePlant/${accountID}`, { id: plantID });
   },
 
   findAccout: function (query) {
@@ -88,5 +88,9 @@ export default {
 
   getPlantsByAccount: function (query) {
     return axios.post("/api/accounts/getPlants", query);
+  },
+
+  findNewAccount: function (query) {
+    return axios.get("/api/accounts/findNewAccount", query);
   },
 };

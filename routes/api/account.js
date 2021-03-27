@@ -11,10 +11,12 @@ router.route("/findAccount").get(accountController.findAccount);
 
 router.route("/getPlants").post(accountController.populatePlants);
 
+router.route("/deletePlant/:id").post(accountController.deletePlant)
+
 router
   .route("/:id")
   .get(accountController.findById)
-  .put(accountController.update)
+  // .put(accountController.update)
   .delete(accountController.remove);
 
 module.exports = router;

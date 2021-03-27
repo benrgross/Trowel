@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { SAVE_TO_ACCOUNT } from "../../utils/actions";
@@ -9,15 +9,16 @@ const Account = () => {
     const { accountID, accountName, address, client, clientEmail, clientPhone, distZone, notes, plants } = state.account;
     console.log("Account State:", state.account)
 
-    const selectPlant = async (id) => {
+    const noteRef = useRef
+    let history = useHistory();
+
+    const removePlant = async (id) => {
         console.log("Account ID", accountID)
         console.log("Plant ID", id)
         
-       const update = await API.updateAccount(accountID, id)
-       console.log("update", update)
+        const update = await API.updateAccount(accountID, id)
+        console.log("Update Successful!", update)
     }
-
-    let history = useHistory();
 
     const addPlant = () => {
         // dispatch state of current account that the plant will be saved to
@@ -29,8 +30,14 @@ const Account = () => {
         history.push("/")
     }
 
-    const deletePlant = (id) => {
-        API.deletePlant(id)
+    const addNote = (objectID) => {
+        const note = {
+            id: objectID,
+            note: {
+                note: noteRef.current.value
+            }
+        }
+        
     }
 
     return (
@@ -63,8 +70,12 @@ const Account = () => {
                 atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
             }, _id, notes }) => 
                 <div className="container spotlight-card" key={_id}>
-                    {/* <button onClick={() => deletePlant(_id)}>Delete Plant</button> */}
-                    <button onClick={() => selectPlant(_id)}>Delete Plant</button>
+                    <img
+                        className="img-thumbnail"
+                        style={{ height: "200px", cursor: "pointer" }}
+                        src={img}
+                    />
+                    <button onClick={() => removePlant(_id)}>Delete Plant</button>
                     <p>Name: {commonName}</p>
                     <p>Humidity: {atmosHumidity}</p>
                     <p>Bloom Months: {bloomMonths}</p>
@@ -82,12 +93,17 @@ const Account = () => {
                     <p>Soil Nutriments: {soilNutriments}</p>
                     <p>Soil Texture: {soilTexture}</p>
                     <p>Notes: {notes}</p>
-                    <div className="container">
-                    <img
-                        className="img-thumbnail"
-                        style={{ height: "200px", cursor: "pointer" }}
-                        src={img}
+                    <div className="form-group ">
+                    <label>Add Note</label>
+                    <input
+                    name="plant-note"
+                    ref={noteRef}
+                    placeholder="Water once a week."
+                    className="form-control"
                     />
+                    </div>
+                    <button onClick={() => addNote()}>Submit</button>
+                    <div className="container">
                     </div>
                 </div>
             ) : "No Plants Added"}

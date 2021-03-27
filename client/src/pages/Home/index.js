@@ -89,7 +89,7 @@ const Home = () => {
     dispatch({
       type: ADD_ACCOUNT,
       account: data.accounts[0],
-
+    })
     
     console.log("Account array: ", state.accounts);
 
@@ -110,6 +110,7 @@ const Home = () => {
     });
 
     const accountObj = {
+      accountID: data._id,
       accountName: data.accountName,
       client: data.clientContact.clientName,
       clientPhone: data.clientContact.phone,

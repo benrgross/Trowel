@@ -100,15 +100,21 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
 
-  update: async function (req, res) {
+  deletePlant: async function (req, res) {
+    console.log("Body: ", req.body.id)
+    console.log("Params ID: ", req.params.id)
     try{
-      const updatedAccount = await db.Account.findOneAndUpdate(
+      const updatedAccount = await db.Account.updateOne(
         { _id: req.params.id }, 
         {
           $pull: {
-            plants: { plant: req.body.plantID },
+            plants: { _id: req.body.id },
           },
-        })
+        },
+        { new: true }
+        )
+        console.log("Updated Account", updatedAccount)
+        res.json(updatedAccount);
     } catch (err) {
       console.log(err);
       res.json(err)

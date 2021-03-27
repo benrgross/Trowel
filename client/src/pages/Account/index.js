@@ -9,11 +9,12 @@ const Account = () => {
     const { accountID, accountName, address, client, clientEmail, clientPhone, distZone, notes, plants } = state.account;
     console.log("Account State:", state.account)
 
-    const updatedState = (index) => {
-        const plantId = state.account.plants.splice(index, 1);
-        console.log("Changed State: ", plantId)
+    const selectPlant = async (id) => {
+        console.log("Account ID", accountID)
+        console.log("Plant ID", id)
         
-        // API.updateAccount(accountID, accountObj)
+       const update = await API.updateAccount(accountID, id)
+       console.log("update", update)
     }
 
     let history = useHistory();
@@ -60,10 +61,10 @@ const Account = () => {
             <h2>Plants In Account: </h2>
             {plants ? plants.map(({ plant: {
                 atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
-            }, _id, notes }, index) => 
+            }, _id, notes }) => 
                 <div className="container spotlight-card" key={_id}>
                     {/* <button onClick={() => deletePlant(_id)}>Delete Plant</button> */}
-                    <button onClick={() => updatedState(index)}>Delete Plant</button>
+                    <button onClick={() => selectPlant(_id)}>Delete Plant</button>
                     <p>Name: {commonName}</p>
                     <p>Humidity: {atmosHumidity}</p>
                     <p>Bloom Months: {bloomMonths}</p>

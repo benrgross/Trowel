@@ -14,7 +14,6 @@ import {
 
 const Home = () => {
   const [state, dispatch] = useStoreContext();
-  // const [savedAccounts, setSavedAccounts] = useState([]);
 
   let history = useHistory();
 
@@ -43,6 +42,7 @@ const Home = () => {
   };
 
   const saveAccount = async (event) => {
+    // possibly remove prevent default
     event.preventDefault();
 
     const account = {
@@ -68,7 +68,6 @@ const Home = () => {
     });
     console.log("Account array: ", state.accounts);
 
-    // setSavedAccounts(account, ...savedAccounts);
     console.log("newAccount: ", account);
 
     accountNameRef.current.value = "";
@@ -200,7 +199,11 @@ const Home = () => {
         <div className="container">
           {state.accounts.map((account) => {
             return (
-              <div className="card" key={account._id}>
+              <div
+                className="card"
+                key={account._id}
+                style={{ cursor: "pointer" }}
+              >
                 <div
                   className="card-body"
                   onClick={() => viewAccount(account.accountName)}

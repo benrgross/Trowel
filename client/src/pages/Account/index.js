@@ -6,8 +6,15 @@ import API from "../../utils/API"
 
 const Account = () => {
     const [state, dispatch] = useStoreContext();
-    const { accountName, address, client, clientEmail, clientPhone, distZone, notes, plants } = state.account;
+    const { accountID, accountName, address, client, clientEmail, clientPhone, distZone, notes, plants } = state.account;
     console.log("Account State:", state.account)
+
+    const updatedState = (index) => {
+        const newState = state.account.plants.splice(index,1);
+        console.log("Changed State:", {
+            ...state.account,
+            plants: newState})
+    }
 
     let history = useHistory();
 
@@ -53,9 +60,10 @@ const Account = () => {
             <h2>Plants In Account: </h2>
             {plants ? plants.map(({ plant: {
                 atmosHumidity, bloomMonths, commonName, edible, family, familyCommonName, genus, growthHabit, img, light, maxPh, maxPrecipitation, minPh, minPrecipitation, native, soilNutriments, soilTexture
-            }, _id, notes }) => 
+            }, _id, notes }, index) => 
                 <div className="container spotlight-card" key={_id}>
-                    <button onClick={() => deletePlant(_id)}>Delete Plant</button>
+                    {/* <button onClick={() => deletePlant(_id)}>Delete Plant</button> */}
+                    <button onClick={() => updatedState(index)}>Delete Plant</button>
                     <p>Name: {commonName}</p>
                     <p>Humidity: {atmosHumidity}</p>
                     <p>Bloom Months: {bloomMonths}</p>

@@ -21,17 +21,6 @@ export default {
     return axios.post("/api/plants", plantData);
   },
 
-  // Saves a account to the database
-
-  saveAccount: function (accountData) {
-    return axios.post("/api/accounts", accountData);
-  },
-
-  // Get accounts from database
-  getAccounts: function (accountData) {
-    return axios.get("/api/accounts", accountData);
-  },
-
   searchPlantSpecies: function (query) {
     console.log(query);
     return axios.post(`/api/search/searchSpecies`, query);
@@ -64,15 +53,34 @@ export default {
   signUp: function (cred) {
     return axios.post("/api/auth/register", cred);
   },
+
+  // Saves a account to the database
+
+  saveAccount: function (accountData) {
+    return axios.post("/api/accounts", accountData);
+  },
+
+  // Get accounts from database
+  getAccounts: function (accountData) {
+    return axios.get("/api/accounts", accountData);
+  },
+
   addPlantToAccount: function (savePlant) {
     return axios.post("/api/accounts/addPlantToAccount", savePlant);
   },
+
+  updateAccount: function (accountID, account) {
+    return axios.post(`/api/accounts/${accountID}`, account);
+  },
+
   findAccout: function (query) {
     return axios.post("/api/accounts/findAccount", query);
   },
+
   findAccountById: function (id) {
     return axios.get(`/api/accounts/` + id);
   },
+
   getPlantsByAccount: function (query) {
     return axios.post("/api/accounts/getPlants", query);
   },

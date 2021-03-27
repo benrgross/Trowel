@@ -4,7 +4,12 @@ import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import { REMOVE_ACCOUNT, SET_SAVED_ACCOUNT } from "../../utils/actions";
+import {
+  REMOVE_ACCOUNT,
+  SET_SAVED_ACCOUNT,
+  ADD_ACCOUNT,
+  LOADING,
+} from "../../utils/actions";
 
 const Home = () => {
   const [_, dispatch] = useStoreContext();
@@ -20,7 +25,7 @@ const Home = () => {
   const zoneRef = useRef();
   const notesRef = useRef();
 
-  // get request of books from db
+  // get request of accounts from db
   useEffect(() => {
     getSavedAccounts();
   }, []);
@@ -50,9 +55,16 @@ const Home = () => {
       notes: notesRef.current.value.toLowerCase().trim(),
     };
 
+    dispatch({ type: LOADING });
+
     await API.saveAccount(account);
     setSavedAccounts(account, ...savedAccounts);
     console.log("newAccount: ", account);
+
+    dispatch({
+      type: ADD_ACCOUNT,
+      account: account,
+    });
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -63,15 +75,20 @@ const Home = () => {
     notesRef.current.value = "";
   };
 
-  const viewAccount = ({ accountName, clientContact, location, notes }) => {
+  const viewAccount = async (account) => {
+    const { data } = await API.getPlantsByAccount({
+      accountName: account,
+    });
+
     const accountObj = {
-      accountName,
-      client: clientContact.clientName,
-      clientPhone: clientContact.phone,
-      clientEmail: clientContact.email,
-      address: location.address,
-      distZone: location.distZone,
-      notes,
+      accountName: data.accountName,
+      client: data.clientContact.clientName,
+      clientPhone: data.clientContact.phone,
+      clientEmail: data.clientContact.email,
+      address: data.location.address,
+      distZone: data.location.distZone,
+      notes: data.notes,
+      plants: data.plants,
     };
 
     dispatch({
@@ -82,19 +99,19 @@ const Home = () => {
     history.push("/account");
   };
 
-  // const removeAccount = async (id) => {
-  //   try {
-  //     await API.deleteAccount(id);
-  //     console.log("Deleted Account ID: ", id);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
+  const removeAccount = async (id) => {
+    try {
+      await API.deleteAccount(id);
+      console.log("Deleted Account ID: ", id);
+    } catch (err) {
+      console.log(err);
+    }
 
-  //   dispatch({
-  //     type: REMOVE_ACCOUNT,
-  //     _id: id,
-  //   });
-  // };
+    dispatch({
+      type: REMOVE_ACCOUNT,
+      _id: id,
+    });
+  };
 
   return (
     <div>
@@ -139,7 +156,7 @@ const Home = () => {
               className="form-control"
             />
           </div>
-          <div className="form-group ">
+          <div className="form-group">
             <label>Account Location</label>
             <input
               name="account-location"
@@ -183,7 +200,7 @@ const Home = () => {
                 <div className="card" key={account._id}>
                   <div
                     className="card-body"
-                    onClick={() => viewAccount(account)}
+                    onClick={() => viewAccount(account.accountName)}
                   >
                     <span>
                       <h5 className="account-title">
@@ -202,7 +219,7 @@ const Home = () => {
                   <span>
                     <button
                       className="btn btn-danger"
-                      // onClick={() => removeAccount(account._id)}
+                      onClick={() => removeAccount(account._id)}
                     >
                       <FaTimes /> Delete Account{" "}
                     </button>

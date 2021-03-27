@@ -82,4 +82,8 @@ export default {
   deleteAccount: function (id) {
     return axios.delete("/api/accounts/" + id);
   },
+
+  getPlantsByAccount: function (query) {
+    return axios.post("/api/accounts/getPlants", query);
+  },
 };

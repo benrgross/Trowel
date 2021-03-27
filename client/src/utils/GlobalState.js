@@ -51,7 +51,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         plants: state.plants.filter((plant) => {
-          return plant._id !== plant._id;
+          return plant._id !== plant._id; // change to action._id
         }),
         loading: false,
       };
@@ -59,9 +59,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         accounts: state.accounts.filter((account) => {
-          return account._id !== account._id;
+          return account._id !== action._id;
         }),
-        loading: false,
       };
     case LOADING:
       return {
@@ -140,7 +139,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     email: "",
     user: {},
     account: {},
-    // accounts: [],
+    accounts: [],
     accountName: "",
     viewPlant: {
       commonName: "Plant Example",

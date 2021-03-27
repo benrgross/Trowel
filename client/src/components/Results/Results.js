@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 
@@ -52,15 +52,12 @@ function Results() {
       notes: "",
     };
 
-    console.log("Plant Object: ", plantObject);
-
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
     });
 
-    history.push("/plant")
-
+    history.push("/plant");
   };
 
   return (

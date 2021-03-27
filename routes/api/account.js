@@ -7,7 +7,10 @@ router.route("/").get(accountController.findAll).post(accountController.create);
 
 router.route("/addPlantToAccount").post(accountController.addPlantAccount);
 // Matches with "/api/posts/:id"
-router.route("/findAccount");
+router.route("/findAccount").get(accountController.findAccount);
+
+router.route("/getPlants").post(accountController.populatePlants);
+
 router
   .route("/:id")
   .get(accountController.findById)

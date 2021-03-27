@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 
 * {
-  font-family: 'Questrial', sans-serif;
+  font-family: "Questrial", sans-serif;
+}
+
+body {
+  /* background: linear-gradient(to right, rgb(34, 193, 195), rgb(253, 187, 45)); */
+  background: linear-gradient(to right, rgb(218, 210, 153), rgb(176, 218, 185));
 }

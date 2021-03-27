@@ -89,4 +89,8 @@ export default {
   getPlantsByAccount: function (query) {
     return axios.post("/api/accounts/getPlants", query);
   },
+
+  findNewAccount: function (query) {
+    return axios.get("/api/accounts/findNewAccount", query);
+  },
 };

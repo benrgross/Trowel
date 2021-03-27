@@ -63,7 +63,7 @@ function Results() {
   return (
     <div>
       {state.results.length <= 1 ? (
-        <h6>Search plants</h6>
+        ""
       ) : (
         <div>
           {state.results.map((plant) => (

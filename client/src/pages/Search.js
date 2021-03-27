@@ -72,28 +72,32 @@ function Search(type) {
     <div>
       <SearchFrom />
       <Results />
-      <div className="row">
-        <div className="col-md-6 d-flex justify-content-end">
-          {state.pageLinks.prev ? (
-            <div className="col-md-6 d-flex justify-content-end">
-              <FaArrowLeft onClick={last} style={{ cursor: "pointer" }} />{" "}
+      {state.results.length <= 1 ? (
+        ""
+      ) : (
+        <div className="row">
+          <div className="col-md-6 d-flex justify-content-end">
+            {state.pageLinks.prev ? (
+              <div className="col-md-6 d-flex justify-content-end">
+                <FaArrowLeft onClick={last} style={{ cursor: "pointer" }} />{" "}
+              </div>
+            ) : (
+              <div className="col-md-6 d-flex justify-content-end text-muted">
+                <FaArrowLeft />{" "}
+              </div>
+            )}
+          </div>
+          {state.pageLinks.next ? (
+            <div className="col-md-6 d-flex justify-content-start">
+              <FaArrowRight onClick={next} style={{ cursor: "pointer" }} />
             </div>
           ) : (
-            <div className="col-md-6 d-flex justify-content-end text-muted">
-              <FaArrowLeft />{" "}
+            <div className="col-md-6 d-flex justify-content-start text-muted">
+              <FaArrowRight />
             </div>
           )}
         </div>
-        {state.pageLinks.next ? (
-          <div className="col-md-6 d-flex justify-content-start">
-            <FaArrowRight onClick={next} style={{ cursor: "pointer" }} />
-          </div>
-        ) : (
-          <div className="col-md-6 d-flex justify-content-start text-muted">
-            <FaArrowRight />
-          </div>
-        )}
-      </div>
+      )}
     </div>
   );
 }

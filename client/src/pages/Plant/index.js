@@ -7,16 +7,6 @@ import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Plant = () => {
   const [state, dispatch] = useStoreContext();
-
-  let history = useHistory();
-
-  const savePlantObj = {
-    plant: state.viewPlant,
-    accountName: state.accountName,
-  };
-
-  console.log("Plant To Save: ", savePlantObj);
-
   const {
     viewPlant: {
       commonName,
@@ -40,6 +30,15 @@ const Plant = () => {
       soilTexture,
     },
   } = state;
+  console.log("Switch State: ", state.switch)
+  let history = useHistory();
+
+  const savePlantObj = {
+    plant: state.viewPlant,
+    accountName: state.accountName,
+  };
+
+  console.log("Plant To Save: ", savePlantObj);
 
   const savePlantSelection = async () => {
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
@@ -87,7 +86,7 @@ const Plant = () => {
       <h2>Plant Card:</h2>
 
       <div className="container spotlight-card">
-        <button onClick={savePlantSelection}>Add Plant</button>
+        {state.switch ? <button onClick={savePlantSelection}>Add Plant</button> : undefined}
         <p>Name: {commonName}</p>
         <p>Scientific Name: {scientificName}</p>
         {atmosHumidity ? <p>Humidity: {atmosHumidity}</p> : ""}
@@ -109,7 +108,16 @@ const Plant = () => {
         {native ? <p>Native: {native.join(", ")}</p> : ""}
         {soilNutriments ? <p>Soil Nutriments: {soilNutriments}</p> : ""}
         {soilTexture ? <p>Soil Texture: {soilTexture}</p> : ""}
-        <p>Notes: {notes}</p>
+        {!state.switch ? 
+        <div>
+          <p>Notes: {notes}</p>
+          <div className="form-group">
+            <label>Add Note</label>
+            <textarea name="Notes" placeholder="Water once a week..."></textarea>
+            <button>Add</button>
+          </div>
+        </div>
+         : undefined}
         <div className="container">
           {img ? (
             <img

@@ -14,13 +14,14 @@ router.route("/getPlants").post(accountController.populatePlants);
 router.route("/deletePlant/:id").post(accountController.deletePlant);
 
 router.route("/findNewAccount").get(accountController.findOne);
+router.route("/getPlantNote/:id").post(accountController.getPlantNote);
 
-router.route("/addPlantNote/:id").post(accountController.addPlantNote);
+router.route("/addPlantNote/:id").post(accountController.postPlantNote);
 
+// router.route("/updateNote/:id").post(accountController.updatePlantNote);
 router
   .route("/:id")
   .get(accountController.findById)
-  // .put(accountController.update)
   .delete(accountController.remove);
 
 module.exports = router;

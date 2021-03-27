@@ -75,16 +75,19 @@ const Home = () => {
           address: addressRef.current.value.toLowerCase().trim(),
           distZone: zoneRef.current.value.toLowerCase().trim(),
         },
-        notes: notesRef.current.value.toLowerCase().trim(),
       },
       userEmail: email,
     };
     dispatch({ type: LOADING });
 
-    await API.saveAccount(postAccount);
+    const saveAccount = await API.saveAccount(postAccount);
+    console.log("saveAccount", saveAccount);
+    const { data } = await API.findNewAccount(email);
+    console.log("addAccount", data.accounts[0]);
+
     dispatch({
       type: ADD_ACCOUNT,
-      account: account,
+      account: data.accounts[0],
     });
     console.log("Account array: ", state.accounts);
 
@@ -198,15 +201,6 @@ const Home = () => {
               className="form-control"
             />
           </div>
-          <div className="form-group ">
-            <label>Account Notes</label>
-            <textarea
-              name="notes"
-              ref={notesRef}
-              placeholder="Notes"
-              className="form-control"
-            />
-          </div>
           <button
             type="submit"
             className="btn btn-primary"
@@ -237,7 +231,7 @@ const Home = () => {
                   </ul>
                   <p>location: {account.location.address}</p>
                   <p>distribution zone: {account.location.distZone}</p>
-                  <p>notes: {account.notes}</p>
+                  <p>notes: {account.notes.note}</p>
                 </div>
                 <span>
                   <button

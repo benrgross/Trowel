@@ -11,6 +11,7 @@ router.route("/findAccount").get(accountController.findAccount);
 
 router.route("/getPlants").post(accountController.populatePlants);
 
+router.route("/findNewAccount").get(accountController.findOne);
 router
   .route("/:id")
   .get(accountController.findById)

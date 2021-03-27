@@ -74,6 +74,8 @@ const Home = () => {
       account: data.accounts[0],
     });
 
+    console.log("Account array: ", state.accounts);
+
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
     phoneRef.current.value = "";

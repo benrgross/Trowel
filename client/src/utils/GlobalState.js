@@ -9,7 +9,7 @@ import {
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
   ADD_ACCOUNT,
-  UPDATE_ACCOUNTS,
+  LOAD_ACCOUNTS,
   SPOTLIGHT,
   SAVE_TO_ACCOUNT,
 } from "./actions";
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
         loading: false,
       };
 
-    case UPDATE_ACCOUNTS:
+    case LOAD_ACCOUNTS:
       return {
         ...state,
         accounts: [...action.accounts],

@@ -1,5 +1,5 @@
 import "./home.css";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
@@ -8,7 +8,7 @@ import {
   REMOVE_ACCOUNT,
   SET_SAVED_ACCOUNT,
   ADD_ACCOUNT,
-  UPDATE_ACCOUNTS,
+  LOAD_ACCOUNTS,
   LOADING,
 } from "../../utils/actions";
 
@@ -36,7 +36,7 @@ const Home = () => {
 
     // set data to state
     dispatch({
-      type: UPDATE_ACCOUNTS,
+      type: LOAD_ACCOUNTS,
       accounts: data,
     });
     console.log("Account Data: ", data);

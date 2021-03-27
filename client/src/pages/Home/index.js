@@ -23,7 +23,6 @@ const Home = () => {
   const emailRef = useRef();
   const addressRef = useRef();
   const zoneRef = useRef();
-  const notesRef = useRef();
 
   // get request of accounts from db
   useEffect(() => {
@@ -46,20 +45,6 @@ const Home = () => {
   const saveAccount = async (event) => {
     event.preventDefault();
 
-    const account = {
-      accountName: accountNameRef.current.value.toLowerCase().trim(),
-      clientContact: {
-        clientName: clientNameRef.current.value.toLowerCase().trim(),
-        phone: phoneRef.current.value.toLowerCase().trim(),
-        email: emailRef.current.value.toLowerCase().trim(),
-      },
-      location: {
-        address: addressRef.current.value.toLowerCase().trim(),
-        distZone: zoneRef.current.value.toLowerCase().trim(),
-      },
-      notes: notesRef.current.value.toLowerCase().trim(),
-    };
-
     // object to post account and save to user
     const { email } = JSON.parse(localStorage.getItem("userInfo"));
     const postAccount = {
@@ -74,12 +59,10 @@ const Home = () => {
           address: addressRef.current.value.toLowerCase().trim(),
           distZone: zoneRef.current.value.toLowerCase().trim(),
         },
-
       },
       userEmail: email,
     };
     dispatch({ type: LOADING });
-
 
     const saveAccount = await API.saveAccount(postAccount);
     console.log("saveAccount", saveAccount);
@@ -89,11 +72,9 @@ const Home = () => {
     dispatch({
       type: ADD_ACCOUNT,
       account: data.accounts[0],
-    })
-    
-    console.log("Account array: ", state.accounts);
+    });
 
-    console.log("newAccount: ", account);
+    console.log("Account array: ", state.accounts);
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -101,7 +82,6 @@ const Home = () => {
     emailRef.current.value = "";
     addressRef.current.value = "";
     zoneRef.current.value = "";
-    notesRef.current.value = "";
   };
 
   const viewAccount = async (account) => {

@@ -90,6 +90,13 @@ module.exports = {
     }
   },
 
+  // updatePlantNote: async function (req, res) {
+  //   db.Account.findOneAndUpdate({accountName: req.params.id},
+  //     {
+  //       $set {""}
+  //     })
+  // },
+
   populatePlants: function (req, res) {
     db.Account.findOne(req.body)
       .populate({
@@ -101,23 +108,23 @@ module.exports = {
   },
 
   deletePlant: async function (req, res) {
-    console.log("Body: ", req.body.id)
-    console.log("Params ID: ", req.params.id)
-    try{
+    console.log("Body: ", req.body.id);
+    console.log("Params ID: ", req.params.id);
+    try {
       const updatedAccount = await db.Account.updateOne(
-        { _id: req.params.id }, 
+        { _id: req.params.id },
         {
           $pull: {
             plants: { _id: req.body.id },
           },
         },
         { new: true }
-        )
-        console.log("Updated Account", updatedAccount)
-        res.json(updatedAccount);
+      );
+      console.log("Updated Account", updatedAccount);
+      res.json(updatedAccount);
     } catch (err) {
       console.log(err);
-      res.json(err)
+      res.json(err);
     }
   },
   remove: function (req, res) {

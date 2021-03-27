@@ -3,7 +3,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { SAVE_TO_ACCOUNT } from "../../utils/actions";
 import API from "../../utils/API";
-import { get } from "mongoose";
+
 const Account = () => {
   const [state, dispatch] = useStoreContext();
   const {
@@ -69,12 +69,16 @@ const Account = () => {
       notes: "",
     };
     console.log("Plant Object: ", plantObject);
+
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
+      switch: false
     });
+
     history.push("/plant");
   };
+
   return (
     <div className="container">
       <h1>Account Page</h1>

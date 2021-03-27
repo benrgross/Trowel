@@ -8,12 +8,13 @@ import {
   REMOVE_ACCOUNT,
   SET_SAVED_ACCOUNT,
   ADD_ACCOUNT,
+  UPDATE_ACCOUNTS,
   LOADING,
 } from "../../utils/actions";
 
 const Home = () => {
-  const [_, dispatch] = useStoreContext();
-  const [savedAccounts, setSavedAccounts] = useState([]);
+  const [state, dispatch] = useStoreContext();
+  // const [savedAccounts, setSavedAccounts] = useState([]);
 
   let history = useHistory();
 
@@ -34,7 +35,10 @@ const Home = () => {
     const { data } = await API.getAccounts();
 
     // set data to state
-    setSavedAccounts(data);
+    dispatch({
+      type: UPDATE_ACCOUNTS,
+      accounts: data,
+    });
     console.log("Account Data: ", data);
   };
 
@@ -58,13 +62,14 @@ const Home = () => {
     dispatch({ type: LOADING });
 
     await API.saveAccount(account);
-    setSavedAccounts(account, ...savedAccounts);
-    console.log("newAccount: ", account);
-
     dispatch({
       type: ADD_ACCOUNT,
       account: account,
     });
+    console.log("Account array: ", state.accounts);
+
+    // setSavedAccounts(account, ...savedAccounts);
+    console.log("newAccount: ", account);
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -103,14 +108,13 @@ const Home = () => {
     try {
       await API.deleteAccount(id);
       console.log("Deleted Account ID: ", id);
+      dispatch({
+        type: REMOVE_ACCOUNT,
+        _id: id,
+      });
     } catch (err) {
       console.log(err);
     }
-
-    dispatch({
-      type: REMOVE_ACCOUNT,
-      _id: id,
-    });
   };
 
   return (
@@ -192,39 +196,37 @@ const Home = () => {
           </button>
         </form>
       </div>
-      {savedAccounts.length ? (
-        <div>
-          {savedAccounts.map((account) => {
+      {state.accounts.length ? (
+        <div className="container">
+          {state.accounts.map((account) => {
             return (
-              <div className="container">
-                <div className="card" key={account._id}>
-                  <div
-                    className="card-body"
-                    onClick={() => viewAccount(account.accountName)}
-                  >
-                    <span>
-                      <h5 className="account-title">
-                        Account: {account.accountName}
-                      </h5>
-                    </span>
-                    <h6>Client: {account.clientContact.clientName}</h6>
-                    <ul>
-                      <li>{account.clientContact.phone}</li>
-                      <li>{account.clientContact.email}</li>
-                    </ul>
-                    <p>location: {account.location.address}</p>
-                    <p>distribution zone: {account.location.distZone}</p>
-                    <p>notes: {account.notes}</p>
-                  </div>
+              <div className="card" key={account._id}>
+                <div
+                  className="card-body"
+                  onClick={() => viewAccount(account.accountName)}
+                >
                   <span>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => removeAccount(account._id)}
-                    >
-                      <FaTimes /> Delete Account{" "}
-                    </button>
+                    <h5 className="account-title">
+                      Account: {account.accountName}
+                    </h5>
                   </span>
+                  <h6>Client: {account.clientContact.clientName}</h6>
+                  <ul>
+                    <li>{account.clientContact.phone}</li>
+                    <li>{account.clientContact.email}</li>
+                  </ul>
+                  <p>location: {account.location.address}</p>
+                  <p>distribution zone: {account.location.distZone}</p>
+                  <p>notes: {account.notes}</p>
                 </div>
+                <span>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => removeAccount(account._id)}
+                  >
+                    <FaTimes /> Delete Account{" "}
+                  </button>
+                </span>
               </div>
             );
           })}

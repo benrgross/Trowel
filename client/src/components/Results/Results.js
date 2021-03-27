@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
+import "./style.css";
 
 function Results() {
   const [state, dispatch] = useStoreContext();
@@ -68,28 +69,32 @@ function Results() {
         <div>
           {state.results.map((plant) => (
             <div className="container">
-              <p>{plant.commonName}</p>
-              <p>{plant.scientificName} </p>
-              <div className="container">
+              <div className="card">
                 {plant.img ? (
-                  <img
-                    onClick={() => getPlant(plant)}
-                    alt={plant.commonName}
-                    className="img-thumbnail"
-                    style={{ height: "200px", cursor: "pointer" }}
-                    src={plant.img}
-                  />
+                  <div className="img-container">
+                    <img
+                      onClick={() => getPlant(plant)}
+                      alt={plant.commonName}
+                      className="img-thumbnail"
+                      src={plant.img}
+                    />
+                  </div>
                 ) : (
-                  <img
-                    onClick={() => getPlant(plant)}
-                    className="img-thumbnail"
-                    alt={plant.commonName}
-                    style={{ height: "200px", cursor: "pointer" }}
-                    src={
-                      "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
-                    }
-                  />
+                  <div className="img-container">
+                    <img
+                      onClick={() => getPlant(plant)}
+                      className="img-thumbnail"
+                      alt={plant.commonName}
+                      src={
+                        "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+                      }
+                    />
+                  </div>
                 )}
+                <div className="card-body">
+                  <p>{plant.commonName}</p>
+                  <p>{plant.scientificName} </p>
+                </div>
               </div>
             </div>
           ))}

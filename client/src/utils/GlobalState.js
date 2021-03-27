@@ -4,11 +4,14 @@ import {
   LOGIN,
   LOGOUT,
   REMOVE_PLANT,
+  REMOVE_ACCOUNT,
   RESULTS,
   SET_SAVED_PLANT,
   SET_SAVED_ACCOUNT,
+  ADD_ACCOUNT,
+  LOAD_ACCOUNTS,
   SPOTLIGHT,
-  SAVE_TO_ACCOUNT
+  SAVE_TO_ACCOUNT,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -25,6 +28,20 @@ const reducer = (state, action) => {
         loading: false,
       };
 
+    case LOAD_ACCOUNTS:
+      return {
+        ...state,
+        accounts: [...action.accounts],
+        loading: false,
+      };
+
+    case ADD_ACCOUNT:
+      return {
+        ...state,
+        accounts: [action.account, ...state.accounts],
+        loading: false,
+      };
+
     case SET_SAVED_PLANT:
       console.log("action", action.saved);
       return {
@@ -38,14 +55,20 @@ const reducer = (state, action) => {
         account: action.account,
         loading: false,
       };
-
     case REMOVE_PLANT:
       return {
         ...state,
         plants: state.plants.filter((plant) => {
-          return plant._id !== plant._id;
+          return plant._id !== plant._id; // change to action._id
         }),
-        lading: false,
+        loading: false,
+      };
+    case REMOVE_ACCOUNT:
+      return {
+        ...state,
+        accounts: state.accounts.filter((account) => {
+          return account._id !== action._id;
+        }),
       };
     case LOADING:
       return {
@@ -55,7 +78,7 @@ const reducer = (state, action) => {
     case SAVE_TO_ACCOUNT:
       return {
         ...state,
-        accountName: action.accountName
+        accountName: action.accountName,
       };
     case "LOAD_ACCOUNTS":
       return {

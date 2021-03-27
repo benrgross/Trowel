@@ -90,7 +90,7 @@ const Account = () => {
           </ul>
           <p>location: {address}</p>
           <p>distribution zone: {distZone}</p>
-          <p>notes: {notes}</p>
+          {/* <p>notes: {notes}</p> */}
         </div>
         <span>
           <button className="btn btn-danger" onClick={addPlant}>

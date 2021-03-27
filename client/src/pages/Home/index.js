@@ -213,7 +213,7 @@ const Home = () => {
                   </ul>
                   <p>location: {account.location.address}</p>
                   <p>distribution zone: {account.location.distZone}</p>
-                  <p>notes: {account.notes.note}</p>
+                  {/* <p>notes: {account.notes.note}</p> */}
                 </div>
                 <span>
                   <button

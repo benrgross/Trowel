@@ -31,12 +31,14 @@ const Home = () => {
   }, []);
 
   const getSavedAccounts = async () => {
-    const { data } = await API.getAccounts();
+    const { email } = JSON.parse(localStorage.getItem("userInfo"));
+    const { data } = await API.getAccounts(email);
+    console.log("getAccounts", data);
 
     // set data to state
     dispatch({
       type: LOAD_ACCOUNTS,
-      accounts: data,
+      accounts: data.accounts,
     });
     console.log("Account Data: ", data);
   };
@@ -58,13 +60,34 @@ const Home = () => {
       notes: notesRef.current.value.toLowerCase().trim(),
     };
 
+    // object to post account and save to user
+    const { email } = JSON.parse(localStorage.getItem("userInfo"));
+    const postAccount = {
+      account: {
+        accountName: accountNameRef.current.value.toLowerCase().trim(),
+        clientContact: {
+          clientName: clientNameRef.current.value.toLowerCase().trim(),
+          phone: phoneRef.current.value.toLowerCase().trim(),
+          email: emailRef.current.value.toLowerCase().trim(),
+        },
+        location: {
+          address: addressRef.current.value.toLowerCase().trim(),
+          distZone: zoneRef.current.value.toLowerCase().trim(),
+        },
+        // notes: notesRef.current.value.toLowerCase().trim(),
+      },
+      userEmail: email,
+    };
     dispatch({ type: LOADING });
 
-    const savedAccount = await API.saveAccount(account);
+    const savedAccount = await API.saveAccount(postAccount);
+    console.log("Saved in db", savedAccount)
+
+    // await API.saveAccount(postAccount);
 
     dispatch({
       type: ADD_ACCOUNT,
-      account: account,
+      account: savedAccount.account,
     });
     
     console.log("Account array: ", state.accounts);

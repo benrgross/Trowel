@@ -6,7 +6,7 @@ import API from "../../utils/API";
 function Results() {
   const [state, dispatch] = useStoreContext();
 
-  console.log("Account Name: ", state.accountName)
+  console.log("Account Name: ", state.accountName);
 
   let history = useHistory();
 
@@ -67,12 +67,25 @@ function Results() {
           <p>{plant.commonName}</p>
           <p>{plant.scientificName} </p>
           <div className="container">
-            <img
-              onClick={() => getPlant(plant)}
-              className="img-thumbnail"
-              style={{ height: "200px", cursor: "pointer" }}
-              src={plant.img}
-            />
+            {plant.img ? (
+              <img
+                onClick={() => getPlant(plant)}
+                alt={plant.commonName}
+                className="img-thumbnail"
+                style={{ height: "200px", cursor: "pointer" }}
+                src={plant.img}
+              />
+            ) : (
+              <img
+                onClick={() => getPlant(plant)}
+                className="img-thumbnail"
+                alt={plant.commonName}
+                style={{ height: "200px", cursor: "pointer" }}
+                src={
+                  "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+                }
+              />
+            )}
           </div>
         </div>
       ))}

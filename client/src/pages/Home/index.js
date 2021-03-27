@@ -35,21 +35,11 @@ const Home = () => {
     const { data } = await API.getAccounts();
 
     // set data to state
-<<<<<<< HEAD
-    // setSavedAccounts(data);
-    dispatch({
-      type: "LOAD_ACCOUNTS",
-      accounts: data
-    })
-    // console.log("Account Data: ", data);
-    console.log("Accounts State: ", state.accounts)
-=======
     dispatch({
       type: LOAD_ACCOUNTS,
       accounts: data,
     });
     console.log("Account Data: ", data);
->>>>>>> main
   };
 
   const saveAccount = async (event) => {
@@ -96,18 +86,6 @@ const Home = () => {
     });
 
     const accountObj = {
-<<<<<<< HEAD
-        accountID: data._id,
-        accountName: data.accountName,
-        client: data.clientContact.clientName,
-        clientPhone: data.clientContact.phone,
-        clientEmail: data.clientContact.email,
-        address: data.location.address,
-        distZone: data.location.distZone,
-        notes: data.notes,
-        plants: data.plants
-    }
-=======
       accountName: data.accountName,
       client: data.clientContact.clientName,
       clientPhone: data.clientContact.phone,
@@ -117,7 +95,6 @@ const Home = () => {
       notes: data.notes,
       plants: data.plants,
     };
->>>>>>> main
 
     dispatch({
       type: SET_SAVED_ACCOUNT,
@@ -220,11 +197,7 @@ const Home = () => {
         </form>
       </div>
       {state.accounts.length ? (
-<<<<<<< HEAD
-        <div>
-=======
         <div className="container">
->>>>>>> main
           {state.accounts.map((account) => {
             return (
               <div className="card" key={account._id}>

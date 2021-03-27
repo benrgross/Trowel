@@ -68,17 +68,17 @@ const Plant = () => {
     history.push("/account");
   };
 
-//   const addNote = (objectID) => {
-//     const note = {
-//         id: objectID,
-//         note: {
-//             note: noteRef.current.value
-//         }
-//     }
-//     console.log("Posted Note Obj: ", note)
+  const addNote = (objectID) => {
+    const note = {
+        id: objectID,
+        note: {
+            note: noteRef.current.value
+        }
+    }
+    console.log("Posted Note Obj: ", note)
 
-//     API.postPlantNote(accountID, note);
-// }
+    API.postPlantNote(state.account.accountID, note);
+}
 
   return (
     <div>

@@ -1,14 +1,20 @@
 import "./home.css";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import { SET_SAVED_ACCOUNT } from "../../utils/actions";
+import {
+  REMOVE_ACCOUNT,
+  SET_SAVED_ACCOUNT,
+  ADD_ACCOUNT,
+  LOAD_ACCOUNTS,
+  LOADING,
+} from "../../utils/actions";
 
 const Home = () => {
-  const [_, dispatch] = useStoreContext();
-  const [savedAccounts, setSavedAccounts] = useState([]);
+  const [state, dispatch] = useStoreContext();
+  // const [savedAccounts, setSavedAccounts] = useState([]);
 
   let history = useHistory();
 
@@ -20,7 +26,7 @@ const Home = () => {
   const zoneRef = useRef();
   const notesRef = useRef();
 
-  // get request of books from db
+  // get request of accounts from db
   useEffect(() => {
     getSavedAccounts();
   }, []);
@@ -29,16 +35,33 @@ const Home = () => {
     const { data } = await API.getAccounts();
 
     // set data to state
-    setSavedAccounts(data);
+    dispatch({
+      type: LOAD_ACCOUNTS,
+      accounts: data,
+    });
     console.log("Account Data: ", data);
   };
 
   const saveAccount = async (event) => {
     event.preventDefault();
 
-    const { email } = JSON.parse(localStorage.getItem("userInfo"));
-    console.log(email);
     const account = {
+      accountName: accountNameRef.current.value.toLowerCase().trim(),
+      clientContact: {
+        clientName: clientNameRef.current.value.toLowerCase().trim(),
+        phone: phoneRef.current.value.toLowerCase().trim(),
+        email: emailRef.current.value.toLowerCase().trim(),
+      },
+      location: {
+        address: addressRef.current.value.toLowerCase().trim(),
+        distZone: zoneRef.current.value.toLowerCase().trim(),
+      },
+      notes: notesRef.current.value.toLowerCase().trim(),
+    };
+
+    // object to post account and save to user
+    const { email } = JSON.parse(localStorage.getItem("userInfo"));
+    const postAccount = {
       account: {
         accountName: accountNameRef.current.value.toLowerCase().trim(),
         clientContact: {
@@ -54,10 +77,17 @@ const Home = () => {
       },
       userEmail: email,
     };
+    dispatch({ type: LOADING });
 
-    const newAccount = await API.saveAccount(account);
+    await API.saveAccount(postAccount);
+    dispatch({
+      type: ADD_ACCOUNT,
+      account: account,
+    });
+    console.log("Account array: ", state.accounts);
+
+    // setSavedAccounts(account, ...savedAccounts);
     console.log("newAccount: ", account);
-    console.log(newAccount);
 
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
@@ -68,15 +98,20 @@ const Home = () => {
     notesRef.current.value = "";
   };
 
-  const viewAccount = ({ accountName, clientContact, location, notes }) => {
+  const viewAccount = async (account) => {
+    const { data } = await API.getPlantsByAccount({
+      accountName: account,
+    });
+
     const accountObj = {
-      accountName,
-      client: clientContact.clientName,
-      clientPhone: clientContact.phone,
-      clientEmail: clientContact.email,
-      address: location.address,
-      distZone: location.distZone,
-      notes,
+      accountName: data.accountName,
+      client: data.clientContact.clientName,
+      clientPhone: data.clientContact.phone,
+      clientEmail: data.clientContact.email,
+      address: data.location.address,
+      distZone: data.location.distZone,
+      notes: data.notes,
+      plants: data.plants,
     };
 
     dispatch({
@@ -85,6 +120,19 @@ const Home = () => {
     });
 
     history.push("/account");
+  };
+
+  const removeAccount = async (id) => {
+    try {
+      await API.deleteAccount(id);
+      console.log("Deleted Account ID: ", id);
+      dispatch({
+        type: REMOVE_ACCOUNT,
+        _id: id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -130,7 +178,7 @@ const Home = () => {
               className="form-control"
             />
           </div>
-          <div className="form-group ">
+          <div className="form-group">
             <label>Account Location</label>
             <input
               name="account-location"
@@ -166,36 +214,37 @@ const Home = () => {
           </button>
         </form>
       </div>
-      {savedAccounts.length ? (
-        <div>
-          {savedAccounts.map((account) => {
+      {state.accounts.length ? (
+        <div className="container">
+          {state.accounts.map((account) => {
             return (
-              <div className="container">
-                <div className="card">
-                  <div
-                    className="card-body"
-                    onClick={() => viewAccount(account)}
-                  >
-                    <span>
-                      <h5 className="account-title">
-                        Account: {account.accountName}
-                      </h5>
-                    </span>
-                    <h6>Client: {account.clientContact.clientName}</h6>
-                    <ul>
-                      <li>{account.clientContact.phone}</li>
-                      <li>{account.clientContact.email}</li>
-                    </ul>
-                    <p>location: {account.location.address}</p>
-                    <p>distribution zone: {account.location.distZone}</p>
-                    <p>notes: {account.notes}</p>
-                  </div>
+              <div className="card" key={account._id}>
+                <div
+                  className="card-body"
+                  onClick={() => viewAccount(account.accountName)}
+                >
                   <span>
-                    <button className="btn btn-danger">
-                      <FaTimes /> Delete Account{" "}
-                    </button>
+                    <h5 className="account-title">
+                      Account: {account.accountName}
+                    </h5>
                   </span>
+                  <h6>Client: {account.clientContact.clientName}</h6>
+                  <ul>
+                    <li>{account.clientContact.phone}</li>
+                    <li>{account.clientContact.email}</li>
+                  </ul>
+                  <p>location: {account.location.address}</p>
+                  <p>distribution zone: {account.location.distZone}</p>
+                  <p>notes: {account.notes}</p>
                 </div>
+                <span>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => removeAccount(account._id)}
+                  >
+                    <FaTimes /> Delete Account{" "}
+                  </button>
+                </span>
               </div>
             );
           })}

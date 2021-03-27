@@ -38,12 +38,14 @@ const accountSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Plant",
       },
-      notes: [
-        {
-          note: String,
-          date: { type: Date, default: Date.now },
-        },
-      ],
+      lightCondition: {
+        type: String,
+        required: false,
+      },
+      notes: {
+        note: String,
+        date: { type: Date, default: Date.now },
+      },
     },
   ],
 });

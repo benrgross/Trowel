@@ -11,8 +11,7 @@ import {
   ADD_ACCOUNT,
   LOAD_ACCOUNTS,
   SPOTLIGHT,
-  SAVE_TO_ACCOUNT,
-  SWITCH_SPOTLIGHT
+  SAVE_TO_ACCOUNT
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -82,16 +81,11 @@ const reducer = (state, action) => {
         ...state,
         accountName: action.accountName,
       };
-      
-      case SWITCH_SPOTLIGHT:
-      return {
-        ...state,
-        switch: action.switch,
-      };
 
     case SPOTLIGHT:
       return {
         ...state,
+        switch: action.switch,
         viewPlant: {
           atmosHumidity: action.spotlight.atmosHumidity,
           bloomMonths: action.spotlight.bloomMonths,

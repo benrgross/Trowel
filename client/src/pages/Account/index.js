@@ -69,12 +69,16 @@ const Account = () => {
       notes: "",
     };
     console.log("Plant Object: ", plantObject);
+
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
+      switch: false
     });
+
     history.push("/plant");
   };
+
   return (
     <div className="container">
       <h1>Account Page</h1>

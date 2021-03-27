@@ -59,12 +59,10 @@ const Home = () => {
           address: addressRef.current.value.toLowerCase().trim(),
           distZone: zoneRef.current.value.toLowerCase().trim(),
         },
-
       },
       userEmail: email,
     };
     dispatch({ type: LOADING });
-
 
     const saveAccount = await API.saveAccount(postAccount);
     console.log("saveAccount", saveAccount);
@@ -74,10 +72,13 @@ const Home = () => {
     dispatch({
       type: ADD_ACCOUNT,
       account: data.accounts[0],
-    })
-    
+    });
+
+<<<<<<< HEAD
     console.log("Account array: ", state.accounts);
 
+=======
+>>>>>>> 05064b62690dea071b5f7faf03e1c1948042791e
     accountNameRef.current.value = "";
     clientNameRef.current.value = "";
     phoneRef.current.value = "";

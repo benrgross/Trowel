@@ -90,6 +90,39 @@ module.exports = {
     }
   },
 
+  addPlantNote: async function (req, res) {
+    try {
+      const addNote = await db.Account.updateOne(
+        { _id: req.params.id, "plants._id": req.body.id },
+        {
+          $push: { "plants.$.notes": req.body.note },
+        },
+        { new: true }
+      );
+      console.log(addNote);
+      res.json(addNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
+  // updatePlantNote: async function (req, res) {
+  //   try {
+  //     const addNote = await db.Account.update(
+  //       { _id: req.params.id, "plants._id": req.body.id },
+  //       {
+  //         $set: { "plants.notes.$.note": req.body.note },
+  //       },
+  //       { new: true }
+  //     );
+  //     res.json(addNote);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.json(err);
+  //   }
+  // },
+
   populatePlants: function (req, res) {
     db.Account.findOne(req.body)
       .populate({
@@ -101,23 +134,23 @@ module.exports = {
   },
 
   deletePlant: async function (req, res) {
-    console.log("Body: ", req.body.id)
-    console.log("Params ID: ", req.params.id)
-    try{
+    console.log("Body: ", req.body.id);
+    console.log("Params ID: ", req.params.id);
+    try {
       const updatedAccount = await db.Account.updateOne(
-        { _id: req.params.id }, 
+        { _id: req.params.id },
         {
           $pull: {
             plants: { _id: req.body.id },
           },
         },
         { new: true }
-        )
-        console.log("Updated Account", updatedAccount)
-        res.json(updatedAccount);
+      );
+      console.log("Updated Account", updatedAccount);
+      res.json(updatedAccount);
     } catch (err) {
       console.log(err);
-      res.json(err)
+      res.json(err);
     }
   },
   remove: function (req, res) {

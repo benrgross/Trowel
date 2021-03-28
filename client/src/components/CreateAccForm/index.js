@@ -104,7 +104,7 @@ function CreateAccForm() {
                 className="form-control"
               />
             </div>
-            <div className="form-group ">
+            <div className="form-group">
               <label>Client Name</label>
               <input
                 name="client-name"
@@ -113,7 +113,7 @@ function CreateAccForm() {
                 className="form-control"
               />
             </div>
-            <div className="form-group ">
+            <div className="form-group">
               <label>Phone Number</label>
               <input
                 name="client-phone"
@@ -122,7 +122,7 @@ function CreateAccForm() {
                 className="form-control"
               />
             </div>
-            <div className="form-group ">
+            <div className="form-group">
               <label>Email</label>
               <input
                 name="email"
@@ -140,7 +140,7 @@ function CreateAccForm() {
                 className="form-control"
               />
             </div>
-            <div className="form-group ">
+            <div className="form-group">
               <label>District Zone</label>
               <input
                 name="district-zone"

@@ -5,7 +5,7 @@
 
 .btn.btn-success.show-btn {
   padding: 1rem;
-  margin-right: 5%;
+  margin-right: 7%;
   margin-bottom: 5%;
 }
 
@@ -14,6 +14,9 @@
   border-radius: 5px;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
   margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #4caf5030;
 }
 
 .close-btn-div {

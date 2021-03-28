@@ -56,6 +56,7 @@ function Results() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
+      switch: true,
     });
 
     history.push("/plant");

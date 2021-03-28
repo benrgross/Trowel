@@ -65,7 +65,7 @@ module.exports = {
   },
 
   addPlantAccount: async function (req, res) {
-    console.log("req", req.body.plant, req.body.accountName);
+    console.log("req", req.body.accountName, req.body.lightCondition);
     try {
       const newPlant = await db.Plant.create(req.body.plant);
       console.log(newPlant);
@@ -82,13 +82,83 @@ module.exports = {
         },
         { new: true }
       );
-      console.log("plant to account", plantToAccount);
+
       res.json(plantToAccount);
     } catch (err) {
       console.log(err);
       res.json(err);
     }
   },
+
+  lightConditions: async function (req, res) {
+    console.log("req", req.body.lightCondition, req.body.id);
+    try {
+      const plantLight = await db.Account.findOneAndUpdate(
+        { _id: req.body.id, "plants._id": req.body.plantId },
+        {
+          $set: { "plants.$.lightCondition": req.body.lightCondition },
+        },
+        { new: true }
+      );
+      console.log("light", plantLight);
+      res.json(plantLight);
+    } catch (err) {
+      res.json(err);
+    }
+  },
+
+  postPlantNote: async function (req, res) {
+    try {
+      const addNote = await db.Account.updateOne(
+        { _id: req.body.id, "plants._id": req.body.id },
+        {
+          $set: { "plants.$.notes": req.body.note },
+        },
+        { new: true }
+      );
+      console.log(addNote);
+      res.json(addNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
+  getPlantNote: async function (req, res) {
+    try {
+      const getNote = await db.Account.findOne({
+        _id: req.params.id,
+        "plants.notes._id": req.body.id,
+      });
+
+      console.log(getNote);
+      res.json(getNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
+  // updatePlantNote: async function (req, res) {
+  //   try {
+  //     const updateNote = await db.Account.updateOne(
+  //       {
+  //         _id: req.params.id,
+  //         "plants.notes_id": req.body.plantsId,
+  //         "plants.notes._id": req.body.id,
+  //       },
+  //       {
+  //         $set: { "plants.notes.note": "note" },
+  //       },
+  //       { new: true }
+  //     );
+  //     console.log(updateNote);
+  //     res.json(updateNote);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.json(err);
+  //   }
+  // },
 
   populatePlants: function (req, res) {
     db.Account.findOne(req.body)
@@ -101,23 +171,23 @@ module.exports = {
   },
 
   deletePlant: async function (req, res) {
-    console.log("Body: ", req.body.id)
-    console.log("Params ID: ", req.params.id)
-    try{
+    console.log("Body: ", req.body.id);
+    console.log("Params ID: ", req.params.id);
+    try {
       const updatedAccount = await db.Account.updateOne(
-        { _id: req.params.id }, 
+        { _id: req.params.id },
         {
           $pull: {
             plants: { _id: req.body.id },
           },
         },
         { new: true }
-        )
-        console.log("Updated Account", updatedAccount)
-        res.json(updatedAccount);
+      );
+      console.log("Updated Account", updatedAccount);
+      res.json(updatedAccount);
     } catch (err) {
       console.log(err);
-      res.json(err)
+      res.json(err);
     }
   },
   remove: function (req, res) {

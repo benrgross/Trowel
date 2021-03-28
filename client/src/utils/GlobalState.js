@@ -55,12 +55,16 @@ const reducer = (state, action) => {
         account: action.account,
         loading: false,
       };
+
     case REMOVE_PLANT:
       return {
         ...state,
-        plants: state.plants.filter((plant) => {
-          return plant._id !== action._id;
-        }),
+        account: {
+          ...state.account,
+          plants: state.account.plants.filter((plant) => {
+            return plant._id !== action.plantID;
+          }),
+        },
         loading: false,
       };
     case REMOVE_ACCOUNT:
@@ -80,10 +84,13 @@ const reducer = (state, action) => {
         ...state,
         accountName: action.accountName,
       };
+
     case SPOTLIGHT:
       return {
         ...state,
+        switch: action.switch,
         viewPlant: {
+          id: action.spotlight.id,
           atmosHumidity: action.spotlight.atmosHumidity,
           bloomMonths: action.spotlight.bloomMonths,
           commonName: action.spotlight.commonName,
@@ -146,6 +153,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
+    switch: false,
     account: {},
     accounts: [],
     accountName: "",

@@ -90,6 +90,8 @@ const Home = () => {
       accountName: account,
     });
 
+    console.log("Clicked Account Data: ", data);
+
     const accountObj = {
       accountID: data._id,
       accountName: data.accountName,
@@ -219,7 +221,7 @@ const Home = () => {
                   <p>location: {account.location.address}</p>
                   <p>distribution zone: {account.location.distZone}</p>
                   <p># of Plants: {account.plants.length}</p>
-                  <p>notes: {account.notes.note}</p>
+                  {/* <p>notes: {account.notes.note}</p> */}
                 </div>
                 <span>
                   <button

@@ -1,20 +1,16 @@
 import "./plant.css";
-import React from "react";
+import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
+import { useHistory } from "react-router-dom";
+import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Plant = () => {
-  const [state] = useStoreContext();
-
-  const savePlantObj = {
-    plant: state.viewPlant,
-    accountName: state.accountName,
-  };
-
-  console.log("Plant To Save: ", savePlantObj);
-
+  const [state, dispatch] = useStoreContext();
+  const lightRef = useRef();
   const {
     viewPlant: {
+      id,
       commonName,
       scientificName,
       img,
@@ -36,21 +32,83 @@ const Plant = () => {
       soilTexture,
     },
   } = state;
+  console.log("Switch State: ", state.switch);
+  let history = useHistory();
+  const noteRef = useRef();
+
+  console.log("Switch State: ", state.switch)
+
+  const savePlantObj = {
+    plant: state.viewPlant,
+    accountName: state.accountName,
+  };
+
+  console.log("Plant To Save: ", savePlantObj);
 
   const savePlantSelection = async () => {
-    const { data: savedPlant } = await API.addPlantToAccount(savePlantObj);
+    console.log("lightRef", lightRef.current.value);
+    const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
 
+    const saveLight = {
+      id: newPlant._id,
+      plantId: newPlant.plants[newPlant.plants.length - 1]._id,
+      accountName: state.accountName,
+      lightCondition: lightRef.current.value,
+    };
+
+    await API.addLightConditions(saveLight);
     console.log("Plant Saved!");
+
+    const { data } = await API.getPlantsByAccount({
+      accountName: state.accountName,
+    });
+    console.log("account pull", data);
+
+    const accountObj = {
+      accountID: data._id,
+      accountName: data.accountName,
+      client: data.clientContact.clientName,
+      clientPhone: data.clientContact.phone,
+      clientEmail: data.clientContact.email,
+      address: data.location.address,
+      distZone: data.location.distZone,
+      notes: data.notes,
+      plants: data.plants,
+    };
+
+    dispatch({
+      type: SET_SAVED_ACCOUNT,
+      account: accountObj,
+    });
+
+    history.push("/account");
   };
+
+  const addNote = (objectID) => {
+    console.log("Plant ID: ", objectID)
+    console.log("Account ID:", state.account.accountID)
+
+    const note = {
+        id: objectID,
+        note: {
+            note: noteRef.current.value,
+            date: new Date()
+        }
+    }
+    console.log("Posted Note Obj: ", note)
+
+    API.postPlantNote(state.account.accountID, note);
+}
 
   return (
     <div>
       <h1>View A Plant Here!</h1>
       <h2>Plant Card:</h2>
 
-      {/* TODO: Add Ternary statement for null values */}
       <div className="container spotlight-card">
-        <button onClick={savePlantSelection}>Add Plant</button>
+        {state.switch ? (
+          <button onClick={savePlantSelection}>Add Plant</button>
+        ) : undefined}
         <p>Name: {commonName}</p>
         <p>Scientific Name: {scientificName}</p>
         {atmosHumidity ? <p>Humidity: {atmosHumidity}</p> : ""}
@@ -72,7 +130,31 @@ const Plant = () => {
         {native ? <p>Native: {native.join(", ")}</p> : ""}
         {soilNutriments ? <p>Soil Nutriments: {soilNutriments}</p> : ""}
         {soilTexture ? <p>Soil Texture: {soilTexture}</p> : ""}
-        <p>Notes: {notes}</p>
+        <p>Select The Light Conditions:</p>
+        <select
+          ref={lightRef}
+          style={{ width: "25%" }}
+          className="form-control"
+        >
+          <option>Full Sun</option>
+          <option>Partial Sun</option>
+          <option>Shade</option>
+          <option>Deep Shade</option>
+        </select>
+        {!state.switch ? (
+          <div>
+            <p>Notes: {notes}</p>
+            <div className="form-group">
+              <label>Add Note</label>
+              <textarea
+                name="Notes"
+                ref={noteRef}
+                placeholder="Water once a week..."
+              ></textarea>
+              <button onClick={() => addNote(id)}>Add</button>
+            </div>
+          </div>
+        ) : undefined}
         <div className="container">
           {img ? (
             <img

@@ -71,7 +71,9 @@ export default {
   },
 
   updateAccount: function (accountID, plantID) {
-    return axios.post(`/api/accounts/deletePlant/${accountID}`, { id: plantID });
+    return axios.post(`/api/accounts/deletePlant/${accountID}`, {
+      id: plantID,
+    });
   },
 
   findAccout: function (query) {
@@ -92,5 +94,13 @@ export default {
 
   findNewAccount: function (query) {
     return axios.get("/api/accounts/findNewAccount", query);
+  },
+
+  postPlantNote: function (id, note) {
+    return axios.post(`/api/accounts/addPlantNote/${id}`, note);
+  },
+
+  addLightConditions: function (conditions) {
+    return axios.post("/api/accounts/addLightConditions", conditions);
   },
 };

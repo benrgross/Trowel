@@ -68,7 +68,7 @@ function AccountCard() {
                         <span className="account-title">
                           <h5>Account: {account.accountName}</h5>
                           <button
-                            className="btn btn-danger"
+                            className="btn delete"
                             onClick={() => removeAccount(account._id)}
                           >
                             <FaRegTrashAlt />

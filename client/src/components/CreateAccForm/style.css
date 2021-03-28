@@ -4,7 +4,7 @@
 }
 
 .btn.show-btn {
-  color: #fff;
+  color: lightgoldenrodyellow;
   background-color: #61c177;
   border: 3px solid #468d56;
   padding: 1rem;
@@ -14,7 +14,7 @@
 }
 
 .btn.submit {
-  color: #fff;
+  color: lightgoldenrodyellow;
   background-color: #61c177;
   border: 3px solid #468d56;
   border-radius: 15px;
@@ -22,9 +22,23 @@
 
 .btn.show-btn:hover,
 .btn.submit:hover {
-  color: #fff;
+  color: lightgoldenrodyellow;
   background-color: #468d56;
   border: 3px solid #61c177;
+}
+
+.btn.btn-outline.close-btn {
+  border-radius: 15px;
+  background-color: rgba(150, 39, 20, 0);
+  color: rgb(224, 59, 30);
+  border: 2px solid rgb(224, 59, 30);
+}
+
+.btn.btn-outline.close-btn:hover {
+  border-radius: 15px;
+  background-color: rgb(224, 59, 30);
+  color: lightgoldenrodyellow;
+  border: 2px solid lightgoldenrodyellow;
 }
 
 .account-form {

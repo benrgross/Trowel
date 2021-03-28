@@ -5,6 +5,17 @@
   background-color: #0a3e0c14;
   border: 3px solid lightgoldenrodyellow;
   border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card.account-cards:hover {
+  cursor: pointer;
+  margin-bottom: 5%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  background-color: #0a3e0c14;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
+  transform: scale(1.05);
 }
 
 .account-title {
@@ -14,4 +25,20 @@
 
 .account-info {
   text-transform: capitalize;
+}
+
+.btn.delete {
+  border-radius: 10px;
+  background-color: rgb(224, 59, 30);
+  color: lightgoldenrodyellow;
+  border: 2px solid lightgoldenrodyellow;
+  height: 50px;
+}
+
+.btn.delete:hover {
+  border-radius: 10px;
+  background-color: rgb(206, 54, 27);
+  color: lightgoldenrodyellow;
+  border: 2px solid lightgoldenrodyellow;
+  height: 50px;
 }

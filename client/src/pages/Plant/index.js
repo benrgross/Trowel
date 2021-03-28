@@ -36,7 +36,7 @@ const Plant = () => {
   let history = useHistory();
   const noteRef = useRef();
 
-  console.log("Switch State: ", state.switch)
+  console.log("Switch State: ", state.switch);
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -84,21 +84,22 @@ const Plant = () => {
     history.push("/account");
   };
 
-  const addNote = (objectID) => {
-    console.log("Plant ID: ", objectID)
-    console.log("Account ID:", state.account.accountID)
+  const addNote = async (objectID) => {
+    console.log("Plant ID: ", objectID);
+    console.log("Account ID:", state.account.accountID);
 
     const note = {
-        id: objectID,
-        note: {
-            note: noteRef.current.value,
-            date: new Date()
-        }
-    }
-    console.log("Posted Note Obj: ", note)
+      id: objectID,
+      note: {
+        note: noteRef.current.value,
+        date: new Date(),
+      },
+    };
+    console.log("Posted Note Obj: ", note);
 
-    API.postPlantNote(state.account.accountID, note);
-}
+    const addNote = await API.postPlantNote(state.account.accountID, note);
+    console.log(addNote);
+  };
 
   return (
     <div>

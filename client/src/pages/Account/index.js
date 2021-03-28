@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-import { SAVE_TO_ACCOUNT } from "../../utils/actions";
+import { REMOVE_PLANT, SAVE_TO_ACCOUNT, LOADING } from "../../utils/actions";
 import API from "../../utils/API";
 
 const Account = () => {
@@ -19,11 +19,20 @@ const Account = () => {
   } = state.account;
   console.log("Account State:", state.account);
   let history = useHistory();
+
   const removePlant = async (id) => {
+    dispatch({
+      type: LOADING,
+    });
     console.log("Account ID", accountID);
     console.log("Plant ID", id);
     const update = await API.updateAccount(accountID, id);
     console.log("Update Successful!", update);
+
+    dispatch({
+      type: REMOVE_PLANT,
+      plantID: id,
+    });
   };
   const addPlant = () => {
     // dispatch state of current account that the plant will be saved to
@@ -73,7 +82,7 @@ const Account = () => {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: false
+      switch: false,
     });
 
     history.push("/plant");
@@ -94,6 +103,7 @@ const Account = () => {
           </ul>
           <p>location: {address}</p>
           <p>distribution zone: {distZone}</p>
+
           {/* <p>notes: {notes}</p> */}
         </div>
         <span>
@@ -131,6 +141,7 @@ const Account = () => {
               ) : undefined}
               <p>Soil Nutriments: {plant.soilNutriments}</p>
               <p>Soil Texture: {plant.soilTexture}</p>
+
               {/* <p>Notes: {notes}</p> */}
               <div className="container"></div>
             </div>

@@ -81,7 +81,7 @@ const Account = () => {
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
       notes: notes ? notes.note : "",
-      notesDate: notes ? notes.date : "No Notes Have Been Added Yet"
+      notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
     console.log("Plant Object: ", plantObject);
 
@@ -119,16 +119,73 @@ const Account = () => {
       </div>
       <h2>Plants In Account: </h2>
       {plants
-        ? plants.map(({ plant, _id, notes, lightCondition }) => (
+        ? plants.map(({ plant, _id, lightCondition }) => (
             <div className="container spotlight-card" key={_id}>
               <img
                 className="img-thumbnail"
                 style={{ height: "200px", cursor: "pointer" }}
                 src={plant.img}
               />
-              <button onClick={() => getPlant(plant, _id, notes)}>Notes</button>
-              <button onClick={() => removePlant(_id)}>Delete Plant</button>
-              <p>Name: {plant.commonName}</p>
+              <button
+                className="btn btn-danger"
+                onClick={() => removePlant(_id)}
+              >
+                Delete Plant
+              </button>
+              <p>Name - {plant.commonName}</p>
+              {plant.scientificName ? (
+                <p>Scientific Name - {plant.scientificName}</p>
+              ) : (
+                ""
+              )}
+              {plant.atmosHumidity ? (
+                <p>Humidity - {plant.atmosHumidity}</p>
+              ) : (
+                ""
+              )}
+              {plant.edible ? <p>Edible - {plant.edible}</p> : ""}
+              {plant.family ? <p>Family - {plant.family}</p> : ""}
+              {plant.familyCommonName ? (
+                <p>Family Common Name - {plant.familyCommonName}</p>
+              ) : (
+                ""
+              )}
+              {plant.genus ? <p>Genus - {plant.genus}</p> : ""}
+              {plant.growthHabit ? (
+                <p>Growth Habit - {plant.growthHabit}</p>
+              ) : (
+                ""
+              )}
+              {plant.heightAvgCm ? (
+                <p>Average Height - {plant.heightAvgCm}</p>
+              ) : (
+                ""
+              )}
+              {plant.light ? <p>Light Level - {plant.light}</p> : ""}
+              {plant.maxPh ? <p>Max pH Level - {plant.maxPh}</p> : ""}
+              {plant.minPh ? <p>Minimum pH Level - {plant.minPh}</p> : ""}
+              {plant.maxPrecipitation ? (
+                <p>Max Precipitation - {plant.maxPrecipitation}</p>
+              ) : (
+                ""
+              )}
+              {plant.minPrecipitation ? (
+                <p>Minimum Precipitation - {plant.minPrecipitation}</p>
+              ) : (
+                ""
+              )}
+              {plant.native ? <p>Native - {plant.native.join(", ")}</p> : ""}
+              {plant.soilNutriments ? (
+                <p>Soil Nutriments - {plant.soilNutriments}</p>
+              ) : (
+                ""
+              )}
+              {plant.soilTexture ? (
+                <p>Soil Texture - {plant.soilTexture}</p>
+              ) : (
+                ""
+              )}
+              {/* <p>Name: {plant.commonName}</p>
               <p>Humidity: {plant.atmosHumidity}</p>
               <p>Light Condition: {lightCondition}</p>
               <p>Bloom Months: {plant.bloomMonths}</p>
@@ -146,7 +203,7 @@ const Account = () => {
                 <p>Native: {plant.native.join(", ")}</p>
               ) : undefined}
               <p>Soil Nutriments: {plant.soilNutriments}</p>
-              <p>Soil Texture: {plant.soilTexture}</p>
+              <p>Soil Texture: {plant.soilTexture}</p> */}
 
               {/* <p>Notes: {notes}</p> */}
               <div className="container"></div>

@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-import { FaRegTrashAlt, FaPlus } from "react-icons/fa";
+import { FaRegTrashAlt, FaPlus, FaMinus } from "react-icons/fa";
 import {
   REMOVE_ACCOUNT,
   SET_SAVED_ACCOUNT,
@@ -133,6 +133,14 @@ const Home = () => {
     });
   };
 
+  const closeForm = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: SHOW_FORM,
+      display: true,
+    });
+  };
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -144,6 +152,12 @@ const Home = () => {
       {state.display ? (
         <div className="container">
           <form className="shadow">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => closeForm()}
+            >
+              <FaMinus />
+            </button>
             <div className="form-group">
               <label>Account Name</label>
               <input

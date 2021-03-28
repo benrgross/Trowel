@@ -41,7 +41,7 @@ const Account = () => {
       type: SAVE_TO_ACCOUNT,
       accountName: accountName,
     });
-    history.push("/");
+    history.push("/search");
   };
   const getPlant = async (plant, id, notes) => {
     console.log("Plant ID: ", id);
@@ -207,7 +207,7 @@ const Account = () => {
           ))
         : "No Plants Added"}
       <footer>
-        <Link to="/home">
+        <Link to="/">
           <BackBtn />
         </Link>
       </footer>

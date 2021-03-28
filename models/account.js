@@ -43,8 +43,8 @@ const accountSchema = new Schema({
         required: false,
       },
       notes: {
-        note: String,
-        date: { type: Date, default: Date.now },
+        note: { type: String },
+        date: { type: String },
       },
     },
   ],

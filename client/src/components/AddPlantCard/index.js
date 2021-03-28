@@ -96,7 +96,7 @@ function AddPlantCard() {
     <div>
       <div className="row ">
         <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-          <h1>View A Plant Here!</h1>
+          <h1>{commonName}</h1>
         </div>
       </div>
 
@@ -110,14 +110,14 @@ function AddPlantCard() {
                     {img ? (
                       <img
                         className="card-img-top img-thumbnail "
-                        style={{ height: "200px", cursor: "pointer" }}
+                        style={{ height: "16rem", cursor: "pointer" }}
                         src={img}
                         alt={commonName}
                       />
                     ) : (
                       <img
                         className="img-thumbnail"
-                        style={{ height: "200px", cursor: "pointer" }}
+                        style={{ height: "16rem", cursor: "pointer" }}
                         alt={commonName}
                         src={
                           "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
@@ -188,7 +188,11 @@ function AddPlantCard() {
                   <div className="col-sm-12 col-md-6 col-lg-6 d-flex card-body info add-btn">
                     <div className="container p-2  d-flex justify-content-center">
                       <button
-                        style={{ padding: "50px", height: "40px" }}
+                        style={{
+                          padding: "50px",
+                          height: "2.4rem",
+                          width: "10rem",
+                        }}
                         className="btn btn-success add-plant p-2"
                         onClick={savePlantSelection}
                       >

@@ -163,7 +163,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
-    switch: false,
+    switch: true,
     account: {},
     accounts: [],
     accountName: "",

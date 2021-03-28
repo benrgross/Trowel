@@ -8,7 +8,6 @@ import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 
 const Plant = () => {
   const [state, dispatch] = useStoreContext();
-  const lightRef = useRef();
   const {
     viewPlant: {
       id,
@@ -33,11 +32,11 @@ const Plant = () => {
       soilTexture,
     },
   } = state;
-  console.log("Switch State: ", state.switch);
-  let history = useHistory();
+  const lightRef = useRef();
   const noteRef = useRef();
+  let history = useHistory();
 
-  console.log("Switch State: ", state.switch);
+  console.log("ViewPlant State: ", state.viewPlant);
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -107,10 +106,9 @@ const Plant = () => {
       <h1>View A Plant Here!</h1>
       <h2>Plant Card:</h2>
 
-      <div className="container spotlight-card">
-        {state.switch ? (
-          <button onClick={savePlantSelection}>Add Plant</button>
-        ) : undefined}
+      {state.switch ? 
+        <div className="container spotlight-card">
+        <button onClick={savePlantSelection}>Add Plant</button>
         <p>Name: {commonName}</p>
         <p>Scientific Name: {scientificName}</p>
         {atmosHumidity ? <p>Humidity: {atmosHumidity}</p> : ""}
@@ -143,20 +141,6 @@ const Plant = () => {
           <option>Shade</option>
           <option>Deep Shade</option>
         </select>
-        {!state.switch ? (
-          <div>
-            <p>Notes: {notes}</p>
-            <div className="form-group">
-              <label>Add Note</label>
-              <textarea
-                name="Notes"
-                ref={noteRef}
-                placeholder="Water once a week..."
-              ></textarea>
-              <button onClick={() => addNote(id)}>Add</button>
-            </div>
-          </div>
-        ) : undefined}
         <div className="container">
           {img ? (
             <img
@@ -177,6 +161,22 @@ const Plant = () => {
           )}
         </div>
       </div>
+
+    :
+
+      <div className="container spotlight-card">
+          <h2>Notes: {notes}</h2>
+          <div className="form-group">
+            <textarea
+              name="Notes"
+              ref={noteRef}
+              placeholder="Water once a week..."
+            ></textarea>
+            <button onClick={() => addNote(id)}>Add</button>
+          </div>
+      </div>
+      }
+
       <footer>
         <Link to="/account">
           <button className="btn btn-success" style={{ cursor: "pointer" }}>

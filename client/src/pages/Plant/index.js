@@ -1,5 +1,5 @@
 import "./plant.css";
-import React from "react";
+import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,7 @@ const Plant = () => {
   const [state, dispatch] = useStoreContext();
   const {
     viewPlant: {
+      id,
       commonName,
       scientificName,
       img,
@@ -30,8 +31,10 @@ const Plant = () => {
       soilTexture,
     },
   } = state;
-  console.log("Switch State: ", state.switch)
   let history = useHistory();
+  const noteRef = useRef();
+
+  console.log("Switch State: ", state.switch)
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -69,15 +72,16 @@ const Plant = () => {
   };
 
   const addNote = (objectID) => {
-    const note = {
-        id: objectID,
-        note: {
-            note: noteRef.current.value
-        }
-    }
-    console.log("Posted Note Obj: ", note)
+    console.log("Plant ID: ", objectID)
+    // const note = {
+    //     id: objectID,
+    //     note: {
+    //         note: noteRef.current.value
+    //     }
+    // }
+    // console.log("Posted Note Obj: ", note)
 
-    API.postPlantNote(state.account.accountID, note);
+    // API.postPlantNote(state.account.accountID, note);
 }
 
   return (
@@ -113,8 +117,8 @@ const Plant = () => {
           <p>Notes: {notes}</p>
           <div className="form-group">
             <label>Add Note</label>
-            <textarea name="Notes" placeholder="Water once a week..."></textarea>
-            <button>Add</button>
+            <textarea name="Notes" ref={noteRef} placeholder="Water once a week..."></textarea>
+            <button onClick={() => addNote(id)}>Add</button>
           </div>
         </div>
          : undefined}

@@ -35,6 +35,7 @@ const Account = () => {
   };
   const getPlant = async (plant) => {
     const plantObject = {
+      id: plant._id,
       atmosHumidity: plant.atmosHumidity,
       bloomMonths: plant.bloomMonths,
       commonName: plant.commonName,

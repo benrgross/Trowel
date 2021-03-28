@@ -65,8 +65,8 @@ function CreateAccForm() {
     });
   };
 
-  const closeForm = () => {
-    // e.preventDefault();
+  const closeForm = (e) => {
+    e.preventDefault();
     dispatch({
       type: SHOW_FORM,
       display: true,

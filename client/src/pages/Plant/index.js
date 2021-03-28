@@ -74,15 +74,18 @@ const Plant = () => {
 
   const addNote = (objectID) => {
     console.log("Plant ID: ", objectID)
-    // const note = {
-    //     id: objectID,
-    //     note: {
-    //         note: noteRef.current.value
-    //     }
-    // }
-    // console.log("Posted Note Obj: ", note)
+    console.log("Account ID:", state.account.accountID)
 
-    // API.postPlantNote(state.account.accountID, note);
+    const note = {
+        id: objectID,
+        note: {
+            note: noteRef.current.value,
+            date: new Date()
+        }
+    }
+    console.log("Posted Note Obj: ", note)
+
+    API.postPlantNote(state.account.accountID, note);
 }
 
   return (
@@ -129,9 +132,10 @@ const Plant = () => {
               <label>Add Note</label>
               <textarea
                 name="Notes"
+                ref={noteRef}
                 placeholder="Water once a week..."
               ></textarea>
-              <button>Add</button>
+              <button onClick={() => addNote(id)}>Add</button>
             </div>
           </div>
         ) : undefined}

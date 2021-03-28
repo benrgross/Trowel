@@ -1,6 +1,7 @@
 .account-cards {
   cursor: pointer;
   margin-bottom: 5%;
+  box-shadow: 0 5px 6px black;
 }
 
 .account-title {

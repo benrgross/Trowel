@@ -75,19 +75,26 @@ function CreateAccForm() {
 
   return (
     <div>
-      <button className="btn btn-success" onClick={() => renderForm()}>
-        <FaPlus /> Add an account
-      </button>
+      <div className="show-btn-div">
+        <button
+          className="btn btn-success show-btn"
+          onClick={() => renderForm()}
+        >
+          <FaPlus /> Add an account
+        </button>
+      </div>
 
       {state.display ? (
         <div className="container">
-          <form className="shadow">
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => closeForm()}
-            >
-              <FaMinus />
-            </button>
+          <form className="account-form">
+            <span className="close-btn-div">
+              <button
+                className="btn btn-outline-danger close-btn"
+                onClick={() => closeForm()}
+              >
+                <FaMinus />
+              </button>
+            </span>
             <div className="form-group">
               <label>Account Name</label>
               <input

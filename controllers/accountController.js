@@ -108,9 +108,10 @@ module.exports = {
   },
 
   postPlantNote: async function (req, res) {
+    console.log(req.body.id, req.params.id, req.body.note);
     try {
       const addNote = await db.Account.updateOne(
-        { _id: req.body.id, "plants._id": req.body.id },
+        { _id: req.params.id, "plants._id": req.body.id },
         {
           $set: { "plants.$.notes": req.body.note },
         },

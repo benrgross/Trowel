@@ -218,7 +218,7 @@ const Home = () => {
                   </ul>
                   <p>location: {account.location.address}</p>
                   <p>distribution zone: {account.location.distZone}</p>
-                  {/* <p># of Plants: {state.account.plants.length}</p> */}
+                  <p># of Plants: {account.plants.length}</p>
                   <p>notes: {account.notes.note}</p>
                 </div>
                 <span>

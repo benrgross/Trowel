@@ -69,7 +69,7 @@ function Results() {
         <div>
           {state.results.map((plant) => (
             <div className="container">
-              <div className="card">
+              <div className="plant-card">
                 {plant.img ? (
                   <div className="img-container">
                     <img

@@ -65,7 +65,7 @@ function AccountCard() {
                         className="card-body"
                         onClick={() => viewAccount(account.accountName)}
                       >
-                        <span className="account-title">
+                        <span className="account-title account-info">
                           <h5>Account: {account.accountName}</h5>
                           <button
                             className="btn delete"

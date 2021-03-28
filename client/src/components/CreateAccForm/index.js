@@ -59,16 +59,13 @@ function CreateAccForm() {
   };
 
   const renderForm = () => {
-    dispatch({
-      type: SHOW_FORM,
-      display: false,
-    });
+    dispatch({ type: SHOW_FORM });
   };
 
   const closeForm = () => {
     dispatch({
       type: SHOW_FORM,
-      display: true,
+      display: false,
     });
   };
 

@@ -42,16 +42,13 @@ function SearchForm() {
           <input
             ref={queryRef}
             type="email"
+            placeholder="Search by plant name"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="plant-search"
+            aria-describedby="search-form"
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmit}
-        >
+        <button type="submit" className="btn search" onClick={handleSubmit}>
           Submit
         </button>
       </form>

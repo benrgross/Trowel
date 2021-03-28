@@ -1,8 +1,27 @@
 .search-form {
-  width: 50%;
+  display: block;
+  margin: auto;
+  width: 90%;
   margin-top: 50px;
   margin-bottom: 50px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   padding: 20px;
-  background-color: #4caf5030;
+  background-color: #0a3e0c14;
+}
+
+.btn.search {
+  color: lightgoldenrodyellow;
+  background-color: #61c177;
+  border: 3px solid #468d56;
+  border-radius: 15px;
+}
+
+.btn.search:hover {
+  color: lightgoldenrodyellow;
+  background-color: #468d56;
+  border: 3px solid #61c177;
+}
+
+#plant-search {
+  width: 90%;
 }

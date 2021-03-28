@@ -1,0 +1,12 @@
+.btn.back {
+  color: lightgoldenrodyellow;
+  background-color: #61c177;
+  border: 3px solid #468d56;
+  border-radius: 15px;
+}
+
+.btn.back:hover {
+  color: lightgoldenrodyellow;
+  background-color: #468d56;
+  border: 3px solid #61c177;
+}

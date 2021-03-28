@@ -1,7 +1,6 @@
-.search-plant-img {
-  max-height: 100%;
+.img.search-plant-img {
+  /* max-height: 100%; */
   max-width: 100%;
-  cursor: pointer;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -9,14 +8,35 @@
 
 .img-container {
   margin-top: 5%;
-  height: 200px;
-  width: 200px;
+  height: 33%;
+  width: 33%;
   overflow: hidden;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
 }
 
-.plant-card {
+.card.plant-card {
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: center;
+  cursor: pointer;
+  margin-bottom: 5%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  background-color: #0a3e0c14;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card.plant-card:hover {
+  cursor: pointer;
+  margin-bottom: 5%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  background-color: #0a3e0c14;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
+  transform: scale(1.05);
 }

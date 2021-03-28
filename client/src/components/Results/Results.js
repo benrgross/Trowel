@@ -76,15 +76,15 @@ function Results() {
                     <img
                       onClick={() => getPlant(plant)}
                       alt={plant.commonName}
-                      className="img-thumbnail search-plant-img"
+                      className="img search-plant-img"
                       src={plant.img}
                     />
                   </div>
                 ) : (
-                  <div className="img-container search-plant-img">
+                  <div className="img-container">
                     <img
                       onClick={() => getPlant(plant)}
-                      className="img-thumbnail"
+                      className="img search-plant-img"
                       alt={plant.commonName}
                       src={
                         "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"

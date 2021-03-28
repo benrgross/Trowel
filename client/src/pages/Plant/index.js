@@ -31,6 +31,7 @@ const Plant = () => {
       soilTexture,
     },
   } = state;
+  console.log("Switch State: ", state.switch);
   let history = useHistory();
   const noteRef = useRef();
 
@@ -90,7 +91,9 @@ const Plant = () => {
       <h2>Plant Card:</h2>
 
       <div className="container spotlight-card">
-        {state.switch ? <button onClick={savePlantSelection}>Add Plant</button> : undefined}
+        {state.switch ? (
+          <button onClick={savePlantSelection}>Add Plant</button>
+        ) : undefined}
         <p>Name: {commonName}</p>
         <p>Scientific Name: {scientificName}</p>
         {atmosHumidity ? <p>Humidity: {atmosHumidity}</p> : ""}
@@ -112,16 +115,26 @@ const Plant = () => {
         {native ? <p>Native: {native.join(", ")}</p> : ""}
         {soilNutriments ? <p>Soil Nutriments: {soilNutriments}</p> : ""}
         {soilTexture ? <p>Soil Texture: {soilTexture}</p> : ""}
-        {!state.switch ? 
-        <div>
-          <p>Notes: {notes}</p>
-          <div className="form-group">
-            <label>Add Note</label>
-            <textarea name="Notes" ref={noteRef} placeholder="Water once a week..."></textarea>
-            <button onClick={() => addNote(id)}>Add</button>
+        <p>Select The Light Conditions:</p>
+        <select style={{ width: "25%" }} class="form-control">
+          <option>Full Sun</option>
+          <option>Partial Sun</option>
+          <option>Shade</option>
+          <option>Deep Shade</option>
+        </select>
+        {!state.switch ? (
+          <div>
+            <p>Notes: {notes}</p>
+            <div className="form-group">
+              <label>Add Note</label>
+              <textarea
+                name="Notes"
+                placeholder="Water once a week..."
+              ></textarea>
+              <button>Add</button>
+            </div>
           </div>
-        </div>
-         : undefined}
+        ) : undefined}
         <div className="container">
           {img ? (
             <img

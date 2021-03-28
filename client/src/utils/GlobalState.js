@@ -11,7 +11,7 @@ import {
   ADD_ACCOUNT,
   LOAD_ACCOUNTS,
   SPOTLIGHT,
-  SAVE_TO_ACCOUNT
+  SAVE_TO_ACCOUNT,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -59,9 +59,12 @@ const reducer = (state, action) => {
     case REMOVE_PLANT:
       return {
         ...state,
-        plants: state.plants.filter((plant) => {
-          return plant._id !== plant._id; // change to action._id
-        }),
+        account: {
+          ...state.account,
+          plants: state.account.plants.filter((plant) => {
+            return plant._id !== action.plantID; // change to action._id
+          }),
+        },
         loading: false,
       };
     case REMOVE_ACCOUNT:

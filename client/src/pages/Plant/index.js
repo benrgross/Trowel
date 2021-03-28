@@ -103,12 +103,12 @@ const Plant = () => {
   //   console.log(addNote);
   // };
 
-  const changeNote = (note) => {
-    dispatch({
-      type: "CHANGE_NOTES",
-      newNote: note,
-    });
-  };
+  // const changeNote = (note) => {
+  //   dispatch({
+  //     type: "CHANGE_NOTES",
+  //     newNote: note,
+  //   });
+  // };
 
   return (
     <div>
@@ -117,10 +117,10 @@ const Plant = () => {
   );
 };
 
-const style = {
-  display: "block",
-  height: "500px",
-  width: "100%",
-};
+// const style = {
+//   display: "block",
+//   height: "500px",
+//   width: "100%",
+// };
 
 export default Plant;

@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory, Link } from "react-router-dom";
 import { REMOVE_PLANT, SAVE_TO_ACCOUNT, LOADING } from "../../utils/actions";
 import API from "../../utils/API";
 import BackBtn from "../../components/BackBtn";
-
 const Account = () => {
   const [state, dispatch] = useStoreContext();
   const {
@@ -15,12 +14,10 @@ const Account = () => {
     clientEmail,
     clientPhone,
     distZone,
-    notes,
     plants,
   } = state.account;
   console.log("Account State:", state.account);
   let history = useHistory();
-
   const removePlant = async (id) => {
     dispatch({
       type: LOADING,
@@ -29,7 +26,6 @@ const Account = () => {
     console.log("Plant ID", id);
     const update = await API.updateAccount(accountID, id);
     console.log("Update Successful!", update);
-
     dispatch({
       type: REMOVE_PLANT,
       plantID: id,
@@ -46,7 +42,6 @@ const Account = () => {
   const getPlant = async (plant, id, notes) => {
     console.log("Plant ID: ", id);
     console.log("Plant Notes: ", notes);
-
     const plantObject = {
       id: id,
       atmosHumidity: plant.atmosHumidity,
@@ -84,16 +79,13 @@ const Account = () => {
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
     console.log("Plant Object: ", plantObject);
-
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
       switch: false,
     });
-
     history.push("/plant");
   };
-
   return (
     <div className="container">
       <h1>Account Page</h1>
@@ -128,60 +120,7 @@ const Account = () => {
               />
               <button onClick={() => getPlant(plant, _id, notes)}>Notes</button>
               <button onClick={() => removePlant(_id)}>Delete Plant</button>
-              <p>Name - {plant.commonName}</p>
-              {plant.scientificName ? (
-                <p>Scientific Name - {plant.scientificName}</p>
-              ) : (
-                ""
-              )}
-              {plant.atmosHumidity ? (
-                <p>Humidity - {plant.atmosHumidity}</p>
-              ) : (
-                ""
-              )}
-              {plant.edible ? <p>Edible - {plant.edible}</p> : ""}
-              {plant.family ? <p>Family - {plant.family}</p> : ""}
-              {plant.familyCommonName ? (
-                <p>Family Common Name - {plant.familyCommonName}</p>
-              ) : (
-                ""
-              )}
-              {plant.genus ? <p>Genus - {plant.genus}</p> : ""}
-              {plant.growthHabit ? (
-                <p>Growth Habit - {plant.growthHabit}</p>
-              ) : (
-                ""
-              )}
-              {plant.heightAvgCm ? (
-                <p>Average Height - {plant.heightAvgCm}</p>
-              ) : (
-                ""
-              )}
-              {plant.light ? <p>Light Level - {plant.light}</p> : ""}
-              {plant.maxPh ? <p>Max pH Level - {plant.maxPh}</p> : ""}
-              {plant.minPh ? <p>Minimum pH Level - {plant.minPh}</p> : ""}
-              {plant.maxPrecipitation ? (
-                <p>Max Precipitation - {plant.maxPrecipitation}</p>
-              ) : (
-                ""
-              )}
-              {plant.minPrecipitation ? (
-                <p>Minimum Precipitation - {plant.minPrecipitation}</p>
-              ) : (
-                ""
-              )}
-              {plant.native ? <p>Native - {plant.native.join(", ")}</p> : ""}
-              {plant.soilNutriments ? (
-                <p>Soil Nutriments - {plant.soilNutriments}</p>
-              ) : (
-                ""
-              )}
-              {plant.soilTexture ? (
-                <p>Soil Texture - {plant.soilTexture}</p>
-              ) : (
-                ""
-              )}
-              {/* <p>Name: {plant.commonName}</p>
+              <p>Name: {plant.commonName}</p>
               <p>Humidity: {plant.atmosHumidity}</p>
               <p>Light Condition: {lightCondition}</p>
               <p>Bloom Months: {plant.bloomMonths}</p>
@@ -199,8 +138,7 @@ const Account = () => {
                 <p>Native: {plant.native.join(", ")}</p>
               ) : undefined}
               <p>Soil Nutriments: {plant.soilNutriments}</p>
-              <p>Soil Texture: {plant.soilTexture}</p> */}
-
+              <p>Soil Texture: {plant.soilTexture}</p>
               {/* <p>Notes: {notes}</p> */}
               <div className="container"></div>
             </div>

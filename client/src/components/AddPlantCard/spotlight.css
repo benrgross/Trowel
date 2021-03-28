@@ -1,5 +1,6 @@
 .spotlight-card {
-  background-color: rgba(228, 198, 98, 0.637);
   color: white;
   padding-bottom: 20px;
+  border: 4px solid white;
+  background-color: #0119011f;
 }

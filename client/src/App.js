@@ -4,8 +4,6 @@ import { LOGIN } from "./utils/actions";
 import AuthenticatedApp from "./components/AuthenticatedApp";
 import UnAuthenticated from "./components/UnAuthenticated";
 
-//use global context
-
 function App() {
   const [state, dispatch] = useStoreContext();
 
@@ -32,17 +30,3 @@ function App() {
 }
 
 export default App;
-
-// {
-//   /* <Router>
-// <div>
-//   <Navbar />
-//   <Header />
-//   <Switch>
-//     <Route exact path="/" component={Search} />
-//     <Route exact path="/home" component={Home} />
-//     <Route exact path="/plant" component={Plant} />
-//   </Switch>
-// </div>
-// </Router> */
-// }

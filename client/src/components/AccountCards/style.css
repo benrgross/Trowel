@@ -1,7 +1,10 @@
-.account-cards {
+.card.account-cards {
   cursor: pointer;
   margin-bottom: 5%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  background-color: #0a3e0c14;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
 }
 
 .account-title {

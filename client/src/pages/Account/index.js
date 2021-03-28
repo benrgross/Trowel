@@ -43,8 +43,8 @@ const Account = () => {
     history.push("/");
   };
   const getPlant = async (plant, id) => {
-    console.log("Plant ID: ", id)
-    
+    console.log("Plant ID: ", id);
+
     const plantObject = {
       id: id,
       atmosHumidity: plant.atmosHumidity,
@@ -117,7 +117,7 @@ const Account = () => {
       </div>
       <h2>Plants In Account: </h2>
       {plants
-        ? plants.map(({ plant, _id, notes }, ) => (
+        ? plants.map(({ plant, _id, notes, lightCondition }) => (
             <div className="container spotlight-card" key={_id}>
               <img
                 className="img-thumbnail"
@@ -128,6 +128,7 @@ const Account = () => {
               <button onClick={() => removePlant(_id)}>Delete Plant</button>
               <p>Name: {plant.commonName}</p>
               <p>Humidity: {plant.atmosHumidity}</p>
+              <p>Light Condition: {lightCondition}</p>
               <p>Bloom Months: {plant.bloomMonths}</p>
               <p>Edible: {plant.edible}</p>
               <p>Family: {plant.family}</p>

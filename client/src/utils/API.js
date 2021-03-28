@@ -99,4 +99,8 @@ export default {
   postPlantNote: function (id, note) {
     return axios.post(`/api/accounts/addPlantNote/${id}`, note);
   },
+
+  addLightConditions: function (conditions) {
+    return axios.post("/api/accounts/addLightConditions", conditions);
+  },
 };

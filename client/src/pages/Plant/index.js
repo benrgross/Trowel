@@ -7,6 +7,7 @@ import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 
 const Plant = () => {
   const [state, dispatch] = useStoreContext();
+  const lightRef = useRef();
   const {
     viewPlant: {
       id,
@@ -45,12 +46,23 @@ const Plant = () => {
   console.log("Plant To Save: ", savePlantObj);
 
   const savePlantSelection = async () => {
+    console.log("lightRef", lightRef.current.value);
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
+
+    const saveLight = {
+      id: newPlant._id,
+      plantId: newPlant.plants[newPlant.plants.length - 1]._id,
+      accountName: state.accountName,
+      lightCondition: lightRef.current.value,
+    };
+
+    await API.addLightConditions(saveLight);
     console.log("Plant Saved!");
 
     const { data } = await API.getPlantsByAccount({
       accountName: state.accountName,
     });
+    console.log("account pull", data);
 
     const accountObj = {
       accountID: data._id,
@@ -119,7 +131,11 @@ const Plant = () => {
         {soilNutriments ? <p>Soil Nutriments: {soilNutriments}</p> : ""}
         {soilTexture ? <p>Soil Texture: {soilTexture}</p> : ""}
         <p>Select The Light Conditions:</p>
-        <select style={{ width: "25%" }} class="form-control">
+        <select
+          ref={lightRef}
+          style={{ width: "25%" }}
+          className="form-control"
+        >
           <option>Full Sun</option>
           <option>Partial Sun</option>
           <option>Shade</option>

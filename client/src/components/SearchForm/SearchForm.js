@@ -36,8 +36,8 @@ function SearchForm() {
 
   return (
     <div className="container">
-      <form className="shadow">
-        <div className="form-group ">
+      <form className="shadow search-form">
+        <div className="form-group">
           <label>Search For Plant</label>
           <input
             ref={queryRef}

@@ -1,0 +1,22 @@
+.show-btn-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn.btn-success.show-btn {
+  padding: 1rem;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+
+.account-form {
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 5%;
+}
+
+.close-btn-div {
+  display: flex;
+  justify-content: flex-end;
+}

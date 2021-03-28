@@ -151,7 +151,7 @@ function CreateAccForm() {
             </div>
             <button
               type="submit"
-              className="btn btn-success"
+              className="btn btn-success submit"
               onClick={saveAccount}
             >
               Submit

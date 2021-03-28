@@ -110,7 +110,6 @@ const Account = () => {
           <p>location: {address}</p>
           <p>distribution zone: {distZone}</p>
           {/* <p># of Plants: {plants.length}</p> */}
-          {/* <p>notes: {notes}</p> */}
         </div>
         <span>
           <button className="btn btn-danger" onClick={addPlant}>
@@ -126,8 +125,8 @@ const Account = () => {
                 className="img-thumbnail"
                 style={{ height: "200px", cursor: "pointer" }}
                 src={plant.img}
-                onClick={() => getPlant(plant, _id, notes)}
               />
+              <button onClick={() => getPlant(plant, _id, notes)}>Notes</button>
               <button onClick={() => removePlant(_id)}>Delete Plant</button>
               <p>Name: {plant.commonName}</p>
               <p>Humidity: {plant.atmosHumidity}</p>

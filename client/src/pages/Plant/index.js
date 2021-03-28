@@ -178,6 +178,7 @@ const Plant = () => {
               placeholder="Water once a week..."
               value={notes}
               onChange={(e) => changeNote(e.target.value)}
+              style={style}
             ></textarea>
             <button onClick={() => addNote(id)}>Add</button>
           </div>
@@ -199,5 +200,11 @@ const Plant = () => {
     </div>
   );
 };
+
+const style = {
+  display: "block",
+  height: "500px",
+  width: "100%"
+}
 
 export default Plant;

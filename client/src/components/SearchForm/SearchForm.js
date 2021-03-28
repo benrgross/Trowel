@@ -32,13 +32,14 @@ function SearchForm() {
       results: plants,
       pageLinks: pageLinks,
     });
+
+    queryRef.current.value = "";
   };
 
   return (
     <div className="container">
       <form className="shadow search-form">
         <div className="form-group">
-          <label>Search For Plant</label>
           <input
             ref={queryRef}
             type="email"

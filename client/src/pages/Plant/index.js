@@ -8,7 +8,6 @@ import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 
 const Plant = () => {
   const [state, dispatch] = useStoreContext();
-  const lightRef = useRef();
   const {
     viewPlant: {
       id,
@@ -29,22 +28,19 @@ const Plant = () => {
       minPrecipitation,
       native,
       notes,
+      notesDate,
       soilNutriments,
       soilTexture,
     },
   } = state;
-  console.log("Switch State: ", state.switch);
-  let history = useHistory();
+  const lightRef = useRef();
   const noteRef = useRef();
-
-  console.log("Switch State: ", state.switch);
+  let history = useHistory();
 
   const savePlantObj = {
     plant: state.viewPlant,
     accountName: state.accountName,
   };
-
-  console.log("Plant To Save: ", savePlantObj);
 
   const savePlantSelection = async () => {
     console.log("lightRef", lightRef.current.value);
@@ -102,15 +98,21 @@ const Plant = () => {
     console.log(addNote);
   };
 
+  const changeNote = (note) => {
+    dispatch({
+      type: "CHANGE_NOTES",
+      newNote: note
+    })
+  }
+
   return (
     <div>
       <h1>View A Plant Here!</h1>
       <h2>Plant Card:</h2>
 
-      <div className="container spotlight-card">
-        {state.switch ? (
-          <button onClick={savePlantSelection}>Add Plant</button>
-        ) : undefined}
+      {state.switch ? 
+        <div className="container spotlight-card">
+        <button onClick={savePlantSelection}>Add Plant</button>
         <p>Name: {commonName}</p>
         <p>Scientific Name: {scientificName}</p>
         {atmosHumidity ? <p>Humidity: {atmosHumidity}</p> : ""}
@@ -143,20 +145,6 @@ const Plant = () => {
           <option>Shade</option>
           <option>Deep Shade</option>
         </select>
-        {!state.switch ? (
-          <div>
-            <p>Notes: {notes}</p>
-            <div className="form-group">
-              <label>Add Note</label>
-              <textarea
-                name="Notes"
-                ref={noteRef}
-                placeholder="Water once a week..."
-              ></textarea>
-              <button onClick={() => addNote(id)}>Add</button>
-            </div>
-          </div>
-        ) : undefined}
         <div className="container">
           {img ? (
             <img
@@ -177,6 +165,25 @@ const Plant = () => {
           )}
         </div>
       </div>
+
+    :
+
+      <div className="container spotlight-card">
+          <h2>Notes: </h2>
+          <h3>Last Modified: {notesDate}</h3>
+          <div className="form-group">
+            <textarea
+              name="Notes"
+              ref={noteRef}
+              placeholder="Water once a week..."
+              value={notes}
+              onChange={(e) => changeNote(e.target.value)}
+            ></textarea>
+            <button onClick={() => addNote(id)}>Add</button>
+          </div>
+      </div>
+      }
+
       <footer>
         <Link to="/account">
           <button className="btn btn-success" style={{ cursor: "pointer" }}>

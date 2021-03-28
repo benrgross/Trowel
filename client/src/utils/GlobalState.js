@@ -94,6 +94,15 @@ const reducer = (state, action) => {
         ...state,
         accountName: action.accountName,
       };
+    
+    case "CHANGE_NOTES":
+      return {
+        ...state,
+        viewPlant: {
+          ...state.viewPlant,
+          notes: action.newNote
+        }
+      };
 
     case SPOTLIGHT:
       return {
@@ -132,7 +141,8 @@ const reducer = (state, action) => {
           scientificName: action.spotlight.scientificName,
           soilNutriments: action.spotlight.soilNutriments,
           soilTexture: action.spotlight.soilTexture,
-          notes: "",
+          notes: action.spotlight.notes,
+          notesDate: action.spotlight.notesDate
         },
       };
     case LOGIN:
@@ -163,7 +173,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
-    switch: false,
+    switch: true,
     account: {},
     accounts: [],
     accountName: "",

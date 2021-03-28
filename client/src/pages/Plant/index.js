@@ -28,6 +28,7 @@ const Plant = () => {
       minPrecipitation,
       native,
       notes,
+      notesDate,
       soilNutriments,
       soilTexture,
     },
@@ -36,14 +37,10 @@ const Plant = () => {
   const noteRef = useRef();
   let history = useHistory();
 
-  console.log("ViewPlant State: ", state.viewPlant);
-
   const savePlantObj = {
     plant: state.viewPlant,
     accountName: state.accountName,
   };
-
-  console.log("Plant To Save: ", savePlantObj);
 
   const savePlantSelection = async () => {
     console.log("lightRef", lightRef.current.value);
@@ -100,6 +97,13 @@ const Plant = () => {
     const addNote = await API.postPlantNote(state.account.accountID, note);
     console.log(addNote);
   };
+
+  const changeNote = (note) => {
+    dispatch({
+      type: "CHANGE_NOTES",
+      newNote: note
+    })
+  }
 
   return (
     <div>
@@ -165,12 +169,15 @@ const Plant = () => {
     :
 
       <div className="container spotlight-card">
-          <h2>Notes: {notes}</h2>
+          <h2>Notes: </h2>
+          <h3>Last Modified: {notesDate}</h3>
           <div className="form-group">
             <textarea
               name="Notes"
               ref={noteRef}
               placeholder="Water once a week..."
+              value={notes}
+              onChange={(e) => changeNote(e.target.value)}
             ></textarea>
             <button onClick={() => addNote(id)}>Add</button>
           </div>

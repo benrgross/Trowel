@@ -40,21 +40,21 @@ function Navbar() {
               Accounts
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to="/account" className="nav-link nav-text">
               Select Account
             </Link>
-          </li>
-          <li className="nav-item">
+          </li> */}
+          {/* <li className="nav-item">
             <Link to="/" className="nav-link nav-text">
               Search
             </Link>
-          </li>
-          <li className="nav-item">
+          </li> */}
+          {/* <li className="nav-item">
             <Link to="/plant" className="nav-link nav-text">
               Spotlight
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link to="/Saved" className="nav-link nav-text">
               Saved Plants

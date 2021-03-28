@@ -16,9 +16,10 @@ function AuthenticatedApp() {
         <Navbar />
         <Header />
         <Switch>
-          <Route exact path="/" component={Account} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/plant" component={Plant} />
           <Route exact path="/account" component={Account} />
+          <Route exact path="/search" component={Search} />
         </Switch>
       </div>
       <Footer />

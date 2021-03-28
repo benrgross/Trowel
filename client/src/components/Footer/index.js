@@ -11,7 +11,7 @@ function Footer() {
           <FaArrowCircleLeft /> Account
         </button>
       </Link>
-      <Link to="/">
+      <Link to="/search">
         <button className="btn btn-success" style={{ cursor: "pointer" }}>
           <FaPlus /> Search Plants
         </button>

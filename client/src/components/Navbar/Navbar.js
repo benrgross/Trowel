@@ -15,7 +15,7 @@ function Navbar() {
       style={{ backgroundColor: "rgb(206 153 4 / 30%)", height: "" }}
       className="navbar navbar-expand-md  shadow navbar-dark pr-lg-1 pl-sm-5 justify-content-between nav-con"
     >
-      <Link className="navbar-brand nav-text" to="/home">
+      <Link className="navbar-brand nav-text" to="/">
         <img
           style={{ height: "80px" }}
           src="images/Trowel-logo.png"
@@ -36,7 +36,7 @@ function Navbar() {
       <div className="navbar-collapse collapse nav-group " id="navbar-toggle">
         <ul className="navbar-nav nav-group ml-auto ">
           <li className="nav-item">
-            <Link to="/home" className="nav-link nav-text">
+            <Link to="/" className="nav-link nav-text">
               Accounts
             </Link>
           </li>

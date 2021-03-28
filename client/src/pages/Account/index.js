@@ -42,8 +42,11 @@ const Account = () => {
     });
     history.push("/");
   };
-  const getPlant = async (plant) => {
+  const getPlant = async (plant, id) => {
+    console.log("Plant ID: ", id);
+
     const plantObject = {
+      id: id,
       atmosHumidity: plant.atmosHumidity,
       bloomMonths: plant.bloomMonths,
       commonName: plant.commonName,
@@ -120,12 +123,12 @@ const Account = () => {
                 className="img-thumbnail"
                 style={{ height: "200px", cursor: "pointer" }}
                 src={plant.img}
-                onClick={() => getPlant(plant)}
+                onClick={() => getPlant(plant, _id)}
               />
               <button onClick={() => removePlant(_id)}>Delete Plant</button>
               <p>Name: {plant.commonName}</p>
               <p>Humidity: {plant.atmosHumidity}</p>
-              <p>lightCondition: {lightCondition}</p>
+              <p>Light Condition: {lightCondition}</p>
               <p>Bloom Months: {plant.bloomMonths}</p>
               <p>Edible: {plant.edible}</p>
               <p>Family: {plant.family}</p>

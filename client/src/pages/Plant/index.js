@@ -2,8 +2,9 @@ import "./plant.css";
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
+import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 
 const Plant = () => {
   const [state, dispatch] = useStoreContext();
@@ -176,6 +177,18 @@ const Plant = () => {
           )}
         </div>
       </div>
+      <footer>
+        <Link to="/account">
+          <button className="btn btn-success" style={{ cursor: "pointer" }}>
+            <FaArrowCircleLeft /> Account
+          </button>
+        </Link>
+        <Link to="/">
+          <button className="btn btn-success" style={{ cursor: "pointer" }}>
+            <FaPlus /> Search Plants
+          </button>
+        </Link>
+      </footer>
     </div>
   );
 };

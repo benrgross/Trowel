@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { REMOVE_PLANT, SAVE_TO_ACCOUNT, LOADING } from "../../utils/actions";
 import API from "../../utils/API";
+import BackBtn from "../../components/BackBtn";
 
 const Account = () => {
   const [state, dispatch] = useStoreContext();
@@ -151,6 +152,11 @@ const Account = () => {
             </div>
           ))
         : "No Plants Added"}
+      <footer>
+        <Link to="/home">
+          <BackBtn />
+        </Link>
+      </footer>
     </div>
   );
 };

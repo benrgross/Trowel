@@ -1,6 +1,30 @@
+.plant-view-card {
+  /* width: 50%; */
+  padding: 0px;
+}
 .spotlight-card {
-  color: white;
-  padding-bottom: 20px;
-  border: 4px solid white;
-  background-color: #0119011f;
+  background-color: rgb(116 160 95 / 18%);
+}
+.card-top {
+  /* border-bottom: 1px solid grey; */
+  padding: 15px;
+}
+
+.hr {
+  height: 1px;
+  width: 80%;
+  background-color: #00000040;
+  margin-top: 20px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.card-body.info {
+  padding-left: 50px !important;
+  padding-bottom: 10px;
+}
+
+.add-btn {
+}
+.light-choose {
+  margin-bottom: 40px;
 }

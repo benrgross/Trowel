@@ -6,7 +6,8 @@ import Navbar from "./Navbar/Navbar";
 import Search from "../pages/Search";
 import Home from "../pages/Home";
 import Plant from "../pages/Plant";
-import Account from "../pages/Account"
+import Account from "../pages/Account";
+import Footer from "../components/Footer";
 
 function AuthenticatedApp() {
   return (
@@ -21,6 +22,7 @@ function AuthenticatedApp() {
           <Route exact path="/account" component={Account} />
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 }

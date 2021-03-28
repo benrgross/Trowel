@@ -152,11 +152,8 @@ const Home = () => {
       {state.display ? (
         <div className="container">
           <form className="shadow">
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => closeForm()}
-            >
-              <FaMinus />
+            <button className="btn btn-outline-danger">
+              <FaMinus onClick={() => closeForm()} />
             </button>
             <div className="form-group">
               <label>Account Name</label>

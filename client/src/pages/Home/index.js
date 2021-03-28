@@ -89,6 +89,8 @@ const Home = () => {
       accountName: account,
     });
 
+    console.log("Clicked Account Data: ", data)
+
     const accountObj = {
       accountID: data._id,
       accountName: data.accountName,

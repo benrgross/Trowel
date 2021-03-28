@@ -81,7 +81,7 @@ const Account = () => {
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
       notes: notes ? notes.note : "",
-      notesDate: notes ? notes.date : ""
+      notesDate: notes ? notes.date : "No Notes Have Been Added Yet"
     };
     console.log("Plant Object: ", plantObject);
 

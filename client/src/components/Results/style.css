@@ -1,0 +1,22 @@
+.search-plant-img {
+  max-height: 100%;
+  max-width: 100%;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-container {
+  margin-top: 5%;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.plant-card {
+  text-align: center;
+}

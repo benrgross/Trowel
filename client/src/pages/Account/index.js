@@ -106,7 +106,7 @@ const Account = () => {
           </ul>
           <p>location: {address}</p>
           <p>distribution zone: {distZone}</p>
-
+          {/* <p># of Plants: {plants.length}</p> */}
           {/* <p>notes: {notes}</p> */}
         </div>
         <span>

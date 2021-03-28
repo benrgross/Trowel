@@ -62,7 +62,7 @@ const reducer = (state, action) => {
         account: {
           ...state.account,
           plants: state.account.plants.filter((plant) => {
-            return plant._id !== action.plantID; // change to action._id
+            return plant._id !== action.plantID;
           }),
         },
         loading: false,

@@ -65,7 +65,7 @@ module.exports = {
   },
 
   addPlantAccount: async function (req, res) {
-    console.log("req", req.body.plant, req.body.accountName);
+    console.log("req", req.body.accountName, req.body.lightCondition);
     try {
       const newPlant = await db.Plant.create(req.body.plant);
       console.log(newPlant);
@@ -82,7 +82,7 @@ module.exports = {
         },
         { new: true }
       );
-      console.log("plant to account", plantToAccount);
+
       res.json(plantToAccount);
     } catch (err) {
       console.log(err);
@@ -90,10 +90,27 @@ module.exports = {
     }
   },
 
+  lightConditions: async function (req, res) {
+    console.log("req", req.body.lightCondition, req.body.id);
+    try {
+      const plantLight = await db.Account.findOneAndUpdate(
+        { _id: req.body.id, "plants._id": req.body.plantId },
+        {
+          $set: { "plants.$.lightCondition": req.body.lightCondition },
+        },
+        { new: true }
+      );
+      console.log("light", plantLight);
+      res.json(plantLight);
+    } catch (err) {
+      res.json(err);
+    }
+  },
+
   postPlantNote: async function (req, res) {
     try {
       const addNote = await db.Account.updateOne(
-        { _id: req.params.id, "plants._id": req.body.id },
+        { _id: req.body.id, "plants._id": req.body.id },
         {
           $set: { "plants.$.notes": req.body.note },
         },

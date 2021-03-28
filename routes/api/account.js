@@ -18,6 +18,7 @@ router.route("/getPlantNote/:id").post(accountController.getPlantNote);
 
 router.route("/addPlantNote/:id").post(accountController.postPlantNote);
 
+router.route("/addLightConditions").post(accountController.lightConditions);
 // router.route("/updateNote/:id").post(accountController.updatePlantNote);
 router
   .route("/:id")

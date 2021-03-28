@@ -43,8 +43,9 @@ const Account = () => {
     });
     history.push("/");
   };
-  const getPlant = async (plant, id) => {
+  const getPlant = async (plant, id, notes) => {
     console.log("Plant ID: ", id);
+    console.log("Plant Notes: ", notes);
 
     const plantObject = {
       id: id,
@@ -79,7 +80,8 @@ const Account = () => {
       scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
-      notes: "",
+      notes: notes.note,
+      notesDate: notes.date
     };
     console.log("Plant Object: ", plantObject);
 
@@ -124,7 +126,7 @@ const Account = () => {
                 className="img-thumbnail"
                 style={{ height: "200px", cursor: "pointer" }}
                 src={plant.img}
-                onClick={() => getPlant(plant, _id)}
+                onClick={() => getPlant(plant, _id, notes)}
               />
               <button onClick={() => removePlant(_id)}>Delete Plant</button>
               <p>Name: {plant.commonName}</p>

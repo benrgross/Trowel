@@ -3,13 +3,14 @@ import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory } from "react-router-dom";
-import { FaTimes } from "react-icons/fa";
+import { FaRegTrashAlt, FaPlus, FaMinus } from "react-icons/fa";
 import {
   REMOVE_ACCOUNT,
   SET_SAVED_ACCOUNT,
   ADD_ACCOUNT,
   LOAD_ACCOUNTS,
   LOADING,
+  SHOW_FORM,
 } from "../../utils/actions";
 
 const Home = () => {
@@ -125,76 +126,107 @@ const Home = () => {
     }
   };
 
+  const renderForm = () => {
+    dispatch({
+      type: SHOW_FORM,
+      display: false,
+    });
+  };
+
+  const closeForm = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: SHOW_FORM,
+      display: true,
+    });
+  };
+
   return (
     <div>
-      <h1>Welcome to the Home Page!</h1>
-      <h2>Accounts: </h2>
+      <h1>Dashboard</h1>
 
-      <div className="container">
-        <form className="shadow">
-          <div className="form-group ">
-            <label>Account Name</label>
-            <input
-              name="account-name"
-              ref={accountNameRef}
-              placeholder="Name"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group ">
-            <label>Client Name</label>
-            <input
-              name="client-name"
-              ref={clientNameRef}
-              placeholder="Full Name"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group ">
-            <label>Phone Number</label>
-            <input
-              name="client-phone"
-              ref={phoneRef}
-              placeholder="(555) 555-5555"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group ">
-            <label>Email</label>
-            <input
-              name="email"
-              ref={emailRef}
-              placeholder="example@example.com"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label>Account Location</label>
-            <input
-              name="account-location"
-              ref={addressRef}
-              placeholder="312 N. Plants St."
-              className="form-control"
-            />
-          </div>
-          <div className="form-group ">
-            <label>District Zone</label>
-            <input
-              name="district-zone"
-              ref={zoneRef}
-              placeholder="Zone 8"
-              className="form-control"
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={saveAccount}
-          >
-            Submit
-          </button>
-        </form>
-      </div>
+      <button className="btn btn-success" onClick={() => renderForm()}>
+        <FaPlus /> Add an account
+      </button>
+
+      {state.display ? (
+        <div className="container">
+          <form className="shadow">
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => closeForm()}
+            >
+              <FaMinus />
+            </button>
+            <div className="form-group">
+              <label>Account Name</label>
+              <input
+                name="account-name"
+                ref={accountNameRef}
+                placeholder="Name"
+                className="form-control"
+              />
+            </div>
+            <div className="form-group ">
+              <label>Client Name</label>
+              <input
+                name="client-name"
+                ref={clientNameRef}
+                placeholder="Full Name"
+                className="form-control"
+              />
+            </div>
+            <div className="form-group ">
+              <label>Phone Number</label>
+              <input
+                name="client-phone"
+                ref={phoneRef}
+                placeholder="(555) 555-5555"
+                className="form-control"
+              />
+            </div>
+            <div className="form-group ">
+              <label>Email</label>
+              <input
+                name="email"
+                ref={emailRef}
+                placeholder="example@example.com"
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label>Account Location</label>
+              <input
+                name="account-location"
+                ref={addressRef}
+                placeholder="312 N. Plants St."
+                className="form-control"
+              />
+            </div>
+            <div className="form-group ">
+              <label>District Zone</label>
+              <input
+                name="district-zone"
+                ref={zoneRef}
+                placeholder="Zone 8"
+                className="form-control"
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-success"
+              onClick={saveAccount}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      ) : (
+        ""
+      )}
+
+      <h2>Your accounts: </h2>
+
       {state.accounts.length ? (
         <div className="container">
           {state.accounts.map((account) => {
@@ -228,7 +260,7 @@ const Home = () => {
                     className="btn btn-danger"
                     onClick={() => removeAccount(account._id)}
                   >
-                    <FaTimes /> Delete Account{" "}
+                    <FaRegTrashAlt />
                   </button>
                 </span>
               </div>

@@ -12,6 +12,7 @@ import {
   LOAD_ACCOUNTS,
   SPOTLIGHT,
   SAVE_TO_ACCOUNT,
+  SHOW_FORM,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -49,6 +50,7 @@ const reducer = (state, action) => {
         plants: action.saved,
         loading: false,
       };
+
     case SET_SAVED_ACCOUNT:
       return {
         ...state,
@@ -67,6 +69,7 @@ const reducer = (state, action) => {
         },
         loading: false,
       };
+
     case REMOVE_ACCOUNT:
       return {
         ...state,
@@ -79,6 +82,13 @@ const reducer = (state, action) => {
         ...state,
         loading: true,
       };
+
+    case SHOW_FORM:
+      return {
+        ...state,
+        display: true,
+      };
+
     case SAVE_TO_ACCOUNT:
       return {
         ...state,

@@ -1,11 +1,12 @@
 import React from "react";
 import { useStoreContext } from "../utils/GlobalState";
+import { Link } from "react-router-dom";
 import SearchFrom from "../components/SearchForm/SearchForm";
 import Results from "../components/Results/Results";
 import { RESULTS } from "../utils/actions";
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import API from "../utils/API";
+import BackBtn from "../components/BackBtn";
 
 function Search(type) {
   const [state, dispatch] = useStoreContext();
@@ -69,7 +70,7 @@ function Search(type) {
   };
 
   return (
-    <div>
+    <div className="container">
       <SearchFrom />
       <Results />
       {state.results.length <= 1 ? (
@@ -98,6 +99,11 @@ function Search(type) {
           )}
         </div>
       )}
+      <footer>
+        <Link to="/account">
+          <BackBtn />
+        </Link>
+      </footer>
     </div>
   );
 }

@@ -1,0 +1,13 @@
+.account-cards {
+  cursor: pointer;
+  margin-bottom: 5%;
+}
+
+.account-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-info {
+  text-transform: capitalize;
+}

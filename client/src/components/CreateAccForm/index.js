@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_ACCOUNT, LOADING, SHOW_FORM } from "../../utils/actions";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import "./style.css";
 
 function CreateAccForm() {
   const [state, dispatch] = useStoreContext();

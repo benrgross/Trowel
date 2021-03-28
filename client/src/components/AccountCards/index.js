@@ -4,6 +4,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_ACCOUNT, SET_SAVED_ACCOUNT } from "../../utils/actions";
 import { useHistory } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
+import "./style.css";
 
 function AccountCard() {
   const [state, dispatch] = useStoreContext();
@@ -51,58 +52,53 @@ function AccountCard() {
   };
 
   return (
-    <div>
-      {state.accounts.length ? (
-        <div className="container">
-          {state.accounts.map((account) => {
-            return (
-              <div
-                className="card"
-                key={account._id}
-                style={{ cursor: "pointer" }}
-              >
-                <div
-                  className="card-body"
-                  onClick={() => viewAccount(account.accountName)}
-                >
-                  <span>
-                    <h5
-                      className="account-title"
-                      style={{ textTransform: "capitalize" }}
-                    >
-                      Account: {account.accountName}
-                    </h5>
-                  </span>
-                  <h6 style={{ textTransform: "capitalize" }}>
-                    Client: {account.clientContact.clientName}
-                  </h6>
-                  <ul>
-                    <li>{account.clientContact.phone}</li>
-                    <li>{account.clientContact.email}</li>
-                  </ul>
-                  <p style={{ textTransform: "capitalize" }}>
-                    location: {account.location.address}
-                  </p>
-                  <p style={{ textTransform: "capitalize" }}>
-                    distribution zone: {account.location.distZone}
-                  </p>
-                  <p># of Plants: {account.plants.length}</p>
-                </div>
-                <span>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => removeAccount(account._id)}
-                  >
-                    <FaRegTrashAlt />
-                  </button>
-                </span>
-              </div>
-            );
-          })}
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          {state.accounts.length ? (
+            <div className="row">
+              {state.accounts.map((account) => {
+                return (
+                  <div className="col-md-6">
+                    <div className="card account-cards" key={account._id}>
+                      <div
+                        className="card-body"
+                        onClick={() => viewAccount(account.accountName)}
+                      >
+                        <span className="account-title">
+                          <h5>Account: {account.accountName}</h5>
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => removeAccount(account._id)}
+                          >
+                            <FaRegTrashAlt />
+                          </button>
+                        </span>
+                        <h6 className="account-info">
+                          Client: {account.clientContact.clientName}
+                        </h6>
+                        <ul>
+                          <li>{account.clientContact.phone}</li>
+                          <li>{account.clientContact.email}</li>
+                        </ul>
+                        <p className="account-info">
+                          location: {account.location.address}
+                        </p>
+                        <p className="account-info">
+                          distribution zone: {account.location.distZone}
+                        </p>
+                        <p># of Plants: {account.plants.length}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <h6>No saved accounts yet...</h6>
+          )}
         </div>
-      ) : (
-        <h6>No saved accounts yet...</h6>
-      )}
+      </div>
     </div>
   );
 }

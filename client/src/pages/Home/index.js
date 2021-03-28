@@ -1,11 +1,10 @@
-import "./home.css";
 import React, { useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { useHistory } from "react-router-dom";
 import { LOAD_ACCOUNTS } from "../../utils/actions";
 import CreateAccForm from "../../components/CreateAccForm";
 import AccountCards from "../../components/AccountCards";
+import "./home.css";
 
 const Home = () => {
   const [state, dispatch] = useStoreContext();

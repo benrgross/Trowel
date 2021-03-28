@@ -80,8 +80,8 @@ const Account = () => {
       scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
-      notes: notes.note,
-      notesDate: notes.date
+      notes: notes ? notes.note : "",
+      notesDate: notes ? notes.date : ""
     };
     console.log("Plant Object: ", plantObject);
 

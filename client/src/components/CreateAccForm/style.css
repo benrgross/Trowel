@@ -3,7 +3,8 @@
   justify-content: flex-end;
 }
 
-.btn.btn-success.show-btn {
+.btn.show-btn {
+  color: #fff;
   background-color: #61c177;
   border: 3px solid #468d56;
   padding: 1rem;
@@ -12,14 +13,15 @@
   border-radius: 15px;
 }
 
-.btn.btn-success.submit {
+.btn.submit {
+  color: #fff;
   background-color: #61c177;
   border: 3px solid #468d56;
   border-radius: 15px;
 }
 
-.btn-success.show-btn:hover,
-.btn-success.submit:hover {
+.btn.show-btn:hover,
+.btn.submit:hover {
   color: #fff;
   background-color: #468d56;
   border: 3px solid #61c177;

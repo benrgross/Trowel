@@ -76,10 +76,7 @@ function CreateAccForm() {
   return (
     <div>
       <div className="show-btn-div">
-        <button
-          className="btn btn-success show-btn"
-          onClick={() => renderForm()}
-        >
+        <button className="btn show-btn" onClick={() => renderForm()}>
           <FaPlus /> Add an account
         </button>
       </div>
@@ -89,7 +86,7 @@ function CreateAccForm() {
           <form className="account-form">
             <span className="close-btn-div">
               <button
-                className="btn btn-outline-danger close-btn"
+                className="btn btn-outline close-btn"
                 onClick={() => closeForm()}
               >
                 <FaMinus />
@@ -149,11 +146,7 @@ function CreateAccForm() {
                 className="form-control"
               />
             </div>
-            <button
-              type="submit"
-              className="btn btn-success submit"
-              onClick={saveAccount}
-            >
+            <button type="submit" className="btn submit" onClick={saveAccount}>
               Submit
             </button>
           </form>

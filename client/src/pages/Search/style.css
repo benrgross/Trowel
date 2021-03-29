@@ -1,0 +1,14 @@
+.arrow-div {
+  display: flex;
+  justify-content: center;
+}
+
+.left-arrow {
+  margin-right: 45%;
+  cursor: pointer;
+}
+
+.right-arrow {
+  margin-left: 45%;
+  cursor: pointer;
+}

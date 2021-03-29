@@ -46,8 +46,8 @@ function AccountCard() {
   };
 
   const removeAccount = async (id, event) => {
-    event.stopPropagation()
-    
+    event.stopPropagation();
+
     try {
       await API.deleteAccount(id);
       console.log("Deleted Account ID: ", id);
@@ -77,6 +77,7 @@ function AccountCard() {
                         <span className="account-title account-info">
                           <h5>Account: {account.accountName}</h5>
                           <button
+                            type="button"
                             className="btn delete"
                             onClick={(e) => removeAccount(account._id, e)}
                           >

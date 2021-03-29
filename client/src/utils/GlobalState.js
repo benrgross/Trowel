@@ -86,7 +86,7 @@ const reducer = (state, action) => {
     case SHOW_FORM:
       return {
         ...state,
-        display: true,
+        display: action.display,
       };
 
     case SAVE_TO_ACCOUNT:

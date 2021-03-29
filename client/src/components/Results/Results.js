@@ -15,13 +15,14 @@ function Results() {
     const item = {
       url: plant.links.self,
     };
-
+    localStorage.removeItem("plantURL");
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
-    console.log(data);
+    console.log("dataforben", data.url);
 
     const plantObject = {
+      url: data.url,
       atmosHumidity: data.atmosHumidity,
       bloomMonths: data.bloomMonths,
       commonName: data.commonName,
@@ -55,9 +56,10 @@ function Results() {
       soilTexture: data.soilTexture,
       notes: "",
     };
-
+    console.log(plantObject);
     dispatch({
       type: "SPOTLIGHT",
+      url: data.url,
       spotlight: plantObject,
       switch: "ADD_PLANT",
     });

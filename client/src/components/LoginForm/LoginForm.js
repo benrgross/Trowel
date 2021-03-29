@@ -37,8 +37,8 @@ function LoginForm() {
     });
   };
   return (
-    <div className="container-fluid form-group d-flex justify-content-center">
-      <form className="logIn">
+    <div className="container-fluid form-group d-flex justify-content-center ">
+      <form className="logIn card form">
         <h2 className="text-center">Log In</h2>
         <div className="form-group">
           <label>Email address</label>

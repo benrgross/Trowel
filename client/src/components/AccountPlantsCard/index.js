@@ -1,22 +1,19 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { useHistory, Link } from "react-router-dom";
-import { REMOVE_PLANT, SAVE_TO_ACCOUNT, LOADING } from "../../utils/actions";
+import { useHistory } from "react-router-dom";
+import { REMOVE_PLANT } from "../../utils/actions";
 import API from "../../utils/API";
 import "./accountplant.css";
 
 function AccountPlantCard() {
   const [state, dispatch] = useStoreContext();
-  const { accountID, accountName, notes, plants } = state.account;
+  const { accountID, plants } = state.account;
   console.log("Account State:", state.account);
   let history = useHistory();
 
-  const removePlant = async (id) => {
-    dispatch({
-      type: LOADING,
-    });
-    console.log("Account ID", accountID);
-    console.log("Plant ID", id);
+  const removePlant = async (id, event) => {
+    event.stopPropagation();
+
     const update = await API.updateAccount(accountID, id);
     console.log("Update Successful!", update);
 
@@ -26,7 +23,9 @@ function AccountPlantCard() {
     });
   };
 
-  const getPlant = async (plant, id, notes) => {
+  const getPlant = async (plant, id, notes, lightCondition) => {
+    console.log("Light Condition: ", lightCondition);
+
     const item = {
       plant,
     };
@@ -69,6 +68,7 @@ function AccountPlantCard() {
       scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
+      lightCondition: lightCondition,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
@@ -77,49 +77,30 @@ function AccountPlantCard() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: "VIEW_PLANT",
+      switch: false,
     });
 
     history.push("/plant");
   };
 
-  const getNotes = async (plant, id, notes) => {
-    console.log("Plant ID: ", id);
-    console.log("Plant Notes: ", notes);
+  const getNotes = async (plant, id, notes, event) => {
+    event.stopPropagation();
 
     const plantObject = {
       id: id,
-      atmosHumidity: plant.atmosHumidity,
-      bloomMonths: plant.bloomMonths,
       commonName: plant.commonName,
-      edible: plant.edible,
-      family: plant.family,
-      familyCommonName: plant.familyCommonName,
       flowerColor: {
         color: plant.flowerColor.color,
         conspicuous: plant.flowerColor.conspicuous,
       },
-      genus: plant.genus,
-      growthHabit: plant.growthHabit,
-      heightAvgCm: plant.heightAvg,
-      img: plant.img,
-      light: plant.light,
-      maxPh: plant.maxPh,
-      maxPrecipitation: plant.maxPrecipitation,
       maxTemp: {
         deg_f: plant.maxTemp.deg_f,
         deg_c: plant.maxTemp.deg_c,
       },
-      minPh: plant.minPh,
-      minPrecipitation: plant.minPrecipitation,
       minTemp: {
         deg_f: plant.minTemp.deg_f,
         deg_c: plant.minTemp.deg_c,
       },
-      native: plant.native,
-      scientificName: plant.scientific_name,
-      soilNutriments: plant.soilNutriments,
-      soilTexture: plant.soilTexture,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
@@ -128,10 +109,9 @@ function AccountPlantCard() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: "VIEW_NOTES",
     });
 
-    history.push("/plant");
+    history.push("/notes");
   };
 
   return (
@@ -139,7 +119,10 @@ function AccountPlantCard() {
       <div className="row d-flex justify-content-center plant-row">
         {plants
           ? plants.map(({ plant, _id, notes, lightCondition }) => (
-              <div className="col-sm-12 col-md-6 col-lg-4 plant-col">
+              <div
+                className="col-sm-12 col-md-6 col-lg-4 plant-col"
+                onClick={() => getPlant(plant, _id, notes, lightCondition)}
+              >
                 <div
                   className="container spotlight-card card plantAcc-card text-center"
                   key={_id}
@@ -173,13 +156,13 @@ function AccountPlantCard() {
                     <div className="col-sm-12 col-md-12 col-lg-12">
                       <button
                         className="btn plant"
-                        onClick={() => getNotes(plant, _id, notes)}
+                        onClick={(e) => getNotes(plant, _id, notes, e)}
                       >
                         Notes
                       </button>
                       <button
                         className="btn delete-plant"
-                        onClick={() => removePlant(_id)}
+                        onClick={(e) => removePlant(_id, e)}
                       >
                         Delete Plant
                       </button>

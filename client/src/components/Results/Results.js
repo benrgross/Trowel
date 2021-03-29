@@ -61,7 +61,7 @@ function Results() {
       type: "SPOTLIGHT",
       url: data.url,
       spotlight: plantObject,
-      switch: "ADD_PLANT",
+      switch: true,
     });
 
     history.push("/plant");

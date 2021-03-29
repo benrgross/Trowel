@@ -55,6 +55,7 @@ const Plant = () => {
         scientificName: data.scientific_name,
         soilNutriments: data.soilNutriments,
         soilTexture: data.soilTexture,
+        lightCondition: data.lightCondition,
         notes: "",
       };
 
@@ -100,6 +101,7 @@ const Plant = () => {
         scientificName: plant.scientific_name,
         soilNutriments: plant.soilNutriments,
         soilTexture: plant.soilTexture,
+        lightCondition: plant.lightCondition,
         notes: "",
       };
 

@@ -102,7 +102,7 @@ function CreateAccForm() {
                 name="account-name"
                 ref={accountNameRef}
                 placeholder="Name"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -111,7 +111,7 @@ function CreateAccForm() {
                 name="client-name"
                 ref={clientNameRef}
                 placeholder="Full Name"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -120,7 +120,7 @@ function CreateAccForm() {
                 name="client-phone"
                 ref={phoneRef}
                 placeholder="(555) 555-5555"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -129,7 +129,7 @@ function CreateAccForm() {
                 name="email"
                 ref={emailRef}
                 placeholder="example@example.com"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -138,7 +138,7 @@ function CreateAccForm() {
                 name="account-location"
                 ref={addressRef}
                 placeholder="312 N. Plants St."
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -147,7 +147,7 @@ function CreateAccForm() {
                 name="district-zone"
                 ref={zoneRef}
                 placeholder="Zone 8"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <button type="submit" className="btn submit" onClick={saveAccount}>

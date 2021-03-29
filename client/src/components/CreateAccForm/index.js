@@ -62,7 +62,8 @@ function CreateAccForm() {
     dispatch({ type: SHOW_FORM });
   };
 
-  const closeForm = () => {
+  const closeForm = (e) => {
+    e.stopPropagation();
     dispatch({
       type: SHOW_FORM,
       display: false,
@@ -84,7 +85,7 @@ function CreateAccForm() {
               <button
                 // type="button"
                 className="btn btn-outline close-btn"
-                onClick={() => closeForm()}
+                onClick={(e) => closeForm(e)}
               >
                 <FaMinus />
               </button>

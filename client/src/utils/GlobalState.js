@@ -105,6 +105,8 @@ const reducer = (state, action) => {
       };
 
     case SPOTLIGHT:
+      console.log("Global State: ", action.lightCondition)
+      console.log("Global State Works? ", action.spotlight.commonName)
       return {
         ...state,
         switch: action.switch,
@@ -142,6 +144,7 @@ const reducer = (state, action) => {
           scientificName: action.spotlight.scientificName,
           soilNutriments: action.spotlight.soilNutriments,
           soilTexture: action.spotlight.soilTexture,
+          lightCondition: action.lightCondition,
           notes: action.spotlight.notes,
           notesDate: action.spotlight.notesDate,
         },
@@ -173,7 +176,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
-    switch: "ADD_PLANT",
+    switch: true,
     display: false,
     account: {},
     accounts: [],

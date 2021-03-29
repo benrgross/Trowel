@@ -28,26 +28,44 @@ function CurrentAccountCard() {
   };
   return (
     <div className="container">
-      <h1>Account Page</h1>
-      <div className="card account-cards " key={accountID}>
-        <div className="card-body ">
+      <div className="row">
+        <div className="col-sm-12 col-md-4 col-lg-3"></div>
+        <div className="col-sm-12 col-md-4 col-lg-3"></div>
+        <div className="col-sm-12 col-md-4 col-lg-3"></div>
+        <div className="col-sm-12 col-md-4 col-lg-3">
           <span>
-            <h5 className="account-title">Account: {accountName}</h5>
+            <button
+              style={{ width: "60%" }}
+              className="btn plant"
+              onClick={addPlant}
+            >
+              Add Plant
+            </button>
           </span>
-          <h6>Client: {client}</h6>
-          <ul>
-            <li>{clientPhone}</li>
-            <li>{clientEmail}</li>
-          </ul>
-          <p>location: {address}</p>
-          <p>distribution zone: {distZone}</p>
-          {/* <p># of Plants: {plants.length}</p> */}
         </div>
-        <span>
-          <button className="btn btn-danger" onClick={addPlant}>
-            Add Plant
-          </button>
-        </span>
+      </div>
+      <div className="row">
+        <div className="col-sm-12 col-md-3 col-lg-3"></div>
+        <div className="col-sm-12 col-md-6 col-lg-6">
+          <div className="card account-cards " key={accountID}>
+            <div className="card-body ">
+              <span>
+                <h5 className="account-title account-info">
+                  Account: {accountName}
+                </h5>
+              </span>
+              <h6 className="account-info">Client: {client}</h6>
+              <ul>
+                <li>{clientPhone}</li>
+                <li>{clientEmail}</li>
+              </ul>
+              <span>location: {address}</span>
+              <br></br>
+              <span>{distZone}</span>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-12 col-md-3 col-lg-3"></div>
       </div>
     </div>
   );

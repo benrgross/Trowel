@@ -16,6 +16,8 @@ function Results() {
       url: plant.links.self,
     };
 
+    localStorage.setItem("plantURL", JSON.stringify(item));
+
     const { data } = await API.getPlant(item);
 
     const plantObject = {

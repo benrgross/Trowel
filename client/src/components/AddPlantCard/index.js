@@ -94,14 +94,14 @@ function AddPlantCard() {
 
   return (
     <div>
-      <div className="row ">
+      <div className="row">
         <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
           <h1>{commonName}</h1>
         </div>
       </div>
 
       {state.switch ? (
-        <div className="container spotlight-card">
+        <div className="container spotlight-card shadow">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
               <div className=" plant-view-card">

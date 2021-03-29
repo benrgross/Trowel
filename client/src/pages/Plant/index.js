@@ -1,114 +1,69 @@
-import React from "react";
-// import { useStoreContext } from "../../utils/GlobalState";
-// import API from "../../utils/API";
+import React, { useEffect } from "react";
+import { useStoreContext } from "../../utils/GlobalState";
+import API from "../../utils/API";
 // import { useHistory, Link } from "react-router-dom";
-// import { SET_SAVED_ACCOUNT } from "../../utils/actions";
+import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 // import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 import AddPlantCard from "../../components/AddPlantCard";
 // import "./plant.css";
 
 const Plant = () => {
-  // const [state, dispatch] = useStoreContext();
-  // const lightRef = useRef();
-  // const {
-  //   viewPlant: {
-  //     id,
-  //     commonName,
-  //     scientificName,
-  //     img,
-  //     atmosHumidity,
-  //     edible,
-  //     family,
-  //     familyCommonName,
-  //     genus,
-  //     growthHabit,
-  //     heightAvgCm,
-  //     light,
-  //     maxPh,
-  //     maxPrecipitation,
-  //     minPh,
-  //     minPrecipitation,
-  //     native,
-  //     notes,
-  //     soilNutriments,
-  //     soilTexture,
-  //   },
-  // } = state;
-  // console.log("Switch State: ", state.switch);
-  // let history = useHistory();
-  // const noteRef = useRef();
+  const [state, dispatch] = useStoreContext();
+  useEffect(() => {
+    getPlant();
+  }, []);
 
-  // console.log("Switch State: ", state.switch);
+  const getPlant = async () => {
+    const { url } = JSON.parse(localStorage.getItem("plantURL"));
+    console.log("url", url);
 
-  // const savePlantObj = {
-  //   plant: state.viewPlant,
-  //   accountName: state.accountName,
-  // };
+    const item = {
+      url: url,
+    };
 
-  // console.log("Plant To Save: ", savePlantObj);
+    const { data } = await API.getPlant(item);
 
-  // const savePlantSelection = async () => {
-  //   console.log("lightRef", lightRef.current.value);
-  //   const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
+    const plantObject = {
+      atmosHumidity: data.atmosHumidity,
+      bloomMonths: data.bloomMonths,
+      commonName: data.commonName,
+      edible: data.edible,
+      family: data.family,
+      familyCommonName: data.familyCommonName,
+      flowerColor: {
+        color: data.flowerColor.color,
+        conspicuous: data.flowerColor.conspicuous,
+      },
+      genus: data.genus,
+      growthHabit: data.growthHabit,
+      heightAvgCm: data.heightAvg.cm,
+      // img: data.img,
+      light: data.light,
+      maxPh: data.maxPh,
+      maxPrecipitation: data.maxPrecipitation.mm,
+      maxTemp: {
+        deg_f: data.maxTemp.deg_f,
+        deg_c: data.maxTemp.deg_c,
+      },
+      minPh: data.minPh,
+      minPrecipitation: data.minPrecipitation.mm,
+      minTemp: {
+        deg_f: data.minTemp.deg_f,
+        deg_c: data.minTemp.deg_c,
+      },
+      native: data.native,
+      scientificName: data.scientific_name,
+      soilNutriments: data.soilNutriments,
+      soilTexture: data.soilTexture,
+      notes: "",
+    };
 
-  //   const saveLight = {
-  //     id: newPlant._id,
-  //     plantId: newPlant.plants[newPlant.plants.length - 1]._id,
-  //     accountName: state.accountName,
-  //     lightCondition: lightRef.current.value,
-  //   };
-
-  //   await API.addLightConditions(saveLight);
-  //   console.log("Plant Saved!");
-
-  //   const { data } = await API.getPlantsByAccount({
-  //     accountName: state.accountName,
-  //   });
-  //   console.log("account pull", data);
-
-  //   const accountObj = {
-  //     accountID: data._id,
-  //     accountName: data.accountName,
-  //     client: data.clientContact.clientName,
-  //     clientPhone: data.clientContact.phone,
-  //     clientEmail: data.clientContact.email,
-  //     address: data.location.address,
-  //     distZone: data.location.distZone,
-  //     notes: data.notes,
-  //     plants: data.plants,
-  //   };
-
-  //   dispatch({
-  //     type: SET_SAVED_ACCOUNT,
-  //     account: accountObj,
-  //   });
-
-  //   history.push("/account");
-  // };
-
-  // const addNote = async (objectID) => {
-  //   console.log("Plant ID: ", objectID);
-  //   console.log("Account ID:", state.account.accountID);
-
-  //   const note = {
-  //     id: objectID,
-  //     note: {
-  //       note: noteRef.current.value,
-  //       date: new Date(),
-  //     },
-  //   };
-  //   console.log("Posted Note Obj: ", note);
-
-  //   const addNote = await API.postPlantNote(state.account.accountID, note);
-  //   console.log(addNote);
-  // };
-
-  // const changeNote = (note) => {
-  //   dispatch({
-  //     type: "CHANGE_NOTES",
-  //     newNote: note,
-  //   });
-  // };
+    dispatch({
+      type: "SPOTLIGHT",
+      spotlight: plantObject,
+      switch: true,
+    });
+  };
 
   return (
     <div>

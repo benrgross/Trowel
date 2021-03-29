@@ -98,6 +98,7 @@ router.post("/plant", async (req, res) => {
     const { specifications } = data.data;
 
     const plantData = {
+      image: data.data.image_url,
       commonName: data.data.common_name,
       scientific_name: data.data.scientific_name,
       family: data.data.family,

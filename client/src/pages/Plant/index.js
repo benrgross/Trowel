@@ -24,6 +24,7 @@ const Plant = () => {
     const { data } = await API.getPlant(item);
 
     const plantObject = {
+      img: data.image,
       atmosHumidity: data.atmosHumidity,
       bloomMonths: data.bloomMonths,
       commonName: data.commonName,

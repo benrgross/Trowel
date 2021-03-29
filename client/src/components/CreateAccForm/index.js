@@ -59,7 +59,10 @@ function CreateAccForm() {
   };
 
   const renderForm = () => {
-    dispatch({ type: SHOW_FORM });
+    dispatch({
+      type: SHOW_FORM,
+      display: true,
+    });
   };
 
   const closeForm = (e) => {
@@ -73,23 +76,26 @@ function CreateAccForm() {
 
   return (
     <div>
-      <div className="show-btn-div">
-        <button className="btn show-btn" onClick={() => renderForm()}>
-          <FaPlus /> Add an account
-        </button>
-      </div>
+      {!state.display ? (
+        <div className="show-btn-div">
+          <button className="btn show-btn" onClick={() => renderForm()}>
+            <FaPlus /> Add an account
+          </button>
+        </div>
+      ) : (
+        <div className="close-btn-div">
+          <button
+            className="btn btn-outline close-btn"
+            onClick={(e) => closeForm(e)}
+          >
+            <FaMinus /> Close
+          </button>
+        </div>
+      )}
 
       {state.display ? (
         <div className="container">
           <form className="account-form">
-            <span className="close-btn-div">
-              <button
-                className="btn btn-outline close-btn"
-                onClick={(e) => closeForm(e)}
-              >
-                <FaMinus />
-              </button>
-            </span>
             <div className="form-group">
               <label>Account Name</label>
               <input

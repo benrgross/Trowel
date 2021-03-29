@@ -1,7 +1,8 @@
 .card.plantAcc-card {
+  margin-top: 40px;
   margin-bottom: 5%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
-  background-color: #0a3e0c14;
+  background-color: #01b37917;
   border: 3px solid lightgoldenrodyellow;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
@@ -48,4 +49,10 @@
   height: 50px;
   width: 80%;
   margin-bottom: 10px;
+}
+
+.card-img-top.rounded.add-plant-img {
+  border: 2px solid lightgoldenrodyellow;
+  border-radius: 15px !important;
+  margin-left: 0px;
 }

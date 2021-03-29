@@ -27,8 +27,6 @@ function SignUpForm() {
       alert("Please enter an e-mail address");
     } else if (cred.email && !cred.password) {
       alert("Please enter a password");
-    } else if (!cred.email.includes(/.+@.+\..+/)) {
-      alert("Please enter an e-mail address");
     } else {
       console.log("Sign-up successful!");
     }

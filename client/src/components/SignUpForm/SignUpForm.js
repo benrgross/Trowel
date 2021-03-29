@@ -46,7 +46,7 @@ function SignUpForm() {
 
   return (
     <div className="container-fluid form-group d-flex justify-content-center">
-      <form className="signup">
+      <form className="signup card">
         <h2 className="text-center">Sign Up</h2>
         <div className="form-group">
           <label>Email address</label>

@@ -61,7 +61,7 @@ const Plant = () => {
       dispatch({
         type: "SPOTLIGHT",
         spotlight: plantObject,
-        switch: "ADD_PLANT",
+        switch: true,
       });
     } else if (JSON.parse(localStorage.getItem("plantState"))) {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));

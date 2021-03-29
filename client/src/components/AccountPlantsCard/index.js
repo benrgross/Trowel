@@ -147,7 +147,7 @@ function AccountPlantCard() {
                   <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-12 plant-img-card">
                       <img
-                        className=" card-img-top rounded"
+                        className=" card-img-top rounded add-plant-img"
                         onClick={() => getPlant(plant, _id, notes)}
                         style={{
                           height: "10rem",

@@ -7,18 +7,17 @@ import "./style.css";
 
 function Footer() {
   return (
-    <footer>
-      <Link to="/account">
-        <button className="btn page" style={{ cursor: "pointer" }}>
-          <FaArrowCircleLeft /> Account
-        </button>
-      </Link>
-      <Link to="/search">
-        <button className="btn page" style={{ cursor: "pointer" }}>
-          <FaPlus /> Search Plants
-        </button>
-      </Link>
-    </footer>
+    <div className="footer-margin">
+      <footer className="footer">
+        <div style={{ margin: "0" }} className="container">
+          <Link to="/account">
+            <button className="btn page" style={{ cursor: "pointer" }}>
+              <FaArrowCircleLeft /> Account
+            </button>
+          </Link>
+        </div>
+      </footer>
+    </div>
   );
 }
 

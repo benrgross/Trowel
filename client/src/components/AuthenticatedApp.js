@@ -21,9 +21,8 @@ function AuthenticatedApp() {
           <Route exact path="/search" component={Search} />
         </Switch>
       </div>
-      <div className="container">
-        <Footer />
-      </div>
+
+      <Footer />
     </Router>
   );
 }

@@ -32,8 +32,6 @@ function AccountPlantCard() {
 
     localStorage.removeItem("plantURL");
     localStorage.setItem("plantState", JSON.stringify(item));
-    console.log("Plant ID: ", id);
-    console.log("Plant Notes: ", notes);
 
     const plantObject = {
       id: id,
@@ -68,16 +66,15 @@ function AccountPlantCard() {
       scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
-      lightCondition: lightCondition,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
-    console.log("Plant Object: ", plantObject);
 
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
       switch: false,
+      lightCondition: lightCondition
     });
 
     history.push("/plant");

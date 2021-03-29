@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import AddPlantCard from "../../components/AddPlantCard";
 
 const Plant = () => {
-  const [state, dispatch] = useStoreContext();
+  const [_, dispatch] = useStoreContext();
   useEffect(() => {
     getPlant();
   }, []);
@@ -20,7 +20,7 @@ const Plant = () => {
       };
 
       const { data } = await API.getPlant(item);
-      console.log(data);
+      console.log("API Data: ",data);
 
       const plantObject = {
         img: data.image,
@@ -55,7 +55,6 @@ const Plant = () => {
         scientificName: data.scientific_name,
         soilNutriments: data.soilNutriments,
         soilTexture: data.soilTexture,
-        lightCondition: data.lightCondition,
         notes: "",
       };
 
@@ -66,7 +65,7 @@ const Plant = () => {
       });
     } else if (JSON.parse(localStorage.getItem("plantState"))) {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));
-      console.log(plant);
+      console.log("Local Storage: ", plant);
 
       const plantObject = {
         img: plant.image,
@@ -101,7 +100,6 @@ const Plant = () => {
         scientificName: plant.scientific_name,
         soilNutriments: plant.soilNutriments,
         soilTexture: plant.soilTexture,
-        lightCondition: plant.lightCondition,
         notes: "",
       };
 

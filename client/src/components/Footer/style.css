@@ -13,12 +13,15 @@
 }
 
 .btn.page {
-  /* color: #21252952; */
   color: #212529bf;
+  border-radius: 15px;
+  border: 3px !important;
 }
 
 .btn.page:hover {
+  cursor: pointer;
+  border-radius: 15px;
   color: lightgoldenrodyellow;
   background-color: #468d56;
-  /* border: 3px solid #61c177; */
+  border: 3px solid #61c177;
 }

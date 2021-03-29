@@ -13,7 +13,6 @@ function CreateAccForm() {
   const phoneRef = useRef();
   const emailRef = useRef();
   const addressRef = useRef();
-  const zoneRef = useRef();
 
   useEffect(() => {
     dispatch({
@@ -38,7 +37,6 @@ function CreateAccForm() {
         },
         location: {
           address: addressRef.current.value.toLowerCase().trim(),
-          distZone: zoneRef.current.value.toLowerCase().trim(),
         },
       },
       userEmail: email,
@@ -62,7 +60,6 @@ function CreateAccForm() {
     phoneRef.current.value = "";
     emailRef.current.value = "";
     addressRef.current.value = "";
-    zoneRef.current.value = "";
 
     dispatch({
       type: SHOW_FORM,

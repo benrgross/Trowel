@@ -93,7 +93,7 @@ function AddPlantCard() {
                         className="card-img-top add-plant-img"
                         style={{
                           height: "16rem",
-                          cursor: "pointer",
+                          // cursor: "pointer",
                           width: "20rem",
                           marginLeft: "50px",
                         }}

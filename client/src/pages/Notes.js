@@ -2,11 +2,13 @@ import React, { useRef } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
-import "./Search/style.css"
+import "./Search/style.css";
 
 function Notes() {
   const [state, dispatch] = useStoreContext();
-  const { viewPlant: { id, commonName, notes, notesDate } } = state;
+  const {
+    viewPlant: { id, commonName, notes, notesDate },
+  } = state;
   const noteRef = useRef();
   let history = useHistory();
 
@@ -39,20 +41,26 @@ function Notes() {
         </div>
       </div>
       <div className="container spotlight-card">
-          <h2>Notes: </h2>
-          <h3>Last Modified: {notesDate}</h3>
-          <div className="form-group">
-            <textarea
-              name="Notes"
-              ref={noteRef}
-              placeholder="Water once a week..."
-              value={notes}
-              onChange={(e) => changeNote(e.target.value)}
-              style={style}
-            ></textarea>
-          </div>
-          <button className="btn plant" style={{ width: "15%" }} onClick={() => addNote(id)}>Add</button>
+        <h2>Notes: </h2>
+        <h3>Last Modified: {notesDate}</h3>
+        <div className="form-group">
+          <textarea
+            name="Notes"
+            ref={noteRef}
+            placeholder="Water once a week..."
+            value={notes}
+            onChange={(e) => changeNote(e.target.value)}
+            style={style}
+          ></textarea>
         </div>
+        <button
+          className="btn plant"
+          style={{ width: "15%" }}
+          onClick={() => addNote(id)}
+        >
+          Add
+        </button>
+      </div>
     </div>
   );
 }
@@ -63,4 +71,4 @@ const style = {
   width: "100%",
 };
 
-export default Notes
+export default Notes;

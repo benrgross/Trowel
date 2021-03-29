@@ -27,13 +27,13 @@ function AddPlantCard() {
       native,
       soilNutriments,
       soilTexture,
-      lightCondition
+      lightCondition,
     },
   } = state;
   const lightRef = useRef();
   let history = useHistory();
-  console.log("Light Condition on Page: ", lightCondition)
-  console.log("Name on Page: ", commonName)
+  console.log("Light Condition on Page: ", lightCondition);
+  console.log("Name on Page: ", commonName);
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -260,7 +260,11 @@ function AddPlantCard() {
                       ""
                     )}
                     {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
-                    {lightCondition ? <p>Light Condition - {lightCondition}</p> : ""}
+                    {lightCondition ? (
+                      <p>Light Condition - {lightCondition}</p>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
               </div>

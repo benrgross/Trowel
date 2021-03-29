@@ -20,10 +20,21 @@
 }
 
 .btn.plant {
-  border-radius: 10px;
-  background-color: rgb(96 105 14 / 28%);
+  border-radius: 15px;
+  background-color: #61c177;
+  border: 2px solid #468d56;
   color: lightgoldenrodyellow;
-  border: 2px solid lightgoldenrodyellow;
+  /* border: 2px solid lightgoldenrodyellow; */
+  height: 50px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.btn.plant:hover {
+  border-radius: 15px;
+  background-color: #468d56;
+  border: 2px solid #61c177;
+  color: lightgoldenrodyellow;
   height: 50px;
   width: 80%;
   margin-bottom: 10px;
@@ -42,7 +53,17 @@
 }
 
 .btn.delete-plant {
-  border-radius: 10px;
+  border-radius: 15px;
+  background-color: rgb(224, 59, 30);
+  color: lightgoldenrodyellow;
+  border: 2px solid lightgoldenrodyellow;
+  height: 50px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.btn.delete-plant:hover {
+  border-radius: 15px;
   background-color: rgb(206, 54, 27);
   color: lightgoldenrodyellow;
   border: 2px solid lightgoldenrodyellow;

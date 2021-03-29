@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import AddPlantCard from "../../components/AddPlantCard";
 
 const Plant = () => {
-  const [state, dispatch] = useStoreContext();
+  const [_, dispatch] = useStoreContext();
   useEffect(() => {
     getPlant();
   }, []);

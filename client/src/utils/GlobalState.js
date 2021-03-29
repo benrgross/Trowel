@@ -105,8 +105,6 @@ const reducer = (state, action) => {
       };
 
     case SPOTLIGHT:
-      console.log("Global State: ", action.lightCondition)
-      console.log("Global State Works? ", action.spotlight.commonName)
       return {
         ...state,
         switch: action.switch,

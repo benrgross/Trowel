@@ -45,8 +45,9 @@ function AccountCard() {
     history.push("/account");
   };
 
-  const removeAccount = async (id, e) => {
-    e.stopPropagation();
+  const removeAccount = async (id, event) => {
+    event.stopPropagation();
+
     try {
       await API.deleteAccount(id);
       console.log("Deleted Account ID: ", id);

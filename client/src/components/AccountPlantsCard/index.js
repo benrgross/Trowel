@@ -27,6 +27,12 @@ function AccountPlantCard() {
   };
 
   const getPlant = async (plant, id, notes) => {
+    const item = {
+      plant,
+    };
+
+    localStorage.removeItem("plantURL");
+    localStorage.setItem("plantState", JSON.stringify(item));
     console.log("Plant ID: ", id);
     console.log("Plant Notes: ", notes);
 

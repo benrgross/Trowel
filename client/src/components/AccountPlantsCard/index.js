@@ -146,7 +146,7 @@ function AccountPlantCard() {
                         style={{
                           height: "10rem",
                           cursor: "pointer",
-                          width: "13rem",
+                          width: "12rem",
                         }}
                         src={plant.img}
                       />

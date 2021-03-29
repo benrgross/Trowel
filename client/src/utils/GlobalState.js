@@ -177,12 +177,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     account: {},
     accounts: [],
     accountName: "",
-    viewPlant: {
-      commonName: "Plant Example",
-      scientificName: "Science Plant",
-      img:
-        "https://images.pexels.com/photos/3209811/pexels-photo-3209811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    },
+    viewPlant: {},
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

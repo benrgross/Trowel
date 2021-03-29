@@ -78,7 +78,7 @@ function Results() {
                         <img
                           onClick={() => getPlant(plant)}
                           alt={plant.commonName}
-                          className="img search-plant-img"
+                          className="card-img-top rounded search-plant-img"
                           src={plant.img}
                         />
                       </div>
@@ -88,7 +88,7 @@ function Results() {
                   <div className="img-container">
                     <img
                       onClick={() => getPlant(plant)}
-                      className="img search-plant-img"
+                      className="card-img-top rounded search-plant-img"
                       alt={plant.commonName}
                       src={
                         "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"

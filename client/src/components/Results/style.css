@@ -1,21 +1,29 @@
-.img.search-plant-img {
-  /* max-height: 100%; */
-  max-width: 100%;
+/* .img.search-plant-img { */
+/* max-height: 100%; */
+/* max-width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
-.img-container {
-  margin-top: 5%;
-  /* height: 40%;
+/* .img-container {
+  margin-top: 5%; */
+/* height: 40%;
   width: 50%; */
-  overflow: hidden;
+/* overflow: hidden;
   display: block;
   margin-left: 5%;
   margin-right: 5%;
   border: 3px solid lightgoldenrodyellow;
   border-radius: 15px;
+} */
+
+.card-img-top.rounded.search-plant-img {
+  height: 10rem;
+  width: 13rem;
+  margin-top: 5%;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px !important;
 }
 
 .card.plant-card {

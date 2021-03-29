@@ -13,6 +13,7 @@ import {
   SPOTLIGHT,
   SAVE_TO_ACCOUNT,
   SHOW_FORM,
+  ALERT,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -89,6 +90,12 @@ const reducer = (state, action) => {
         display: action.display,
       };
 
+    case ALERT:
+      return {
+        ...state,
+        message: action.message,
+      };
+
     case SAVE_TO_ACCOUNT:
       return {
         ...state,
@@ -105,8 +112,8 @@ const reducer = (state, action) => {
       };
 
     case SPOTLIGHT:
-      console.log("Global State Light Condition: ", action.lightCondition)
-      console.log("Global State Spotlight: ", action.spotlight)
+      console.log("Global State: ", action.lightCondition);
+      console.log("Global State Works? ", action.spotlight.commonName);
       return {
         ...state,
         switch: action.switch,
@@ -178,6 +185,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     user: {},
     switch: true,
     display: false,
+    message: "",
     account: {},
     accounts: [],
     accountName: "",

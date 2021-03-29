@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_ACCOUNT, LOADING, SHOW_FORM } from "../../utils/actions";
+import { ADD_ACCOUNT, LOADING, SHOW_FORM, ALERT } from "../../utils/actions";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import "./style.css";
 
@@ -14,6 +14,13 @@ function CreateAccForm() {
   const emailRef = useRef();
   const addressRef = useRef();
   const zoneRef = useRef();
+
+  useEffect(() => {
+    dispatch({
+      type: ALERT,
+      message: "",
+    });
+  }, "");
 
   const saveAccount = async (event) => {
     // possibly remove prevent default
@@ -56,6 +63,16 @@ function CreateAccForm() {
     emailRef.current.value = "";
     addressRef.current.value = "";
     zoneRef.current.value = "";
+
+    dispatch({
+      type: SHOW_FORM,
+      display: false,
+    });
+
+    dispatch({
+      type: ALERT,
+      message: "Account created!",
+    });
   };
 
   const renderForm = () => {
@@ -76,6 +93,14 @@ function CreateAccForm() {
 
   return (
     <div>
+      {state.message ? (
+        <div className="alert alert-success" role="alert">
+          {state.message}
+        </div>
+      ) : (
+        ""
+      )}
+
       {!state.display ? (
         <div className="show-btn-div">
           <button className="btn show-btn" onClick={() => renderForm()}>

@@ -32,7 +32,8 @@
   background-color: rgba(150, 39, 20, 0);
   color: rgb(224, 59, 30);
   border: 2px solid rgb(224, 59, 30);
-  margin-bottom: 2%;
+  margin-bottom: 3%;
+  margin-right: 2%;
 }
 
 .btn.btn-outline.close-btn:hover {

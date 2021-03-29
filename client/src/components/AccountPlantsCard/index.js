@@ -23,7 +23,7 @@ function AccountPlantCard() {
     });
   };
 
-  const getPlant = async (plant, id, notes) => {    
+  const getPlant = async (plant, id, notes, lightCondition) => {    
     const item = {
       plant,
     };
@@ -67,12 +67,12 @@ function AccountPlantCard() {
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
-    console.log("Plant Object: ", plantObject);
 
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
       switch: false,
+      lightCondition: lightCondition
     });
 
     history.push("/plant");
@@ -114,7 +114,7 @@ function AccountPlantCard() {
       <div className="row d-flex justify-content-center plant-row">
         {plants
           ? plants.map(({ plant, _id, notes, lightCondition }) => (
-              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes)}>
+              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes, lightCondition)}>
                 <div
                   className="container spotlight-card card plantAcc-card text-center"
                   key={_id}

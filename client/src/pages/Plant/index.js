@@ -20,7 +20,7 @@ const Plant = () => {
       };
 
       const { data } = await API.getPlant(item);
-      console.log(data);
+      console.log("API Data: ",data);
 
       const plantObject = {
         img: data.image,
@@ -65,7 +65,7 @@ const Plant = () => {
       });
     } else if (JSON.parse(localStorage.getItem("plantState"))) {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));
-      console.log(plant);
+      console.log("Local Storage: ", plant);
 
       const plantObject = {
         img: plant.image,

@@ -1,6 +1,6 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { REMOVE_PLANT } from "../../utils/actions";
 import API from "../../utils/API";
 import "./accountplant.css";
@@ -12,7 +12,7 @@ function AccountPlantCard() {
   let history = useHistory();
 
   const removePlant = async (id, event) => {
-    event.stopPropagation()
+    event.stopPropagation();
 
     const update = await API.updateAccount(accountID, id);
     console.log("Update Successful!", update);
@@ -23,7 +23,13 @@ function AccountPlantCard() {
     });
   };
 
+<<<<<<< HEAD
   const getPlant = async (plant, id, notes, lightCondition) => {    
+=======
+  const getPlant = async (plant, id, notes, lightCondition) => {
+    console.log("Light Condition: ", lightCondition);
+
+>>>>>>> main
     const item = {
       plant,
     };
@@ -79,7 +85,7 @@ function AccountPlantCard() {
   };
 
   const getNotes = async (plant, id, notes, event) => {
-    event.stopPropagation()
+    event.stopPropagation();
 
     const plantObject = {
       id: id,
@@ -114,7 +120,10 @@ function AccountPlantCard() {
       <div className="row d-flex justify-content-center plant-row">
         {plants
           ? plants.map(({ plant, _id, notes, lightCondition }) => (
-              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes, lightCondition)}>
+              <div
+                className="col-sm-12 col-md-6 col-lg-4 plant-col"
+                onClick={() => getPlant(plant, _id, notes, lightCondition)}
+              >
                 <div
                   className="container spotlight-card card plantAcc-card text-center"
                   key={_id}
@@ -122,7 +131,8 @@ function AccountPlantCard() {
                   <div className="row">
                     <div className="col-sm-12 col-md-12 col-lg-12 plant-img-card">
                       <img
-                        className=" card-img-top rounded"
+                        className=" card-img-top rounded add-plant-img"
+                        onClick={() => getPlant(plant, _id, notes)}
                         style={{
                           height: "10rem",
                           cursor: "pointer",

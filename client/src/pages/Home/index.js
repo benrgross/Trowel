@@ -32,7 +32,7 @@ const Home = () => {
       <h1 className="dashboard-title">Dashboard</h1>
       <div className="container">
         <CreateAccForm />
-        <h2 className="account-card-title">Your accounts</h2>
+
         <AccountCards />
       </div>
     </div>

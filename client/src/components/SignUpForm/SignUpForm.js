@@ -22,7 +22,6 @@ function SignUpForm() {
 
     if (!cred.email && !cred.password) {
       alert("Please enter an e-mail address and password");
-      // alert();
     } else if (!cred.email && cred.password) {
       alert("Please enter an e-mail address");
     } else if (cred.email && !cred.password) {

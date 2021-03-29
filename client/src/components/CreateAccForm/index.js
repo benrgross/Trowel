@@ -59,17 +59,13 @@ function CreateAccForm() {
   };
 
   const renderForm = () => {
-    dispatch({
-      type: SHOW_FORM,
-      display: false,
-    });
+    dispatch({ type: SHOW_FORM });
   };
 
   const closeForm = () => {
-    // e.preventDefault();
     dispatch({
       type: SHOW_FORM,
-      display: true,
+      display: false,
     });
   };
 
@@ -86,6 +82,7 @@ function CreateAccForm() {
           <form className="account-form">
             <span className="close-btn-div">
               <button
+                // type="button"
                 className="btn btn-outline close-btn"
                 onClick={() => closeForm()}
               >

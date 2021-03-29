@@ -27,17 +27,19 @@
 }
 
 .btn.delete {
+  margin-left: 1%;
   border-radius: 10px;
   background-color: rgb(224, 59, 30);
   color: lightgoldenrodyellow;
   border: 2px solid lightgoldenrodyellow;
-  height: 50px;
+  height: 45px;
 }
 
 .btn.delete:hover {
+  margin-left: 1%;
   border-radius: 10px;
   background-color: rgb(206, 54, 27);
   color: lightgoldenrodyellow;
   border: 2px solid lightgoldenrodyellow;
-  height: 50px;
+  height: 45px;
 }

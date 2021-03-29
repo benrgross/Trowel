@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_ACCOUNT, SET_SAVED_ACCOUNT } from "../../utils/actions";
 import { useHistory } from "react-router-dom";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaPhoneSquareAlt, FaEnvelope } from "react-icons/fa";
 import "./style.css";
 
 function AccountCard() {
@@ -72,7 +72,7 @@ function AccountCard() {
                         className="card-body"
                         onClick={() => viewAccount(account.accountName)}
                       >
-                        <span className="account-title">
+                        <span className="account-title account-info">
                           <h5>Account: {account.accountName}</h5>
                           <button
                             className="btn delete"
@@ -81,13 +81,17 @@ function AccountCard() {
                             <FaRegTrashAlt />
                           </button>
                         </span>
-                        <h6 className="account-info">
+                        <p className="account-info">
                           Client: {account.clientContact.clientName}
-                        </h6>
-                        <ul>
-                          <li>{account.clientContact.phone}</li>
-                          <li>{account.clientContact.email}</li>
-                        </ul>
+                        </p>
+                        <div>
+                          <p>
+                            <FaPhoneSquareAlt /> {account.clientContact.phone}
+                          </p>
+                          <p>
+                            <FaEnvelope /> {account.clientContact.email}
+                          </p>
+                        </div>
                         <p className="account-info">
                           location: {account.location.address}
                         </p>

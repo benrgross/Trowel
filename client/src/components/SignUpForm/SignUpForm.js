@@ -20,6 +20,19 @@ function SignUpForm() {
     };
     console.log("cred", cred);
 
+    if (!cred.email && !cred.password) {
+      alert("Please enter an e-mail address and password");
+      // alert();
+    } else if (!cred.email && cred.password) {
+      alert("Please enter an e-mail address");
+    } else if (cred.email && !cred.password) {
+      alert("Please enter a password");
+    } else if (!cred.email.includes(/.+@.+\..+/)) {
+      alert("Please enter an e-mail address");
+    } else {
+      console.log("Sign-up successful!");
+    }
+
     const { data } = await API.signUp(cred);
     console.log(data);
 
@@ -41,12 +54,11 @@ function SignUpForm() {
       email,
       token,
     });
-
-    // if (cred.email) {
-    //   alert("Please enter an e-mail address");
-    //   console.log("no good, enter better info");
-    // } else console.log("good job");
   };
+
+  // const alert = () => {
+  //   return <h1>You suck lol</h1>;
+  // };
 
   return (
     <div className="container-fluid form-group d-flex justify-content-center">

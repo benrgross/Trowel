@@ -9,9 +9,9 @@ function Footer() {
   return (
     <div className="footer-margin shadow">
       <footer className="footer">
-        <div className="container footer">
+        <div style={{ margin: "0" }} className="container">
           <Link to="/account">
-            <button className="btn page">
+            <button className="btn page" style={{ cursor: "pointer" }}>
               <FaArrowCircleLeft /> Account
             </button>
           </Link>

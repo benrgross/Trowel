@@ -12,20 +12,13 @@
   margin-top: 100px;
 }
 
-.contianer.footer {
-  margin: 0;
-}
-
 .btn.page {
-  /* color: #21252952; */
   color: #212529bf;
   border-radius: 15px;
   border: 3px !important;
-  margin: 0;
 }
 
 .btn.page:hover {
-  margin: 0 !important;
   cursor: pointer;
   border-radius: 15px;
   color: lightgoldenrodyellow;

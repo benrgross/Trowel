@@ -93,7 +93,6 @@ function AddPlantCard() {
                         className="card-img-top add-plant-img"
                         style={{
                           height: "16rem",
-                          // cursor: "pointer",
                           width: "20rem",
                           marginLeft: "50px",
                         }}
@@ -174,12 +173,7 @@ function AddPlantCard() {
                   <div className="col-sm-12 col-md-6 col-lg-6 d-flex card-body info add-btn">
                     <div className="container p-2  d-flex justify-content-center">
                       <button
-                        style={{
-                          padding: "50px",
-                          height: "2.4rem",
-                          width: "10rem",
-                        }}
-                        className="btn btn-success add-plant p-2"
+                        className="btn submit add-plant p-2"
                         onClick={savePlantSelection}
                       >
                         Add Plant

@@ -42,3 +42,9 @@
   border: 2px solid lightgoldenrodyellow;
   border-radius: 15px !important;
 }
+
+.btn.add-plant.p-2.submit {
+  padding: 15%;
+  height: 3rem;
+  width: 10rem;
+}

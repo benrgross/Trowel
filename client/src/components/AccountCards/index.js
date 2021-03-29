@@ -45,7 +45,9 @@ function AccountCard() {
     history.push("/account");
   };
 
-  const removeAccount = async (id) => {
+  const removeAccount = async (id, event) => {
+    event.stopPropagation()
+    
     try {
       await API.deleteAccount(id);
       console.log("Deleted Account ID: ", id);
@@ -76,7 +78,7 @@ function AccountCard() {
                           <h5>Account: {account.accountName}</h5>
                           <button
                             className="btn delete"
-                            onClick={() => removeAccount(account._id)}
+                            onClick={(e) => removeAccount(account._id, e)}
                           >
                             <FaRegTrashAlt />
                           </button>

@@ -3,8 +3,8 @@ import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
-import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 import "./spotlight.css";
+
 function AddPlantCard() {
   const [state, dispatch] = useStoreContext();
   const {
@@ -26,14 +26,12 @@ function AddPlantCard() {
       minPrecipitation,
       native,
       soilNutriments,
-      soilTexture,
-      lightCondition
+      soilTexture
     },
   } = state;
+
   const lightRef = useRef();
   let history = useHistory();
-  console.log("Light Condition on Page: ", lightCondition)
-  console.log("Name on Page: ", commonName)
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -41,7 +39,6 @@ function AddPlantCard() {
   };
 
   const savePlantSelection = async () => {
-    console.log("lightRef", lightRef.current.value);
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
     const saveLight = {
       id: newPlant._id,
@@ -50,12 +47,11 @@ function AddPlantCard() {
       lightCondition: lightRef.current.value,
     };
     await API.addLightConditions(saveLight);
-    console.log("Plant Saved!");
+
     const { data } = await API.getPlantsByAccount({
       accountName: state.accountName,
     });
-    console.log("ben", data);
-    console.log("account pull", data);
+
     const accountObj = {
       accountID: data._id,
       accountName: data.accountName,
@@ -260,7 +256,6 @@ function AddPlantCard() {
                       ""
                     )}
                     {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
-                    {lightCondition ? <p>Light Condition - {lightCondition}</p> : ""}
                   </div>
                 </div>
               </div>

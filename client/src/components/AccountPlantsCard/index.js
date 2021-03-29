@@ -23,17 +23,13 @@ function AccountPlantCard() {
     });
   };
 
-  const getPlant = async (plant, id, notes, lightCondition) => {
-    console.log("Light Condition: ", lightCondition)
-    
+  const getPlant = async (plant, id, notes) => {    
     const item = {
       plant,
     };
 
     localStorage.removeItem("plantURL");
     localStorage.setItem("plantState", JSON.stringify(item));
-    console.log("Plant ID: ", id);
-    console.log("Plant Notes: ", notes);
 
     const plantObject = {
       id: id,
@@ -68,7 +64,6 @@ function AccountPlantCard() {
       scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
-      lightCondition: lightCondition,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
@@ -119,7 +114,7 @@ function AccountPlantCard() {
       <div className="row d-flex justify-content-center plant-row">
         {plants
           ? plants.map(({ plant, _id, notes, lightCondition }) => (
-              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes, lightCondition)}>
+              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes)}>
                 <div
                   className="container spotlight-card card plantAcc-card text-center"
                   key={_id}

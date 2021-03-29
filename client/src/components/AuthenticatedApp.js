@@ -23,9 +23,8 @@ function AuthenticatedApp() {
           <Route exact path="/notes" component={Notes} />
         </Switch>
       </div>
-      <div className="container">
-        <Footer />
-      </div>
+
+      <Footer />
     </Router>
   );
 }

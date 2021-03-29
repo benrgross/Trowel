@@ -54,9 +54,10 @@ function Results() {
       scientificName: data.scientific_name,
       soilNutriments: data.soilNutriments,
       soilTexture: data.soilTexture,
+      lightCondition: state.viewPlant.lightCondition,
       notes: "",
     };
-    console.log(plantObject);
+    console.log("Plant Obj: ", plantObject);
     dispatch({
       type: "SPOTLIGHT",
       url: data.url,

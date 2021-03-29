@@ -166,15 +166,7 @@ function CreateAccForm() {
                 className="form-control account-input"
               />
             </div>
-            <div className="form-group">
-              <label>District Zone</label>
-              <input
-                name="district-zone"
-                ref={zoneRef}
-                placeholder="Zone 8"
-                className="form-control account-input"
-              />
-            </div>
+
             <button type="submit" className="btn submit" onClick={saveAccount}>
               Submit
             </button>

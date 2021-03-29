@@ -79,13 +79,15 @@ function Results() {
               <div className="row">
                 {state.results.map((plant) => (
                   <div className="col-sm-12 col-md-6 col-lg-4">
-                    <div className="card plant-card">
+                    <div
+                      className="card plant-card"
+                      onClick={() => getPlant(plant)}
+                    >
                       {plant.img ? (
                         <div className="row">
                           <div className="col-md-12">
                             <div className="img-container">
                               <img
-                                onClick={() => getPlant(plant)}
                                 alt={plant.commonName}
                                 className="card-img-top rounded search-plant-img"
                                 src={plant.img}

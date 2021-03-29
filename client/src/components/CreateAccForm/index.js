@@ -56,6 +56,11 @@ function CreateAccForm() {
     emailRef.current.value = "";
     addressRef.current.value = "";
     zoneRef.current.value = "";
+
+    dispatch({
+      type: SHOW_FORM,
+      display: false,
+    });
   };
 
   const renderForm = () => {

@@ -41,7 +41,11 @@ function SignUpForm() {
       email,
       token,
     });
-    // if ()
+
+    // if (!regEmailRef || !regEmailRef.includes(/.+@.+\..+/)) {
+    //   alert("Please enter an e-mail address");
+    //   console.log("no good, enter better info");
+    // }
   };
 
   return (

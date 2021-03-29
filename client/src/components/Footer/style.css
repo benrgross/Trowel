@@ -13,11 +13,12 @@
 }
 
 .btn.page {
-  color: #21252952;
+  /* color: #21252952; */
+  color: #212529bf;
 }
 
 .btn.page:hover {
   color: lightgoldenrodyellow;
   background-color: #468d56;
-  border: 3px solid #61c177;
+  /* border: 3px solid #61c177; */
 }

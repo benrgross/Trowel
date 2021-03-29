@@ -29,7 +29,9 @@ router.post("/register", async (req, res) => {
     const user = await db.User.create(req.body);
     res.json(user);
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      message: "didnt work",
+    });
   }
 });
 

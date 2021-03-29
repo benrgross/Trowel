@@ -7,7 +7,7 @@ import "./style.css";
 
 function Footer() {
   return (
-    <div className="footer-margin">
+    <div className="footer-margin shadow">
       <footer className="footer">
         <div style={{ margin: "0" }} className="container">
           <Link to="/account">

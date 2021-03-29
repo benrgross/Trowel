@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 import "./spotlight.css";
@@ -9,8 +9,6 @@ function AddPlantCard() {
   const [state, dispatch] = useStoreContext();
   const {
     viewPlant: {
-      id,
-      url,
       commonName,
       scientificName,
       img,
@@ -27,19 +25,21 @@ function AddPlantCard() {
       minPh,
       minPrecipitation,
       native,
-      notes,
-      notesDate,
       soilNutriments,
       soilTexture,
+      lightCondition
     },
   } = state;
   const lightRef = useRef();
-  const noteRef = useRef();
   let history = useHistory();
+  console.log("Light Condition on Page: ", lightCondition)
+  console.log("Name on Page: ", commonName)
+
   const savePlantObj = {
     plant: state.viewPlant,
     accountName: state.accountName,
   };
+
   const savePlantSelection = async () => {
     console.log("lightRef", lightRef.current.value);
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
@@ -73,23 +73,6 @@ function AddPlantCard() {
     });
     history.push("/account");
   };
-  const addNote = async (objectID) => {
-    const note = {
-      id: objectID,
-      note: {
-        note: noteRef.current.value,
-        date: new Date(),
-      },
-    };
-    const addNote = await API.postPlantNote(state.account.accountID, note);
-    console.log("Added Note: ", addNote);
-  };
-  const changeNote = (note) => {
-    dispatch({
-      type: "CHANGE_NOTES",
-      newNote: note,
-    });
-  };
 
   return (
     <div>
@@ -99,7 +82,7 @@ function AddPlantCard() {
         </div>
       </div>
 
-      {state.switch === "ADD_PLANT" ? (
+      {state.switch ? (
         <div className="container spotlight-card shadow">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
@@ -209,22 +192,6 @@ function AddPlantCard() {
             </div>
           </div>
         </div>
-      ) : state.switch === "VIEW_NOTES" ? (
-        <div className="container spotlight-card">
-          <h2>Notes: </h2>
-          <h3>Last Modified: {notesDate}</h3>
-          <div className="form-group">
-            <textarea
-              name="Notes"
-              ref={noteRef}
-              placeholder="Water once a week..."
-              value={notes}
-              onChange={(e) => changeNote(e.target.value)}
-              style={style}
-            ></textarea>
-          </div>
-          <button onClick={() => addNote(id)}>Add</button>
-        </div>
       ) : (
         <div className="container spotlight-card">
           <div className="row">
@@ -293,22 +260,7 @@ function AddPlantCard() {
                       ""
                     )}
                     {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-12 col-md-6 col-lg-6 card-body info">
-                    <form>
-                      <span>How Much Sun Will It Get </span>
-                      <select
-                        ref={lightRef}
-                        className="form-control light-choose"
-                      >
-                        <option>Full Sun</option>
-                        <option>Partial Sun</option>
-                        <option>Shade</option>
-                        <option>Deep Shade</option>
-                      </select>
-                    </form>
+                    {lightCondition ? <p>Light Condition - {lightCondition}</p> : ""}
                   </div>
                 </div>
               </div>

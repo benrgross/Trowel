@@ -110,6 +110,7 @@ const reducer = (state, action) => {
         switch: action.switch,
         viewPlant: {
           id: action.spotlight.id,
+          url: action.url,
           atmosHumidity: action.spotlight.atmosHumidity,
           bloomMonths: action.spotlight.bloomMonths,
           commonName: action.spotlight.commonName,

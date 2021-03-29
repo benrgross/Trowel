@@ -10,6 +10,7 @@ function AddPlantCard() {
   const {
     viewPlant: {
       id,
+      url,
       commonName,
       scientificName,
       img,
@@ -53,6 +54,7 @@ function AddPlantCard() {
     const { data } = await API.getPlantsByAccount({
       accountName: state.accountName,
     });
+    console.log("ben", data);
     console.log("account pull", data);
     const accountObj = {
       accountID: data._id,

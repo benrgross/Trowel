@@ -1,9 +1,8 @@
 import React, { useRef, useHistory } from "react";
-import NavLogin from "./NavLogIn/NanLogin";
+import NavLogin from "./NavLogIn/NavLogin";
 import { useStoreContext } from "../utils/GlobalState";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import LoginForm from "../components/LoginForm/LoginForm";
-import Navbar from "./Navbar/Navbar";
 import axios from "axios";
 import { LOGIN } from "../utils/actions";
 import SignUpForm from "./SignUpForm/SignUpForm";

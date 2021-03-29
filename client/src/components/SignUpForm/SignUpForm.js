@@ -42,10 +42,10 @@ function SignUpForm() {
       token,
     });
 
-    // if (!regEmailRef || !regEmailRef.includes(/.+@.+\..+/)) {
+    // if (cred.email) {
     //   alert("Please enter an e-mail address");
     //   console.log("no good, enter better info");
-    // }
+    // } else console.log("good job");
   };
 
   return (

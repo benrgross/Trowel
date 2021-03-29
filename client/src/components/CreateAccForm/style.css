@@ -62,3 +62,7 @@
 .btn.btn-outline-danger.close-btn {
   border-radius: 50px;
 }
+
+.form-control.account-input {
+  width: 90%;
+}

@@ -1,14 +1,14 @@
-.card.account-cards {
-  cursor: pointer;
+.card.plantAcc-card {
   margin-bottom: 5%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
   background-color: #0a3e0c14;
   border: 3px solid lightgoldenrodyellow;
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
+  width: 90%;
 }
 
-.card.account-cards:hover {
+.card.plantAcc-card:hover {
   cursor: pointer;
   margin-bottom: 5%;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
@@ -17,29 +17,35 @@
   border-radius: 15px;
   transform: scale(1.05);
 }
-.account-title {
-  display: flex;
-  justify-content: space-between;
-}
 
-.account-info {
-  text-transform: capitalize;
-}
-
-.btn.delete {
-  margin-left: 1%;
+.btn.plant {
   border-radius: 10px;
-  background-color: rgb(224, 59, 30);
+  background-color: rgb(96 105 14 / 28%);
   color: lightgoldenrodyellow;
   border: 2px solid lightgoldenrodyellow;
-  height: 45px;
+  height: 50px;
+  width: 80%;
+  margin-bottom: 10px;
 }
 
-.btn.delete:hover {
-  margin-left: 1%;
+.card-img {
+  padding: 10px;
+}
+
+.plant-row {
+  padding: 40px;
+}
+
+.plant-img-card {
+  padding: 10px;
+}
+
+.btn.delete-plant {
   border-radius: 10px;
   background-color: rgb(206, 54, 27);
   color: lightgoldenrodyellow;
   border: 2px solid lightgoldenrodyellow;
-  height: 45px;
+  height: 50px;
+  width: 80%;
+  margin-bottom: 10px;
 }

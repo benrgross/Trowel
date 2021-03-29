@@ -30,6 +30,13 @@ function AccountCard() {
       plants: data.plants,
     };
 
+    localStorage.setItem(
+      "currentAccount",
+      JSON.stringify({
+        accountName: account,
+      })
+    );
+
     dispatch({
       type: SET_SAVED_ACCOUNT,
       account: accountObj,

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
+import "./style.css";
 
 function Footer() {
   return (

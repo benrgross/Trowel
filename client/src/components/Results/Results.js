@@ -72,13 +72,17 @@ function Results() {
             <div className="container">
               <div className="card plant-card">
                 {plant.img ? (
-                  <div className="img-container">
-                    <img
-                      onClick={() => getPlant(plant)}
-                      alt={plant.commonName}
-                      className="img search-plant-img"
-                      src={plant.img}
-                    />
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="img-container">
+                        <img
+                          onClick={() => getPlant(plant)}
+                          alt={plant.commonName}
+                          className="img search-plant-img"
+                          src={plant.img}
+                        />
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   <div className="img-container">

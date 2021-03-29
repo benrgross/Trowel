@@ -9,7 +9,12 @@ function Navbar() {
       className="navbar navbar-expand-md  navbar-dark pr-lg-1 pl-sm-5 justify-content-between"
     >
       <Link className="navbar-brand nav-text" to="/home">
-        Trowel
+        <img
+          // style={{ height: "80px" }}
+          className="navbar-logo"
+          src="images/Trowel-logo.png"
+          alt="trowel"
+        />
       </Link>
 
       <button

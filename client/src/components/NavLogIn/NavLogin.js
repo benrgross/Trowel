@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Nav } from "reactstrap";
+import "./style.css";
 
 function Navbar() {
   return (

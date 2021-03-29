@@ -77,25 +77,25 @@ function Search(type) {
       {state.results.length <= 1 ? (
         ""
       ) : (
-        <div className="row">
-          <div className="col-md-6 d-flex justify-content-end">
+        <div className="arrow-div">
+          <div>
             {state.pageLinks.prev ? (
-              <div className="col-md-6 d-flex justify-content-end">
-                <FaArrowLeft onClick={last} style={{ cursor: "pointer" }} />{" "}
+              <div className="arrows">
+                <FaArrowLeft className="left-arrow" onClick={last} />{" "}
               </div>
             ) : (
-              <div className="col-md-6 d-flex justify-content-end text-muted">
-                <FaArrowLeft />{" "}
+              <div className="text-muted arrows">
+                <FaArrowLeft className="left-arrow" />{" "}
               </div>
             )}
           </div>
           {state.pageLinks.next ? (
-            <div className="col-md-6 d-flex justify-content-start">
-              <FaArrowRight onClick={next} style={{ cursor: "pointer" }} />
+            <div className="arrows">
+              <FaArrowRight className="right-arrow" onClick={next} />
             </div>
           ) : (
-            <div className="col-md-6 d-flex justify-content-start text-muted">
-              <FaArrowRight />
+            <div className="text-muted arrows">
+              <FaArrowRight className="right-arrow" />
             </div>
           )}
         </div>

@@ -64,6 +64,7 @@ function CreateAccForm() {
 
   const closeForm = (e) => {
     e.stopPropagation();
+
     dispatch({
       type: SHOW_FORM,
       display: false,
@@ -83,7 +84,6 @@ function CreateAccForm() {
           <form className="account-form">
             <span className="close-btn-div">
               <button
-                // type="button"
                 className="btn btn-outline close-btn"
                 onClick={(e) => closeForm(e)}
               >

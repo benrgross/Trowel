@@ -49,34 +49,44 @@ function LoginForm() {
   };
   return (
     <div className="container-fluid form-group d-flex justify-content-center ">
-      <form className="logIn card form">
-        <h2 className="text-center">Log In</h2>
-        <div className="form-group">
-          <label>Email address</label>
-          <input
-            className="form-control"
-            ref={emailRef}
-            type="text"
-            name="email"
-            placeholder="email"
-            aria-describedby="emailHelp"
-          />
+      <div className="row">
+        <div className="col-sm-12 col-md-0 col-lg-0"></div>
+        <div className="col-sm-12 col-md-12 col-lg-12">
+          <form className="logIn card form">
+            <h2 className="text-center">Log In</h2>
+            <div className="form-group">
+              <label>Email address</label>
+              <input
+                className="form-control"
+                ref={emailRef}
+                type="text"
+                name="email"
+                placeholder="email"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                className="form-control"
+                ref={passwordRef}
+                type="password"
+                name="password"
+                placeholder="password"
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={submitLogin}
+            >
+              Submit
+            </button>
+            <Link to="/signup">SignUp</Link>
+          </form>
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            className="form-control"
-            ref={passwordRef}
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary" onClick={submitLogin}>
-          Submit
-        </button>
-        <Link to="/signup">SignUp</Link>
-      </form>
+        <div className="col-sm-12 col-md-0 col-lg-0"></div>
+      </div>
     </div>
   );
 }

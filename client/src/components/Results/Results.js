@@ -56,7 +56,7 @@ function Results() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: true,
+      switch: "ADD_PLANT",
     });
 
     history.push("/plant");

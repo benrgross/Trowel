@@ -59,33 +59,39 @@ function SignUpForm() {
 
   return (
     <div className="container-fluid form-group d-flex justify-content-center">
-      <form className="signup card">
-        <h2 className="text-center">Sign Up</h2>
-        <div className="form-group">
-          <label>Email address</label>
-          <input
-            className="form-control"
-            ref={regEmailRef}
-            type="text"
-            name="email"
-            placeholder="email"
-          />
+      <div className="row">
+        <div className="col-sm-12 col-md-0 col-lg-0"></div>
+        <div className="col-sm-12 col-md-12 col-lg-12">
+          <form className="signup card">
+            <h2 className="text-center">Sign Up</h2>
+            <div className="form-group">
+              <label>Email address</label>
+              <input
+                className="form-control"
+                ref={regEmailRef}
+                type="text"
+                name="email"
+                placeholder="email"
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                className="form-control"
+                ref={regPasswordRef}
+                type="password"
+                name="password"
+                placeholder="password"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary" onClick={signUp}>
+              Submit
+            </button>
+            <Link to="/">Log In</Link>
+          </form>
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            className="form-control"
-            ref={regPasswordRef}
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary" onClick={signUp}>
-          Submit
-        </button>
-        <Link to="/">Log In</Link>
-      </form>
+        <div className="col-sm-12 col-md-0 col-lg-0"></div>
+      </div>
     </div>
   );
 }

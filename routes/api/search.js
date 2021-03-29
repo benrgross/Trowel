@@ -8,8 +8,6 @@ const token = process.env.TOKEN_TREFLE;
 
 ///get all plants from Trefle
 router.get("/", async (req, res) => {
-  console.log(req.body.query);
-
   try {
     const { data } = await Axios.get(
       `https://trefle.io/api/v1/distributions/{zone_id}/plants?token=${token}`
@@ -98,6 +96,7 @@ router.post("/plant", async (req, res) => {
     const { specifications } = data.data;
 
     const plantData = {
+      url: data.data.links["self"],
       image: data.data.image_url,
       commonName: data.data.common_name,
       scientific_name: data.data.scientific_name,

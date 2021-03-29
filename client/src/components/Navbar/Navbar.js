@@ -3,6 +3,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { LOGOUT } from "../../utils/actions";
+import "./navbar.css";
 
 function Navbar() {
   const [state, dispatch] = useStoreContext();
@@ -17,7 +18,8 @@ function Navbar() {
     >
       <Link className="navbar-brand nav-text" to="/">
         <img
-          style={{ height: "80px" }}
+          // style={{ height: "80px" }}
+          className="navbar-logo"
           src="images/Trowel-logo.png"
           alt="trowel"
         />

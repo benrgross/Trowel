@@ -15,13 +15,14 @@ function Results() {
     const item = {
       url: plant.links.self,
     };
-
+    localStorage.removeItem("plantURL");
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
-    console.log(data);
+    console.log("dataforben", data.url);
 
     const plantObject = {
+      url: data.url,
       atmosHumidity: data.atmosHumidity,
       bloomMonths: data.bloomMonths,
       commonName: data.commonName,
@@ -55,9 +56,10 @@ function Results() {
       soilTexture: data.soilTexture,
       notes: "",
     };
-
+    console.log(plantObject);
     dispatch({
       type: "SPOTLIGHT",
+      url: data.url,
       spotlight: plantObject,
       switch: "ADD_PLANT",
     });
@@ -66,48 +68,54 @@ function Results() {
   };
 
   return (
-    <div>
-      {state.results.length <= 1 ? (
-        ""
-      ) : (
-        <div>
-          {state.results.map((plant) => (
-            <div className="container">
-              <div className="card plant-card">
-                {plant.img ? (
-                  <div className="row">
-                    <div className="col-md-12">
-                      <div className="img-container">
-                        <img
-                          onClick={() => getPlant(plant)}
-                          alt={plant.commonName}
-                          className="img search-plant-img"
-                          src={plant.img}
-                        />
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div>
+            {state.results.length <= 1 ? (
+              ""
+            ) : (
+              <div className="row">
+                {state.results.map((plant) => (
+                  <div className="col-sm-12 col-md-6 col-lg-4">
+                    <div className="card plant-card">
+                      {plant.img ? (
+                        <div className="row">
+                          <div className="col-md-12">
+                            <div className="img-container">
+                              <img
+                                onClick={() => getPlant(plant)}
+                                alt={plant.commonName}
+                                className="card-img-top rounded search-plant-img"
+                                src={plant.img}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="img-container">
+                          <img
+                            onClick={() => getPlant(plant)}
+                            className="card-img-top rounded search-plant-img"
+                            alt={plant.commonName}
+                            src={
+                              "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+                            }
+                          />
+                        </div>
+                      )}
+                      <div className="card-body">
+                        <p>{plant.commonName}</p>
+                        <p>{plant.scientificName} </p>
                       </div>
                     </div>
                   </div>
-                ) : (
-                  <div className="img-container">
-                    <img
-                      onClick={() => getPlant(plant)}
-                      className="img search-plant-img"
-                      alt={plant.commonName}
-                      src={
-                        "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
-                      }
-                    />
-                  </div>
-                )}
-                <div className="card-body">
-                  <p>{plant.commonName}</p>
-                  <p>{plant.scientificName} </p>
-                </div>
+                ))}
               </div>
-            </div>
-          ))}
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

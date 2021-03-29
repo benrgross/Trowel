@@ -59,13 +59,15 @@ function CreateAccForm() {
   };
 
   const renderForm = () => {
-    dispatch({ 
+    dispatch({
       type: SHOW_FORM,
-      display: true 
+      display: true,
     });
   };
 
-  const closeForm = () => {
+  const closeForm = (e) => {
+    e.stopPropagation();
+
     dispatch({
       type: SHOW_FORM,
       display: false,
@@ -74,31 +76,33 @@ function CreateAccForm() {
 
   return (
     <div>
-      <div className="show-btn-div">
-        <button className="btn show-btn" onClick={() => renderForm()}>
-          <FaPlus /> Add an account
-        </button>
-      </div>
+      {!state.display ? (
+        <div className="show-btn-div">
+          <button className="btn show-btn" onClick={() => renderForm()}>
+            <FaPlus /> Add an account
+          </button>
+        </div>
+      ) : (
+        <div className="close-btn-div">
+          <button
+            className="btn btn-outline close-btn"
+            onClick={(e) => closeForm(e)}
+          >
+            <FaMinus /> Close
+          </button>
+        </div>
+      )}
 
       {state.display ? (
         <div className="container">
           <form className="account-form">
-            <span className="close-btn-div">
-              <button
-                // type="button"
-                className="btn btn-outline close-btn"
-                onClick={() => closeForm()}
-              >
-                <FaMinus />
-              </button>
-            </span>
             <div className="form-group">
               <label>Account Name</label>
               <input
                 name="account-name"
                 ref={accountNameRef}
                 placeholder="Name"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -107,7 +111,7 @@ function CreateAccForm() {
                 name="client-name"
                 ref={clientNameRef}
                 placeholder="Full Name"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -116,7 +120,7 @@ function CreateAccForm() {
                 name="client-phone"
                 ref={phoneRef}
                 placeholder="(555) 555-5555"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -125,7 +129,7 @@ function CreateAccForm() {
                 name="email"
                 ref={emailRef}
                 placeholder="example@example.com"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -134,7 +138,7 @@ function CreateAccForm() {
                 name="account-location"
                 ref={addressRef}
                 placeholder="312 N. Plants St."
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <div className="form-group">
@@ -143,7 +147,7 @@ function CreateAccForm() {
                 name="district-zone"
                 ref={zoneRef}
                 placeholder="Zone 8"
-                className="form-control"
+                className="form-control account-input"
               />
             </div>
             <button type="submit" className="btn submit" onClick={saveAccount}>

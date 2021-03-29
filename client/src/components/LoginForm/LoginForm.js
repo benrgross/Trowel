@@ -19,6 +19,17 @@ function LoginForm() {
     };
     console.log("login cred", cred);
 
+    // if (!cred.email && !cred.password) {
+    //   alert("Invalid e-mail address and password");
+    //   // alert();
+    // } else if (!cred.email && cred.password) {
+    //   alert("Invalid e-mail address and password");
+    // } else if (cred.email && !cred.password) {
+    //   alert("Please enter a password");
+    // } else {
+    //   console.log("Login successful!");
+    // }
+
     const {
       data: { email, token },
     } = await API.login(cred);

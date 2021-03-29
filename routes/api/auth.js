@@ -30,11 +30,7 @@ router.post("/register", async (req, res) => {
     res.json(user);
   } catch (err) {
     res.status(400).json({
-<<<<<<< HEAD
-      message: "didnt work",
-=======
-      message: "didnt work ",
->>>>>>> main
+      message: "didn't work ",
     });
   }
 });

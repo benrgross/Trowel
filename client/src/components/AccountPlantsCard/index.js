@@ -23,13 +23,9 @@ function AccountPlantCard() {
     });
   };
 
-<<<<<<< HEAD
-  const getPlant = async (plant, id, notes, lightCondition) => {    
-=======
   const getPlant = async (plant, id, notes, lightCondition) => {
     console.log("Light Condition: ", lightCondition);
 
->>>>>>> main
     const item = {
       plant,
     };

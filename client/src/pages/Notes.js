@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
+import "./Search/style.css"
 
 function Notes() {
   const [state, dispatch] = useStoreContext();
@@ -50,7 +51,7 @@ function Notes() {
               style={style}
             ></textarea>
           </div>
-          <button onClick={() => addNote(id)}>Add</button>
+          <button className="btn plant" style={{ width: "15%" }} onClick={() => addNote(id)}>Add</button>
         </div>
     </div>
   );

@@ -1,13 +1,17 @@
+<<<<<<< HEAD
 import React, { useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 // import { useHistory, Link } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 // import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
+=======
+import React from "react";
+>>>>>>> main
 import AddPlantCard from "../../components/AddPlantCard";
-// import "./plant.css";
 
 const Plant = () => {
+<<<<<<< HEAD
   const [state, dispatch] = useStoreContext();
   useEffect(() => {
     getPlant();
@@ -66,17 +70,13 @@ const Plant = () => {
     });
   };
 
+=======
+>>>>>>> main
   return (
     <div>
       <AddPlantCard />
     </div>
   );
 };
-
-// const style = {
-//   display: "block",
-//   height: "500px",
-//   width: "100%",
-// };
 
 export default Plant;

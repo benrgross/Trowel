@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Header/Header";
-
 import Navbar from "./Navbar/Navbar";
 import Search from "../pages/Search";
 import Home from "../pages/Home";
@@ -22,7 +21,9 @@ function AuthenticatedApp() {
           <Route exact path="/search" component={Search} />
         </Switch>
       </div>
-      <Footer />
+      <div className="container">
+        <Footer />
+      </div>
     </Router>
   );
 }

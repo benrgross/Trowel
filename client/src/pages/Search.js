@@ -99,11 +99,11 @@ function Search(type) {
           )}
         </div>
       )}
-      <footer>
+      {/* <footer>
         <Link to="/account">
           <BackBtn />
         </Link>
-      </footer>
+      </footer> */}
     </div>
   );
 }

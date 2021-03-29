@@ -72,8 +72,6 @@ function AddPlantCard() {
     history.push("/account");
   };
   const addNote = async (objectID) => {
-    console.log("Plant ID: ", objectID);
-    console.log("Account ID:", state.account.accountID);
     const note = {
       id: objectID,
       note: {
@@ -81,9 +79,8 @@ function AddPlantCard() {
         date: new Date(),
       },
     };
-    console.log("Posted Note Obj: ", note);
     const addNote = await API.postPlantNote(state.account.accountID, note);
-    console.log(addNote);
+    console.log("Added Note: ", addNote);
   };
   const changeNote = (note) => {
     dispatch({
@@ -100,8 +97,13 @@ function AddPlantCard() {
         </div>
       </div>
 
+<<<<<<< HEAD
       {state.switch ? (
         <div className="container spotlight-card shadow">
+=======
+      {state.switch === "ADD_PLANT" ? (
+        <div className="container spotlight-card">
+>>>>>>> main
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
               <div className=" plant-view-card">
@@ -205,7 +207,7 @@ function AddPlantCard() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : state.switch === "VIEW_NOTES" ? (
         <div className="container spotlight-card">
           <h2>Notes: </h2>
           <h3>Last Modified: {notesDate}</h3>
@@ -220,6 +222,96 @@ function AddPlantCard() {
             ></textarea>
           </div>
           <button onClick={() => addNote(id)}>Add</button>
+        </div>
+      ) : (
+        <div className="container spotlight-card">
+          <div className="row">
+            <div className="col-sm-12 col-md-12 col-lg-12">
+              <div className=" plant-view-card">
+                <div className="row card-top d-flex justify-content-center">
+                <div className="col-sm-12 col-md-6 col-lg-6">
+                  {img ? (
+                    <img
+                      className="card-img-top img-thumbnail "
+                      style={{ height: "16rem", cursor: "pointer" }}
+                      src={img}
+                      alt={commonName}
+                    />
+                  ) : (
+                    <img
+                      className="img-thumbnail"
+                      style={{ height: "16rem", cursor: "pointer" }}
+                      alt={commonName}
+                      src={
+                        "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
+                      }
+                    />
+                  )}
+                </div>
+
+                <div className="col-sm-12 col-md-6 col-lg-6">
+                  <p>Name - {commonName}</p>
+                  <p>Scientific Name - {scientificName}</p>
+
+                  {edible ? <p>Edible - {edible}</p> : ""}
+                  {family ? <p>Family - {family}</p> : ""}
+                  {familyCommonName ? (
+                    <p>Family Common Name - {familyCommonName}</p>
+                  ) : (
+                    ""
+                  )}
+                  {genus ? <p>Genus: {genus}</p> : ""}
+                </div>
+                <div className="hr "></div>
+              </div>
+              <div className="row">
+                <div className="col-sm-12 col-md-6 col-lg-6 card-body info">
+                  {growthHabit ? <p>Growth Habit - {growthHabit}</p> : ""}
+                  {heightAvgCm ? <p>Average Height - {heightAvgCm}</p> : ""}
+                  {light ? <p>Light Index - {light}</p> : ""}
+                  {native ? <p>Native To - {native.join(", ")}</p> : ""}
+                </div>
+                <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
+                  {maxPh ? <p>Max pH - {maxPh}</p> : ""}
+                  {minPh ? <p>Minimum pH - {minPh}</p> : ""}
+                  {maxPrecipitation ? (
+                    <p>Max Precipitation - {maxPrecipitation}</p>
+                  ) : (
+                    ""
+                  )}
+                  {minPrecipitation ? (
+                    <p>Minimum Precipitation - {minPrecipitation}</p>
+                  ) : (
+                    ""
+                  )}
+                  {atmosHumidity ? <p>Humidity - {atmosHumidity}</p> : ""}
+                  {soilNutriments ? (
+                    <p>Soil Nutriments - {soilNutriments}</p>
+                  ) : (
+                    ""
+                  )}
+                  {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm-12 col-md-6 col-lg-6 card-body info">
+                  <form>
+                    <span>How Much Sun Will It Get </span>
+                    <select
+                      ref={lightRef}
+                      className="form-control light-choose"
+                    >
+                      <option>Full Sun</option>
+                      <option>Partial Sun</option>
+                      <option>Shade</option>
+                      <option>Deep Shade</option>
+                    </select>
+                  </form>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

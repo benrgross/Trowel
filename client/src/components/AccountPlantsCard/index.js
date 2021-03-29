@@ -71,7 +71,58 @@ function AccountPlantCard() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: false,
+      switch: "VIEW_PLANT",
+    });
+
+    history.push("/plant");
+  };
+
+  const getNotes = async (plant, id, notes) => {
+    console.log("Plant ID: ", id);
+    console.log("Plant Notes: ", notes);
+
+    const plantObject = {
+      id: id,
+      atmosHumidity: plant.atmosHumidity,
+      bloomMonths: plant.bloomMonths,
+      commonName: plant.commonName,
+      edible: plant.edible,
+      family: plant.family,
+      familyCommonName: plant.familyCommonName,
+      flowerColor: {
+        color: plant.flowerColor.color,
+        conspicuous: plant.flowerColor.conspicuous,
+      },
+      genus: plant.genus,
+      growthHabit: plant.growthHabit,
+      heightAvgCm: plant.heightAvg,
+      img: plant.img,
+      light: plant.light,
+      maxPh: plant.maxPh,
+      maxPrecipitation: plant.maxPrecipitation,
+      maxTemp: {
+        deg_f: plant.maxTemp.deg_f,
+        deg_c: plant.maxTemp.deg_c,
+      },
+      minPh: plant.minPh,
+      minPrecipitation: plant.minPrecipitation,
+      minTemp: {
+        deg_f: plant.minTemp.deg_f,
+        deg_c: plant.minTemp.deg_c,
+      },
+      native: plant.native,
+      scientificName: plant.scientific_name,
+      soilNutriments: plant.soilNutriments,
+      soilTexture: plant.soilTexture,
+      notes: notes ? notes.note : "",
+      notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
+    };
+    console.log("Plant Object: ", plantObject);
+
+    dispatch({
+      type: "SPOTLIGHT",
+      spotlight: plantObject,
+      switch: "VIEW_NOTES",
     });
 
     history.push("/plant");
@@ -91,6 +142,7 @@ function AccountPlantCard() {
                     <div className="col-sm-12 col-md-12 col-lg-12 plant-img-card">
                       <img
                         className=" card-img-top rounded"
+                        onClick={() => getPlant(plant, _id, notes)}
                         style={{
                           height: "10rem",
                           cursor: "pointer",
@@ -115,7 +167,7 @@ function AccountPlantCard() {
                     <div className="col-sm-12 col-md-12 col-lg-12">
                       <button
                         className="btn plant"
-                        onClick={() => getPlant(plant, _id, notes)}
+                        onClick={() => getNotes(plant, _id, notes)}
                       >
                         Notes
                       </button>

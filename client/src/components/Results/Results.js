@@ -59,7 +59,7 @@ function Results() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: true,
+      switch: "ADD_PLANT",
     });
 
     history.push("/plant");
@@ -75,19 +75,23 @@ function Results() {
             <div className="container">
               <div className="card plant-card">
                 {plant.img ? (
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="img-container">
+                        <img
+                          onClick={() => getPlant(plant)}
+                          alt={plant.commonName}
+                          className="img search-plant-img"
+                          src={plant.img}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
                   <div className="img-container">
                     <img
                       onClick={() => getPlant(plant)}
-                      alt={plant.commonName}
-                      className="img-thumbnail search-plant-img"
-                      src={plant.img}
-                    />
-                  </div>
-                ) : (
-                  <div className="img-container search-plant-img">
-                    <img
-                      onClick={() => getPlant(plant)}
-                      className="img-thumbnail"
+                      className="img search-plant-img"
                       alt={plant.commonName}
                       src={
                         "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"

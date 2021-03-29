@@ -55,13 +55,14 @@ const Plant = () => {
         scientificName: data.scientific_name,
         soilNutriments: data.soilNutriments,
         soilTexture: data.soilTexture,
+        lightCondition: data.lightCondition,
         notes: "",
       };
 
       dispatch({
         type: "SPOTLIGHT",
         spotlight: plantObject,
-        switch: "ADD_PLANT",
+        switch: true,
       });
     } else if (JSON.parse(localStorage.getItem("plantState"))) {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));
@@ -100,6 +101,7 @@ const Plant = () => {
         scientificName: plant.scientific_name,
         soilNutriments: plant.soilNutriments,
         soilTexture: plant.soilTexture,
+        lightCondition: plant.lightCondition,
         notes: "",
       };
 

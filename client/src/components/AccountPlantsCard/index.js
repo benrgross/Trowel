@@ -1,24 +1,19 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { useHistory, Link } from "react-router-dom";
-import { REMOVE_PLANT, SAVE_TO_ACCOUNT, LOADING } from "../../utils/actions";
+import { useHistory} from "react-router-dom";
+import { REMOVE_PLANT } from "../../utils/actions";
 import API from "../../utils/API";
 import "./accountplant.css";
 
 function AccountPlantCard() {
   const [state, dispatch] = useStoreContext();
-  const { accountID, accountName, notes, plants } = state.account;
+  const { accountID, plants } = state.account;
   console.log("Account State:", state.account);
   let history = useHistory();
 
   const removePlant = async (id, event) => {
     event.stopPropagation()
 
-    dispatch({
-      type: LOADING,
-    });
-    console.log("Account ID", accountID);
-    console.log("Plant ID", id);
     const update = await API.updateAccount(accountID, id);
     console.log("Update Successful!", update);
 
@@ -28,7 +23,9 @@ function AccountPlantCard() {
     });
   };
 
-  const getPlant = async (plant, id, notes) => {
+  const getPlant = async (plant, id, notes, lightCondition) => {
+    console.log("Light Condition: ", lightCondition)
+    
     const item = {
       plant,
     };
@@ -71,6 +68,7 @@ function AccountPlantCard() {
       scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
+      lightCondition: lightCondition,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
@@ -86,44 +84,23 @@ function AccountPlantCard() {
   };
 
   const getNotes = async (plant, id, notes, event) => {
-    console.log("Plant ID: ", id);
-    console.log("Plant Notes: ", notes);
-
     event.stopPropagation()
 
     const plantObject = {
       id: id,
-      atmosHumidity: plant.atmosHumidity,
-      bloomMonths: plant.bloomMonths,
       commonName: plant.commonName,
-      edible: plant.edible,
-      family: plant.family,
-      familyCommonName: plant.familyCommonName,
       flowerColor: {
         color: plant.flowerColor.color,
         conspicuous: plant.flowerColor.conspicuous,
       },
-      genus: plant.genus,
-      growthHabit: plant.growthHabit,
-      heightAvgCm: plant.heightAvg,
-      img: plant.img,
-      light: plant.light,
-      maxPh: plant.maxPh,
-      maxPrecipitation: plant.maxPrecipitation,
       maxTemp: {
         deg_f: plant.maxTemp.deg_f,
         deg_c: plant.maxTemp.deg_c,
       },
-      minPh: plant.minPh,
-      minPrecipitation: plant.minPrecipitation,
       minTemp: {
         deg_f: plant.minTemp.deg_f,
         deg_c: plant.minTemp.deg_c,
       },
-      native: plant.native,
-      scientificName: plant.scientific_name,
-      soilNutriments: plant.soilNutriments,
-      soilTexture: plant.soilTexture,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
     };
@@ -142,7 +119,7 @@ function AccountPlantCard() {
       <div className="row d-flex justify-content-center plant-row">
         {plants
           ? plants.map(({ plant, _id, notes, lightCondition }) => (
-              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes)}>
+              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes, lightCondition)}>
                 <div
                   className="container spotlight-card card plantAcc-card text-center"
                   key={_id}

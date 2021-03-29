@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 import { FaArrowCircleLeft, FaPlus } from "react-icons/fa";
 import "./spotlight.css";
@@ -27,15 +27,19 @@ function AddPlantCard() {
       native,
       soilNutriments,
       soilTexture,
+      lightCondition
     },
   } = state;
   const lightRef = useRef();
-  const noteRef = useRef();
   let history = useHistory();
+  console.log("Light Condition on Page: ", lightCondition)
+  console.log("Name on Page: ", commonName)
+
   const savePlantObj = {
     plant: state.viewPlant,
     accountName: state.accountName,
   };
+
   const savePlantSelection = async () => {
     console.log("lightRef", lightRef.current.value);
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
@@ -68,23 +72,6 @@ function AddPlantCard() {
       account: accountObj,
     });
     history.push("/account");
-  };
-  const addNote = async (objectID) => {
-    const note = {
-      id: objectID,
-      note: {
-        note: noteRef.current.value,
-        date: new Date(),
-      },
-    };
-    const addNote = await API.postPlantNote(state.account.accountID, note);
-    console.log("Added Note: ", addNote);
-  };
-  const changeNote = (note) => {
-    dispatch({
-      type: "CHANGE_NOTES",
-      newNote: note,
-    });
   };
 
   return (
@@ -273,22 +260,7 @@ function AddPlantCard() {
                       ""
                     )}
                     {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-12 col-md-6 col-lg-6 card-body info">
-                    <form>
-                      <span>How Much Sun Will It Get </span>
-                      <select
-                        ref={lightRef}
-                        className="form-control light-choose"
-                      >
-                        <option>Full Sun</option>
-                        <option>Partial Sun</option>
-                        <option>Shade</option>
-                        <option>Deep Shade</option>
-                      </select>
-                    </form>
+                    {lightCondition ? <p>Light Condition - {lightCondition}</p> : ""}
                   </div>
                 </div>
               </div>

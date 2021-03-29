@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Plant from "../pages/Plant";
 import Account from "../pages/Account";
 import Footer from "../components/Footer";
+import Notes from "../pages/Notes"
 
 function AuthenticatedApp() {
   return (
@@ -19,6 +20,7 @@ function AuthenticatedApp() {
           <Route exact path="/plant" component={Plant} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/notes" component={Notes} />
         </Switch>
       </div>
       <div className="container">

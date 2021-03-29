@@ -99,7 +99,7 @@ function AddPlantCard() {
         </div>
       </div>
 
-      {state.switch ? (
+      {state.switch === "ADD_PLANT" ? (
         <div className="container spotlight-card shadow">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">

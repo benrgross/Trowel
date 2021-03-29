@@ -135,7 +135,7 @@ function AccountPlantCard() {
       switch: "VIEW_NOTES",
     });
 
-    history.push("/plant");
+    history.push("/notes");
   };
 
   return (

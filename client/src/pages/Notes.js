@@ -7,6 +7,7 @@ function Notes() {
   const [state, dispatch] = useStoreContext();
   const { viewPlant: { id, commonName, notes, notesDate } } = state;
   const noteRef = useRef();
+  let history = useHistory();
 
   const addNote = async (objectID) => {
     const note = {
@@ -18,6 +19,8 @@ function Notes() {
     };
     const addNote = await API.postPlantNote(state.account.accountID, note);
     console.log("Added Note: ", addNote);
+
+    history.push("/account");
   };
 
   const changeNote = (note) => {

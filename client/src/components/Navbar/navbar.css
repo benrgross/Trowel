@@ -4,3 +4,15 @@
 
 .nav-con {
 }
+
+.navbar-logo {
+  height: 90px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-logo:hover {
+  height: 90px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 7.5px;
+  transform: scale(1.05);
+}

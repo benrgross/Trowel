@@ -1,0 +1,15 @@
+.card.indiv-account-cards {
+  margin-bottom: 5%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  background-color: #01b37917;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
+}
+
+.card.indiv-account-cards:hover {
+  margin-bottom: 5%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.15);
+  background-color: #01b37917;
+  border: 3px solid lightgoldenrodyellow;
+  border-radius: 15px;
+}

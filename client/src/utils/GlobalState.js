@@ -146,7 +146,6 @@ const reducer = (state, action) => {
         },
       };
     case LOGIN:
-      console.log(action.token);
       return {
         ...state,
         email: action.email,

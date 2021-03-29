@@ -99,7 +99,7 @@ function AddPlantCard() {
         </div>
       </div>
 
-      {state.switch ? (
+      {state.switch === "ADD_PLANT" ? (
         <div className="container spotlight-card shadow">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
@@ -108,8 +108,13 @@ function AddPlantCard() {
                   <div className="col-sm-12 col-md-6 col-lg-6">
                     {img ? (
                       <img
-                        className="card-img-top img-thumbnail "
-                        style={{ height: "16rem", cursor: "pointer" }}
+                        className="card-img-top add-plant-img"
+                        style={{
+                          height: "16rem",
+                          cursor: "pointer",
+                          width: "20rem",
+                          marginLeft: "50px",
+                        }}
                         src={img}
                         alt={commonName}
                       />

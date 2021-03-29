@@ -16,7 +16,10 @@ function Results() {
       url: plant.links.self,
     };
 
+    localStorage.setItem("plantURL", JSON.stringify(item));
+
     const { data } = await API.getPlant(item);
+    console.log(data);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,

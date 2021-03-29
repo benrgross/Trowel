@@ -9,7 +9,6 @@ module.exports = {
         model: "Account",
         options: { sort: { created: -1 } },
       });
-      console.log("accounts", account);
       res.json(account);
     } catch (err) {
       res.status(422).json(err);
@@ -24,7 +23,6 @@ module.exports = {
         options: { sort: { created: -1 } },
         limit: 1,
       });
-      console.log("accounts", account);
       res.json(account);
     } catch (err) {
       res.status(422).json(err);
@@ -100,7 +98,7 @@ module.exports = {
         },
         { new: true }
       );
-      console.log("light", plantLight);
+
       res.json(plantLight);
     } catch (err) {
       res.json(err);

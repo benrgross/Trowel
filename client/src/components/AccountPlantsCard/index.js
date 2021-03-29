@@ -11,7 +11,9 @@ function AccountPlantCard() {
   console.log("Account State:", state.account);
   let history = useHistory();
 
-  const removePlant = async (id) => {
+  const removePlant = async (id, event) => {
+    event.stopPropagation()
+
     dispatch({
       type: LOADING,
     });
@@ -77,9 +79,11 @@ function AccountPlantCard() {
     history.push("/plant");
   };
 
-  const getNotes = async (plant, id, notes) => {
+  const getNotes = async (plant, id, notes, event) => {
     console.log("Plant ID: ", id);
     console.log("Plant Notes: ", notes);
+
+    event.stopPropagation()
 
     const plantObject = {
       id: id,
@@ -133,7 +137,7 @@ function AccountPlantCard() {
       <div className="row d-flex justify-content-center plant-row">
         {plants
           ? plants.map(({ plant, _id, notes, lightCondition }) => (
-              <div className="col-sm-12 col-md-6 col-lg-4 plant-col">
+              <div className="col-sm-12 col-md-6 col-lg-4 plant-col" onClick={() => getPlant(plant, _id, notes)}>
                 <div
                   className="container spotlight-card card plantAcc-card text-center"
                   key={_id}
@@ -142,7 +146,6 @@ function AccountPlantCard() {
                     <div className="col-sm-12 col-md-12 col-lg-12 plant-img-card">
                       <img
                         className=" card-img-top rounded"
-                        onClick={() => getPlant(plant, _id, notes)}
                         style={{
                           height: "10rem",
                           cursor: "pointer",
@@ -167,13 +170,13 @@ function AccountPlantCard() {
                     <div className="col-sm-12 col-md-12 col-lg-12">
                       <button
                         className="btn plant"
-                        onClick={() => getNotes(plant, _id, notes)}
+                        onClick={(e) => getNotes(plant, _id, notes, e)}
                       >
                         Notes
                       </button>
                       <button
                         className="btn delete-plant"
-                        onClick={() => removePlant(_id)}
+                        onClick={(e) => removePlant(_id, e)}
                       >
                         Delete Plant
                       </button>

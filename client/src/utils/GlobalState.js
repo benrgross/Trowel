@@ -173,7 +173,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userToken: "",
     email: "",
     user: {},
-    switch: "ADD_PLANT",
+    switch: true,
     display: false,
     account: {},
     accounts: [],

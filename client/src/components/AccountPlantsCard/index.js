@@ -79,7 +79,7 @@ function AccountPlantCard() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: "VIEW_PLANT",
+      switch: false,
     });
 
     history.push("/plant");
@@ -132,7 +132,6 @@ function AccountPlantCard() {
     dispatch({
       type: "SPOTLIGHT",
       spotlight: plantObject,
-      switch: "VIEW_NOTES",
     });
 
     history.push("/notes");

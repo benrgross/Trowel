@@ -9,8 +9,6 @@ function AddPlantCard() {
   const [state, dispatch] = useStoreContext();
   const {
     viewPlant: {
-      id,
-      url,
       commonName,
       scientificName,
       img,
@@ -27,8 +25,6 @@ function AddPlantCard() {
       minPh,
       minPrecipitation,
       native,
-      notes,
-      notesDate,
       soilNutriments,
       soilTexture,
     },
@@ -99,7 +95,7 @@ function AddPlantCard() {
         </div>
       </div>
 
-      {state.switch === "ADD_PLANT" ? (
+      {state.switch ? (
         <div className="container spotlight-card shadow">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-12">
@@ -208,22 +204,6 @@ function AddPlantCard() {
               </div>
             </div>
           </div>
-        </div>
-      ) : state.switch === "VIEW_NOTES" ? (
-        <div className="container spotlight-card">
-          <h2>Notes: </h2>
-          <h3>Last Modified: {notesDate}</h3>
-          <div className="form-group">
-            <textarea
-              name="Notes"
-              ref={noteRef}
-              placeholder="Water once a week..."
-              value={notes}
-              onChange={(e) => changeNote(e.target.value)}
-              style={style}
-            ></textarea>
-          </div>
-          <button onClick={() => addNote(id)}>Add</button>
         </div>
       ) : (
         <div className="container spotlight-card">

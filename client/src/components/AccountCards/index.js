@@ -99,7 +99,7 @@ function AccountCard() {
                           location: {account.location.address}
                         </p>
                         <p className="account-info">
-                          distribution zone: {account.location.distZone}
+                          {account.location.distZone}
                         </p>
                         <p># of Plants: {account.plants.length}</p>
                       </div>

@@ -2,6 +2,10 @@
   padding: 0px;
 }
 
+.plant-card-title {
+  text-align: center;
+}
+
 .spotlight-card {
   background-color: #01b37917;
   border: 2px solid lightgoldenrodyellow;
@@ -31,6 +35,10 @@
 
 .light-choose {
   margin-bottom: 40px;
+}
+
+.form-control.light-choose {
+  width: 75%;
 }
 
 .card-img-top.add-plant-img {

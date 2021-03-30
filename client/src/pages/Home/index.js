@@ -16,7 +16,8 @@ const Home = () => {
 
   const getSavedAccounts = async () => {
     const { email } = JSON.parse(localStorage.getItem("userInfo"));
-    const { data } = await API.getAccounts(email);
+
+    const { data } = await API.getAccounts({ email: email });
     console.log("getAccounts", data);
 
     // set data to state

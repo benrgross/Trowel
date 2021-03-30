@@ -63,7 +63,7 @@ export default {
 
   // Get accounts from database
   getAccounts: function (accountData) {
-    return axios.get("/api/accounts", accountData);
+    return axios.post("/api/accounts/getAllAccounts", accountData);
   },
 
   addPlantToAccount: function (savePlant) {

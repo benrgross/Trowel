@@ -36,8 +36,8 @@
 .card-img-top.add-plant-img {
   height: 16rem;
   /* cursor: pointer; */
-  width: 20rem;
-  margin-left: 50px;
+  /* width: 20rem; */
+  /* margin-left: 50px; */
   margin-top: 5%;
   border: 2px solid lightgoldenrodyellow;
   border-radius: 15px !important;

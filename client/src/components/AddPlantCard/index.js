@@ -87,14 +87,16 @@ function AddPlantCard() {
             <div className="col-sm-12 col-md-12 col-lg-12">
               <div className=" plant-view-card">
                 <div className="row card-top d-flex justify-content-center">
-                  <div className="col-sm-12 col-md-6 col-lg-6">
+                  <div className="col-sm-0 col-md-1 col-lg-1"></div>
+                  <div className="col-sm-12 col-md-5 col-lg-5">
                     {img ? (
                       <img
                         className="card-img-top add-plant-img"
                         style={{
-                          height: "16rem",
-                          width: "20rem",
-                          marginLeft: "50px",
+                          height: "17rem",
+                          cursor: "pointer",
+                          // width: "20rem",
+                          // marginLeft: "50px",
                         }}
                         src={img}
                         alt={commonName}
@@ -102,7 +104,7 @@ function AddPlantCard() {
                     ) : (
                       <img
                         className="img-thumbnail"
-                        style={{ height: "16rem", cursor: "pointer" }}
+                        style={{ height: "19rem", cursor: "pointer" }}
                         alt={commonName}
                         src={
                           "https://www.creativefabrica.com/wp-content/uploads/2019/12/09/Plants-Monochrome-Icon-Vector-Graphics-1-5-580x386.jpg"
@@ -111,8 +113,8 @@ function AddPlantCard() {
                     )}
                   </div>
 
-                  <div className="col-sm-12 col-md-6 col-lg-6">
-                    <p>Name - {commonName}</p>
+                  <div className="col-sm-12 col-md-5 col-lg-5">
+                    <p style={{ marginTop: "20px" }}>Name - {commonName}</p>
                     <p>Scientific Name - {scientificName}</p>
 
                     {edible ? <p>Edible - {edible}</p> : ""}

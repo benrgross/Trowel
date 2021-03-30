@@ -41,8 +41,8 @@ function Notes() {
         </div>
       </div>
       <div className="container spotlight-card">
-        <h2>Notes: </h2>
-        <h3>Last Modified: {notesDate}</h3>
+        <h2>Notes </h2>
+        <h3>Last Modified: {notesDate ? notesDate.substring(0,10) : "Add Your First Note!"}</h3>
         <div className="form-group">
           <textarea
             name="Notes"

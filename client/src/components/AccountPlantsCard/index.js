@@ -67,7 +67,7 @@ function AccountPlantCard() {
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
       notes: notes ? notes.note : "",
-      notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
+      notesDate: notes ? notes.date : "",
     };
 
     dispatch({
@@ -99,7 +99,7 @@ function AccountPlantCard() {
         deg_c: plant.minTemp.deg_c,
       },
       notes: notes ? notes.note : "",
-      notesDate: notes ? notes.date : "No Notes Have Been Added Yet",
+      notesDate: notes ? notes.date : "",
     };
     console.log("Plant Object: ", plantObject);
 

@@ -4,7 +4,7 @@
 
 ## Description
 
-Search and save your favorite books from the Google Books store.
+Manage a number of gardening accounts by storing necessary information needed for proper maintenance.
 
 ## Table of Contents
 
@@ -19,12 +19,13 @@ Search and save your favorite books from the Google Books store.
 Navigate the deployed Heroku URL to begin.
 
 > OR
-> Download the app straight to your phone:
+
+Download the app straight to your phone.
 
 For iOS:
 
 1. Go to the URL search bar, and click the button to `Scan` or `Download` the QR code.
-2. Navigate to the deployed URL, then click the share/actions button from your footer options menu.
+2. Navigate to the deployed URL, then click the share/actions button from your phone's footer options menu.
 3. Select `Add to Home Screen`, and now the app will be accessible from an icon in your phone.
 
 ## Usage
@@ -37,7 +38,7 @@ For iOS:
   - Add a note for each plant in your account, with `Notes`
   - `Delete` any plant in an account, or any account from the dashboard
 
-![Google Search Library Home](client/public/images/google-books-home.png)
+![Trowel app demo](client/public/images/trowel-demo.gif)
 
 ## Technologies
 
@@ -60,3 +61,25 @@ For iOS:
 If you have any questions, please contact benrgross at benrgross@gmail.com, ldelgadoIII at ldelgadothethird@gmail.com, or jimbopulos at james.mgalantino@gmail.com
 
 ## License
+
+MIT License
+
+Copyright (c) 2021 Ben Gross, Loreto Delgado, James Galantino
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

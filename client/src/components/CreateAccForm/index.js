@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_ACCOUNT, LOADING, SHOW_FORM, ALERT } from "../../utils/actions";
+import { LOAD_ACCOUNTS, LOADING, SHOW_FORM, ALERT } from "../../utils/actions";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import "./style.css";
 
@@ -27,6 +27,7 @@ function CreateAccForm() {
 
     // object to post account and save to user
     const { email } = JSON.parse(localStorage.getItem("userInfo"));
+    console.log("email to local", email);
     const postAccount = {
       account: {
         accountName: accountNameRef.current.value.toLowerCase().trim(),
@@ -45,12 +46,14 @@ function CreateAccForm() {
 
     const saveAccount = await API.saveAccount(postAccount);
     console.log("saveAccount", saveAccount);
-    const { data } = await API.findNewAccount(email);
-    console.log("addAccount", data.accounts[0]);
+    const { data } = await API.getAccounts({ email: email });
+    console.log("Neww Account", data);
+
+    // console.log("addAccount", data.accounts[0]);
 
     dispatch({
-      type: ADD_ACCOUNT,
-      account: data.accounts[0],
+      type: LOAD_ACCOUNTS,
+      accounts: data.accounts,
     });
 
     console.log("Account array: ", state.accounts);

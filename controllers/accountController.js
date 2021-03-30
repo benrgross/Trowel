@@ -3,12 +3,14 @@ const db = require("../models");
 // Defining methods for the postsController
 module.exports = {
   findAll: async function (req, res) {
+    console.log("email", req.body.email);
     try {
       const account = await db.User.findOne(req.body).populate({
         path: "accounts",
         model: "Account",
-        options: { sort: { created: -1 } },
+        // options: { sort: { created: -1 } },
       });
+      console.log(account);
       res.json(account);
     } catch (err) {
       res.status(422).json(err);
@@ -34,11 +36,11 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  findAccount: function (req, res) {
-    db.Account.findById(req.body)
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
-  },
+  // findAccount: function (req, res) {
+  //   db.Account.findById(req.body)
+  //     .then((dbModel) => res.json(dbModel))
+  //     .catch((err) => res.status(422).json(err));
+  // },
 
   create: async function (req, res) {
     console.log("req", req.body);

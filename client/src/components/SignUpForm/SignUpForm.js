@@ -84,10 +84,12 @@ function SignUpForm() {
                 placeholder="password"
               />
             </div>
-            <button type="submit" className="btn btn-primary" onClick={signUp}>
+            <button type="submit" className="btn submit" onClick={signUp}>
               Submit
             </button>
-            <Link to="/">Log In</Link>
+            <Link className="reg-link" to="/">
+              Log In
+            </Link>
           </form>
         </div>
         <div className="col-sm-12 col-md-0 col-lg-0"></div>

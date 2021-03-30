@@ -2,6 +2,7 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { useHistory, Link } from "react-router-dom";
 import { SAVE_TO_ACCOUNT } from "../../utils/actions";
+import { FaPhoneSquareAlt, FaEnvelope } from "react-icons/fa";
 import "./style.css";
 
 function CurrentAccountCard() {
@@ -47,21 +48,24 @@ function CurrentAccountCard() {
       <div className="row">
         <div className="col-sm-12 col-md-3 col-lg-3"></div>
         <div className="col-sm-12 col-md-6 col-lg-6">
-          <div className="card account-cards " key={accountID}>
+          <div className="card indiv-account-cards" key={accountID}>
             <div className="card-body ">
               <span>
                 <h5 className="account-title account-info">
                   Account: {accountName}
                 </h5>
               </span>
-              <h6 className="account-info">Client: {client}</h6>
-              <ul>
-                <li>{clientPhone}</li>
-                <li>{clientEmail}</li>
-              </ul>
-              <span>location: {address}</span>
-              <br></br>
-              <span>{distZone}</span>
+              <p className="account-info">Client: {client}</p>
+              <div>
+                <p>
+                  <FaPhoneSquareAlt /> {clientPhone}
+                </p>
+                <p>
+                  <FaEnvelope /> {clientEmail}
+                </p>
+              </div>
+              <p className="account-info">location: {address}</p>
+              <p className="account-info">{distZone}</p>
             </div>
           </div>
         </div>

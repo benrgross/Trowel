@@ -8,7 +8,7 @@ module.exports = {
       const account = await db.User.findOne(req.body).populate({
         path: "accounts",
         model: "Account",
-        // options: { sort: { created: -1 } },
+        options: { sort: { created: -1 } },
       });
       console.log(account);
       res.json(account);

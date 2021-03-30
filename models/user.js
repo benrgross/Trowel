@@ -5,14 +5,14 @@ const bcrypt = require("bcryptjs");
 const userSchema = new Schema({
   email: {
     type: String,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
+    // match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     required: true,
     unique: true,
   },
   password: {
     type: String,
     required: true,
-    validate: [({ length }) => length >= 6, "Password minimum of 6 characters"],
+    // validate: [({ length }) => length >= 6, "Password minimum of 6 characters"],
   },
   accounts: [
     {
@@ -22,14 +22,14 @@ const userSchema = new Schema({
   ],
 });
 
-userSchema.methods = {
-  checkPassword: function (inputPassword) {
-    return bcrypt.compareSync(inputPassword, this.local.password);
-  },
-  hashPassword: (plainTextPassword) => {
-    return bcrypt.hashSync(plainTextPassword, 10);
-  },
-};
+// userSchema.methods = {
+//   checkPassword: function (inputPassword) {
+//     return bcrypt.compareSync(inputPassword, this.local.password);
+//   },
+//   hashPassword: (plainTextPassword) => {
+//     return bcrypt.hashSync(plainTextPassword, 10);
+//   },
+// };
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

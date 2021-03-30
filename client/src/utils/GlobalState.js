@@ -33,14 +33,14 @@ const reducer = (state, action) => {
     case LOAD_ACCOUNTS:
       return {
         ...state,
-        accounts: [...action.accounts],
+        accounts: action.accounts,
         loading: false,
       };
 
     case ADD_ACCOUNT:
       return {
         ...state,
-        accounts: [action.account, ...state.accounts],
+        accounts: [...action.account, state.accounts],
         loading: false,
       };
 

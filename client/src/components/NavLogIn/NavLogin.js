@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <Nav
       style={{ backgroundColor: "rgb(206 153 4 / 30%)", height: "" }}
-      className="navbar navbar-expand-md  navbar-dark pr-lg-1 pl-sm-5 justify-content-between"
+      className="navbar navbar-expand-md shadow navbar-dark pr-lg-1 pl-sm-5 justify-content-between nav-con"
     >
       <Link className="navbar-brand nav-text" to="/home">
         <img

@@ -42,7 +42,6 @@ function Notes() {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div style={{ padding: "5%" }} className="container spotlight-card">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12">
@@ -68,20 +67,6 @@ function Notes() {
           </div>
           <div className="col-sm-5 col-md-5 col-lg-5"></div>
           <div className="col-sm-5 col-md-5 col-lg-5"></div>
-=======
-      <div className="container spotlight-card">
-        <h2>Notes </h2>
-        <h3>Last Modified: {notesDate ? notesDate.substring(0,10) : "Add Your First Note!"}</h3>
-        <div className="form-group">
-          <textarea
-            name="Notes"
-            ref={noteRef}
-            placeholder="Water once a week..."
-            value={notes}
-            onChange={(e) => changeNote(e.target.value)}
-            style={style}
-          ></textarea>
->>>>>>> main
         </div>
       </div>
     </div>

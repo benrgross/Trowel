@@ -34,32 +34,40 @@ function Notes() {
   };
 
   return (
-    <div>
-      <div className="row">
-        <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-          <h1>{commonName}</h1>
+    <div className="container notes-con">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+            <h1>{commonName}</h1>
+          </div>
         </div>
       </div>
-      <div className="container spotlight-card">
-        <h2>Notes: </h2>
-        <h3>Last Modified: {notesDate}</h3>
-        <div className="form-group">
-          <textarea
-            name="Notes"
-            ref={noteRef}
-            placeholder="Water once a week..."
-            value={notes}
-            onChange={(e) => changeNote(e.target.value)}
-            style={style}
-          ></textarea>
+      <div style={{ padding: "5%" }} className="container spotlight-card">
+        <div className="row">
+          <div className="col-sm-12 col-md-12 col-lg-12">
+            <h2>Notes: </h2>
+            <h3>Last Modified: {notesDate}</h3>
+            <div className="form-group">
+              <textarea
+                name="Notes"
+                ref={noteRef}
+                placeholder="Water once a week..."
+                value={notes}
+                onChange={(e) => changeNote(e.target.value)}
+                style={style}
+              ></textarea>
+            </div>
+          </div>
         </div>
-        <button
-          className="btn plant"
-          style={{ width: "15%" }}
-          onClick={() => addNote(id)}
-        >
-          Add
-        </button>
+        <div className="row">
+          <div className="col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center">
+            <button className="btn plant" onClick={() => addNote(id)}>
+              Add
+            </button>
+          </div>
+          <div className="col-sm-5 col-md-5 col-lg-5"></div>
+          <div className="col-sm-5 col-md-5 col-lg-5"></div>
+        </div>
       </div>
     </div>
   );

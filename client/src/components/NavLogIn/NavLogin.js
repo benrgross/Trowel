@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Nav } from "reactstrap";
+import "./style.css";
 
 function Navbar() {
   return (
     <Nav
-      style={{ backgroundColor: "rgb(206 153 4 / 65%)" }}
-      className="navbar navbar-expand-md  navbar-dark pr-lg-1 pl-sm-5 justify-content-between"
+      style={{ backgroundColor: "rgb(206 153 4 / 30%)", height: "" }}
+      className="navbar navbar-expand-md shadow navbar-dark pr-lg-1 pl-sm-5 justify-content-between nav-con"
     >
       <Link className="navbar-brand nav-text" to="/home">
         <img
-          // style={{ height: "80px" }}
           className="navbar-logo"
           src="images/Trowel-logo.png"
           alt="trowel"

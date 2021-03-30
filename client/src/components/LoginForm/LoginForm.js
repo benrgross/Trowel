@@ -74,14 +74,12 @@ function LoginForm() {
                 placeholder="password"
               />
             </div>
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={submitLogin}
-            >
+            <button type="submit" className="btn submit" onClick={submitLogin}>
               Submit
             </button>
-            <Link to="/signup">SignUp</Link>
+            <Link className="reg-link" to="/signup">
+              Sign up
+            </Link>
           </form>
         </div>
         <div className="col-sm-12 col-md-0 col-lg-0"></div>

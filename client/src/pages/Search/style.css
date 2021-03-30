@@ -12,3 +12,7 @@
   margin-left: 45%;
   cursor: pointer;
 }
+
+.container.notes-con {
+  padding: 14px;
+}

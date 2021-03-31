@@ -65,7 +65,12 @@ module.exports = {
   },
 
   addPlantAccount: async function (req, res) {
-    console.log("req", req.body.accountName, req.body.lightCondition);
+    console.log(
+      "req",
+      req.body.accountName,
+      req.body.lightCondition,
+      req.body.plant
+    );
     try {
       const newPlant = await db.Plant.create(req.body.plant);
       console.log(newPlant);

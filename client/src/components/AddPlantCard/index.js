@@ -31,10 +31,9 @@ function AddPlantCard() {
     },
   } = state;
 
+  console.log(scientificName);
   const lightRef = useRef();
   let history = useHistory();
-  console.log("Light Condition on Page: ", lightCondition);
-  console.log("Name on Page: ", commonName);
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -43,6 +42,8 @@ function AddPlantCard() {
 
   const savePlantSelection = async () => {
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
+    console.log("new Plant", newPlant);
+
     const saveLight = {
       id: newPlant._id,
       plantId: newPlant.plants[newPlant.plants.length - 1]._id,
@@ -66,6 +67,8 @@ function AddPlantCard() {
       notes: data.notes,
       plants: data.plants,
     };
+
+    console.log("get plants", data.plants);
     dispatch({
       type: SET_SAVED_ACCOUNT,
       account: accountObj,

@@ -20,13 +20,14 @@ const Plant = () => {
       };
 
       const { data } = await API.getPlant(item);
-      console.log("API Data: ",data);
+      console.log("API Data: ", data);
 
       const plantObject = {
         img: data.image,
         atmosHumidity: data.atmosHumidity,
         bloomMonths: data.bloomMonths,
         commonName: data.commonName,
+        scientificName: data.scientificName,
         edible: data.edible,
         family: data.family,
         familyCommonName: data.familyCommonName,
@@ -52,7 +53,6 @@ const Plant = () => {
           deg_c: data.minTemp.deg_c,
         },
         native: data.native,
-        scientificName: data.scientific_name,
         soilNutriments: data.soilNutriments,
         soilTexture: data.soilTexture,
         notes: "",
@@ -72,6 +72,7 @@ const Plant = () => {
         atmosHumidity: plant.atmosHumidity,
         bloomMonths: plant.bloomMonths,
         commonName: plant.commonName,
+        scientificName: plant.scientificName,
         edible: plant.edible,
         family: plant.family,
         familyCommonName: plant.familyCommonName,
@@ -97,7 +98,6 @@ const Plant = () => {
           deg_c: plant.minTemp.deg_c,
         },
         native: plant.native,
-        scientificName: plant.scientific_name,
         soilNutriments: plant.soilNutriments,
         soilTexture: plant.soilTexture,
         notes: "",

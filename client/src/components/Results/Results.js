@@ -22,10 +22,10 @@ function Results() {
     console.log("dataforben", data.url);
 
     const plantObject = {
-      url: data.url,
       atmosHumidity: data.atmosHumidity,
       bloomMonths: data.bloomMonths,
       commonName: data.commonName,
+      scientificName: data.scientificName,
       edible: data.edible,
       family: data.family,
       familyCommonName: data.familyCommonName,
@@ -51,13 +51,14 @@ function Results() {
         deg_c: data.minTemp.deg_c,
       },
       native: data.native,
-      scientificName: data.scientific_name,
       soilNutriments: data.soilNutriments,
       soilTexture: data.soilTexture,
       lightCondition: state.viewPlant.lightCondition,
       notes: "",
     };
+
     console.log("Plant Obj: ", plantObject);
+
     dispatch({
       type: "SPOTLIGHT",
       url: data.url,

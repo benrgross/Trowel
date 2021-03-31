@@ -99,7 +99,7 @@ router.post("/plant", async (req, res) => {
       url: data.data.links["self"],
       image: data.data.image_url,
       commonName: data.data.common_name,
-      scientific_name: data.data.scientific_name,
+      scientificName: data.data.scientific_name,
       family: data.data.family,
       familyCommonName: data.data.family_common_name,
       genus: data.data.genus,

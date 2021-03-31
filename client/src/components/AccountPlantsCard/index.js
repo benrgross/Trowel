@@ -24,8 +24,6 @@ function AccountPlantCard() {
   };
 
   const getPlant = async (plant, id, notes, lightCondition) => {
-    console.log("Light Condition: ", lightCondition);
-
     const item = {
       plant,
     };
@@ -38,6 +36,7 @@ function AccountPlantCard() {
       atmosHumidity: plant.atmosHumidity,
       bloomMonths: plant.bloomMonths,
       commonName: plant.commonName,
+      scientificName: plant.scientificName,
       edible: plant.edible,
       family: plant.family,
       familyCommonName: plant.familyCommonName,
@@ -63,7 +62,6 @@ function AccountPlantCard() {
         deg_c: plant.minTemp.deg_c,
       },
       native: plant.native,
-      scientificName: plant.scientific_name,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
       notes: notes ? notes.note : "",
@@ -74,7 +72,7 @@ function AccountPlantCard() {
       type: "SPOTLIGHT",
       spotlight: plantObject,
       switch: false,
-      lightCondition: lightCondition
+      lightCondition: lightCondition,
     });
 
     history.push("/plant");
@@ -86,6 +84,7 @@ function AccountPlantCard() {
     const plantObject = {
       id: id,
       commonName: plant.commonName,
+      scientificName: plant.scientificName,
       flowerColor: {
         color: plant.flowerColor.color,
         conspicuous: plant.flowerColor.conspicuous,
@@ -101,7 +100,6 @@ function AccountPlantCard() {
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "",
     };
-    console.log("Plant Object: ", plantObject);
 
     dispatch({
       type: "SPOTLIGHT",

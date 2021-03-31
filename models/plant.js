@@ -1,20 +1,20 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const plantSchema = new Schema({
   commonName: { type: String, required: false },
-  scientific_name: { type: String, required: false },
+  scientificName: { type: String, required: false },
   flowerColor: {
     color: [String],
-    conspicuous: Boolean
+    conspicuous: Boolean,
   },
   minTemp: {
     deg_f: Number,
-    deg_c: Number
+    deg_c: Number,
   },
   maxTemp: {
     deg_f: Number,
-    deg_c: Number
+    deg_c: Number,
   },
   native: [String],
   bloomMonths: [String],
@@ -35,9 +35,9 @@ const plantSchema = new Schema({
   soilTexture: Number,
   heightAvg: Number,
   edible: Boolean,
-  img: String
+  img: String,
 });
 
-const Plant = mongoose.model('Plant', plantSchema);
+const Plant = mongoose.model("Plant", plantSchema);
 
 module.exports = Plant;

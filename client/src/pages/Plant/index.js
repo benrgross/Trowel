@@ -13,14 +13,12 @@ const Plant = () => {
     if (JSON.parse(localStorage.getItem("plantURL"))) {
       localStorage.removeItem("plantState");
       const { url } = JSON.parse(localStorage.getItem("plantURL"));
-      console.log("url", url);
 
       const item = {
         url: url,
       };
 
       const { data } = await API.getPlant(item);
-      console.log("API Data: ", data);
 
       const plantObject = {
         img: data.image,
@@ -65,7 +63,6 @@ const Plant = () => {
       });
     } else if (JSON.parse(localStorage.getItem("plantState"))) {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));
-      console.log("Local Storage: ", plant);
 
       const plantObject = {
         img: plant.image,

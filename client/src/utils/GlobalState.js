@@ -174,7 +174,7 @@ const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     plants: [{}],
     plant: {},
-    results: [{}],
+    results: [],
     pageLinks: [],
     page: 1,
     loading: false,

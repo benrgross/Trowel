@@ -61,17 +61,17 @@ router.post("/searchPlants", async (req, res) => {
   }
 });
 
-router.post("/searchPlants", async (req, res) => {
-  try {
-    const { data } = await Axios.get(
-      `https://trefle.io/api/v1/plants/search?token=${token}`
-    );
+// router.post("/searchPlants", async (req, res) => {
+//   try {
+//     const { data } = await Axios.get(
+//       `https://trefle.io/api/v1/species/search?token=${token}`
+//     );
 
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-  }
-});
+//     res.json(data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 router.post("/searchPage", async (req, res) => {
   try {

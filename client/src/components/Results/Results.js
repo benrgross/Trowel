@@ -68,14 +68,14 @@ function Results() {
 
     history.push("/plant");
   };
-
+  console.log(state.results.map((plant) => plant.comm));
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-12">
           <div>
-            {state.results.length <= 1 ? (
-              ""
+            {state.results[0] === {} ? (
+              " "
             ) : (
               <div className="row">
                 {state.results.map((plant) => (

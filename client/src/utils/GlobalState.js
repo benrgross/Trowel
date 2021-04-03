@@ -112,8 +112,6 @@ const reducer = (state, action) => {
       };
 
     case SPOTLIGHT:
-      console.log("Global State: ", action.lightCondition);
-      console.log("Global State Works? ", action.spotlight.commonName);
       return {
         ...state,
         switch: action.switch,
@@ -123,6 +121,7 @@ const reducer = (state, action) => {
           atmosHumidity: action.spotlight.atmosHumidity,
           bloomMonths: action.spotlight.bloomMonths,
           commonName: action.spotlight.commonName,
+          scientificName: action.spotlight.scientificName,
           edible: action.spotlight.edible,
           family: action.spotlight.family,
           familyCommonName: action.spotlight.familyCommonName,
@@ -148,7 +147,6 @@ const reducer = (state, action) => {
             deg_c: action.spotlight.minTemp.deg_c,
           },
           native: action.spotlight.native,
-          scientificName: action.spotlight.scientificName,
           soilNutriments: action.spotlight.soilNutriments,
           soilTexture: action.spotlight.soilTexture,
           lightCondition: action.lightCondition,
@@ -176,7 +174,7 @@ const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
     plants: [{}],
     plant: {},
-    results: [{}],
+    results: [],
     pageLinks: [],
     page: 1,
     loading: false,

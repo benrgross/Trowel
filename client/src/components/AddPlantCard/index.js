@@ -20,6 +20,8 @@ function AddPlantCard() {
       growthHabit,
       heightAvgCm,
       light,
+      maxTemp,
+      minTemp,
       maxPh,
       maxPrecipitation,
       minPh,
@@ -31,10 +33,9 @@ function AddPlantCard() {
     },
   } = state;
 
+  console.log(scientificName);
   const lightRef = useRef();
   let history = useHistory();
-  console.log("Light Condition on Page: ", lightCondition);
-  console.log("Name on Page: ", commonName);
 
   const savePlantObj = {
     plant: state.viewPlant,
@@ -43,6 +44,8 @@ function AddPlantCard() {
 
   const savePlantSelection = async () => {
     const { data: newPlant } = await API.addPlantToAccount(savePlantObj);
+    console.log("new Plant", newPlant);
+
     const saveLight = {
       id: newPlant._id,
       plantId: newPlant.plants[newPlant.plants.length - 1]._id,
@@ -66,6 +69,8 @@ function AddPlantCard() {
       notes: data.notes,
       plants: data.plants,
     };
+
+    console.log("get plants", data.plants);
     dispatch({
       type: SET_SAVED_ACCOUNT,
       account: accountObj,
@@ -115,47 +120,152 @@ function AddPlantCard() {
                     </div>
 
                     <div className="col-sm-12 col-md-5 col-lg-5">
-                      <p style={{ marginTop: "20px" }}>Name - {commonName}</p>
-                      <p>Scientific Name - {scientificName}</p>
+                      <p style={{ marginTop: "20px" }}>
+                        Name: <span className="data">{commonName} </span>{" "}
+                      </p>
+                      <p>
+                        Scientific Name:{" "}
+                        <span className="data">{scientificName}</span>{" "}
+                      </p>
 
-                      {edible ? <p>Edible - {edible}</p> : ""}
-                      {family ? <p>Family - {family}</p> : ""}
-                      {familyCommonName ? (
-                        <p>Family Common Name - {familyCommonName}</p>
+                      {edible ? (
+                        <p>
+                          Edible: <span className="data">{edible}</span>{" "}
+                        </p>
                       ) : (
                         ""
                       )}
-                      {genus ? <p>Genus: {genus}</p> : ""}
+                      {family ? (
+                        <p>
+                          Family: <span className="data">{family}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {familyCommonName ? (
+                        <p>
+                          Family Common Name:{" "}
+                          <span className="data">{familyCommonName}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {genus ? (
+                        <p>
+                          Genus: <span className="data">{genus}</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="hr "></div>
                   </div>
                   <div className="row">
                     <div className="col-sm-12 col-md-6 col-lg-6 card-body info">
-                      {growthHabit ? <p>Growth Habit - {growthHabit}</p> : ""}
-                      {heightAvgCm ? <p>Average Height - {heightAvgCm}</p> : ""}
-                      {light ? <p>Light Index - {light}</p> : ""}
-                      {native ? <p>Native To - {native.join(", ")}</p> : ""}
+                      {growthHabit ? (
+                        <p>
+                          Growth Habit:{" "}
+                          <span className="data">{growthHabit}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {heightAvgCm ? (
+                        <p>
+                          Average Height:{" "}
+                          <span className="data">{heightAvgCm}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {light ? (
+                        <p>
+                          Light Index: <span className="data">{light}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {native ? (
+                        <p>
+                          Native To:{" "}
+                          <span className="data">{native.join(", ")}</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
-                      {maxPh ? <p>Max pH - {maxPh}</p> : ""}
-                      {minPh ? <p>Minimum pH - {minPh}</p> : ""}
+                      {maxTemp ? (
+                        <p>
+                          Max Temp:{" "}
+                          <span className="data">{maxTemp["deg_f"]}F </span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {minTemp ? (
+                        <p>
+                          Min Temp:
+                          <span className="data">{minTemp["deg_f"]}F</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {maxPh ? (
+                        <p>
+                          Max pH: <span className="data">{maxPh}</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {minPh ? (
+                        <p>
+                          Minimum pH: <span className="data">{minPh}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       {maxPrecipitation ? (
-                        <p>Max Precipitation - {maxPrecipitation}</p>
+                        <p>
+                          Max Precipitation:{" "}
+                          <span className="data">{maxPrecipitation}</span>{" "}
+                        </p>
                       ) : (
                         ""
                       )}
                       {minPrecipitation ? (
-                        <p>Minimum Precipitation - {minPrecipitation}</p>
+                        <p>
+                          Minimum Precipitation:{" "}
+                          <span className="data">{minPrecipitation}</span>{" "}
+                        </p>
                       ) : (
                         ""
                       )}
-                      {atmosHumidity ? <p>Humidity - {atmosHumidity}</p> : ""}
+                      {atmosHumidity ? (
+                        <p>
+                          Humidity:{" "}
+                          <span className="data">{atmosHumidity}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       {soilNutriments ? (
-                        <p>Soil Nutriments - {soilNutriments}</p>
+                        <p>
+                          Soil Nutriments:{" "}
+                          <span className="data">{soilNutriments}</span>
+                        </p>
                       ) : (
                         ""
                       )}
-                      {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
+                      {soilTexture ? (
+                        <p>
+                          Soil Texture:{" "}
+                          <span className="data">{soilNutriments}</span>{" "}
+                          {soilTexture}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                   <div className="row">
@@ -217,49 +327,149 @@ function AddPlantCard() {
                     </div>
 
                     <div className="col-sm-12 col-md-6 col-lg-6">
-                      <p>Name - {commonName}</p>
-                      <p>Scientific Name - {scientificName}</p>
+                      <p style={{ marginTop: "20px" }}>
+                        Name: <span className="data">{commonName} </span>{" "}
+                      </p>
+                      <p>
+                        Scientific Name:{" "}
+                        <span className="data">{scientificName}</span>{" "}
+                      </p>
 
-                      {edible ? <p>Edible - {edible}</p> : ""}
-                      {family ? <p>Family - {family}</p> : ""}
-                      {familyCommonName ? (
-                        <p>Family Common Name - {familyCommonName}</p>
+                      {edible ? (
+                        <p>
+                          Edible: <span className="data">{edible}</span>{" "}
+                        </p>
                       ) : (
                         ""
                       )}
-                      {genus ? <p>Genus: {genus}</p> : ""}
+                      {family ? (
+                        <p>
+                          Family: <span className="data">{family}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {familyCommonName ? (
+                        <p>
+                          Family Common Name:{" "}
+                          <span className="data">{familyCommonName}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {genus ? (
+                        <p>
+                          Genus: <span className="data">{genus}</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="hr "></div>
                   </div>
                   <div className="row">
                     <div className="col-sm-12 col-md-6 col-lg-6 card-body info">
-                      {growthHabit ? <p>Growth Habit - {growthHabit}</p> : ""}
-                      {heightAvgCm ? <p>Average Height - {heightAvgCm}</p> : ""}
-                      {light ? <p>Light Index - {light}</p> : ""}
-                      {native ? <p>Native To - {native.join(", ")}</p> : ""}
+                      {growthHabit ? (
+                        <p>
+                          Growth Habit:{" "}
+                          <span className="data">{growthHabit}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {heightAvgCm ? (
+                        <p>
+                          Average Height:{" "}
+                          <span className="data">{heightAvgCm}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {light ? (
+                        <p>
+                          Light Index: <span className="data">{light}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {native ? (
+                        <p>
+                          Native To:{" "}
+                          <span className="data">{native.join(", ")}</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
-                      {maxPh ? <p>Max pH - {maxPh}</p> : ""}
-                      {minPh ? <p>Minimum pH - {minPh}</p> : ""}
+                      {maxTemp ? (
+                        <p>
+                          Max Temp:{" "}
+                          <span className="data">{maxTemp["deg_f"]}F </span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {minTemp ? (
+                        <p>
+                          Min Temp:
+                          <span className="data">{minTemp["deg_f"]}F</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {maxPh ? (
+                        <p>
+                          Max pH: <span className="data">{maxPh}</span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {minPh ? (
+                        <p>
+                          Minimum pH: <span className="data">{minPh}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       {maxPrecipitation ? (
-                        <p>Max Precipitation - {maxPrecipitation}</p>
+                        <p>
+                          Max Precipitation:{" "}
+                          <span className="data">{maxPrecipitation}</span>{" "}
+                        </p>
                       ) : (
                         ""
                       )}
                       {minPrecipitation ? (
-                        <p>Minimum Precipitation - {minPrecipitation}</p>
+                        <p>
+                          Minimum Precipitation:{" "}
+                          <span className="data">{minPrecipitation}</span>{" "}
+                        </p>
                       ) : (
                         ""
                       )}
-                      {atmosHumidity ? <p>Humidity - {atmosHumidity}</p> : ""}
+                      {atmosHumidity ? (
+                        <p>
+                          Humidity:{" "}
+                          <span className="data">{atmosHumidity}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       {soilNutriments ? (
-                        <p>Soil Nutriments - {soilNutriments}</p>
+                        <p>
+                          Soil Nutriments:{" "}
+                          <span className="data">{soilNutriments}</span>
+                        </p>
                       ) : (
                         ""
                       )}
-                      {soilTexture ? <p>Soil Texture - {soilTexture}</p> : ""}
-                      {lightCondition ? (
-                        <p>Light Condition - {lightCondition}</p>
+                      {soilTexture ? (
+                        <p>
+                          Soil Texture:{" "}
+                          <span className="data">{soilNutriments}</span>{" "}
+                          {soilTexture}
+                        </p>
                       ) : (
                         ""
                       )}

@@ -13,20 +13,19 @@ const Plant = () => {
     if (JSON.parse(localStorage.getItem("plantURL"))) {
       localStorage.removeItem("plantState");
       const { url } = JSON.parse(localStorage.getItem("plantURL"));
-      console.log("url", url);
 
       const item = {
         url: url,
       };
 
       const { data } = await API.getPlant(item);
-      console.log("API Data: ",data);
 
       const plantObject = {
         img: data.image,
         atmosHumidity: data.atmosHumidity,
         bloomMonths: data.bloomMonths,
         commonName: data.commonName,
+        scientificName: data.scientificName,
         edible: data.edible,
         family: data.family,
         familyCommonName: data.familyCommonName,
@@ -52,7 +51,6 @@ const Plant = () => {
           deg_c: data.minTemp.deg_c,
         },
         native: data.native,
-        scientificName: data.scientific_name,
         soilNutriments: data.soilNutriments,
         soilTexture: data.soilTexture,
         notes: "",
@@ -65,13 +63,13 @@ const Plant = () => {
       });
     } else if (JSON.parse(localStorage.getItem("plantState"))) {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));
-      console.log("Local Storage: ", plant);
 
       const plantObject = {
         img: plant.image,
         atmosHumidity: plant.atmosHumidity,
         bloomMonths: plant.bloomMonths,
         commonName: plant.commonName,
+        scientificName: plant.scientificName,
         edible: plant.edible,
         family: plant.family,
         familyCommonName: plant.familyCommonName,
@@ -97,7 +95,6 @@ const Plant = () => {
           deg_c: plant.minTemp.deg_c,
         },
         native: plant.native,
-        scientificName: plant.scientific_name,
         soilNutriments: plant.soilNutriments,
         soilTexture: plant.soilTexture,
         notes: "",

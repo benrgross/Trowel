@@ -1,14 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcryptjs");
 SALT_WORK_FACTOR = 10;
-
-// var hash_password = function( password ) {
-//   let salt = bcrypt.genSaltSync(); // enter number of rounds, default: 10
-//   let hash = bcrypt.hashSync( password, salt );
-//   return hash;
-// },
 
 const userSchema = new Schema({
   email: {

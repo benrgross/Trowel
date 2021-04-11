@@ -6,29 +6,48 @@ const JwtStrategy = passportJWT.Strategy;
 const ExtractJwt = passportJWT.ExtractJwt;
 
 passport.use(
+  "signup",
   new LocalStrategy(
     {
       usernameField: "email",
       passwordField: "password",
     },
-
-    async (email, password, cb) => {
-      const user = await db.User.findOne({ email });
-      console.log(user);
-      console.log(email, password);
+    async (email, password, done) => {
       try {
+        const user = await db.User.create({ email, password });
+
+        return done(null, user);
+      } catch (error) {
+        done(error);
+      }
+    }
+  )
+);
+
+passport.use(
+  "login",
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password",
+    },
+    async (email, password, done) => {
+      try {
+        const user = await db.User.findOne({ email });
+
         if (!user) {
-          return cb(null, false, {
-            message: "incorrect email",
-          });
+          return done(null, false, { message: "User not found" });
         }
-        if (password === user.password) {
-          return cb(null, user, {
-            message: "succesful logged in ",
-          });
+
+        const validate = await user.isValidPassword(password);
+
+        if (!validate) {
+          return done(null, false, { message: "Wrong Password" });
         }
-      } catch (err) {
-        return cb(err);
+
+        return done(null, user, { message: "Logged in Successfully" });
+      } catch (error) {
+        return done(error);
       }
     }
   )

@@ -52,7 +52,7 @@ export default {
     return axios.post("/api/auth/login", cred);
   },
   signUp: function (cred) {
-    return axios.post("/api/auth/register", cred);
+    return axios.post("/api/auth/signup", cred);
   },
 
   // Saves a account to the database

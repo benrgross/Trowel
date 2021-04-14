@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { LOGIN } from "../../utils/actions";
+import { LOGIN, ALERT } from "../../utils/actions";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import "./login.css";
@@ -20,14 +20,33 @@ function LoginForm() {
     console.log("login cred", cred);
 
     if (!cred.email && !cred.password) {
-      alert("Invalid e-mail address and password");
+      dispatch({
+        type: ALERT,
+        message: "Invalid email or password",
+      });
     } else if (!cred.email && cred.password) {
-      alert("Invalid e-mail address and password");
+      dispatch({
+        type: ALERT,
+        message: "Invalid email or password",
+      });
     } else if (cred.email && !cred.password) {
-      alert("Please enter a password");
+      dispatch({
+        type: ALERT,
+        message: "Invalid email or password",
+      });
     } else {
       console.log("Login successful!");
     }
+
+    // if (!cred.email && !cred.password) {
+    //   alert("Invalid e-mail address and password");
+    // } else if (!cred.email && cred.password) {
+    //   alert("Invalid e-mail address and password");
+    // } else if (cred.email && !cred.password) {
+    //   alert("Please enter a password");
+    // } else {
+    //   console.log("Login successful!");
+    // }
 
     const {
       data: { email, token },
@@ -53,6 +72,13 @@ function LoginForm() {
         <div className="col-sm-12 col-md-12 col-lg-12">
           <form className="logIn card form">
             <h2 className="text-center">Log In</h2>
+            {state.message ? (
+              <div className="alert alert-danger" role="alert">
+                {state.message}
+              </div>
+            ) : (
+              ""
+            )}
             <div className="form-group">
               <label>Email address</label>
               <input

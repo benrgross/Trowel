@@ -16,7 +16,7 @@ function LoginForm() {
       type: ALERT,
       message: "",
     });
-  }, "");
+  }, []);
 
   const submitLogin = async (e) => {
     e.preventDefault();

@@ -17,7 +17,7 @@ function SignUpForm() {
       type: ALERT,
       message: "",
     });
-  }, "");
+  }, []);
 
   const signUp = async (e) => {
     e.preventDefault();
@@ -68,10 +68,6 @@ function SignUpForm() {
       token,
     });
   };
-
-  // const alert = () => {
-  //   return <h1>You suck lol</h1>;
-  // };
 
   return (
     <div className="container-fluid form-group d-flex justify-content-center">

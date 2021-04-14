@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { LOGIN, ALERT } from "../../utils/actions";
+import { LOGIN, ALERT, SHOW_FORM } from "../../utils/actions";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import "./login.css";
@@ -10,6 +10,13 @@ function LoginForm() {
   const emailRef = useRef();
   const passwordRef = useRef();
   // const history = useHistory();
+
+  useEffect(() => {
+    dispatch({
+      type: ALERT,
+      message: "",
+    });
+  }, "");
 
   const submitLogin = async (e) => {
     e.preventDefault();
@@ -65,6 +72,16 @@ function LoginForm() {
       token,
     });
   };
+
+  // const closeAlert = (e) => {
+  //   e.stopPropagation();
+
+  //   dispatch({
+  //     type: SHOW_FORM,
+  //     display: false,
+  //   });
+  // };
+
   return (
     <div className="container-fluid form-group d-flex justify-content-center ">
       <div className="row">
@@ -74,7 +91,7 @@ function LoginForm() {
             <h2 className="text-center">Log In</h2>
             {state.message ? (
               <div className="alert alert-danger" role="alert">
-                {state.message}
+                {state.message}{" "}
               </div>
             ) : (
               ""

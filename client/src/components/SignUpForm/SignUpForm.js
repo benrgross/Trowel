@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
 import { LOGIN, ALERT } from "../../utils/actions";
@@ -11,6 +11,13 @@ function SignUpForm() {
 
   const regEmailRef = useRef();
   const regPasswordRef = useRef();
+
+  useEffect(() => {
+    dispatch({
+      type: ALERT,
+      message: "",
+    });
+  }, "");
 
   const signUp = async (e) => {
     e.preventDefault();

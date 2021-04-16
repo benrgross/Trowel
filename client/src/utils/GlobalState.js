@@ -14,6 +14,8 @@ import {
   SAVE_TO_ACCOUNT,
   SHOW_FORM,
   ALERT,
+  VIEW_ACCOUNT_NOTES,
+  CHANGE_NOTES
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -102,13 +104,19 @@ const reducer = (state, action) => {
         accountName: action.accountName,
       };
 
-    case "CHANGE_NOTES":
+    case CHANGE_NOTES:
       return {
         ...state,
         viewPlant: {
           ...state.viewPlant,
           notes: action.newNote,
         },
+      };
+
+    case VIEW_ACCOUNT_NOTES:
+      return {
+        ...state,
+        accountID: action.accountID,
       };
 
     case SPOTLIGHT:
@@ -187,6 +195,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     account: {},
     accounts: [],
     accountName: "",
+    accountID: "",
     viewPlant: {},
   });
 

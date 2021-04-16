@@ -7,7 +7,7 @@ import AccountCards from "../../components/AccountCards";
 import "./home.css";
 
 const Home = () => {
-  const [state, dispatch] = useStoreContext();
+  const [_, dispatch] = useStoreContext();
 
   // get request of accounts from db
   useEffect(() => {

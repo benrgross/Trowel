@@ -1,7 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { REMOVE_ACCOUNT, SET_SAVED_ACCOUNT } from "../../utils/actions";
+import { REMOVE_ACCOUNT, SET_SAVED_ACCOUNT, VIEW_ACCOUNT_NOTES } from "../../utils/actions";
 import { useHistory } from "react-router-dom";
 import { FaRegTrashAlt, FaPhoneSquareAlt, FaEnvelope } from "react-icons/fa";
 import "./style.css";
@@ -64,7 +64,7 @@ function AccountCard() {
     event.stopPropagation();
 
     dispatch({
-      type: "VIEW_ACCOUNT_NOTES",
+      type: VIEW_ACCOUNT_NOTES,
       accountID,
     });
 

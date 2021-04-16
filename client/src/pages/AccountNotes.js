@@ -8,7 +8,7 @@ function AccountNotes() {
   const [state, _] = useStoreContext();
   const { accountID } = state;
 
-  console.log(accountID)
+  console.log("Account ID: ", accountID)
 
 //   const noteRef = useRef();
 //   let history = useHistory();

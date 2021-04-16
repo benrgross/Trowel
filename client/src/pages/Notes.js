@@ -3,7 +3,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import "./Search/style.css";
-import CHANGE_NOTES from "../utils/actions"
+import { CHANGE_NOTES } from "../utils/actions"
 
 function Notes() {
   const [state, dispatch] = useStoreContext();

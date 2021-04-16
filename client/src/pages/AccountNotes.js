@@ -12,7 +12,7 @@ function AccountNotes() {
 
   // TODO: UseEffect to grab account data from ID
   // TODO: Display every note within the account
-  // TODO: Form that adds a note
+  // TODO: Form that sends note obj with a title and note attribute
   // TODO: Edit button that edits an existing note
 
   return (

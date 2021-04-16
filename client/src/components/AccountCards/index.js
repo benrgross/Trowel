@@ -60,6 +60,17 @@ function AccountCard() {
     }
   };
 
+  const viewAccountNotes = async (accountID, event) => {
+    event.stopPropagation();
+
+    dispatch({
+      type: "VIEW_ACCOUNT_NOTES",
+      accountID,
+    });
+
+    history.push("/account-notes");
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -102,6 +113,13 @@ function AccountCard() {
                           {account.location.distZone}
                         </p>
                         <p># of Plants: {account.plants.length}</p>
+                        <button
+                            type="button"
+                            className="btn show-btn"
+                            onClick={(e) => viewAccountNotes(account._id, e)}
+                          >
+                            View Notes
+                          </button>
                       </div>
                     </div>
                   </div>

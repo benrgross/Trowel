@@ -51,9 +51,9 @@ function AccountNotes() {
             <div className="form-group">
               <textarea
                 name="Notes"
-                ref={noteRef}
-                placeholder="Water once a week..."
-                value={notes}
+                // ref={noteRef}
+                placeholder="Add A Note"
+                // value={notes}
                 // onChange={(e) => changeNote(e.target.value)}
                 style={style}
               ></textarea>

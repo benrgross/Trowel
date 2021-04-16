@@ -13,3 +13,4 @@ export const LOGOUT = "LOGOUT";
 export const SAVE_TO_ACCOUNT = "SAVE_TO_ACCOUNT";
 export const SHOW_FORM = "SHOW_FORM";
 export const ALERT = "ALERT";
+export const VIEW_ACCOUNT_NOTES = "VIEW_ACCOUNT_NOTES";

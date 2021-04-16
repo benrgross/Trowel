@@ -10,29 +10,10 @@ function AccountNotes() {
 
   console.log("Account ID: ", accountID)
 
-//   const noteRef = useRef();
-//   let history = useHistory();
-
-//   const addNote = async (objectID) => {
-//     const note = {
-//       id: objectID,
-//       note: {
-//         note: noteRef.current.value,
-//         date: new Date(),
-//       },
-//     };
-//     const addNote = await API.postPlantNote(state.account.accountID, note);
-//     console.log("Added Note: ", addNote);
-
-//     history.push("/account");
-//   };
-
-//   const changeNote = (note) => {
-//     dispatch({
-//       type: "CHANGE_NOTES",
-//       newNote: note,
-//     });
-//   };
+  // TODO: UseEffect to grab account data from ID
+  // TODO: Display every note within the account
+  // TODO: Form that adds a note
+  // TODO: Edit button that edits an existing note
 
   return (
     <div className="container notes-con">

@@ -26,8 +26,11 @@ const accountSchema = new Schema({
   },
   notes: [
     {
-      id: { type: Schema.Types.ObjectId, required: false },
-      note: { type: String, required: false },
+      // type: Schema.Types.ObjectId,
+      note: {
+        type: String,
+        required: false,
+      },
       date: {
         type: Date,
         default: Date.now,

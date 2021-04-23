@@ -17,6 +17,10 @@ router.route("/deletePlant/:id").post(accountController.deletePlant);
 
 router.route("/findNewAccount").get(accountController.findOne);
 
+router.route("/getAccountNote/:id").get(accountController.getAccountNote);
+
+router.route("/addAccountNote/:id").post(accountController.postAccountNote);
+
 router.route("/getPlantNote/:id").post(accountController.getPlantNote);
 
 router.route("/addPlantNote/:id").post(accountController.postPlantNote);

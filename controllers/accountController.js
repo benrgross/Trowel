@@ -145,6 +145,50 @@ module.exports = {
     }
   },
 
+  postAccountNote: async function (req, res) {
+    console.log(
+      "id: " + req.params.id + "\n",
+      "val: " + req.body.note + "\n",
+      "bodyObj: ",
+      req.body
+    );
+
+    try {
+      const addAccNote = await db.Account.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $push: {
+            notes: {
+              note: req.body.note,
+            },
+          },
+        },
+        { new: true }
+      );
+
+      console.log(addAccNote);
+      res.json(addAccNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
+  getAccountNote: async function (req, res) {
+    // console.log(req.body);
+    try {
+      const getAccNote = await db.Account.find({
+        _id: req.params.id,
+        "accounts.notes._id": req.body.notes,
+      });
+      console.log(getAccNote);
+      res.json(getAccNote);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
   // updatePlantNote: async function (req, res) {
   //   try {
   //     const updateNote = await db.Account.updateOne(

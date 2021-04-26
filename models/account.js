@@ -24,13 +24,19 @@ const accountSchema = new Schema({
     type: Number,
     default: 0,
   },
-  notes: {
-    note: { type: String, retquired: false },
-    date: {
-      type: Date,
-      default: Date.now,
+  notes: [
+    {
+      // type: Schema.Types.ObjectId,
+      note: {
+        type: String,
+        required: false,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
     },
-  },
+  ],
 
   plants: [
     {

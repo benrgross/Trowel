@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import API from "../../utils/API";
 import { useStoreContext } from "../../utils/GlobalState";
-import { LOGIN } from "../../utils/actions";
+import { LOGIN, ALERT } from "../../utils/actions";
 import { Link, useHistory } from "react-router-dom";
 import "./signup.css";
 
@@ -12,6 +12,13 @@ function SignUpForm() {
   const regEmailRef = useRef();
   const regPasswordRef = useRef();
 
+  useEffect(() => {
+    dispatch({
+      type: ALERT,
+      message: "",
+    });
+  }, []);
+
   const signUp = async (e) => {
     e.preventDefault();
     const cred = {
@@ -21,11 +28,20 @@ function SignUpForm() {
     console.log("cred", cred);
 
     if (!cred.email && !cred.password) {
-      alert("Please enter an e-mail address and password");
+      dispatch({
+        type: ALERT,
+        message: "Please enter all fields",
+      });
     } else if (!cred.email && cred.password) {
-      alert("Please enter an e-mail address");
+      dispatch({
+        type: ALERT,
+        message: "Please enter all fields",
+      });
     } else if (cred.email && !cred.password) {
-      alert("Please enter a password");
+      dispatch({
+        type: ALERT,
+        message: "Please enter all fields",
+      });
     } else {
       console.log("Sign-up successful!");
     }
@@ -53,10 +69,6 @@ function SignUpForm() {
     });
   };
 
-  // const alert = () => {
-  //   return <h1>You suck lol</h1>;
-  // };
-
   return (
     <div className="container-fluid form-group d-flex justify-content-center">
       <div className="row">
@@ -64,6 +76,13 @@ function SignUpForm() {
         <div className="col-sm-12 col-md-12 col-lg-12">
           <form className="signup card">
             <h2 className="text-center">Sign Up</h2>
+            {state.message ? (
+              <div className="alert alert-danger" role="alert">
+                {state.message}
+              </div>
+            ) : (
+              ""
+            )}
             <div className="form-group">
               <label>Email address</label>
               <input

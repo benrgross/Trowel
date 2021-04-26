@@ -19,7 +19,7 @@ function CreateAccForm() {
       type: ALERT,
       message: "",
     });
-  }, "");
+  }, []);
 
   const saveAccount = async (event) => {
     // possibly remove prevent default

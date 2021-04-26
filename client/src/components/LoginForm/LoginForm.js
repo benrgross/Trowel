@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { LOGIN } from "../../utils/actions";
+import { LOGIN, ALERT, SHOW_FORM } from "../../utils/actions";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import "./login.css";
@@ -11,6 +11,13 @@ function LoginForm() {
   const passwordRef = useRef();
   // const history = useHistory();
 
+  useEffect(() => {
+    dispatch({
+      type: ALERT,
+      message: "",
+    });
+  }, []);
+
   const submitLogin = async (e) => {
     e.preventDefault();
     const cred = {
@@ -20,14 +27,33 @@ function LoginForm() {
     console.log("login cred", cred);
 
     if (!cred.email && !cred.password) {
-      alert("Invalid e-mail address and password");
+      dispatch({
+        type: ALERT,
+        message: "Invalid email or password",
+      });
     } else if (!cred.email && cred.password) {
-      alert("Invalid e-mail address and password");
+      dispatch({
+        type: ALERT,
+        message: "Invalid email or password",
+      });
     } else if (cred.email && !cred.password) {
-      alert("Please enter a password");
+      dispatch({
+        type: ALERT,
+        message: "Invalid email or password",
+      });
     } else {
       console.log("Login successful!");
     }
+
+    // if (!cred.email && !cred.password) {
+    //   alert("Invalid e-mail address and password");
+    // } else if (!cred.email && cred.password) {
+    //   alert("Invalid e-mail address and password");
+    // } else if (cred.email && !cred.password) {
+    //   alert("Please enter a password");
+    // } else {
+    //   console.log("Login successful!");
+    // }
 
     const {
       data: { email, token },
@@ -46,6 +72,16 @@ function LoginForm() {
       token,
     });
   };
+
+  // const closeAlert = (e) => {
+  //   e.stopPropagation();
+
+  //   dispatch({
+  //     type: SHOW_FORM,
+  //     display: false,
+  //   });
+  // };
+
   return (
     <div className="container-fluid form-group d-flex justify-content-center ">
       <div className="row">
@@ -53,6 +89,13 @@ function LoginForm() {
         <div className="col-sm-12 col-md-12 col-lg-12">
           <form className="logIn card form">
             <h2 className="text-center">Log In</h2>
+            {state.message ? (
+              <div className="alert alert-danger" role="alert">
+                {state.message}{" "}
+              </div>
+            ) : (
+              ""
+            )}
             <div className="form-group">
               <label>Email address</label>
               <input

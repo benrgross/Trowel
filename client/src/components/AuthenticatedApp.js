@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 import Plant from "../pages/Plant";
 import Account from "../pages/Account";
 import Footer from "../components/Footer";
-import Notes from "../pages/Notes"
+import Notes from "../pages/Notes";
 
 function AuthenticatedApp() {
   return (

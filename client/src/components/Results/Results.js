@@ -19,7 +19,7 @@ function Results() {
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
-    console.log("dataforben", data.url);
+    console.log("dataforben", data.images);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
@@ -68,7 +68,7 @@ function Results() {
 
     history.push("/plant");
   };
-  console.log(state.results.map((plant) => plant.comm));
+
   return (
     <div className="container">
       <div className="row">

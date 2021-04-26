@@ -91,11 +91,12 @@ router.post("/plant", async (req, res) => {
     const { data } = await Axios.get(
       `https://trefle.io${req.body.url}?token=${token}`
     );
-
+    console.log(data);
     const { growth } = data.data;
     const { specifications } = data.data;
 
     const plantData = {
+      images: data.data.images,
       url: data.data.links["self"],
       image: data.data.image_url,
       commonName: data.data.common_name,

@@ -36,6 +36,7 @@ const plantSchema = new Schema({
   heightAvg: Number,
   edible: Boolean,
   img: String,
+  images: Object,
 });
 
 const Plant = mongoose.model("Plant", plantSchema);

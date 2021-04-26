@@ -34,6 +34,7 @@ function AccountPlantCard() {
     const plantObject = {
       id: id,
       atmosHumidity: plant.atmosHumidity,
+      images: plant.images,
       bloomMonths: plant.bloomMonths,
       commonName: plant.commonName,
       scientificName: plant.scientificName,
@@ -83,6 +84,7 @@ function AccountPlantCard() {
 
     const plantObject = {
       id: id,
+      images: plant.images,
       commonName: plant.commonName,
       scientificName: plant.scientificName,
       flowerColor: {

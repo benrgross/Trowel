@@ -3,12 +3,14 @@ import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
+import Carousel from "../Carousel/Index";
 import "./spotlight.css";
 
 function AddPlantCard() {
   const [state, dispatch] = useStoreContext();
   const {
     viewPlant: {
+      images,
       commonName,
       scientificName,
       img,
@@ -84,6 +86,7 @@ function AddPlantCard() {
         <div className="col-sm-12 col-md-12 col-lg-12 plant-card-title">
           <h1>{commonName}</h1>
         </div>
+        <Carousel />
       </div>
 
       {state.switch ? (

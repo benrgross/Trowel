@@ -22,6 +22,7 @@ function Results() {
     console.log("dataforben", data.images);
 
     const plantObject = {
+      images: data.images,
       atmosHumidity: data.atmosHumidity,
       bloomMonths: data.bloomMonths,
       commonName: data.commonName,

@@ -21,6 +21,7 @@ const Plant = () => {
       const { data } = await API.getPlant(item);
 
       const plantObject = {
+        images: data.images,
         img: data.image,
         atmosHumidity: data.atmosHumidity,
         bloomMonths: data.bloomMonths,
@@ -65,6 +66,7 @@ const Plant = () => {
       const { plant } = JSON.parse(localStorage.getItem("plantState"));
 
       const plantObject = {
+        images: plant.images,
         img: plant.image,
         atmosHumidity: plant.atmosHumidity,
         bloomMonths: plant.bloomMonths,

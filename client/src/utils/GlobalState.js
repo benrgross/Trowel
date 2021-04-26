@@ -15,7 +15,7 @@ import {
   SHOW_FORM,
   ALERT,
   VIEW_ACCOUNT_NOTES,
-  CHANGE_NOTES
+  CHANGE_NOTES,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -126,6 +126,7 @@ const reducer = (state, action) => {
         viewPlant: {
           id: action.spotlight.id,
           url: action.url,
+          images: action.spotlight.images,
           atmosHumidity: action.spotlight.atmosHumidity,
           bloomMonths: action.spotlight.bloomMonths,
           commonName: action.spotlight.commonName,

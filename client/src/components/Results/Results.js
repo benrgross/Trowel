@@ -41,10 +41,7 @@ function Results() {
       light: data.light,
       maxPh: data.maxPh,
       maxPrecipitation: data.maxPrecipitation.mm,
-      maxTemp: {
-        deg_f: data.maxTemp.deg_f,
-        deg_c: data.maxTemp.deg_c,
-      },
+      maxTemp: data.maxTemp,
       minPh: data.minPh,
       minPrecipitation: data.minPrecipitation.mm,
       minTemp: {

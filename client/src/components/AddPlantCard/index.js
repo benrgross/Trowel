@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { SET_SAVED_ACCOUNT } from "../../utils/actions";
 import Carousel from "../Carousel/Index";
 import "./spotlight.css";
+import { FaCommentsDollar } from "react-icons/fa";
 
 function AddPlantCard() {
   const [state, dispatch] = useStoreContext();
@@ -86,6 +87,8 @@ function AddPlantCard() {
         <div className="col-sm-12 col-md-12 col-lg-12 plant-card-title">
           <h1>{commonName}</h1>
         </div>
+      </div>
+      <div className="container d-flex justify-content-center">
         <Carousel />
       </div>
 
@@ -176,7 +179,7 @@ function AddPlantCard() {
                       {heightAvgCm ? (
                         <p>
                           Average Height:{" "}
-                          <span className="data">{heightAvgCm}</span>{" "}
+                          <span className="data">{heightAvgCm}cm</span>{" "}
                         </p>
                       ) : (
                         ""
@@ -184,6 +187,11 @@ function AddPlantCard() {
                       {light ? (
                         <p>
                           Light Index: <span className="data">{light}</span>{" "}
+                          <span className="data">
+                            Required amount of light, on a scale from 0 (no
+                            light, 10 lux) to 10 (very intensive insolation, 100
+                            000 lux){" "}
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -263,7 +271,7 @@ function AddPlantCard() {
                       {soilTexture ? (
                         <p>
                           Soil Texture:{" "}
-                          <span className="data">{soilNutriments}</span>{" "}
+                          <span className="data">{soilTexture}</span>{" "}
                           {soilTexture}
                         </p>
                       ) : (
@@ -470,7 +478,7 @@ function AddPlantCard() {
                       {soilTexture ? (
                         <p>
                           Soil Texture:{" "}
-                          <span className="data">{soilNutriments}</span>{" "}
+                          <span className="data">{soilTexture}</span>{" "}
                           {soilTexture}
                         </p>
                       ) : (

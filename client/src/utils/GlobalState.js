@@ -145,10 +145,7 @@ const reducer = (state, action) => {
           light: action.spotlight.light,
           maxPh: action.spotlight.maxPh,
           maxPrecipitation: action.spotlight.maxPrecipitation,
-          maxTemp: {
-            deg_f: action.spotlight.maxTemp.deg_f,
-            deg_c: action.spotlight.maxTemp.deg_c,
-          },
+          maxTemp: action.spotlight.maxTemp,
           minPh: action.spotlight.minPh,
           minPrecipitation: action.spotlight.minPrecipitation,
           minTemp: {

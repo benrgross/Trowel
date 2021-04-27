@@ -12,10 +12,7 @@ const plantSchema = new Schema({
     deg_f: Number,
     deg_c: Number,
   },
-  maxTemp: {
-    deg_f: Number,
-    deg_c: Number,
-  },
+  maxTemp: Object,
   native: [String],
   bloomMonths: [String],
   notes: String,

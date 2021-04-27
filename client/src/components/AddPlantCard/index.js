@@ -223,8 +223,7 @@ function AddPlantCard() {
                     <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
                       {maxTemp ? (
                         <p>
-                          Max Temp:{" "}
-                          <span className="data">{maxTemp["deg_f"]}F </span>{" "}
+                          Max Temp: <span className="data">{maxTemp}F </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -232,7 +231,7 @@ function AddPlantCard() {
                       {minTemp ? (
                         <p>
                           Min Temp:
-                          <span className="data">{minTemp["deg_f"]}F</span>
+                          <span className="data">{minTemp}F</span>
                         </p>
                       ) : (
                         ""
@@ -483,8 +482,7 @@ function AddPlantCard() {
                     <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
                       {maxTemp ? (
                         <p>
-                          Max Temp:{" "}
-                          <span className="data">{maxTemp["deg_f"]}F </span>{" "}
+                          Max Temp: <span className="data">{maxTemp}F </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -492,7 +490,7 @@ function AddPlantCard() {
                       {minTemp ? (
                         <p>
                           Min Temp:
-                          <span className="data">{minTemp["deg_f"]}F</span>
+                          <span className="data">{minTemp}F</span>
                         </p>
                       ) : (
                         ""

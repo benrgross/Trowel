@@ -93,9 +93,18 @@ router.post("/plant", async (req, res) => {
     );
 
     const { growth } = data.data;
+    console.log("growth", growth);
 
     const { specifications } = data.data;
-    console.log(specifications);
+
+    if (growth.maximum_temperature.deg_f == null) {
+      growth.maximum_temperature = null;
+    } else
+      growth.growth.maximum_temperature = growth.maximum_temperature["deg_f"];
+
+    if (growth.minimum_temperature.deg_f == null) {
+      growth.minimum_temperature = null;
+    } else growth.minimum_temperature = growth.minimum_temperature["deg_f"];
 
     const plantData = {
       url: data.data.links["self"],

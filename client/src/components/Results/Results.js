@@ -7,8 +7,6 @@ import "./style.css";
 function Results() {
   const [state, dispatch] = useStoreContext();
 
-  console.log("Account Name: ", state.accountName);
-
   let history = useHistory();
 
   const getPlant = async (plant) => {
@@ -19,7 +17,6 @@ function Results() {
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
-    console.log("dataforben", data);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
@@ -42,16 +39,10 @@ function Results() {
       light: data.light,
       maxPh: data.maxPh,
       maxPrecipitation: data.maxPrecipitation.mm,
-      maxTemp: {
-        deg_f: data.maxTemp.deg_f,
-        deg_c: data.maxTemp.deg_c,
-      },
+      maxTemp: data.maxTemp,
       minPh: data.minPh,
       minPrecipitation: data.minPrecipitation.mm,
-      minTemp: {
-        deg_f: data.minTemp.deg_f,
-        deg_c: data.minTemp.deg_c,
-      },
+      minTemp: data.minTemp,
       native: data.native,
       soilNutriments: data.soilNutriments,
       soilTexture: data.soilTexture,

@@ -19,7 +19,7 @@ function Results() {
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
-    console.log("dataforben", data.url);
+    console.log("dataforben", data);
 
     const plantObject = {
       atmosHumidity: data.atmosHumidity,
@@ -35,6 +35,8 @@ function Results() {
       },
       genus: data.genus,
       growthHabit: data.growthHabit,
+      growthForm: data.growthForm,
+      growthRate: data.growthRate,
       heightAvgCm: data.heightAvg.cm,
       img: plant.img,
       light: data.light,
@@ -53,6 +55,7 @@ function Results() {
       native: data.native,
       soilNutriments: data.soilNutriments,
       soilTexture: data.soilTexture,
+      soilHumidity: data.soilHumidity,
       lightCondition: state.viewPlant.lightCondition,
       notes: "",
     };

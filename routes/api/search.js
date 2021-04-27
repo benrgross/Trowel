@@ -93,7 +93,9 @@ router.post("/plant", async (req, res) => {
     );
 
     const { growth } = data.data;
+
     const { specifications } = data.data;
+    console.log(specifications);
 
     const plantData = {
       url: data.data.links["self"],
@@ -118,8 +120,11 @@ router.post("/plant", async (req, res) => {
       minPh: growth.ph_minimum,
       soilNutriments: growth.soil_nutriments,
       soilTexture: growth.soil_texture,
+      soilHumidity: growth.soil_humidity,
       heightAvg: specifications.average_height,
       growthHabit: specifications.growth_habit,
+      growthRate: specifications.growth_rate,
+      growthForm: specifications.growth_form,
     };
 
     res.json(plantData);

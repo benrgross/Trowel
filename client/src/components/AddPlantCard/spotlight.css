@@ -60,3 +60,9 @@
 .data {
   margin-left: 4px;
 }
+
+.unit-data {
+  font-size: 12px;
+  color: grey;
+  line-height: 0.25px;
+}

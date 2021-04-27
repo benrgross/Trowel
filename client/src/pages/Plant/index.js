@@ -35,6 +35,9 @@ const Plant = () => {
         },
         genus: data.genus,
         growthHabit: data.growthHabit,
+        growthRate: data.growthRate,
+        growthForm: data.growthForm,
+        shape: data.shape,
         heightAvgCm: data.heightAvg.cm,
 
         light: data.light,
@@ -53,6 +56,7 @@ const Plant = () => {
         native: data.native,
         soilNutriments: data.soilNutriments,
         soilTexture: data.soilTexture,
+        soilHumidity: data.soilHumidity,
         notes: "",
       };
 
@@ -79,6 +83,8 @@ const Plant = () => {
         },
         genus: plant.genus,
         growthHabit: plant.growthHabit,
+        growthRate: plant.growthRate,
+        growthForm: plant.growthForm,
         heightAvgCm: plant.heightAvg,
         img: plant.img,
         light: plant.light,
@@ -97,6 +103,7 @@ const Plant = () => {
         native: plant.native,
         soilNutriments: plant.soilNutriments,
         soilTexture: plant.soilTexture,
+        soilHumidity: plant.soilHumidity,
         notes: "",
       };
 

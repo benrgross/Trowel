@@ -17,10 +17,7 @@ function Results() {
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
-<<<<<<< HEAD
     console.log("dataforben", data.images);
-=======
->>>>>>> main
 
     const plantObject = {
       images: data.images,

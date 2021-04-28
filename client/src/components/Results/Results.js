@@ -7,8 +7,6 @@ import "./style.css";
 function Results() {
   const [state, dispatch] = useStoreContext();
 
-  console.log("Account Name: ", state.accountName);
-
   let history = useHistory();
 
   const getPlant = async (plant) => {
@@ -19,7 +17,10 @@ function Results() {
     localStorage.setItem("plantURL", JSON.stringify(item));
 
     const { data } = await API.getPlant(item);
+<<<<<<< HEAD
     console.log("dataforben", data.images);
+=======
+>>>>>>> main
 
     const plantObject = {
       images: data.images,
@@ -36,6 +37,8 @@ function Results() {
       },
       genus: data.genus,
       growthHabit: data.growthHabit,
+      growthForm: data.growthForm,
+      growthRate: data.growthRate,
       heightAvgCm: data.heightAvg.cm,
       img: plant.img,
       light: data.light,
@@ -44,13 +47,11 @@ function Results() {
       maxTemp: data.maxTemp,
       minPh: data.minPh,
       minPrecipitation: data.minPrecipitation.mm,
-      minTemp: {
-        deg_f: data.minTemp.deg_f,
-        deg_c: data.minTemp.deg_c,
-      },
+      minTemp: data.minTemp,
       native: data.native,
       soilNutriments: data.soilNutriments,
       soilTexture: data.soilTexture,
+      soilHumidity: data.soilHumidity,
       lightCondition: state.viewPlant.lightCondition,
       notes: "",
     };

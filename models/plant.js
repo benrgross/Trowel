@@ -8,11 +8,16 @@ const plantSchema = new Schema({
     color: [String],
     conspicuous: Boolean,
   },
+<<<<<<< HEAD
   minTemp: {
     deg_f: Number,
     deg_c: Number,
   },
   maxTemp: Object,
+=======
+  minTemp: Number,
+  maxTemp: Number,
+>>>>>>> main
   native: [String],
   bloomMonths: [String],
   notes: String,
@@ -22,6 +27,9 @@ const plantSchema = new Schema({
   genus: String,
   family: String,
   growthHabit: String,
+  growthForm: String,
+  growthRate: String,
+  shape: String,
   light: Number,
   atmosHumidity: Number,
   minPrecipitation: Number,
@@ -30,6 +38,7 @@ const plantSchema = new Schema({
   minPh: Number,
   soilNutriments: Number,
   soilTexture: Number,
+  soilHumidity: Number,
   heightAvg: Number,
   edible: Boolean,
   img: String,

@@ -52,16 +52,10 @@ function AccountPlantCard() {
       light: plant.light,
       maxPh: plant.maxPh,
       maxPrecipitation: plant.maxPrecipitation,
-      maxTemp: {
-        deg_f: plant.maxTemp.deg_f,
-        deg_c: plant.maxTemp.deg_c,
-      },
+      maxTemp: plant.maxTemp,
       minPh: plant.minPh,
       minPrecipitation: plant.minPrecipitation,
-      minTemp: {
-        deg_f: plant.minTemp.deg_f,
-        deg_c: plant.minTemp.deg_c,
-      },
+      minTemp: plant.maxTemp,
       native: plant.native,
       soilNutriments: plant.soilNutriments,
       soilTexture: plant.soilTexture,
@@ -91,14 +85,8 @@ function AccountPlantCard() {
         color: plant.flowerColor.color,
         conspicuous: plant.flowerColor.conspicuous,
       },
-      maxTemp: {
-        deg_f: plant.maxTemp.deg_f,
-        deg_c: plant.maxTemp.deg_c,
-      },
-      minTemp: {
-        deg_f: plant.minTemp.deg_f,
-        deg_c: plant.minTemp.deg_c,
-      },
+      maxTemp: plant.maxTemp,
+      minTemp: plant.minTemp,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "",
     };

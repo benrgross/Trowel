@@ -83,14 +83,8 @@ function AccountPlantCard() {
         color: plant.flowerColor.color,
         conspicuous: plant.flowerColor.conspicuous,
       },
-      maxTemp: {
-        deg_f: plant.maxTemp.deg_f,
-        deg_c: plant.maxTemp.deg_c,
-      },
-      minTemp: {
-        deg_f: plant.minTemp.deg_f,
-        deg_c: plant.minTemp.deg_c,
-      },
+      maxTemp: plant.maxTemp,
+      minTemp: plant.minTemp,
       notes: notes ? notes.note : "",
       notesDate: notes ? notes.date : "",
     };

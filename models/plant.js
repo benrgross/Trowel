@@ -8,16 +8,8 @@ const plantSchema = new Schema({
     color: [String],
     conspicuous: Boolean,
   },
-<<<<<<< HEAD
-  minTemp: {
-    deg_f: Number,
-    deg_c: Number,
-  },
-  maxTemp: Object,
-=======
   minTemp: Number,
   maxTemp: Number,
->>>>>>> main
   native: [String],
   bloomMonths: [String],
   notes: String,

@@ -15,3 +15,4 @@ export const SHOW_FORM = "SHOW_FORM";
 export const ALERT = "ALERT";
 export const VIEW_ACCOUNT_NOTES = "VIEW_ACCOUNT_NOTES";
 export const CHANGE_NOTES = "CHANGE_NOTES";
+export const CAROUSEL = "CAROUSEL";

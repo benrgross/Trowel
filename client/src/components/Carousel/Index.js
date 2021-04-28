@@ -6,6 +6,8 @@ import "./style.css";
 
 const handleDragStart = (e) => e.preventDefault();
 
+// next step break up arrays of images into state
+
 function Carousel() {
   const [state, dispatch] = useStoreContext();
   const items = [];
@@ -15,7 +17,6 @@ function Carousel() {
   };
   if (state.viewPlant.images) {
     state.viewPlant.images.leaf.forEach((image) => {
-      console.log(image.image_url);
       items.push(
         <img
           className="img-thumbnail"

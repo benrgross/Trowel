@@ -69,4 +69,5 @@
 
 .container.carousel-container {
   width: 31%;
+  z-index: 2;
 }

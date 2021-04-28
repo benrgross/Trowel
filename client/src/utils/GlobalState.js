@@ -16,6 +16,7 @@ import {
   ALERT,
   VIEW_ACCOUNT_NOTES,
   CHANGE_NOTES,
+  CAROUSEL,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -173,6 +174,11 @@ const reducer = (state, action) => {
       };
     default:
       return state;
+    case CAROUSEL:
+      return {
+        ...state,
+        carousel: action.carousel,
+      };
   }
 };
 
@@ -195,6 +201,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     accountName: "",
     accountID: "",
     viewPlant: {},
+    carousel: false,
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

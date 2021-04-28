@@ -93,7 +93,18 @@ router.post("/plant", async (req, res) => {
     );
 
     const { growth } = data.data;
+    console.log("growth", growth);
+
     const { specifications } = data.data;
+
+    if (growth.maximum_temperature.deg_f == null) {
+      growth.maximum_temperature = null;
+    } else
+      growth.growth.maximum_temperature = growth.maximum_temperature["deg_f"];
+
+    if (growth.minimum_temperature.deg_f == null) {
+      growth.minimum_temperature = null;
+    } else growth.minimum_temperature = growth.minimum_temperature["deg_f"];
 
     const plantData = {
       url: data.data.links["self"],
@@ -118,8 +129,11 @@ router.post("/plant", async (req, res) => {
       minPh: growth.ph_minimum,
       soilNutriments: growth.soil_nutriments,
       soilTexture: growth.soil_texture,
+      soilHumidity: growth.soil_humidity,
       heightAvg: specifications.average_height,
       growthHabit: specifications.growth_habit,
+      growthRate: specifications.growth_rate,
+      growthForm: specifications.growth_form,
     };
 
     res.json(plantData);

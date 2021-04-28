@@ -15,7 +15,7 @@ import {
   SHOW_FORM,
   ALERT,
   VIEW_ACCOUNT_NOTES,
-  CHANGE_NOTES
+  CHANGE_NOTES,
 } from "./actions";
 
 // Don't forget to import all of your actions!
@@ -139,24 +139,21 @@ const reducer = (state, action) => {
           },
           genus: action.spotlight.genus,
           growthHabit: action.spotlight.growthHabit,
+          growthRate: action.spotlight.growthRate,
+          growthForm: action.spotlight.growthForm,
           heightAvgCm: action.spotlight.heightAvgCm,
           img: action.spotlight.img,
           light: action.spotlight.light,
           maxPh: action.spotlight.maxPh,
           maxPrecipitation: action.spotlight.maxPrecipitation,
-          maxTemp: {
-            deg_f: action.spotlight.maxTemp.deg_f,
-            deg_c: action.spotlight.maxTemp.deg_c,
-          },
+          maxTemp: action.spotlight.maxTemp,
           minPh: action.spotlight.minPh,
           minPrecipitation: action.spotlight.minPrecipitation,
-          minTemp: {
-            deg_f: action.spotlight.minTemp.deg_f,
-            deg_c: action.spotlight.minTemp.deg_c,
-          },
+          minTemp: action.spotlight.minTemp,
           native: action.spotlight.native,
           soilNutriments: action.spotlight.soilNutriments,
           soilTexture: action.spotlight.soilTexture,
+          soilHumidity: action.spotlight.soilHumidity,
           lightCondition: action.lightCondition,
           notes: action.spotlight.notes,
           notesDate: action.spotlight.notesDate,

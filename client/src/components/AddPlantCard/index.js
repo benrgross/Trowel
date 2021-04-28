@@ -18,6 +18,8 @@ function AddPlantCard() {
       familyCommonName,
       genus,
       growthHabit,
+      growthRate,
+      growthForm,
       heightAvgCm,
       light,
       maxTemp,
@@ -29,6 +31,7 @@ function AddPlantCard() {
       native,
       soilNutriments,
       soilTexture,
+      soilHumidity,
       lightCondition,
     },
   } = state;
@@ -170,10 +173,26 @@ function AddPlantCard() {
                       ) : (
                         ""
                       )}
+                      {growthForm ? (
+                        <p>
+                          Growth Form:{" "}
+                          <span className="data">{growthForm}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {growthRate ? (
+                        <p>
+                          Growth Rate:{" "}
+                          <span className="data">{growthRate}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       {heightAvgCm ? (
                         <p>
                           Average Height:{" "}
-                          <span className="data">{heightAvgCm}</span>{" "}
+                          <span className="data">{heightAvgCm}cm</span>{" "}
                         </p>
                       ) : (
                         ""
@@ -181,6 +200,13 @@ function AddPlantCard() {
                       {light ? (
                         <p>
                           Light Index: <span className="data">{light}</span>{" "}
+                          <br></br>
+                          <span className="unit-data">
+                            Required amount of light, on a scale from 0 (no
+                            light, less than or equal to 10 lux) to 10 (very
+                            intensive insolation, greater than or equal to
+                            100,000 lux)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -197,8 +223,7 @@ function AddPlantCard() {
                     <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
                       {maxTemp ? (
                         <p>
-                          Max Temp:{" "}
-                          <span className="data">{maxTemp["deg_f"]}F </span>{" "}
+                          Max Temp: <span className="data">{maxTemp}F </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -206,7 +231,7 @@ function AddPlantCard() {
                       {minTemp ? (
                         <p>
                           Min Temp:
-                          <span className="data">{minTemp["deg_f"]}F</span>
+                          <span className="data">{minTemp}F</span>
                         </p>
                       ) : (
                         ""
@@ -228,7 +253,9 @@ function AddPlantCard() {
                       {maxPrecipitation ? (
                         <p>
                           Max Precipitation:{" "}
-                          <span className="data">{maxPrecipitation}</span>{" "}
+                          <span className="data">
+                            {maxPrecipitation}mm/year
+                          </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -236,7 +263,9 @@ function AddPlantCard() {
                       {minPrecipitation ? (
                         <p>
                           Minimum Precipitation:{" "}
-                          <span className="data">{minPrecipitation}</span>{" "}
+                          <span className="data">
+                            {minPrecipitation}mm/year
+                          </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -245,6 +274,24 @@ function AddPlantCard() {
                         <p>
                           Humidity:{" "}
                           <span className="data">{atmosHumidity}</span>{" "}
+                          <br></br>
+                          <span className="unit-data">
+                            Required relative humidity in the air, on a scale
+                            from 0 ( less than or equal to 10%) to 10 (greater
+                            than or equal to 90%)
+                          </span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {soilHumidity ? (
+                        <p>
+                          Soil Humidity:{" "}
+                          <span className="data">{soilHumidity}</span> <br></br>
+                          <span className="unit-data">
+                            Required humidity of the soil, on a scale from 0
+                            (xerophile) to 10 (subaquatic)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -253,6 +300,11 @@ function AddPlantCard() {
                         <p>
                           Soil Nutriments:{" "}
                           <span className="data">{soilNutriments}</span>
+                          <br></br>
+                          <span className="unit-data">
+                            Required quantity of nutriments in the soil, on a
+                            scale from 0 (oligotrophic) to 10 (hypereutrophic)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -260,8 +312,11 @@ function AddPlantCard() {
                       {soilTexture ? (
                         <p>
                           Soil Texture:{" "}
-                          <span className="data">{soilNutriments}</span>{" "}
-                          {soilTexture}
+                          <span className="data">{soilTexture}</span> <br></br>
+                          <span className="unit-data">
+                            Required texture of the soil, on a scale from 0
+                            (clay) to 10 (rock)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -377,10 +432,26 @@ function AddPlantCard() {
                       ) : (
                         ""
                       )}
+                      {growthForm ? (
+                        <p>
+                          Growth Form:{" "}
+                          <span className="data">{growthForm}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {growthRate ? (
+                        <p>
+                          Growth Rate:{" "}
+                          <span className="data">{growthRate}</span>{" "}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       {heightAvgCm ? (
                         <p>
                           Average Height:{" "}
-                          <span className="data">{heightAvgCm}</span>{" "}
+                          <span className="data">{heightAvgCm}cm</span>{" "}
                         </p>
                       ) : (
                         ""
@@ -388,6 +459,13 @@ function AddPlantCard() {
                       {light ? (
                         <p>
                           Light Index: <span className="data">{light}</span>{" "}
+                          <br></br>
+                          <span className="unit-data">
+                            Required amount of light, on a scale from 0 (no
+                            light, less than or equal to 10 lux) to 10 (very
+                            intensive insolation, greater than or equal to
+                            100,000 lux)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -404,8 +482,7 @@ function AddPlantCard() {
                     <div className="col-sm-12 col-md-6 col-lg-6c card-body info">
                       {maxTemp ? (
                         <p>
-                          Max Temp:{" "}
-                          <span className="data">{maxTemp["deg_f"]}F </span>{" "}
+                          Max Temp: <span className="data">{maxTemp}F </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -413,7 +490,7 @@ function AddPlantCard() {
                       {minTemp ? (
                         <p>
                           Min Temp:
-                          <span className="data">{minTemp["deg_f"]}F</span>
+                          <span className="data">{minTemp}F</span>
                         </p>
                       ) : (
                         ""
@@ -435,7 +512,9 @@ function AddPlantCard() {
                       {maxPrecipitation ? (
                         <p>
                           Max Precipitation:{" "}
-                          <span className="data">{maxPrecipitation}</span>{" "}
+                          <span className="data">
+                            {maxPrecipitation}mm/year
+                          </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -443,7 +522,9 @@ function AddPlantCard() {
                       {minPrecipitation ? (
                         <p>
                           Minimum Precipitation:{" "}
-                          <span className="data">{minPrecipitation}</span>{" "}
+                          <span className="data">
+                            {minPrecipitation}mm/year
+                          </span>{" "}
                         </p>
                       ) : (
                         ""
@@ -452,6 +533,24 @@ function AddPlantCard() {
                         <p>
                           Humidity:{" "}
                           <span className="data">{atmosHumidity}</span>{" "}
+                          <br></br>
+                          <span className="unit-data">
+                            Required relative humidity in the air, on a scale
+                            from 0 ( less than or equal to 10%) to 10 (greater
+                            than or equal to 90%)
+                          </span>
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {soilHumidity ? (
+                        <p>
+                          Soil Humidity:{" "}
+                          <span className="data">{soilHumidity}</span> <br></br>
+                          <span className="unit-data">
+                            Required humidity of the soil, on a scale from 0
+                            (xerophile) to 10 (subaquatic)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -460,6 +559,11 @@ function AddPlantCard() {
                         <p>
                           Soil Nutriments:{" "}
                           <span className="data">{soilNutriments}</span>
+                          <br></br>
+                          <span className="unit-data">
+                            Required quantity of nutriments in the soil, on a
+                            scale from 0 (oligotrophic) to 10 (hypereutrophic)
+                          </span>
                         </p>
                       ) : (
                         ""
@@ -467,8 +571,11 @@ function AddPlantCard() {
                       {soilTexture ? (
                         <p>
                           Soil Texture:{" "}
-                          <span className="data">{soilNutriments}</span>{" "}
-                          {soilTexture}
+                          <span className="data">{soilTexture}</span> <br></br>
+                          <span className="unit-data">
+                            Required texture of the soil, on a scale from 0
+                            (clay) to 10 (rock)
+                          </span>
                         </p>
                       ) : (
                         ""

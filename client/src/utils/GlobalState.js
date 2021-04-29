@@ -123,6 +123,7 @@ const reducer = (state, action) => {
     case SPOTLIGHT:
       return {
         ...state,
+        images: action.spotlight.images,
         switch: action.switch,
         viewPlant: {
           id: action.spotlight.id,
@@ -177,6 +178,7 @@ const reducer = (state, action) => {
     case CAROUSEL:
       return {
         ...state,
+        view: action.view,
         carousel: action.carousel,
       };
   }
@@ -200,7 +202,23 @@ const StoreProvider = ({ value = [], ...props }) => {
     accounts: [],
     accountName: "",
     accountID: "",
-    viewPlant: {},
+    viewPlant: {
+      images: {
+        leaf: [],
+        bark: [],
+        flower: [],
+        habit: [],
+        other: [],
+      },
+    },
+    images: {
+      leaf: [],
+      bark: [],
+      flower: [],
+      habit: [],
+      other: [],
+    },
+    view: "",
     carousel: false,
   });
 

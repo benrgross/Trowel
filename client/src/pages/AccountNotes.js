@@ -1,16 +1,30 @@
-import React, { useRef } from "react";
+import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import "./Search/style.css";
 
 function AccountNotes() {
-  const [state, _] = useStoreContext();
-  const { accountID } = state;
+  const [state, dispatch] = useStoreContext();
+  const { accountID, accountNotes } = state;
 
-  console.log("Account ID: ", accountID)
+  // UseEffect to grab account data from ID
+  useEffect(() => {
+    getAccountNote();
+  }, [])
 
-  // TODO: UseEffect to grab account data from ID
+  const getAccountNote = async () => {
+    const { data } = await API.findAccountById(accountID);
+
+    dispatch({
+      type: "STORE_ACCOUNT_NOTES",
+      accountNotes: data.notes,
+    });
+  }
+
+  console.log("State Account Notes: ", accountNotes)
+  // console.log("Note: ", accountNotes[0].note)
+
   // TODO: Display every note within the account
   // TODO: Form that sends note obj with a title and note attribute
   // TODO: Edit button that edits an existing note
@@ -43,13 +57,21 @@ function AccountNotes() {
         </div>
         <div className="row">
           <div className="col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center">
-            <button className="btn plant" onClick={() => console.log("Clicked Add Btn")}>
+            <button className="btn plant" onClick={() => console.log("Save Note into account ID: ", accountID)}>
               Add
             </button>
           </div>
           <div className="col-sm-5 col-md-5 col-lg-5"></div>
           <div className="col-sm-5 col-md-5 col-lg-5"></div>
         </div>
+      </div>
+      <div className="container">
+        <h1>Notes Go Here</h1>
+        {accountNotes ? accountNotes.map(note => {
+          return <p>{note.note}</p>
+        }) 
+        : 
+        "No Notes Added"}
       </div>
     </div>
   );

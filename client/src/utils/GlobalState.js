@@ -118,6 +118,12 @@ const reducer = (state, action) => {
         ...state,
         accountID: action.accountID,
       };
+    
+    case "STORE_ACCOUNT_NOTES":
+      return {
+        ...state,
+        accountNotes: action.accountNotes,
+      };
 
     case SPOTLIGHT:
       return {
@@ -193,6 +199,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     accounts: [],
     accountName: "",
     accountID: "",
+    accountNotes: "",
     viewPlant: {},
   });
 

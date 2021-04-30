@@ -57,7 +57,7 @@ function AccountNotes() {
         </div>
         <div className="row">
           <div className="col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center">
-            <button className="btn plant" onClick={() => console.log("Clicked Add Btn")}>
+            <button className="btn plant" onClick={() => console.log("Save Note into account ID: ", accountID)}>
               Add
             </button>
           </div>

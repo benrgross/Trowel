@@ -23,6 +23,7 @@ function AccountNotes() {
   }
 
   console.log("State Account Notes: ", accountNotes)
+  // console.log("Note: ", accountNotes[0].note)
 
   // TODO: Display every note within the account
   // TODO: Form that sends note obj with a title and note attribute
@@ -64,13 +65,14 @@ function AccountNotes() {
           <div className="col-sm-5 col-md-5 col-lg-5"></div>
         </div>
       </div>
-      {/* {notes.map(note => {
-       return (
-        <div className="container">
-          <p>{note ? note.note : "No Notes Added"}</p>
-        </div>
-        )
-      })} */}
+      <div className="container">
+        <h1>Notes Go Here</h1>
+        {accountNotes ? accountNotes.map(note => {
+          return <p>{note.note}</p>
+        }) 
+        : 
+        "No Notes Added"}
+      </div>
     </div>
   );
 }

@@ -5,11 +5,10 @@ import { useHistory } from "react-router-dom";
 import "./Search/style.css";
 
 function AccountNotes() {
-  const [state, _] = useStoreContext();
-  const { accountID } = state;
+  const [state, dispatch] = useStoreContext();
+  const { accountID, accountNotes } = state;
 
-  console.log("Account ID: ", accountID)
-
+  // UseEffect to grab account data from ID
   useEffect(() => {
     getAccountNote();
   }, [])
@@ -17,10 +16,14 @@ function AccountNotes() {
   const getAccountNote = async () => {
     const { data } = await API.findAccountById(accountID);
 
-    console.log("Account by ID: ", data)
+    dispatch({
+      type: "STORE_ACCOUNT_NOTES",
+      accountNotes: data.notes,
+    });
   }
 
-  // TODO: UseEffect to grab account data from ID
+  console.log("State Account Notes: ", accountNotes)
+
   // TODO: Display every note within the account
   // TODO: Form that sends note obj with a title and note attribute
   // TODO: Edit button that edits an existing note
@@ -61,6 +64,13 @@ function AccountNotes() {
           <div className="col-sm-5 col-md-5 col-lg-5"></div>
         </div>
       </div>
+      {/* {notes.map(note => {
+       return (
+        <div className="container">
+          <p>{note ? note.note : "No Notes Added"}</p>
+        </div>
+        )
+      })} */}
     </div>
   );
 }

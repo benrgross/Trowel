@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,16 @@ function AccountNotes() {
   const { accountID } = state;
 
   console.log("Account ID: ", accountID)
+
+  useEffect(() => {
+    getAccountNote();
+  }, [])
+
+  const getAccountNote = async () => {
+    const { data } = await API.findAccountById(accountID);
+
+    console.log("Account by ID: ", data)
+  }
 
   // TODO: UseEffect to grab account data from ID
   // TODO: Display every note within the account

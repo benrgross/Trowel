@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
 import { SET_SAVED_ACCOUNT, CAROUSEL } from "../../utils/actions";
 import Carousel from "../Carousel/Index";
+import ViewButtons from "../ViewButtons/index.js";
 import { FaRegWindowClose } from "react-icons/fa";
 
 import "./spotlight.css";
@@ -84,36 +85,13 @@ function AddPlantCard() {
     history.push("/account");
   };
 
-  const viewImages = (type) => {
-    dispatch({
-      type: CAROUSEL,
-      view: type,
-      carousel: true,
-    });
-  };
-
-  // const viewBark = () => {
-  //   dispatch({
-  //     type: CAROUSEL,
-  //     view: "bark",
-  //     carousel: true,
-  //   });
-  // };
-
-  // const viewFlower = () => {
-  //   dispatch({
-  //     type: CAROUSEL,
-  //     view: "flower",
-  //     carousel: true,
-  //   });
-  // };
-
   const closeCarousel = () => {
     dispatch({
       type: CAROUSEL,
       carousel: false,
     });
   };
+
   return (
     <div>
       <div className="row">
@@ -167,56 +145,7 @@ function AddPlantCard() {
                           }
                         />
                       )}
-                      {state.viewPlant.images.leaf.length > 0 ? (
-                        <button
-                          className="btn submit add-plant p-2"
-                          onClick={() => viewImages("leaf")}
-                        >
-                          leaf
-                        </button>
-                      ) : (
-                        " "
-                      )}{" "}
-                      {state.viewPlant.images.bark.length > 0 ? (
-                        <button
-                          className="btn submit add-plant p-2"
-                          onClick={() => viewImages("bark")}
-                        >
-                          bark
-                        </button>
-                      ) : (
-                        " "
-                      )}{" "}
-                      {state.viewPlant.images.flower.length > 0 ? (
-                        <button
-                          className="btn submit add-plant p-2"
-                          onClick={() => viewImages("flower")}
-                        >
-                          flower
-                        </button>
-                      ) : (
-                        " "
-                      )}{" "}
-                      {state.viewPlant.images.habit.length > 0 ? (
-                        <button
-                          className="btn submit add-plant p-2"
-                          onClick={() => viewImages("habit")}
-                        >
-                          habit
-                        </button>
-                      ) : (
-                        " "
-                      )}{" "}
-                      {state.viewPlant.images.other.length > 0 ? (
-                        <button
-                          className="btn submit add-plant p-2"
-                          onClick={() => viewImages("other")}
-                        >
-                          other
-                        </button>
-                      ) : (
-                        " "
-                      )}{" "}
+                      <ViewButtons />
                     </div>
 
                     <div className="col-sm-12 col-md-5 col-lg-5">
